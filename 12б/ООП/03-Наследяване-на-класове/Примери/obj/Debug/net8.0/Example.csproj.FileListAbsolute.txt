@@ -1,0 +1,14 @@
+/home/ahmed/Desktop/SCHOOL/12б/ООП/03-Наследяване-на-класове/Примери/bin/Debug/net8.0/Example
+/home/ahmed/Desktop/SCHOOL/12б/ООП/03-Наследяване-на-класове/Примери/bin/Debug/net8.0/Example.deps.json
+/home/ahmed/Desktop/SCHOOL/12б/ООП/03-Наследяване-на-класове/Примери/bin/Debug/net8.0/Example.runtimeconfig.json
+/home/ahmed/Desktop/SCHOOL/12б/ООП/03-Наследяване-на-класове/Примери/bin/Debug/net8.0/Example.dll
+/home/ahmed/Desktop/SCHOOL/12б/ООП/03-Наследяване-на-класове/Примери/bin/Debug/net8.0/Example.pdb
+/home/ahmed/Desktop/SCHOOL/12б/ООП/03-Наследяване-на-класове/Примери/obj/Debug/net8.0/Example.GeneratedMSBuildEditorConfig.editorconfig
+/home/ahmed/Desktop/SCHOOL/12б/ООП/03-Наследяване-на-класове/Примери/obj/Debug/net8.0/Example.AssemblyInfoInputs.cache
+/home/ahmed/Desktop/SCHOOL/12б/ООП/03-Наследяване-на-класове/Примери/obj/Debug/net8.0/Example.AssemblyInfo.cs
+/home/ahmed/Desktop/SCHOOL/12б/ООП/03-Наследяване-на-класове/Примери/obj/Debug/net8.0/Example.csproj.CoreCompileInputs.cache
+/home/ahmed/Desktop/SCHOOL/12б/ООП/03-Наследяване-на-класове/Примери/obj/Debug/net8.0/Example.dll
+/home/ahmed/Desktop/SCHOOL/12б/ООП/03-Наследяване-на-класове/Примери/obj/Debug/net8.0/refint/Example.dll
+/home/ahmed/Desktop/SCHOOL/12б/ООП/03-Наследяване-на-класове/Примери/obj/Debug/net8.0/Example.pdb
+/home/ahmed/Desktop/SCHOOL/12б/ООП/03-Наследяване-на-класове/Примери/obj/Debug/net8.0/Example.genruntimeconfig.cache
+/home/ahmed/Desktop/SCHOOL/12б/ООП/03-Наследяване-на-класове/Примери/obj/Debug/net8.0/ref/Example.dll

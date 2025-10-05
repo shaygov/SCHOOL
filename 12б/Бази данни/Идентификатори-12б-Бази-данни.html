@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Идентификатори, Бази данни</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+        }
+        
+        ul {
+            margin: 15px 0;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #e74c3c;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: pre-wrap;
+        }
+        
+        .sql-keyword {
+            color: #0066cc;
+            font-weight: bold;
+        }
+        
+        .sql-string {
+            color: #009900;
+        }
+        
+        .sql-comment {
+            color: #666666;
+            font-style: italic;
+        }
+        
+        .code-block {
+            margin: 15px 0;
+        }
+        
+        .code-block h5 {
+            color: #2c3e50;
+            margin: 15px 0 5px 0;
+            font-size: 16px;
+        }
+        
+        .code-block h6 {
+            color: #34495e;
+            margin: 10px 0 5px 0;
+            font-size: 14px;
+            font-style: italic;
+        }
+        
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            margin: 15px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        
+        .example {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+        }
+        
+        .important {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid #dc3545;
+            margin: 15px 0;
+        }
+        
+        strong {
+            color: #2c3e50;
+        }
+        
+        .section-number {
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Идентификатори, Бази данни</h1>
+
+        <h2><span class="section-number">1.</span> Увод</h2>
+        <p><strong>1.1</strong> Идентификаторите гарантират уникалност на записите и коректни връзки между таблиците. Те са основа за референтна цялост и бързи заявки.</p>
+
+        <h2><span class="section-number">2.</span> Основни понятия</h2>
+        <ul>
+            <li><strong>2.1 Първичен ключ (PK)</strong>: уникален и NOT NULL идентификатор на ред; стабилен във времето. Пример: <code>StudentId SERIAL PRIMARY KEY</code>.</li>
+            <li><strong>2.2 Външен ключ (FK)</strong>: колон(и), които сочат към PK/UNIQUE на друга таблица и гарантират валидна връзка. Пример: <code>FOREIGN KEY (StudentId) REFERENCES Students(StudentId)</code>.</li>
+            <li><strong>2.3 Уникален ключ (UNIQUE)</strong>: налага уникалност на колона/комбинация, различен от PK. Пример: <code>Email UNIQUE</code>.</li>
+            <li><strong>2.4 Естествен ключ</strong>: бизнес-значим атрибут, по който записът е уникален. Примери: <code>EGN</code>, <code>IBAN</code>, <code>ISBN</code>.</li>
+            <li><strong>2.5 Заместителен ключ (surrogate)</strong>: изкуствен идентификатор без бизнес смисъл (INT/UUID).
+                <ul>
+                    <li>INT (Auto Increment / Serial)</li>
+                    <li>UUID - универсално уникален идентификатор. Това е стандартен начин за създаване на уникални идентификатори, които могат да се използват в различни системи без риск от дублиране</li>
+                </ul>
+            </li>
+            <li><strong>2.6 Композитен ключ</strong>: PK/UNIQUE, съставен от няколко колони. Пример: <code>PRIMARY KEY (StudentId, CourseId)</code>.</li>
+            <li><strong>2.7 Референтна цялост, каскадни операции, индекси</strong>: правила и механизми за валидни връзки (FK), действия при промяна/изтриване (<code>RESTRICT</code>, <code>CASCADE</code>, <code>SET NULL</code>), и структури за бързо търсене (индекси върху PK/FK/UNIQUE).</li>
+        </ul>
+
+        <h2><span class="section-number">3.</span> Съдържание</h2>
+        
+        <h3>3.1 Въведение</h3>
+        <ul>
+            <li>Общ преглед на важността на идентификаторите в базите данни</li>
+            <li>Без уникални идентификатори няма как да свържем данни между таблици</li>
+            <li>Пример: без StudentId не можем да свържем студент с неговите записи</li>
+        </ul>
+
+        <h3>3.2 Основни понятия</h3>
+        <ul>
+            <li><strong>PK (първичен ключ)</strong>: уникален идентификатор на ред (StudentId)</li>
+            <li><strong>FK (външен ключ)</strong>: сочи към PK на друга таблица (Enrollment.StudentId → Student.StudentId)</li>
+            <li><strong>UNIQUE</strong>: налага уникалност без да е PK (Email UNIQUE)</li>
+            <li><strong>Естествен ключ</strong>: бизнес-значим (ЕГН, ISBN)</li>
+            <li><strong>Заместителен ключ</strong>: изкуствен (SERIAL, UUID)</li>
+            <li><strong>Композитен ключ</strong>: комбинация от колони (StudentId + CourseId)</li>
+            <li><strong>Референтна цялост</strong>: гарантира валидни връзки между таблици</li>
+        </ul>
+
+        <h3>3.3 Видове идентификатори</h3>
+        <ul>
+            <li><strong>Естествен ключ</strong>: предимства/недостатъци, примери (ЕГН, IBAN)
+                <ul>
+                    <li>Пример: <code>CountryCode CHAR(2) PRIMARY KEY</code> (BG, US, DE)</li>
+                    <li>Подходящ за кодове със стандарт (IBAN, ISO кодове на държави, EAN/UPC)</li>
+                    <li>Когато промяна е изключение</li>
+                </ul>
+            </li>
+            <li><strong>Заместителен ключ</strong>: INT/UUID, кога е уместен
+                <ul>
+                    <li>Пример: <code>UserId BIGSERIAL PRIMARY KEY</code> (1, 2, 3, ...)</li>
+                    <li>Когато бизнес атрибутите могат да се променят</li>
+                    <li>За мащабируемост, разделяне на отговорности и анонимизация</li>
+                </ul>
+            </li>
+            <li><strong>Композитен ключ</strong>: случаи на употреба и ефекти върху FK/индекси
+                <ul>
+                    <li>Пример: <code>PRIMARY KEY (StudentId, CourseId)</code> за записвания</li>
+                    <li>Подходящи при естествена уникалност от комбинация</li>
+                    <li>Усложнява FK и индекси; може да влоши производителността при големи таблици</li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="example">
+            <h4>Примери:</h4>
+            <div class="code-block">
+                <h5>Естествен ключ като PK:</h5>
+                <pre><code><span class="sql-keyword">CREATE TABLE</span> Countries (
+  IsoCode <span class="sql-keyword">CHAR</span>(2) <span class="sql-keyword">PRIMARY KEY</span>,
+  Name <span class="sql-keyword">VARCHAR</span>(100) <span class="sql-keyword">NOT NULL UNIQUE</span>
+);</code></pre>
+                
+                <h5>Заместителен ключ и алтернативна уникалност:</h5>
+                <pre><code><span class="sql-keyword">CREATE TABLE</span> Users (
+  UserId <span class="sql-keyword">BIGSERIAL PRIMARY KEY</span>,
+  Email <span class="sql-keyword">CITEXT UNIQUE NOT NULL</span>,
+  DisplayName <span class="sql-keyword">VARCHAR</span>(120) <span class="sql-keyword">NOT NULL</span>
+);</code></pre>
+            </div>
+        </div>
+
+        <h3>3.4 Правила за първични ключове (PK)</h3>
+        <ul>
+            <li><strong>Минималност</strong>: използвай най-малко колони възможно</li>
+            <li><strong>Стабилност</strong>: не трябва да се променя</li>
+            <li><strong>Индексиране</strong>: автоматично се създава клъстерен индекс</li>
+            <li><strong>Избор на тип</strong>: INT за производителност, UUID за разпределени системи</li>
+        </ul>
+
+        <h3>3.5 Външни ключове (FK)</h3>
+        <ul>
+            <li><strong>ON DELETE/UPDATE действия</strong>:
+                <ul>
+                    <li>RESTRICT: забранява изтриване (ако има зависими записи)</li>
+                    <li>CASCADE: изтрива зависимите записи автоматично</li>
+                    <li>SET NULL: занулява FK (ако колоната позволява NULL)</li>
+                    <li>SET DEFAULT: задава стойност по подразбиране</li>
+                </ul>
+            </li>
+            <li><strong>Индексиране</strong>: подобрява JOIN операции и каскадни действия</li>
+        </ul>
+
+        <div class="example">
+            <h4>Примери:</h4>
+            <div class="code-block">
+                <h5>Композитен ключ за много-към-много връзка:</h5>
+                
+                <h6>Таблица Authors:</h6>
+                <pre><code><span class="sql-keyword">CREATE TABLE</span> Authors (
+  AuthorId <span class="sql-keyword">BIGSERIAL PRIMARY KEY</span>,
+  FullName <span class="sql-keyword">VARCHAR</span>(120) <span class="sql-keyword">NOT NULL</span>
+);</code></pre>
+                
+                <h6>Таблица Books:</h6>
+                <pre><code><span class="sql-keyword">CREATE TABLE</span> Books (
+  BookId <span class="sql-keyword">BIGSERIAL PRIMARY KEY</span>,
+  ISBN <span class="sql-keyword">CHAR</span>(13) <span class="sql-keyword">UNIQUE</span>,
+  Title <span class="sql-keyword">VARCHAR</span>(200) <span class="sql-keyword">NOT NULL</span>
+);</code></pre>
+                
+                <h6>Junction таблица BookAuthors:</h6>
+                <pre><code><span class="sql-keyword">CREATE TABLE</span> BookAuthors (
+  BookId <span class="sql-keyword">BIGINT NOT NULL</span>,
+  AuthorId <span class="sql-keyword">BIGINT NOT NULL</span>,
+  Role <span class="sql-keyword">VARCHAR</span>(50) <span class="sql-keyword">NOT NULL DEFAULT</span> <span class="sql-string">'author'</span>,
+  <span class="sql-keyword">PRIMARY KEY</span> (BookId, AuthorId),
+  <span class="sql-keyword">FOREIGN KEY</span> (BookId) <span class="sql-keyword">REFERENCES</span> Books(BookId) 
+    <span class="sql-keyword">ON DELETE CASCADE</span>,
+  <span class="sql-keyword">FOREIGN KEY</span> (AuthorId) <span class="sql-keyword">REFERENCES</span> Authors(AuthorId) 
+    <span class="sql-keyword">ON DELETE CASCADE</span>
+);</code></pre>
+                
+                <h6>Индекс за производителност:</h6>
+                <pre><code><span class="sql-keyword">CREATE INDEX</span> idx_bookauthors_author 
+<span class="sql-keyword">ON</span> BookAuthors(AuthorId);</code></pre>
+            </div>
+        </div>
+
+        <h3>3.6 Уникалност и алтернативни ключове</h3>
+        <ul>
+            <li><strong>UNIQUE върху колони</strong>: <code>Email VARCHAR(100) UNIQUE</code></li>
+            <li><strong>UNIQUE върху комбинации</strong>: <code>UNIQUE (FirstName, LastName, BirthDate)</code></li>
+            <li><strong>Бизнес правила</strong>: един студент не може да се запише два пъти в същия курс</li>
+            <li><strong>Частични индекси</strong>: уникалност само за активни записи
+                <ul>
+                    <li>Пример: <code>CREATE UNIQUE INDEX ... WHERE Active = TRUE</code></li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="example">
+            <h4>Примери:</h4>
+            <div class="code-block">
+                <h5>Частичен уникален индекс за активни записи:</h5>
+                
+                <h6>Създаване на таблицата:</h6>
+                <pre><code><span class="sql-keyword">CREATE TABLE</span> PromoCodes (
+  PromoId <span class="sql-keyword">BIGSERIAL PRIMARY KEY</span>,
+  Code <span class="sql-keyword">TEXT NOT NULL</span>,
+  Active <span class="sql-keyword">BOOLEAN NOT NULL DEFAULT TRUE</span>
+);</code></pre>
+                
+                <h6>Частичен индекс (само за активни записи):</h6>
+                <pre><code><span class="sql-keyword">CREATE UNIQUE INDEX</span> uniq_promocodes_active_code 
+<span class="sql-keyword">ON</span> PromoCodes(Code) 
+<span class="sql-keyword">WHERE</span> Active = <span class="sql-keyword">TRUE</span>;</code></pre>
+            </div>
+        </div>
+
+        <h3>3.7 Проверки и бизнес правила</h3>
+        <ul>
+            <li><strong>CHECK ограничения</strong>: валидиране на формати и стойности
+                <ul>
+                    <li>Пример: <code>CHECK (Age >= 18 AND Age <= 100)</code></li>
+                    <li>Пример: <code>CHECK (EGN ~ '^[0-9]{10}$')</code> за български ЕГН</li>
+                </ul>
+            </li>
+            <li><strong>Валидация на дати</strong>: <code>CHECK (BirthDate <= CURRENT_DATE)</code></li>
+        </ul>
+
+        <div class="example">
+            <h4>Примери:</h4>
+            <div class="code-block">
+                <h5>CHECK ограничения за валидация:</h5>
+                <pre><code><span class="sql-keyword">CREATE TABLE</span> StudentsEx (
+  StudentId <span class="sql-keyword">BIGSERIAL PRIMARY KEY</span>,
+  EGN <span class="sql-keyword">CHAR</span>(10) <span class="sql-keyword">UNIQUE NOT NULL</span>,
+  BirthDate <span class="sql-keyword">DATE NOT NULL</span>,
+  <span class="sql-keyword">CHECK</span> (EGN <span class="sql-keyword">~</span> <span class="sql-string">'^[0-9]{10}$'</span>),
+  <span class="sql-keyword">CHECK</span> (BirthDate <span class="sql-keyword"><=</span> <span class="sql-keyword">CURRENT_DATE</span>)
+);</code></pre>
+            </div>
+        </div>
+
+        <h3>3.8 Производителност и индексиране</h3>
+        <ul>
+            <li><strong>Комбинирани индекси</strong>: за чести заявки с WHERE и ORDER BY
+                <ul>
+                    <li>Пример: <code>CREATE INDEX idx_student_grade ON Grades(StudentId, SubjectId, Date)</code></li>
+                </ul>
+            </li>
+            <li><strong>Покриващи индекси</strong>: включват всички нужни колони за заявката</li>
+            <li><strong>Баланс</strong>: повече индекси = по-бавни INSERT/UPDATE, по-бързи SELECT</li>
+        </ul>
+
+        <div class="example">
+            <h4>Примери:</h4>
+            <div class="code-block">
+                <h5>Покриващ индекс за JOIN и филтър:</h5>
+                <pre><code><span class="sql-keyword">CREATE INDEX</span> idx_enrollments_student_course 
+<span class="sql-keyword">ON</span> Enrollments(StudentId, CourseId, EnrolledAt);</code></pre>
+                
+                <p><strong>Обяснение:</strong> Този индекс покрива заявки като:</p>
+                <pre><code><span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> Enrollments 
+<span class="sql-keyword">WHERE</span> StudentId = 123 
+<span class="sql-keyword">AND</span> CourseId = 456 
+<span class="sql-keyword">ORDER BY</span> EnrolledAt;</code></pre>
+            </div>
+        </div>
+
+        <h3>3.9 PK типове: INT срещу UUID (v4, v7)</h3>
+        <ul>
+            <li><strong>INT/BIGINT</strong>: компактни (4-8 байта), бързи JOIN, разкриват броя записи
+                <ul>
+                    <li>Пример: <code>StudentId SERIAL PRIMARY KEY</code> (1, 2, 3, ...)</li>
+                </ul>
+            </li>
+            <li><strong>UUID v4</strong>: случайни, глобално уникални, по-бавни
+                <ul>
+                    <li>Пример: <code>550e8400-e29b-41d4-a716-446655440000</code></li>
+                </ul>
+            </li>
+            <li><strong>UUID v7</strong>: времево подредени, по-добра производителност от v4</li>
+        </ul>
+
+        <div class="example">
+            <h4>Примери:</h4>
+            <div class="code-block">
+                <h5>UUID v4 (PostgreSQL):</h5>
+                
+                <h6>Активиране на UUID функцията:</h6>
+                <pre><code><span class="sql-keyword">CREATE EXTENSION IF NOT EXISTS</span> <span class="sql-string">"uuid-ossp"</span>;</code></pre>
+                
+                <h6>Таблица с UUID PK:</h6>
+                <pre><code><span class="sql-keyword">CREATE TABLE</span> Orders (
+  OrderId <span class="sql-keyword">UUID PRIMARY KEY DEFAULT</span> uuid_generate_v4(),
+  CustomerId <span class="sql-keyword">BIGINT NOT NULL</span>,
+  Total <span class="sql-keyword">NUMERIC</span>(12,2) <span class="sql-keyword">NOT NULL</span>,
+  CreatedAt <span class="sql-keyword">TIMESTAMP NOT NULL DEFAULT NOW</span>()
+);</code></pre>
+            </div>
+        </div>
+
+        <h3>3.10 Генериране на идентификатори</h3>
+        <ul>
+            <li><strong>SERIAL/IDENTITY</strong>: автоматично нарастващи числа
+                <ul>
+                    <li>PostgreSQL: <code>StudentId SERIAL PRIMARY KEY</code></li>
+                    <li>SQL Server: <code>StudentId INT IDENTITY(1,1) PRIMARY KEY</code></li>
+                </ul>
+            </li>
+            <li><strong>UUID функции</strong>: <code>uuid_generate_v4()</code>, <code>gen_random_uuid()</code></li>
+        </ul>
+
+        <h3>3.11 Пример (SQL): студенти, курсове, записвания</h3>
+        <ul>
+            <li><strong>Студенти</strong>: <code>Students(StudentId, EGN, FullName)</code></li>
+            <li><strong>Курсове</strong>: <code>Courses(CourseId, Title)</code></li>
+            <li><strong>Записвания</strong>: <code>Enrollments(StudentId, CourseId, Date)</code> с композитен PK</li>
+            <li>Практически пример с три свързани таблици и различни типове ключове</li>
+        </ul>
+
+        <div class="example">
+            <h4>Практически пример:</h4>
+            <div class="code-block">
+                <h5>Студенти, курсове и записвания:</h5>
+                
+                <h6>Таблица Students:</h6>
+                <pre><code><span class="sql-keyword">CREATE TABLE</span> Students (
+  StudentId <span class="sql-keyword">SERIAL PRIMARY KEY</span>,
+  EGN <span class="sql-keyword">CHAR</span>(10) <span class="sql-keyword">UNIQUE NOT NULL</span>,
+  FullName <span class="sql-keyword">VARCHAR</span>(100) <span class="sql-keyword">NOT NULL</span>
+);</code></pre>
+                
+                <h6>Таблица Courses:</h6>
+                <pre><code><span class="sql-keyword">CREATE TABLE</span> Courses (
+  CourseId <span class="sql-keyword">SERIAL PRIMARY KEY</span>,
+  Title <span class="sql-keyword">VARCHAR</span>(100) <span class="sql-keyword">NOT NULL</span>
+);</code></pre>
+                
+                <h6>Таблица Enrollments (композитен PK):</h6>
+                <pre><code><span class="sql-keyword">CREATE TABLE</span> Enrollments (
+  StudentId <span class="sql-keyword">INT NOT NULL</span>,
+  CourseId <span class="sql-keyword">INT NOT NULL</span>,
+  EnrolledAt <span class="sql-keyword">TIMESTAMP NOT NULL DEFAULT NOW</span>(),
+  <span class="sql-keyword">PRIMARY KEY</span> (StudentId, CourseId),
+  <span class="sql-keyword">FOREIGN KEY</span> (StudentId) <span class="sql-keyword">REFERENCES</span> Students(StudentId) 
+    <span class="sql-keyword">ON DELETE CASCADE</span>,
+  <span class="sql-keyword">FOREIGN KEY</span> (CourseId) <span class="sql-keyword">REFERENCES</span> Courses(CourseId) 
+    <span class="sql-keyword">ON DELETE CASCADE</span>
+);</code></pre>
+            </div>
+        </div>
+
+        <h3>3.12 Поведение на FK: демонстрации с различни действия</h3>
+        <ul>
+            <li><strong>Тестване на RESTRICT</strong>: опит за изтриване на студент с записи</li>
+            <li><strong>Тестване на CASCADE</strong>: автоматично изтриване на всички записи при изтриване на студент</li>
+            <li><strong>Тестване на SET NULL</strong>: зануляване на FK при изтриване на родителски запис</li>
+        </ul>
+
+        <h3>3.13 UNIQUE и частични индекси: примери</h3>
+        <ul>
+            <li><strong>Частични индекси</strong>: уникалност само за активни записи
+                <ul>
+                    <li>Пример: <code>CREATE UNIQUE INDEX uniq_active_email ON Users(Email) WHERE Active = TRUE</code></li>
+                </ul>
+            </li>
+            <li><strong>Практически случаи</strong>: промо кодове (само активни да са уникални)</li>
+        </ul>
+
+        <h3>3.14 CHECK: примери</h3>
+        <ul>
+            <li><strong>Валидация на ЕГН формат</strong>: <code>CHECK (EGN ~ '^[0-9]{10}$')</code></li>
+            <li><strong>Валидация на дати</strong>: <code>CHECK (BirthDate <= CURRENT_DATE)</code></li>
+            <li><strong>Валидация на стойности</strong>: <code>CHECK (Grade >= 2 AND Grade <= 6)</code></li>
+            <li><strong>Валидация на проценти</strong>: <code>CHECK (Discount >= 0 AND Discount <= 100)</code></li>
+        </ul>
+
+        <h3>3.15 Миграция на ключове: стъпки и рискове</h3>
+        <ul>
+            <li><strong>Стъпки</strong>: добавяне на нова PK колона → пренапълване → премахване на старата</li>
+            <li><strong>Рискове</strong>: загуба на данни, нарушение на връзки, downtime</li>
+            <li><strong>План</strong>: backup, тестване, прозорец за поддръжка
+                <ul>
+                    <li>Пример: <code>ALTER TABLE Students ADD COLUMN NewStudentId BIGSERIAL</code></li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="example">
+            <h4>Примери:</h4>
+            <pre><code>-- Скелет на миграция (PostgreSQL)
+ALTER TABLE Students ADD COLUMN NewStudentId BIGSERIAL;
+UPDATE Students s SET NewStudentId = nextval(pg_get_serial_sequence('Students','NewStudentId')) WHERE NewStudentId IS NULL;
+ALTER TABLE Students ADD CONSTRAINT Students_pk PRIMARY KEY (NewStudentId);
+-- Реконфигурирайте FK в зависимите таблици към NewStudentId</code></pre>
+        </div>
+
+        <h3>3.16 По-комплексен пример: библиотека (читатели, книги, заемания)</h3>
+        <ul>
+            <li><strong>Читатели</strong>: <code>Readers(ReaderId, Email UNIQUE, FullName)</code></li>
+            <li><strong>Книги</strong>: <code>LibraryBooks(BookId, ISBN UNIQUE, Title, Copies CHECK >= 0)</code></li>
+            <li><strong>Заемания</strong>: <code>Loans(LoanId, ReaderId FK, BookId FK, DueAt, ReturnedAt)</code></li>
+            <li>Пълна система с всички типове ключове, ограничения и индекси</li>
+        </ul>
+
+        <div class="example">
+            <h4>Примери:</h4>
+            <div class="code-block">
+                <h5>По-комплексен пример: библиотека</h5>
+                
+                <h6>Таблица Readers (Читатели):</h6>
+                <pre><code><span class="sql-keyword">CREATE TABLE</span> Readers (
+  ReaderId <span class="sql-keyword">BIGSERIAL PRIMARY KEY</span>,
+  Email <span class="sql-keyword">CITEXT UNIQUE NOT NULL</span>,
+  FullName <span class="sql-keyword">VARCHAR</span>(120) <span class="sql-keyword">NOT NULL</span>
+);</code></pre>
+                
+                <h6>Таблица LibraryBooks (Книги):</h6>
+                <pre><code><span class="sql-keyword">CREATE TABLE</span> LibraryBooks (
+  BookId <span class="sql-keyword">BIGSERIAL PRIMARY KEY</span>,
+  ISBN <span class="sql-keyword">CHAR</span>(13) <span class="sql-keyword">UNIQUE</span>,
+  Title <span class="sql-keyword">VARCHAR</span>(200) <span class="sql-keyword">NOT NULL</span>,
+  Copies <span class="sql-keyword">INT NOT NULL CHECK</span> (Copies <span class="sql-keyword">>=</span> 0)
+);</code></pre>
+                
+                <h6>Таблица Loans (Заемания):</h6>
+                <pre><code><span class="sql-keyword">CREATE TABLE</span> Loans (
+  LoanId <span class="sql-keyword">BIGSERIAL PRIMARY KEY</span>,
+  ReaderId <span class="sql-keyword">BIGINT NOT NULL</span>,
+  BookId <span class="sql-keyword">BIGINT NOT NULL</span>,
+  LoanedAt <span class="sql-keyword">TIMESTAMP NOT NULL DEFAULT NOW</span>(),
+  DueAt <span class="sql-keyword">TIMESTAMP NOT NULL</span>,
+  ReturnedAt <span class="sql-keyword">TIMESTAMP</span>,
+  <span class="sql-keyword">UNIQUE</span> (ReaderId, BookId, ReturnedAt),
+  <span class="sql-keyword">FOREIGN KEY</span> (ReaderId) <span class="sql-keyword">REFERENCES</span> Readers(ReaderId) 
+    <span class="sql-keyword">ON DELETE CASCADE</span>,
+  <span class="sql-keyword">FOREIGN KEY</span> (BookId) <span class="sql-keyword">REFERENCES</span> LibraryBooks(BookId) 
+    <span class="sql-keyword">ON DELETE RESTRICT</span>
+);</code></pre>
+                
+                <h6>Индекс за активни заемания:</h6>
+                <pre><code><span class="sql-keyword">CREATE INDEX</span> idx_loans_reader_active 
+<span class="sql-keyword">ON</span> Loans(ReaderId) 
+<span class="sql-keyword">WHERE</span> ReturnedAt <span class="sql-keyword">IS NULL</span>;</code></pre>
+            </div>
+        </div>
+
+        <h3>3.17 Примери и задачи: практическа работа</h3>
+        <ul>
+            <li><strong>Дизайн на таблици</strong>: студентски групи, система за поръчки</li>
+            <li><strong>Избор на ключове</strong>: естествен vs заместителен за различни случаи</li>
+            <li><strong>Тестване на FK</strong>: различни ON DELETE поведения</li>
+            <li><strong>CHECK ограничения</strong>: валидиране на бизнес правила</li>
+            <li><strong>Индексиране</strong>: оптимизация на заявки</li>
+        </ul>
+
+        <div class="highlight">
+            <h4>Практически задачи:</h4>
+            <ul>
+                <li>Дизайнирай таблици за студентски групи: студенти, групи, членства; избери PK/FK и индекси</li>
+                <li>Реализирай система за поръчки: клиенти, поръчки, редове на поръчка; обсъди INT срещу UUID</li>
+                <li>Направи ON DELETE CASCADE за зависими записи и тествай ефекта при изтриване</li>
+                <li>Добави CHECK ограничения за стойности (напр. процент 0-100) и покажи нарушаване</li>
+                <li>Създай частичен уникален индекс за уникалност само на активни потребители</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">4.</span> Пример (SQL)</h2>
+        <div class="example">
+            <pre><code>CREATE TABLE Students (
+  StudentId SERIAL PRIMARY KEY,
+  EGN CHAR(10) UNIQUE NOT NULL,
+  FullName VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Courses (
+  CourseId SERIAL PRIMARY KEY,
+  Title VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Enrollments (
+  StudentId INT NOT NULL,
+  CourseId INT NOT NULL,
+  EnrolledAt TIMESTAMP NOT NULL DEFAULT NOW(),
+  PRIMARY KEY (StudentId, CourseId),
+  FOREIGN KEY (StudentId) REFERENCES Students(StudentId) ON DELETE CASCADE,
+  FOREIGN KEY (CourseId) REFERENCES Courses(CourseId) ON DELETE CASCADE
+);</code></pre>
+        </div>
+
+        <h2><span class="section-number">5.</span> Заключение</h2>
+        <div class="important">
+            <p><strong>5.1</strong> Подборът на идентификатори влияе директно върху целостта, мащабируемостта и производителността на системата.</p>
+        </div>
+    </div>
+</body>
+</html>

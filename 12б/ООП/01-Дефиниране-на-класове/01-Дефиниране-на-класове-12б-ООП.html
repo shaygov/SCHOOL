@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дефиниране на класове — 12б, ООП</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #fd7e14;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #fd7e14;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+        }
+        
+        ul {
+            margin: 15px 0;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        code {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            margin: 15px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        
+        .example {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+        }
+        
+        .important {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid #dc3545;
+            margin: 15px 0;
+        }
+        
+        .config {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid #2196f3;
+            margin: 15px 0;
+        }
+        
+        .patterns {
+            background-color: #f3e5f5;
+            padding: 15px;
+            border-left: 4px solid #9c27b0;
+            margin: 15px 0;
+        }
+        
+        .security {
+            background-color: #ffebee;
+            padding: 15px;
+            border-left: 4px solid #f44336;
+            margin: 15px 0;
+        }
+        
+        strong {
+            color: #2c3e50;
+        }
+        
+        .section-number {
+            color: #fd7e14;
+            font-weight: bold;
+        }
+        
+        .format-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .format-card {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        
+        .format-card h4 {
+            color: #fd7e14;
+            margin-top: 0;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+            .format-comparison {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Дефиниране на класове — 12б, ООП</h1>
+
+        <h2><span class="section-number">1. Увод</span></h2>
+        <div class="important">
+            <p>Класовете са основната единица в обектно-ориентираното програмиране. Те дефинират структурата и поведението на обектите, които ще създаваме в нашите програми.</p>
+        </div>
+
+        <h2><span class="section-number">2. Основни компоненти на клас</span></h2>
+        <div class="config">
+            <h4>Класът се състои от:</h4>
+            <ul>
+                <li><strong>Полета (Fields)</strong> - променливи, които съхраняват данни</li>
+                <li><strong>Свойства (Properties)</strong> - контролиран достъп до полетата</li>
+                <li><strong>Методи (Methods)</strong> - функции, които извършват действия</li>
+                <li><strong>Конструктор (Constructor)</strong> - метод за инициализация на обект</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">3. Полета (Fields)</span></h2>
+        
+        <div class="config">
+            <h4>Характеристики на полетата:</h4>
+            <ul>
+                <li><strong>Данни</strong> - съхраняват състоянието на обекта</li>
+                <li><strong>Модификатори за достъп</strong> - private, protected, public</li>
+                <li><strong>Тип данни</strong> - int, string, double, bool и др.</li>
+                <li><strong>Инициализация</strong> - могат да имат стойности по подразбиране</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <h4>Пример с полета:</h4>
+            <pre><code>class Student {
+    // Публични полета (не препоръчва се)
+    public string name;
+    public int age;
+    
+    // Приватни полета (добра практика)
+    private double grade;
+    private bool isActive;
+    
+    // Полета с инициализация
+    private DateTime enrollmentDate = DateTime.Now;
+    private static int totalStudents = 0;
+}</code></pre>
+        </div>
+
+        <h2><span class="section-number">4. Свойства (Properties)</span></h2>
+        
+        <div class="config">
+            <h4>Предимства на свойствата:</h4>
+            <ul>
+                <li><strong>Инкапсулация</strong> - контролиран достъп до данни</li>
+                <li><strong>Валидация</strong> - проверка на входните данни</li>
+                <li><strong>Гъвкавост</strong> - get и set логика</li>
+                <li><strong>Безопасност</strong> - скриване на вътрешната реализация</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <h4>Основни типове свойства:</h4>
+            <pre><code>class Student {
+    private string name;
+    private int age;
+    private double grade;
+    
+    // Автоматично свойство
+    public string StudentId { get; set; }
+    
+    // Свойство с get и set
+    public string Name {
+        get { return name; }
+        set { 
+            if (!string.IsNullOrEmpty(value)) {
+                name = value;
+            }
+        }
+    }
+    
+    // Read-only свойство
+    public int Age {
+        get { return age; }
+    }
+    
+    // Свойство с валидация
+    public double Grade {
+        get { return grade; }
+        set {
+            if (value >= 2.0 && value <= 6.0) {
+                grade = value;
+            } else {
+                throw new ArgumentException("Оценката трябва да е между 2.0 и 6.0");
+            }
+        }
+    }
+    
+    // Свойство само за четене
+    public bool IsExcellent {
+        get { return grade >= 5.5; }
+    }
+}</code></pre>
+        </div>
+
+        <h2><span class="section-number">5. Методи (Methods)</span></h2>
+        
+        <div class="config">
+            <h4>Видове методи:</h4>
+            <ul>
+                <li><strong>Публични</strong> - достъпни отвън</li>
+                <li><strong>Приватни</strong> - само вътре в класа</li>
+                <li><strong>Статични</strong> - извикват се без обект</li>
+                <li><strong>Виртуални</strong> - могат да се пренаписват</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <h4>Примери с методи:</h4>
+            <pre><code>class Student {
+    private string name;
+    private double grade;
+    
+    // Публичен метод
+    public void Study() {
+        Console.WriteLine($"{name} учи...");
+        grade += 0.1; // Увеличава оценката леко
+    }
+    
+    // Метод с параметри и връщане на стойност
+    public bool CanGraduate(double minimumGrade) {
+        return grade >= minimumGrade;
+    }
+    
+    // Приватен метод (вътрешен помощен)
+    private void UpdateStatus() {
+        if (grade >= 5.5) {
+            Console.WriteLine("Отличен успех!");
+        }
+    }
+    
+    // Статичен метод
+    public static void DisplaySchoolInfo() {
+        Console.WriteLine("Добротворно училище 'Св. Климент Охридски'");
+    }
+    
+    // Метод с ref параметър
+    public void UpdateGrade(ref double newGrade) {
+        if (newGrade >= 2.0 && newGrade <= 6.0) {
+            grade = newGrade;
+        }
+    }
+    
+    // Метод с out параметър
+    public bool TryGetInfo(out string studentInfo) {
+        studentInfo = $"Име: {name}, Оценка: {grade}";
+        return !string.IsNullOrEmpty(name);
+    }
+}</code></pre>
+        </div>
+
+        <h2><span class="section-number">6. Конструктори (Constructors)</span></h2>
+        
+        <div class="config">
+            <h4>Видове конструктори:</h4>
+            <ul>
+                <li><strong>По подразбиране</strong> - без параметри</li>
+                <li><strong>С параметри</strong> - приема стойности</li>
+                <li><strong>Копиращ</strong> - копира от друг обект</li>
+                <li><strong>Статичен</strong> - инициализира статични членове</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <h4>Примери с конструктори:</h4>
+            <pre><code>class Student {
+    private string name;
+    private int age;
+    private double grade;
+    private static int totalStudents;
+    
+    // Статичен конструктор
+    static Student() {
+        totalStudents = 0;
+        Console.WriteLine("Класът Student е инициализиран");
+    }
+    
+    // Конструктор по подразбиране
+    public Student() {
+        name = "Неизвестен";
+        age = 0;
+        grade = 2.0;
+        totalStudents++;
+    }
+    
+    // Конструктор с параметри
+    public Student(string name, int age) {
+        this.name = name;
+        this.age = age;
+        this.grade = 2.0;
+        totalStudents++;
+        Console.WriteLine($"Създаден студент: {name}");
+    }
+    
+    // Конструктор с всички параметри
+    public Student(string name, int age, double grade) : this(name, age) {
+        this.grade = grade;
+    }
+    
+    // Копиращ конструктор
+    public Student(Student other) {
+        this.name = other.name;
+        this.age = other.age;
+        this.grade = other.grade;
+        totalStudents++;
+    }
+    
+    // Статично свойство
+    public static int TotalStudents {
+        get { return totalStudents; }
+    }
+}</code></pre>
+        </div>
+
+        <h2><span class="section-number">7. Пълен пример - Клас BankAccount</span></h2>
+        
+        <div class="highlight">
+            <h4>Реален пример с всички компоненти:</h4>
+            <pre><code>public class BankAccount {
+    // Полета
+    private string accountNumber;
+    private string ownerName;
+    private decimal balance;
+    private bool isActive;
+    private DateTime createdDate;
+    private static int accountCounter = 0;
+    
+    // Статичен конструктор
+    static BankAccount() {
+        Console.WriteLine("Банковата система е инициализирана");
+    }
+    
+    // Конструктор по подразбиране
+    public BankAccount() {
+        accountNumber = GenerateAccountNumber();
+        ownerName = "Неизвестен";
+        balance = 0;
+        isActive = true;
+        createdDate = DateTime.Now;
+        accountCounter++;
+    }
+    
+    // Конструктор с параметри
+    public BankAccount(string ownerName, decimal initialBalance) {
+        this.accountNumber = GenerateAccountNumber();
+        this.ownerName = ownerName;
+        this.balance = initialBalance;
+        this.isActive = true;
+        this.createdDate = DateTime.Now;
+        accountCounter++;
+        Console.WriteLine($"Създадена сметка за {ownerName}");
+    }
+    
+    // Свойства
+    public string AccountNumber {
+        get { return accountNumber; }
+    }
+    
+    public string OwnerName {
+        get { return ownerName; }
+        set {
+            if (!string.IsNullOrEmpty(value)) {
+                ownerName = value;
+            }
+        }
+    }
+    
+    public decimal Balance {
+        get { return balance; }
+    }
+    
+    public bool IsActive {
+        get { return isActive; }
+    }
+    
+    public DateTime CreatedDate {
+        get { return createdDate; }
+    }
+    
+    public static int TotalAccounts {
+        get { return accountCounter; }
+    }
+    
+    // Методи
+    public void Deposit(decimal amount) {
+        if (!isActive) {
+            Console.WriteLine("Сметката е неактивна!");
+            return;
+        }
+        
+        if (amount > 0) {
+            balance += amount;
+            Console.WriteLine($"Депозит от {amount:C}. Нов баланс: {balance:C}");
+        } else {
+            Console.WriteLine("Сумата трябва да е положителна!");
+        }
+    }
+    
+    public bool Withdraw(decimal amount) {
+        if (!isActive) {
+            Console.WriteLine("Сметката е неактивна!");
+            return false;
+        }
+        
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            Console.WriteLine($"Теглене от {amount:C}. Остатък: {balance:C}");
+            return true;
+        } else {
+            Console.WriteLine("Недостатъчен баланс или невалидна сума!");
+            return false;
+        }
+    }
+    
+    public void CloseAccount() {
+        if (balance == 0) {
+            isActive = false;
+            accountCounter--;
+            Console.WriteLine("Сметката е закрита успешно");
+        } else {
+            Console.WriteLine("Не може да се закрие сметка с ненулев баланс!");
+        }
+    }
+    
+    public void DisplayInfo() {
+        Console.WriteLine($"Сметка: {accountNumber}");
+        Console.WriteLine($"Собственик: {ownerName}");
+        Console.WriteLine($"Баланс: {balance:C}");
+        Console.WriteLine($"Статус: {(isActive ? "Активна" : "Неактивна")}");
+        Console.WriteLine($"Създадена: {createdDate:dd.MM.yyyy HH:mm}");
+    }
+    
+    // Приватен помощен метод
+    private string GenerateAccountNumber() {
+        return $"BG{DateTime.Now:yyyyMMdd}{accountCounter:D4}";
+    }
+    
+    // Статичен метод
+    public static void DisplayBankInfo() {
+        Console.WriteLine($"Общо сметки: {accountCounter}");
+        Console.WriteLine("Добротворна банка - Надеждност и сигурност");
+    }
+}
+
+// Използване на класа
+class Program {
+    static void Main() {
+        // Създаване на сметки
+        BankAccount account1 = new BankAccount("Иван Петров", 1000);
+        BankAccount account2 = new BankAccount("Мария Георгиева", 500);
+        
+        // Операции със сметките
+        account1.Deposit(200);
+        account1.Withdraw(150);
+        account1.DisplayInfo();
+        
+        account2.Deposit(300);
+        account2.DisplayInfo();
+        
+        // Статичен метод
+        BankAccount.DisplayBankInfo();
+    }
+}</code></pre>
+        </div>
+
+        <h2><span class="section-number">8. Модификатори за достъп</span></h2>
+        
+        <div class="patterns">
+            <h4>Основни модификатори:</h4>
+            <ul>
+                <li><strong>public</strong> - достъпен отвсякъде</li>
+                <li><strong>private</strong> - достъпен само в класа</li>
+                <li><strong>protected</strong> - достъпен в класа и наследниците</li>
+                <li><strong>internal</strong> - достъпен в същото assembly</li>
+                <li><strong>protected internal</strong> - комбинация от protected и internal</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <h4>Пример с модификатори:</h4>
+            <pre><code>public class ExampleClass {
+    public string publicField = "Публично поле";
+    private string privateField = "Приватно поле";
+    protected string protectedField = "Защитено поле";
+    internal string internalField = "Вътрешно поле";
+    
+    public void PublicMethod() {
+        Console.WriteLine("Публичен метод");
+        PrivateMethod(); // Може да извика приватния метод
+    }
+    
+    private void PrivateMethod() {
+        Console.WriteLine("Приватен метод");
+    }
+    
+    protected void ProtectedMethod() {
+        Console.WriteLine("Защитен метод");
+    }
+    
+    internal void InternalMethod() {
+        Console.WriteLine("Вътрешен метод");
+    }
+}</code></pre>
+        </div>
+
+        <h2><span class="section-number">9. Практически задачи</span></h2>
+        <div class="highlight">
+            <h4>Задачи за упражнение:</h4>
+            <ul>
+                <li><strong>Създай клас Car</strong> с полета за марка, модел, година, цена и цвят</li>
+                <li><strong>Добави свойства</strong> с валидация за всички полета</li>
+                <li><strong>Имплементирай методи</strong> за стартиране, спиране и показване на информация</li>
+                <li><strong>Създай конструктори</strong> - по подразбиране и с параметри</li>
+                <li><strong>Добави статичен брояч</strong> за общия брой коли</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">10. Заключение</span></h2>
+        <div class="important">
+            <p>Класовете са основата на ООП. Те ни позволяват да групираме данни и функционалност в логически единици, което прави кода по-организиран и лесен за поддръжка.</p>
+        </div>
+
+        <div class="patterns">
+            <h4>Ключови принципи:</h4>
+            <ul>
+                <li><strong>Инкапсулация</strong> - скриване на вътрешната реализация</li>
+                <li><strong>Валидация</strong> - проверка на входните данни</li>
+                <li><strong>Инициализация</strong> - правилно задаване на начални стойности</li>
+                <li><strong>Контрол на достъпа</strong> - използване на подходящи модификатори</li>
+                <li><strong>Статични членове</strong> - споделени между всички инстанции</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

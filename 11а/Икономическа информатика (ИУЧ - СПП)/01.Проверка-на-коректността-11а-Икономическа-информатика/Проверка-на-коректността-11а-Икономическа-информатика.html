@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка на коректността на въведени данни, Икономическа информатика</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #9c27b0;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #9c27b0;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+        }
+        
+        ul {
+            margin: 15px 0;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #9c27b0;
+        }
+        
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            margin: 15px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        
+        .example {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+        }
+        
+        .important {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid #dc3545;
+            margin: 15px 0;
+        }
+        
+        .validation {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid #2196f3;
+            margin: 15px 0;
+        }
+        
+        .client-server {
+            background-color: #f3e5f5;
+            padding: 15px;
+            border-left: 4px solid #9c27b0;
+            margin: 15px 0;
+        }
+        
+        strong {
+            color: #2c3e50;
+        }
+        
+        .section-number {
+            color: #9c27b0;
+            font-weight: bold;
+        }
+        
+        .form-demo {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .form-demo input {
+            margin: 5px;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 3px;
+        }
+        
+        .form-demo button {
+            background-color: #9c27b0;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Проверка на коректността на въведени данни — 11а, Икономическа информатика</h1>
+
+        <h2><span class="section-number">Увод</span></h2>
+        <div class="important">
+            <p>Коректността на данните е критична за надеждни системи. Валидацията трябва да е многослойна и последователна.</p>
+        </div>
+
+        <h2><span class="section-number">Основни понятия</span></h2>
+        <ul>
+            <li><strong>Валидация срещу верификация</strong>:
+                <ul>
+                    <li><strong>Валидация</strong>: "Правим ли правилния продукт?" (потребителски изисквания)</li>
+                    <li><strong>Верификация</strong>: "Правим ли продукта правилно?" (технически изисквания)</li>
+                </ul>
+            </li>
+            <li><strong>Синтактична и семантична валидация</strong>:
+                <ul>
+                    <li><strong>Синтактична</strong>: правилен формат (например валиден email)</li>
+                    <li><strong>Семантична</strong>: логичен смисъл (например възраст между 0 и 150)</li>
+                </ul>
+            </li>
+            <li><strong>Sanitization, маски за въвеждане</strong> - пречистване и форматиране на данни</li>
+        </ul>
+
+        <h2><span class="section-number">Цели</span></h2>
+        <ul>
+            <li><strong>Прилагане на клиентска и сървърна валидация</strong> - двойна защита</li>
+            <li><strong>Използване на вградени средства и регулярни изрази</strong> - ефективни инструменти</li>
+            <li><strong>Обратна връзка към потребителя и тестови случаи</strong> - добро потребителско изживяване</li>
+        </ul>
+
+        <h2><span class="section-number">Съдържание</span></h2>
+
+        <h3>Клиентска валидация (Web)</h3>
+        <div class="client-server">
+            <ul>
+                <li><strong>HTML атрибути</strong>:
+                    <ul>
+                        <li><code>required</code> - задължително поле</li>
+                        <li><code>min</code>, <code>max</code> - минимални/максимални стойности</li>
+                        <li><code>pattern</code> - регулярен израз за валидация</li>
+                        <li><code>minlength</code>, <code>maxlength</code> - дължина на текста</li>
+                    </ul>
+                </li>
+                <li><strong>Типове input</strong>:
+                    <ul>
+                        <li><code>email</code> - автоматична валидация на email формат</li>
+                        <li><code>number</code> - само числа</li>
+                        <li><code>tel</code> - телефонен номер</li>
+                        <li><code>date</code> - календар за дата</li>
+                        <li><code>url</code> - валиден URL адрес</li>
+                    </ul>
+                </li>
+                <li><strong>Constraint Validation API</strong> и съобщения за грешки</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <h4>Практически пример:</h4>
+            <div class="form-demo">
+                <form>
+                    <input type="email" required placeholder="Email адрес" />
+                    <input type="tel" pattern="^[0-9\-\s]{6,15}$" placeholder="Телефон" />
+                    <input type="number" min="18" max="100" placeholder="Възраст" />
+                    <input type="text" minlength="2" maxlength="50" required placeholder="Име" />
+                    <button type="submit">Изпрати</button>
+                </form>
+            </div>
+        </div>
+
+        <h3>Сървърна валидация</h3>
+        <div class="client-server">
+            <ul>
+                <li><strong>Недоверие към клиента</strong> - повтаряне на всички проверки на сървър</li>
+                <li><strong>Съобщения за грешки</strong> - ясни и полезни за потребителя</li>
+                <li><strong>Локализация</strong> - съобщения на подходящ език</li>
+                <li><strong>Логиране</strong> - записване на грешки за анализ</li>
+                <li><strong>Бизнес правила</strong>:
+                    <ul>
+                        <li>Уникалност (например уникален email)</li>
+                        <li>Зависимости между полета (например парола и потвърждение)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <h3>Регулярни изрази</h3>
+        <div class="validation">
+            <ul>
+                <li><strong>E-mail</strong>: <code>^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$</code></li>
+                <li><strong>Телефон (България)</strong>: <code>^(\+359|0)[0-9]{9}$</code></li>
+                <li><strong>ЕГН</strong>: <code>^[0-9]{10}$</code></li>
+                <li><strong>Гранични случаи и негативни тестове</strong>:
+                    <ul>
+                        <li>Празни стойности</li>
+                        <li>Прекалено дълги стойности</li>
+                        <li>Специални символи</li>
+                        <li>SQL injection опити</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <h4>Примери за регулярни изрази:</h4>
+            <pre><code>// ЕГН валидация
+const egnRegex = /^[0-9]{10}$/;
+if (!egnRegex.test(egn)) {
+    throw new Error('ЕГН трябва да съдържа точно 10 цифри');
+}
+
+// Email валидация
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+if (!emailRegex.test(email)) {
+    throw new Error('Невалиден email формат');
+}</code></pre>
+        </div>
+
+        <h3>UX насоки</h3>
+        <div class="highlight">
+            <ul>
+                <li><strong>Инлайн грешки</strong> - показване на грешки веднага до полето</li>
+                <li><strong>Ясни подсказки</strong> - обяснение на очаквания формат</li>
+                <li><strong>Предотвратяване на дублиране на заявки</strong> - деактивиране на бутона след натискане</li>
+                <li><strong>Прогресивна валидация</strong> - проверка докато потребителят пише</li>
+                <li><strong>Положителна обратна връзка</strong> - показване когато данните са правилни</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">Пример (HTML)</span></h2>
+        <div class="example">
+            <pre><code>&lt;form&gt;
+  &lt;input type="email" required placeholder="Въведете email" /&gt;
+  &lt;input type="tel" pattern="^[0-9\-\s]{6,15}$" 
+         title="Телефон с 6-15 цифри" /&gt;
+  &lt;input type="password" minlength="8" required 
+         placeholder="Минимум 8 символа" /&gt;
+  &lt;button type="submit"&gt;Изпрати&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+
+        <h2><span class="section-number">Примери и задачи</span></h2>
+        <div class="highlight">
+            <h4>Практически задачи:</h4>
+            <ul>
+                <li><strong>Проектиране на форма за регистрация</strong> с двустранна валидация</li>
+                <li><strong>Списък от тестови случаи</strong> за невалидни входове и очакван резултат</li>
+                <li><strong>Валидация на файлове</strong> - размер, тип, съдържание</li>
+                <li><strong>Защита срещу XSS</strong> - sanitization на потребителски вход</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <h4>Тестови случаи за валидация:</h4>
+            <ul>
+                <li><strong>Email</strong>: 
+                    <ul>
+                        <li>✅ Валиден: user@example.com</li>
+                        <li>❌ Невалиден: user@, @example.com, user.example.com</li>
+                    </ul>
+                </li>
+                <li><strong>ЕГН</strong>:
+                    <ul>
+                        <li>✅ Валиден: 1234567890 (10 цифри)</li>
+                        <li>❌ Невалиден: 123456789 (9 цифри), 12345678901 (11 цифри)</li>
+                    </ul>
+                </li>
+                <li><strong>Телефон</strong>:
+                    <ul>
+                        <li>✅ Валиден: +359888123456, 0888123456</li>
+                        <li>❌ Невалиден: 888123456, +3598881234567</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">Заключение</span></h2>
+        <div class="important">
+            <p>Комбинацията от клиентска и сървърна валидация намалява грешките и подобрява надеждността на системата.</p>
+        </div>
+
+        <div class="validation">
+            <h4>Ключови принципи:</h4>
+            <ul>
+                <li><strong>Двойна защита</strong> - валидация на клиент и сървър</li>
+                <li><strong>Добро UX</strong> - ясни съобщения и моментална обратна връзка</li>
+                <li><strong>Безопасност</strong> - защита срещу злонамерени входове</li>
+                <li><strong>Тестване</strong> - проверка на всички гранични случаи</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

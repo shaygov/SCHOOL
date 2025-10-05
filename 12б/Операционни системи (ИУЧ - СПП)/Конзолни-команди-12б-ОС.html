@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конзолни команди. Работа с файлове и директории — 12б, Операционни системи</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #17a2b8;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #17a2b8;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+        }
+        
+        ul {
+            margin: 15px 0;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        code {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            margin: 15px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        
+        .example {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+        }
+        
+        .important {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid #dc3545;
+            margin: 15px 0;
+        }
+        
+        .command {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid #2196f3;
+            margin: 15px 0;
+        }
+        
+        .terminal {
+            background-color: #1e1e1e;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        
+        strong {
+            color: #2c3e50;
+        }
+        
+        .section-number {
+            color: #17a2b8;
+            font-weight: bold;
+        }
+        
+        .command-list {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .command-list code {
+            background-color: #e9ecef;
+            color: #495057;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Конзолни команди. Работа с файлове и директории, Операционни системи</h1>
+
+        <h2><span class="section-number">Увод</span></h2>
+        <div class="important">
+            <p>Работата от конзола дава контрол и скорост при администриране и автоматизация. Овладяването на основните команди е базово умение в ИТ.</p>
+        </div>
+
+        <h2><span class="section-number">Основни понятия</span></h2>
+        <div class="command">
+            <ul>
+                <li><strong>Абсолютни и относителни пътища</strong>:
+                    <ul>
+                        <li><strong>Абсолютен</strong>: <code>/home/user/documents/file.txt</code> (започва с /)</li>
+                        <li><strong>Относителен</strong>: <code>documents/file.txt</code> (спрямо текущата директория)</li>
+                    </ul>
+                </li>
+                <li><strong>Права на достъп, собственик и група</strong>:
+                    <ul>
+                        <li><code>rwx</code> - четене, писане, изпълнение</li>
+                        <li><code>ugo</code> - собственик, група, други</li>
+                    </ul>
+                </li>
+                <li><strong>Wildcards</strong>: <code>*</code> (всички), <code>?</code> (един символ), <code>[abc]</code> (символи a, b, c)</li>
+                <li><strong>Pipelines</strong>: <code>command1 | command2</code> - изходът от първата команда е вход за втората</li>
+                <li><strong>Пренасочване</strong>: <code>></code> (запис), <code>>></code> (добавяне), <code><</code> (четене)</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">Цели</span></h2>
+        <ul>
+            <li><strong>Навигиране във файловата система</strong> - движение между директории</li>
+            <li><strong>Създаване, копиране, преместване, изтриване, преименуване</strong> на файлове и директории</li>
+            <li><strong>Търсене и преглед на съдържание</strong> - намиране на информация</li>
+            <li><strong>Задаване на права</strong> - контрол на достъпа</li>
+        </ul>
+
+        <h2><span class="section-number">Съдържание (Linux/bash)</span></h2>
+
+        <h3>Навигация</h3>
+        <div class="command-list">
+            <ul>
+                <li><code>pwd</code> - показва текущата директория (print working directory)</li>
+                <li><code>ls -la</code> - списък на файловете с подробности (long, all)</li>
+                <li><code>cd -</code> - връщане в предишната директория</li>
+                <li><code>cd ~</code> - отиване в домашната директория</li>
+                <li><code>cd /</code> - отиване в root директорията</li>
+                <li><code>cd ..</code> - отиване една директория нагоре</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <div class="terminal">
+                <pre>$ pwd
+/home/user/documents
+
+$ ls -la
+total 8
+drwxr-xr-x 2 user user 4096 Jan 15 10:30 .
+drwxr-xr-x 3 user user 4096 Jan 15 10:25 ..
+-rw-r--r-- 1 user user 1024 Jan 15 10:30 file1.txt
+-rw-r--r-- 1 user user 2048 Jan 15 10:29 file2.txt
+
+$ cd ~
+$ pwd
+/home/user</pre>
+            </div>
+        </div>
+
+        <h3>Операции с файлове и директории</h3>
+        <div class="command-list">
+            <h4>Създаване:</h4>
+            <ul>
+                <li><code>touch file.txt</code> - създава празен файл или обновява timestamp</li>
+                <li><code>mkdir -p dir/sub</code> - създава директории рекурсивно</li>
+                <li><code>mkdir dir1 dir2</code> - създава няколко директории наведнъж</li>
+            </ul>
+            
+            <h4>Копиране/преместване:</h4>
+            <ul>
+                <li><code>cp file.txt dir/</code> - копира файл в директория</li>
+                <li><code>cp -r src/ dst/</code> - копира директория рекурсивно</li>
+                <li><code>mv old new</code> - премества или преименува</li>
+                <li><code>cp -p file.txt backup/</code> - запазва права и timestamp</li>
+            </ul>
+            
+            <h4>Изтриване:</h4>
+            <ul>
+                <li><code>rm -i file</code> - изтрива с потвърждение</li>
+                <li><code>rm -r dir</code> - изтрива директория рекурсивно</li>
+                <li><code>rm -rf dir</code> - принудително изтриване (внимание!)</li>
+                <li><code>trash file</code> - изпраща в кошчето (ако е налично)</li>
+            </ul>
+            
+            <h4>Преименуване:</h4>
+            <ul>
+                <li><code>mv name_old name_new</code> - преименува файл или директория</li>
+            </ul>
+        </div>
+
+        <h3>Преглед и търсене</h3>
+        <div class="command-list">
+            <h4>Преглед на съдържание:</h4>
+            <ul>
+                <li><code>cat file.txt</code> - показва целия файл</li>
+                <li><code>less file.txt</code> - показва файла страница по страница</li>
+                <li><code>head -n 10 file.txt</code> - показва първите 10 реда</li>
+                <li><code>tail -f logfile.log</code> - проследява файла в реално време</li>
+                <li><code>wc -l file.txt</code> - брои редовете във файла</li>
+            </ul>
+            
+            <h4>Търсене:</h4>
+            <ul>
+                <li><code>find . -name "*.txt"</code> - намира файлове по име</li>
+                <li><code>find . -size +1M</code> - намира файлове по-големи от 1MB</li>
+                <li><code>find . -type d</code> - намира само директории</li>
+                <li><code>grep -r "шаблон" .</code> - търси текст в файловете</li>
+                <li><code>grep -i "ignore case" file.txt</code> - търси без значение на регистъра</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <div class="terminal">
+                <pre>$ find . -name "*.pdf" -size +1M
+./documents/report.pdf
+./backup/large_file.pdf
+
+$ grep -r "TODO" .
+./src/main.c:    // TODO: Add error handling
+./src/utils.h:    TODO: Implement this function
+
+$ head -5 /var/log/syslog
+Jan 15 10:30:01 systemd: Started Session 1 of user.
+Jan 15 10:30:02 NetworkManager: Network service started
+Jan 15 10:30:03 kernel: Loading kernel modules...</pre>
+            </div>
+        </div>
+
+        <h3>Права и собственост</h3>
+        <div class="command-list">
+            <ul>
+                <li><code>chmod u+rwx,g+rx,o-r file.txt</code> - задава права:
+                    <ul>
+                        <li>u (собственик): +rwx (четене, писане, изпълнение)</li>
+                        <li>g (група): +rx (четене, изпълнение)</li>
+                        <li>o (други): -r (без четене)</li>
+                    </ul>
+                </li>
+                <li><code>chmod 755 script.sh</code> - числово задаване на права</li>
+                <li><code>chown user:group file.txt</code> - променя собственик и група</li>
+                <li><code>chown user file.txt</code> - променя само собственика</li>
+                <li><code>umask 022</code> - задава маска за нови файлове</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <h4>Разбиране на правата:</h4>
+            <pre><code>drwxr-xr-x 2 user user 4096 Jan 15 10:30 directory
+-rw-r--r-- 1 user user 1024 Jan 15 10:30 file.txt
+-rwxr-xr-x 1 user user 2048 Jan 15 10:30 script.sh
+
+d = директория
+rwx = собственик: r(4) + w(2) + x(1) = 7
+r-x = група: r(4) + x(1) = 5  
+r-- = други: r(4) = 4
+
+755 = rwxr-xr-x (собственик: rwx, група: r-x, други: r-x)</code></pre>
+        </div>
+
+        <h3>Архивиране</h3>
+        <div class="command-list">
+            <ul>
+                <li><code>tar -czf backup.tar.gz dir/</code> - създава gzip архив</li>
+                <li><code>tar -xzf backup.tar.gz</code> - извлича от gzip архив</li>
+                <li><code>tar -tf backup.tar.gz</code> - показва съдържанието на архива</li>
+                <li><code>zip -r archive.zip dir/</code> - създава ZIP архив</li>
+                <li><code>unzip archive.zip</code> - извлича от ZIP архив</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <div class="terminal">
+                <pre>$ tar -czf backup_$(date +%Y%m%d).tar.gz documents/
+$ ls -lh backup_*.tar.gz
+-rw-r--r-- 1 user user 2.5M Jan 15 10:30 backup_20240115.tar.gz
+
+$ tar -tf backup_20240115.tar.gz
+documents/
+documents/file1.txt
+documents/file2.txt
+documents/subdir/
+documents/subdir/file3.txt</pre>
+            </div>
+        </div>
+
+        <h2><span class="section-number">Примери и задачи</span></h2>
+        <div class="highlight">
+            <h4>Практически задачи:</h4>
+            <ul>
+                <li><strong>Създай структура</strong> <code>school/{classA,classB}/docs</code></li>
+                <li><strong>Премести PDF файлове</strong> в съответните директории</li>
+                <li><strong>Изтрий всички</strong> <code>*.tmp</code> файлове</li>
+                <li><strong>Намери всички .txt файлове</strong> над 1MB и ги архивирай в <code>backup.tar.gz</code></li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <h4>Решение на задачите:</h4>
+            <div class="terminal">
+                <pre># Задача 1: Създаване на структура
+mkdir -p school/{classA,classB}/docs
+
+# Задача 2: Преместване на PDF файлове
+mv *.pdf school/classA/docs/
+mv *.PDF school/classB/docs/
+
+# Задача 3: Изтриване на временни файлове
+rm *.tmp
+
+# Задача 4: Архивиране на големи .txt файлове
+find . -name "*.txt" -size +1M -exec tar -czf backup.tar.gz {} +
+
+# Допълнителни полезни команди:
+# Създаване на директории с права
+mkdir -m 755 public_dir
+
+# Копиране със запазване на права
+cp -p important_file.txt backup/
+
+# Търсене и замяна в множество файлове
+find . -name "*.txt" -exec sed -i 's/old_text/new_text/g' {} +
+
+# Изтриване на празни директории
+find . -type d -empty -delete</pre>
+            </div>
+        </div>
+
+        <h2><span class="section-number">Заключение</span></h2>
+        <div class="important">
+            <p>Работата с конзолни инструменти ускорява ежедневните задачи и подобрява продуктивността.</p>
+        </div>
+
+        <div class="command">
+            <h4>Ключови предимства на конзолата:</h4>
+            <ul>
+                <li><strong>Скорост</strong> - бързо изпълнение на команди</li>
+                <li><strong>Автоматизация</strong> - скриптове за повтарящи се задачи</li>
+                <li><strong>Точност</strong> - контрол над всички параметри</li>
+                <li><strong>Мощност</strong> - комбиниране на команди с pipes</li>
+                <li><strong>Ефективност</strong> - минимални ресурси</li>
+                <li><strong>Универсалност</strong> - работи на всички Unix/Linux системи</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

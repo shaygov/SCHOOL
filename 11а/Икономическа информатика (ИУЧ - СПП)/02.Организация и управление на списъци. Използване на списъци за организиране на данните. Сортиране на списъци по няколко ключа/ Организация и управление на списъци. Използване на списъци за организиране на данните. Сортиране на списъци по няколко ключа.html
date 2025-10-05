@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Организация и управление на списъци, Икономическа информатика</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #9c27b0;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #9c27b0;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+        }
+        ul { margin: 15px 0; }
+        li { margin: 8px 0; }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #9c27b0;
+        }
+        .note, .example, .important, .highlight, .validation, .client-server {
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #9c27b0;
+            background-color: #f3e5f5;
+        }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        th, td { border: 1px solid #dee2e6; padding: 8px; text-align: left; }
+        th { background: #f4f4f4; }
+        @media print {
+            body { background-color: white; }
+            .container { box-shadow: none; padding: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Организация и управление на списъци — 11а, Икономическа информатика</h1>
+
+        <h2>1. Какво представлява списъкът</h2>
+        <ul>
+            <li><strong>Определение</strong>: подредена колекция от записи с еднаква структура.</li>
+            <li><strong>Защо списък</strong>: улеснява съхранение, търсене, сортиране и анализ на данни.</li>
+            <li><strong>Елемент (запис)</strong>:
+                <ul>
+                    <li>Състои се от полета (атрибути) с типове: текст, число, дата.</li>
+                    <li>Често има уникален идентификатор: №, ЕГН, Код.</li>
+                </ul>
+            </li>
+            <li><strong>Ключ</strong>: поле за търсене/подреждане. Първичен и вторични ключове.</li>
+            <li><strong>Пример (Excel/Calc)</strong>:
+                <ul>
+                    <li><em>Цел:</em> коректна основа: заглавия, формати, без празни клетки.</li>
+                    <li>Отворете <code>данни-списъци-упражнения.xlsx</code>.</li>
+                    <li>Ред 1 = заглавия. Не оставяйте празни колони/редове в диапазона.</li>
+                    <li>Форматирайте колона <em>Дата на записване</em> като Дата (YYYY-MM-DD).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>2. Цели</h2>
+        <ul>
+            <li>Правилно структуриране на списъци</li>
+            <li>Управление чрез основни операции</li>
+            <li>Организиране и анализ на данни</li>
+            <li>Многокритериално сортиране</li>
+            <li><strong>Очеваден резултат</strong>: по-малко грешки, по-бързи справки и по-ясни отчети.</li>
+            <li><strong>Пример (Excel/Calc)</strong>:
+                <ul>
+                    <li><em>Цел:</em> удобна навигация и бързо филтриране.</li>
+                    <li>Включете AutoFilter: маркирайте заглавията → Data → Filter.</li>
+                    <li>Замръзете горния ред: View → Freeze Rows → 1 Row.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>3. Организация на списъци</h2>
+        <ul>
+            <li><strong>Структура</strong>:
+                <ul>
+                    <li>Определете полетата и типовете им.</li>
+                    <li>Изберете уникален идентификатор при нужда.</li>
+                    <li>Еднозначни заглавия на колони и единен формат.</li>
+                </ul>
+            </li>
+            <li><strong>Формат и консистентност</strong>:
+                <ul>
+                    <li>Без празни редове/колони вътре в диапазона.</li>
+                    <li>Съгласувани формати за дати и числа.</li>
+                    <li>Без водещи/следващи интервали.</li>
+                </ul>
+            </li>
+            <li><strong>Контрол на качеството</strong>: валидирайте диапазони, типове и уникалност, за да избегнете шум в анализите.</li>
+            <li><strong>Пример (Excel/Calc)</strong>:
+                <ul>
+                    <li><em>Цел:</em> предотвратяване на некоректни стойности.</li>
+                    <li>Data → Data Validation върху „Среден успех“: Decimal between 2 и 6.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>4. Управление на списъци</h2>
+        <ul>
+            <li><strong>CRUD</strong>: добавяне, редактиране, изтриване на записи.</li>
+            <li><strong>Търсене и филтриране</strong>: по няколко критерия.</li>
+            <li><strong>Проверка на коректност</strong>: валидиране, диапазони, уникалност.</li>
+            <li><strong>Групиране и агрегации</strong>: суми, средни стойности.</li>
+            <li><strong>Нормализиране</strong>: премахване на дубли, еднакви формати.</li>
+            <li><strong>Практичен ефект</strong>: списъкът остава чист и пригоден за повторна употреба.</li>
+            <li><strong>Пример (Excel/Calc)</strong>:
+                <ul>
+                    <li><em>Цел:</em> бързо откриване на проблеми и базова аналитика.</li>
+                    <li>Намиране на дубли: маркирайте колоните <em>Клас, Фамилия, Име</em> → Data → More Filters → Advanced Filter (или Conditional Formatting → Duplicate Values) → прегледайте маркираните редове.</li>
+                    <li>Среден успех по клас: Вмъкнете Pivot Table → Rows: Клас → Values: AVERAGE на <em>Среден успех</em>.</li>
+                    <li>Филтър: включете AutoFilter → в <em>Клас</em> изберете 11А, в <em>Среден успех</em> задайте Number Filter ≥ 5.50.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>5. Примерни данни</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Клас</th>
+                    <th>Фамилия</th>
+                    <th>Име</th>
+                    <th>Среден успех</th>
+                    <th>Дата на записване</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>201</td><td>11</td><td>Тачева</td><td>Аскения</td><td>5.4</td><td>2025-09-01</td></tr>
+                <tr><td>202</td><td>11</td><td>Тачев</td><td>Алис</td><td>5.6</td><td>2025-09-02</td></tr>
+                <tr><td>203</td><td>11</td><td>Кунев</td><td>Алиш</td><td>5.2</td><td>2025-09-03</td></tr>
+                <tr><td>204</td><td>11</td><td>Ходжа</td><td>Атидже</td><td>5.7</td><td>2025-09-04</td></tr>
+                <tr><td>205</td><td>11</td><td>Мехмед</td><td>Атидже</td><td>5.3</td><td>2025-09-05</td></tr>
+                <tr><td>206</td><td>11</td><td>Дунгьов</td><td>Ахмет</td><td>5.8</td><td>2025-09-06</td></tr>
+                <tr><td>207</td><td>11</td><td>Ати</td><td>Вайде</td><td>5.1</td><td>2025-09-07</td></tr>
+                <tr><td>208</td><td>11</td><td>Али</td><td>Дениз</td><td>5.5</td><td>2025-09-08</td></tr>
+                <tr><td>209</td><td>11</td><td>Кавунска</td><td>Джемиле</td><td>5.9</td><td>2025-09-09</td></tr>
+                <tr><td>210</td><td>11</td><td>Мехмед</td><td>Джемиле</td><td>5.0</td><td>2025-09-10</td></tr>
+                <tr><td>211</td><td>11</td><td>Ибрахим</td><td>Ибрахим</td><td>6.0</td><td>2025-09-11</td></tr>
+                <tr><td>212</td><td>11</td><td>Хаджиев</td><td>Ирфан</td><td>5.4</td><td>2025-09-12</td></tr>
+                <tr><td>213</td><td>11</td><td>Терзийски</td><td>Исмаил</td><td>5.6</td><td>2025-09-13</td></tr>
+                <tr><td>214</td><td>11</td><td>Близнаков</td><td>Муса</td><td>5.7</td><td>2025-09-14</td></tr>
+                <tr><td>215</td><td>11</td><td>Бъсков</td><td>Мустафа</td><td>5.3</td><td>2025-09-15</td></tr>
+                <tr><td>216</td><td>11</td><td>Плоскова</td><td>Наджие</td><td>5.2</td><td>2025-09-16</td></tr>
+                <tr><td>217</td><td>11</td><td>Билкова</td><td>Надрие</td><td>5.5</td><td>2025-09-17</td></tr>
+                <tr><td>218</td><td>11</td><td>Веняков</td><td>Сабри</td><td>5.8</td><td>2025-09-18</td></tr>
+                <tr><td>219</td><td>11</td><td>Зунов</td><td>Сабри</td><td>5.1</td><td>2025-09-19</td></tr>
+                <tr><td>220</td><td>11</td><td>Кьосов</td><td>Селим</td><td>5.9</td><td>2025-09-20</td></tr>
+                <tr><td>221</td><td>11</td><td>Ревански</td><td>Семих</td><td>5.6</td><td>2025-09-21</td></tr>
+                <tr><td>222</td><td>11</td><td>Юрукова</td><td>Фатиме</td><td>5.3</td><td>2025-09-22</td></tr>
+                <tr><td>223</td><td>11</td><td>Шатъров</td><td>Хюсеин</td><td>5.7</td><td>2025-09-23</td></tr>
+                <tr><td>224</td><td>11</td><td>Исмаил</td><td>Яхя</td><td>5.4</td><td>2025-09-24</td></tr>
+            </tbody>
+        </table>
+        <ul>
+            <li><strong>Пример (Excel/Calc)</strong>:
+                <ul>
+                    <li><em>Цел:</em> безопасна работа като с „обект“ таблица.</li>
+                    <li>Маркирайте диапазона A1:G36 → Insert → Table (Excel) или Data → Define Range (Calc).</li>
+                    <li>Задайте име на диапазона: <code>Ученици</code>.</li>
+                    <li>View → Freeze Top Row; Data → Filter.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>6. Сортиране по няколко ключа</h2>
+        <ul>
+            <li><strong>Цел</strong>:
+                <ul>
+                    <li>1) Клас (възходящо) → 2) Фамилия (възходящо) → 3) Среден успех (низходящо).</li>
+                </ul>
+            </li>
+            <li><strong>Полза</strong>: справедлив ред и ясни отчетни списъци.</li>
+            <li><strong>Excel</strong>:
+                <ul>
+                    <li>Маркирайте таблицата → Data → Sort.</li>
+                    <li>Add Level: Клас (A→Z) → Add Level: Фамилия (A→Z) → Add Level: Среден успех (Largest→Smallest).</li>
+                </ul>
+            </li>
+            <li><strong>Google Sheets</strong>:
+                <ul>
+                    <li>Маркирайте диапазона → Data → Sort range → Advanced options.</li>
+                    <li>Добавете колони за сортиране: Клас (A→Z), Фамилия (A→Z), Среден успех (Z→A).</li>
+                </ul>
+            </li>
+            <li><strong>LibreOffice Calc</strong>:
+                <ul>
+                    <li>Data → Sort → Sort Criteria: Key1 Клас Asc, Key2 Фамилия Asc, Key3 Среден успех Desc.</li>
+                </ul>
+            </li>
+            <li><strong>Стабилност</strong>: при равни стойности се запазва предишният ред.</li>
+            <li><strong>Пример (Excel/Calc)</strong>:
+                <ul>
+                    <li><em>Цел:</em> коректно tie-break поведение.</li>
+                    <li>След сортиране проверете равните по успех с Custom Sort по още една колона (напр. Дата на записване).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>7. Добри практики</h2>
+        <ul>
+            <li>Еднакви формати за дати и числа.</li>
+            <li>Без водещи/следващи интервали в текст.</li>
+            <li>Ясни правила при равенство (tie-break).</li>
+            <li>Използвайте таблица като обект (Excel Table) за филтри и стил.</li>
+            <li><strong>Защо</strong>: гарантира повторяеми резултати и лесно споделяне между съученици.</li>
+            <li><strong>Пример (Excel/Calc)</strong>:
+                <ul>
+                    <li><em>Цел:</em> почистване и консистентност.</li>
+                    <li>TRIM на текстове: в помощна колона напишете <code>=TRIM(C2)</code> и копирайте надолу; Paste Special → Values върху оригиналната колона.</li>
+                    <li>Формат на дати: Home → Number → Short/Custom Date <code>yyyy-mm-dd</code>.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>8. Практически задачи</h2>
+        <ul>
+            <li>Нормализирайте данните и премахнете дубли.</li>
+            <li>Сортирайте: Клас → Фамилия → Среден успех.</li>
+            <li>Филтрирайте учениците от 11А със среден успех ≥ 5.50.</li>
+            <li>Намерете ТОП 3 по успех във всеки клас.</li>
+            <li>Експортирайте резултатите в нов лист.</li>
+            <li><strong>Какво упражняваме</strong>: сортиране, филтри, Pivot, формати, валидации.</li>
+            <li><strong>Пример (Excel/Calc)</strong>:
+                <ul>
+                    <li><em>Цел:</em> упражнение върху сортиране, филтър и агрегации.</li>
+                    <li>ТОП 3: сорт по Клас (A→Z), Среден успех (Z→A) → за всеки клас вземете първите 3 реда или използвайте Pivot Table → Top 3 values по поле.</li>
+                    <li>Експорт: Select All → Copy → New Sheet → Paste; или File → Save a Copy (CSV) само с филтрираните редове.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
