@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Използване-на-списъци-за-организиране-на-данните-Автоматично-филтриране-Филтриране-на-записи-по-различни-критерии-11а(11а)</title>
+    <style>
+        body { font-family: 'DejaVu Serif','Times New Roman',serif; line-height: 1.6; max-width: 1000px; margin: 0 auto; padding: 20px; background: #f9f9f9; word-wrap: break-word; overflow-wrap: break-word; }
+        .container { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,.1); }
+        h1 { color:#2c3e50; text-align:center; border-bottom:3px solid #9c27b0; padding-bottom:10px; margin-bottom:30px; }
+        h2 { color:#34495e; border-left:4px solid #9c27b0; padding-left:15px; margin-top:24px; }
+        .example { background:#e8f5e8; padding:15px; border-left:4px solid #28a745; margin:15px 0; }
+        .highlight { background:#fff3cd; padding:15px; border-left:4px solid #ffc107; margin:15px 0; }
+        .important { background:#f8d7da; padding:15px; border-left:4px solid #dc3545; margin:15px 0; }
+        table { border-collapse: collapse; width:100%; margin:10px 0; }
+        th, td { border:1px solid #dee2e6; padding:8px; text-align:left; }
+        th { background:#f4f4f4; }
+        .no-break { break-inside: avoid; page-break-inside: avoid; }
+        .test-item::after { content: ' ★'; color:#9c27b0; font-weight:bold; }
+        .test-title::after { content: ' ★'; color:#9c27b0; font-weight:bold; }
+        @media print { body{background:#fff;} .container{box-shadow:none; padding:0;} .example,.highlight,.important,table,h2{ break-inside:avoid; page-break-inside:avoid; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Използване на списъци за организиране на данните. Автоматично филтриране. Филтриране на записи по различни критерии.</h1>
+
+        <h2>1. Какво и защо</h2>
+        <div class="highlight no-break">
+            <p class="test-item"><strong>Защо са ни нужни?</strong> Данните растат бързо. Без списъци и филтри губим време да търсим ръчно и правим грешки. С добре оформен списък и AutoFilter намираме нужната информация за секунди, сравняваме варианти и вземаме решения.</p>
+        </div>
+        <ul>
+            <li class="test-item"><strong>Списък</strong>: таблица с заглавен ред и записи под него.</li>
+            <li class="test-item"><strong>Автофилтър</strong>: показва само редовете, които отговарят на условие.</li>
+            <li class="test-item"><strong>Полза</strong>: бързо намиране, сравнение и анализ на данни.</li>
+        </ul>
+
+        <h2>2. Включване на AutoFilter</h2>
+        <div class="example no-break">
+            <ol>
+                <li>Маркирай таблицата (вкл. заглавия).</li>
+                <li class="test-item">Excel: Data → Filter (Ctrl+Shift+L). Google Sheets: Data → Create a filter.</li>
+                <li>Появяват се стрелки за филтър върху заглавията.</li>
+            </ol>
+        </div>
+        <div class="highlight no-break">
+            <p class="test-item"><strong>AutoFilter накратко</strong>: показва само редовете, които отговарят на условие (текст: съдържа/започва с; числа: >, <, между; дати: днес/между; по цвят). Данните не се трият, останалите редове само се скриват. Изчистване: Clear Filter.</p>
+        </div>
+
+        <h2 class="test-title">3. Най-чести филтри</h2>
+        <ul>
+            <li><strong>Текст</strong>: съдържа / започва с / равен на.</li>
+            <li><strong>Числа</strong>: ≥, ≤, между.</li>
+            <li><strong>Дати</strong>: днес, последните 7 дни, между две дати.</li>
+            <li><strong>Множествено</strong>: комбинирай условия по няколко колони.</li>
+        </ul>
+
+        <h2 class="test-title">4. Сортиране</h2>
+        <div class="example no-break">
+            <h4>4.1 Основно сортиране</h4>
+            <ol>
+                <li>Кликни в колоната, по която искаш да сортираш.</li>
+                <li>Използвай менюто на стрелката или Data → Sort A→Z / Z→A.</li>
+                <li>Провери дали са включени и всички свързани колони (без празни редове).</li>
+            </ol>
+            <h4>4.2 Многостепенно сортиране (Excel)</h4>
+            <ol>
+                <li>Data → Sort → Add Level.</li>
+                <li>Пример: 1) Клас (A→Z), 2) Оценка (Largest to Smallest), 3) Дата (Newest to Oldest).</li>
+                <li>Нивата се изпълняват отгоре надолу.</li>
+            </ol>
+            <h4>4.3 Сортиране по цвят/икона</h4>
+            <ul>
+                <li>Ако имаш условно форматиране, можеш да сортираш „по Цвят на клетка“ или „по Икона“.</li>
+                <li>Полезно за преглед: първо червените (критични), после останалите.</li>
+            </ul>
+            <h4>4.4 Чести грешки при сортиране</h4>
+            <ul>
+                <li>Сортиране само на една колона (без останалите) → размества данните. Решение: маркирай целия диапазон/таблица.</li>
+                <li>Празни редове разделят диапазона → премахни ги преди сортиране.</li>
+                <li>Различни формати (напр. дата като текст) → уеднакви формата, иначе редът няма да е правилен.</li>
+            </ul>
+            <p><strong>Съвет</strong>: първо сортирай, после приложи филтри за по-ясен преглед на резултатите.</p>
+        </div>
+
+        <h2>5. Малък пример</h2>
+        <table class="no-break">
+            <thead>
+                <tr><th>Име</th><th>Клас</th><th>Предмет</th><th>Оценка</th><th>Дата</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Петрова</td><td>11А</td><td>Математика</td><td>5</td><td>2024-01-15</td></tr>
+                <tr><td>Иванов</td><td>11Б</td><td>Физика</td><td>3</td><td>2024-01-16</td></tr>
+                <tr><td>Стоянов</td><td>11А</td><td>Информатика</td><td>6</td><td>2024-01-17</td></tr>
+            </tbody>
+        </table>
+        <div class="highlight no-break">
+            <p><strong>Упражнение</strong>: филтрирай само 11А и оценки ≥ 4.</p>
+        </div>
+        <div class="example no-break">
+            <h4>Стъпки за тест (Малък пример)</h4>
+            <ol>
+                <li>Включи филтър: Excel → <code>Data → Filter</code> (Ctrl+Shift+L) / Sheets → <code>Data → Create a filter</code>.</li>
+                <li>Филтрирай по „Клас“: от менюто на колоната избери само <code>11А</code>.</li>
+                <li>Филтрирай по „Оценка“: Number Filters → <code>Greater Than or Equal To…</code> → въведи <code>4</code>.</li>
+                <li>Провери резултата: трябва да виждаш само редове с Клас = 11А и Оценка ≥ 4 (провери и броя на видимите редове в статус лентата).</li>
+                <li>(По избор) Сортирай: в колоната „Оценка“ → <code>Sort Z→A</code> за да са от най-висока към най-ниска.</li>
+                <li>Изчисти филтрите: менюто на колоните → <code>Clear Filter</code> (за всяка филтрирана колона).</li>
+            </ol>
+        </div>
+
+        
+        
+
+        <h2>6. Филтри по цвят и условно форматиране</h2>
+        <div class="example no-break">
+            <p><strong>Идея</strong>: първо оцветяваме автоматично редовете, които ни интересуват (напр. ниски оценки), после филтрираме само този цвят. Така получаваме визуален сигнал + бърз филтър с 2 клика.</p>
+            <ul>
+                <li><strong>Filter by Color</strong>: филтрирай по цвят на клетка или шрифт (Excel/Sheets).</li>
+                <li><strong>Съвет</strong>: маркирай важните записи с условно форматиране, после филтрирай по цвета.</li>
+                <li><strong>Пример</strong>: оценки < 3 оцветени в червено → показвай само червените редове.</li>
+            </ul>
+            <h4>Стъпки</h4>
+            <ol>
+                <li>Избери колоната „Оценка“ → Conditional Formatting → правило (напр. по-малко от 3) → избери червен фон.</li>
+                <li>Отвори стрелката на колоната → Filter by Color → избери червения цвят.</li>
+                <li>(По избор) Сортирай по цвят: показвай първо червените, после останалите.</li>
+            </ol>
+        </div>
+
+        <h2 class="test-title">7. Чести грешки и как да ги избегнем</h2>
+        <div class="important no-break">
+            <ul>
+                <li><strong>Празни редове в средата</strong>: сливат списъка на части → премахни ги.</li>
+                <li><strong>Различни формати</strong> в една колона (текст/число/дата) → уеднакви формата.</li>
+                <li><strong>Дублирани заглавия</strong>: използвай уникални имена на колони.</li>
+                <li><strong>Скрити колони/редове</strong>: може да объркат резултатите → провери преди анализ.</li>
+            </ul>
+        </div>
+
+        <h2>8. Клавишни комбинации</h2>
+        <ul>
+            <li><strong>Вкл./изкл. филтър</strong>: Ctrl+Shift+L (Excel).</li>
+            <li><strong>Отваряне на менюто на филтъра</strong>: Alt+↓ (Excel) / Ctrl+Alt+R (Sheets).</li>
+            <li><strong>Изчистване на филтъра в колона</strong>: менюто на стрелката → Clear Filter.</li>
+        </ul>
+
+        <h2>9. Допълнителни упражнения</h2>
+        <div class="highlight no-break">
+            <ol>
+                <li>Сортирай по „Клас“, след това по „Оценка“ низходящо; покажи само „Информатика“.</li>
+                <li>Оцвети оценки < 3 в червено (условно форматиране) и филтрирай по цвят.</li>
+                <li>Покажи записи за последните 30 дни и преброй видимите редове със SUBTOTAL.</li>
+            </ol>
+        </div>
+        <div class="highlight no-break">
+            <p class="test-item"><strong>Бележка</strong>: Обърнете специално внимание на текстовете, отбелязани със звездичка (★) — те често са част от проверка на знанията.</p>
+        </div>
+    </div>
+</body>
+</html>
+
+

@@ -5,9 +5,8 @@ class Program
     static void Main()
     {
         Console.WriteLine("=== Демонстрация на класове и обекти ===\n");
-
         Student student1 = new Student("Айше", "Дагон", 17, "2024001");
-        Student student2 = new Student("Анифе", "Кусарова", 18, "2024002");
+        Student student2 = new Student("Найме", "Бекир", 18, "2024002");
         Student student3 = new Student("Атидже", "Ходжова", 17, "2024003");
 
         student1.SetAverageGrade(5.8);

@@ -12,3 +12,4 @@
 /home/ahmed/Desktop/SCHOOL/12б/ООП/01-Дефиниране-на-класове/Примери/obj/Debug/net8.0/Example.pdb
 /home/ahmed/Desktop/SCHOOL/12б/ООП/01-Дефиниране-на-класове/Примери/obj/Debug/net8.0/Example.genruntimeconfig.cache
 /home/ahmed/Desktop/SCHOOL/12б/ООП/01-Дефиниране-на-класове/Примери/obj/Debug/net8.0/ref/Example.dll
+/home/ahmed/Desktop/SCHOOL/12б/ООП/01-Дефиниране-на-класове/Примери/obj/Debug/net8.0/Example.sourcelink.json
