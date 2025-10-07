@@ -1,0 +1,15 @@
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example01_HelloWorld/bin/Debug/net8.0/Example01_HelloWorld
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example01_HelloWorld/bin/Debug/net8.0/Example01_HelloWorld.deps.json
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example01_HelloWorld/bin/Debug/net8.0/Example01_HelloWorld.runtimeconfig.json
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example01_HelloWorld/bin/Debug/net8.0/Example01_HelloWorld.dll
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example01_HelloWorld/bin/Debug/net8.0/Example01_HelloWorld.pdb
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example01_HelloWorld/obj/Debug/net8.0/Example01_HelloWorld.GeneratedMSBuildEditorConfig.editorconfig
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example01_HelloWorld/obj/Debug/net8.0/Example01_HelloWorld.AssemblyInfoInputs.cache
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example01_HelloWorld/obj/Debug/net8.0/Example01_HelloWorld.AssemblyInfo.cs
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example01_HelloWorld/obj/Debug/net8.0/Example01_HelloWorld.csproj.CoreCompileInputs.cache
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example01_HelloWorld/obj/Debug/net8.0/Example01_HelloWorld.sourcelink.json
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example01_HelloWorld/obj/Debug/net8.0/Example01_HelloWorld.dll
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example01_HelloWorld/obj/Debug/net8.0/refint/Example01_HelloWorld.dll
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example01_HelloWorld/obj/Debug/net8.0/Example01_HelloWorld.pdb
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example01_HelloWorld/obj/Debug/net8.0/Example01_HelloWorld.genruntimeconfig.cache
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example01_HelloWorld/obj/Debug/net8.0/ref/Example01_HelloWorld.dll
