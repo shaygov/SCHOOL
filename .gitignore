@@ -1,2 +1,5 @@
 node_modules/
 site/
+
+# HTML файлове с префикс Generator
+Generator_*.html
