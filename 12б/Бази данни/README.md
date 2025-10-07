@@ -1,4 +1,4 @@
-# XAMPP: MySQL и phpMyAdmin (за ученици)
+# XAMPP: MySQL и phpMyAdmin
 
 ## Инсталация
 - Инсталирайте XAMPP.
