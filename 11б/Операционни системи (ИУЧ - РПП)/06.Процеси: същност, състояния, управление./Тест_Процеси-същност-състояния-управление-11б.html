@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест: Процеси: същност, състояния, управление — 11б</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #fd7e14;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .question {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #fd7e14;
+        }
+        
+        .question-number {
+            color: #fd7e14;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .question-text {
+            font-size: 16px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .show-answer-btn {
+            background-color: #fd7e14;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        
+        .show-answer-btn:hover {
+            background-color: #e67011;
+        }
+        
+        .answer {
+            display: none;
+            background-color: #e8f5e8;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #28a745;
+        }
+        
+        .answer.visible {
+            display: block;
+        }
+        
+        .answer strong {
+            color: #28a745;
+        }
+        
+        .options {
+            margin: 10px 0;
+        }
+        
+        .option {
+            padding: 8px 0;
+            margin: 5px 0;
+        }
+        
+        .student-input-section {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #fff3cd;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .student-input-section label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .student-input-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .student-input-controls input {
+            padding: 8px 12px;
+            border: 2px solid #ffc107;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 150px;
+        }
+        
+        .add-student-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        
+        .add-student-btn:hover {
+            background-color: #218838;
+        }
+        
+        .students-list {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e8f5e8;
+            border-radius: 5px;
+            min-height: 30px;
+        }
+        
+        .student-tag {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            margin: 3px;
+            border-radius: 15px;
+            font-size: 13px;
+        }
+        
+        .statistics {
+            margin-top: 40px;
+            padding: 30px;
+            background-color: #e3f2fd;
+            border-radius: 8px;
+            border: 3px solid #2196f3;
+        }
+        
+        .statistics h2 {
+            color: #2196f3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .stats-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        .student-score {
+            padding: 10px;
+            margin: 8px 0;
+            background-color: #f8f9fa;
+            border-left: 4px solid #2196f3;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .student-score.top {
+            background-color: #fff3cd;
+            border-left: 4px solid #fd7e14;
+            font-weight: bold;
+        }
+        
+        .score-number {
+            background-color: #2196f3;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+        
+        .student-score.top .score-number {
+            background-color: #fd7e14;
+        }
+        
+        .celebration {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 80px;
+            animation: celebrationPop 1s ease-out;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        @keyframes celebrationPop {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1) translateY(-100px);
+                opacity: 0;
+            }
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #fd7e14;
+            animation: confettiFall 3s linear;
+            pointer-events: none;
+            z-index: 999;
+        }
+        
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        .student-tag {
+            animation: tagAppear 0.5s ease-out;
+        }
+        
+        @keyframes tagAppear {
+            0% {
+                transform: scale(0) rotate(-10deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1) rotate(5deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+        
+        .motivation-message {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 35px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: slideIn 0.5s ease-out, slideOut 0.5s ease-in 2.5s;
+            z-index: 1000;
+            font-weight: bold;
+            font-size: 22px;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+        
+        .student-score.top {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+            .show-answer-btn {
+                display: none;
+            }
+            .answer {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Тест: Процеси: същност, състояния, управление — 11б</h1>
+
+        <div class="question">
+            <div class="question-number">Въпрос 1</div>
+            <div class="question-text">Какво е процес?</div>
+            <div class="options">
+                <div class="option">А) Файл на диска</div>
+                <div class="option">Б) Програма в изпълнение</div>
+                <div class="option">В) Операционна система</div>
+                <div class="option">Г) Вид памет</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(1)">Покажи отговора</button>
+            <div class="answer" id="answer1">
+                <strong>Правилен отговор: Б) Програма в изпълнение</strong>
+                <p>Процесът е програма в изпълнение. Програмата е файл на диска, а процесът е тази програма докато работи.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput1" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(1)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList1"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 2</div>
+            <div class="question-text">Колко състояния може да има един процес според класическия модел?</div>
+            <div class="options">
+                <div class="option">А) 3</div>
+                <div class="option">Б) 5</div>
+                <div class="option">В) 7</div>
+                <div class="option">Г) 10</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(2)">Покажи отговора</button>
+            <div class="answer" id="answer2">
+                <strong>Правилен отговор: Б) 5</strong>
+                <p>Петте състояния са: Нов (New), Готов (Ready), Работи (Running), Чака (Waiting), Завършен (Terminated).</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput2" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(2)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList2"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 3</div>
+            <div class="question-text">Какво означава съкращението PCB?</div>
+            <div class="options">
+                <div class="option">А) Process Control Block</div>
+                <div class="option">Б) Program Counter Block</div>
+                <div class="option">В) Primary Control Base</div>
+                <div class="option">Г) Process Code Base</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(3)">Покажи отговора</button>
+            <div class="answer" id="answer3">
+                <strong>Правилен отговор: А) Process Control Block</strong>
+                <p>PCB е като личната карта на процеса. Операционната система пази информация за всеки процес в специална структура - Process Control Block.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput3" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(3)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList3"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 4</div>
+            <div class="question-text">В кое състояние е процес, който чака данни от мрежата?</div>
+            <div class="options">
+                <div class="option">А) Готов (Ready)</div>
+                <div class="option">Б) Работи (Running)</div>
+                <div class="option">В) Чака (Waiting)</div>
+                <div class="option">Г) Нов (New)</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(4)">Покажи отговора</button>
+            <div class="answer" id="answer4">
+                <strong>Правилен отговор: В) Чака (Waiting)</strong>
+                <p>Когато процес чака нещо да се случи (например данни от мрежата, отваряне на файл и т.н.), той е в състояние Чака (Waiting).</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput4" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(4)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList4"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 5</div>
+            <div class="question-text">Какво е Context Switch?</div>
+            <div class="options">
+                <div class="option">А) Създаване на нов процес</div>
+                <div class="option">Б) Превключване между процеси</div>
+                <div class="option">В) Затваряне на процес</div>
+                <div class="option">Г) Увеличаване на паметта</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(5)">Покажи отговора</button>
+            <div class="answer" id="answer5">
+                <strong>Правилен отговор: Б) Превключване между процеси</strong>
+                <p>Context Switch е процесът на превключване от един процес към друг. ОС запазва състоянието на текущия процес в PCB и зарежда състоянието на следващия процес.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput5" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(5)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList5"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 6</div>
+            <div class="question-text">Колко процеса могат едновременно да бъдат в състояние "Работи" на едноядрен процесор?</div>
+            <div class="options">
+                <div class="option">А) Няколко</div>
+                <div class="option">Б) Колкото има памет</div>
+                <div class="option">В) Само един</div>
+                <div class="option">Г) Неограничен брой</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(6)">Покажи отговора</button>
+            <div class="answer" id="answer6">
+                <strong>Правилен отговор: В) Само един</strong>
+                <p>На едноядрен процесор само един процес може да бъде в състояние "Работи" в даден момент. Останалите процеси чакат в състояние "Готов" или "Чака".</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput6" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(6)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList6"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 7</div>
+            <div class="question-text">Какво съдържа PCB?</div>
+            <div class="options">
+                <div class="option">А) Само номера на процеса</div>
+                <div class="option">Б) Всички програми на компютъра</div>
+                <div class="option">В) Process ID, състояние, регистри, памет и други данни за процеса</div>
+                <div class="option">Г) Само кода на програмата</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(7)">Покажи отговора</button>
+            <div class="answer" id="answer7">
+                <strong>Правилен отговор: В) Process ID, състояние, регистри, памет и други данни за процеса</strong>
+                <p>PCB съдържа цялата информация необходима за управлението на процеса: PID, състояние, Program Counter, регистри, памет, отворени файлове, приоритет и др.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput7" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(7)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList7"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 8</div>
+            <div class="question-text">Какъв алгоритъм за планиране дава на всеки процес малко процесорно време на ред?</div>
+            <div class="options">
+                <div class="option">А) First Come First Served (FCFS)</div>
+                <div class="option">Б) Round Robin</div>
+                <div class="option">В) Priority Scheduling</div>
+                <div class="option">Г) Random Selection</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(8)">Покажи отговора</button>
+            <div class="answer" id="answer8">
+                <strong>Правилен отговор: Б) Round Robin</strong>
+                <p>Round Robin дава на всеки процес малко време за работа, след което го изпраща накрая на опашката и дава време на следващия процес. Това е справедливо за всички процеси.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput8" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(8)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList8"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 9</div>
+            <div class="question-text">Как се нарича компонентът на ОС, който решава кой процес да работи следващ?</div>
+            <div class="options">
+                <div class="option">А) Scheduler (Планировчик)</div>
+                <div class="option">Б) Memory Manager</div>
+                <div class="option">В) File System</div>
+                <div class="option">Г) Device Driver</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(9)">Покажи отговора</button>
+            <div class="answer" id="answer9">
+                <strong>Правилен отговор: А) Scheduler (Планировчик)</strong>
+                <p>Scheduler (планировчикът) е специален компонент на операционната система, който взема решение кой процес да работи следващ според избрания алгоритъм за планиране.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput9" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(9)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList9"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 10</div>
+            <div class="question-text">Защо Context Switch отнема време?</div>
+            <div class="options">
+                <div class="option">А) Защото процесорът трябва да се изключи и включи</div>
+                <div class="option">Б) Защото трябва да се запази и зареди състоянието на процесите</div>
+                <div class="option">В) Защото трябва да се рестартира компютърът</div>
+                <div class="option">Г) Защото се изтрива паметта</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(10)">Покажи отговора</button>
+            <div class="answer" id="answer10">
+                <strong>Правилен отговор: Б) Защото трябва да се запази и зареди състоянието на процесите</strong>
+                <p>По време на Context Switch процесорът трябва да запази текущото състояние в PCB на единия процес и да зареди състоянието от PCB на другия процес. По време на това превключване процесорът не върши полезна работа.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput10" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(10)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList10"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 11</div>
+            <div class="question-text">Какво е многозадачност (multitasking)?</div>
+            <div class="options">
+                <div class="option">А) Работа само с една програма</div>
+                <div class="option">Б) Бързо превключване между много процеси, което изглежда като едновременна работа</div>
+                <div class="option">В) Използване на много компютри</div>
+                <div class="option">Г) Работа с много потребители</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(11)">Покажи отговора</button>
+            <div class="answer" id="answer11">
+                <strong>Правилен отговор: Б) Бързо превключване между много процеси, което изглежда като едновременна работа</strong>
+                <p>Многозадачността работи като процесорът превключва много бързо между процесите. Реално работи само с един процес в даден момент, но превключва толкова бързо, че изглежда че всички работят едновременно.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput11" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(11)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList11"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 12</div>
+            <div class="question-text">Какво означава родителски процес?</div>
+            <div class="options">
+                <div class="option">А) Процес който е най-стар</div>
+                <div class="option">Б) Процес който създава други процеси</div>
+                <div class="option">В) Процес с най-висок приоритет</div>
+                <div class="option">Г) Първият процес на компютъра</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(12)">Покажи отговора</button>
+            <div class="answer" id="answer12">
+                <strong>Правилен отговор: Б) Процес който създава други процеси</strong>
+                <p>Родителският процес е този, който създава нови процеси (дъщерни процеси). Процесите образуват йерархична дървовидна структура, където всеки процес (освен първият) има родител.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput12" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(12)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList12"></div>
+            </div>
+        </div>
+
+        <div class="statistics">
+            <h2>📊 Статистика на учениците</h2>
+            <div class="stats-content" id="statsContent">
+                <p style="text-align: center; color: #666;">Статистиката ще се появи когато започнете да добавяте ученици...</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const studentAnswers = {};
+
+        const motivationalMessages = [
+            '🎉 Браво! Отличен отговор!',
+            '🌟 Страхотна работа!',
+            '🚀 Перфектно!',
+            '💪 Така се отговаря!',
+            '🎯 Право в целта!',
+            '⭐ Звездно!',
+            '🔥 Огнено!',
+            '🏆 Шампионски!',
+            '💯 Изключително!',
+            '🎊 Блестящо!',
+            '👏 Аплодисменти!',
+            '🌈 Фантастично!',
+            '💎 Скъпоценен отговор!',
+            '🎪 Шоу!',
+            '🎨 Майсторски!'
+        ];
+
+        const celebrationEmojis = ['🎉', '🎊', '🥳', '🎈', '✨', '🌟', '⭐', '💫'];
+
+        function toggleAnswer(questionNumber) {
+            const answer = document.getElementById('answer' + questionNumber);
+            answer.classList.toggle('visible');
+            const button = answer.previousElementSibling;
+            if (answer.classList.contains('visible')) {
+                button.textContent = 'Скрий отговора';
+            } else {
+                button.textContent = 'Покажи отговора';
+            }
+        }
+
+        function addStudent(questionNumber) {
+            const input = document.getElementById('studentInput' + questionNumber);
+            const studentNumbers = input.value.split(',').map(s => s.trim()).filter(s => s !== '');
+
+            if (studentNumbers.length === 0) {
+                showMotivationMessage('❌ Моля въведете номер на ученик!');
+                return;
+            }
+
+            if (!studentAnswers[questionNumber]) {
+                studentAnswers[questionNumber] = [];
+            }
+
+            let addedCount = 0;
+            let alreadyAddedCount = 0;
+
+            studentNumbers.forEach(studentNumber => {
+                if (studentAnswers[questionNumber].includes(studentNumber)) {
+                    alreadyAddedCount++;
+                } else {
+                    studentAnswers[questionNumber].push(studentNumber);
+                    addedCount++;
+                }
+            });
+
+            input.value = '';
+
+            if (addedCount > 0) {
+                showCelebration();
+                if (addedCount === 1) {
+                    showMotivationMessage(getRandomMotivation());
+                } else {
+                    showMotivationMessage(`🎉 Добавени ${addedCount} ученика!`);
+                }
+                createConfetti();
+            }
+
+            if (alreadyAddedCount > 0) {
+                if (alreadyAddedCount === 1) {
+                    showMotivationMessage('⚠️ Един ученик вече е добавен!');
+                } else {
+                    showMotivationMessage(`⚠️ ${alreadyAddedCount} ученика вече са добавени!`);
+                }
+            }
+
+            updateStudentsList(questionNumber);
+            updateStatistics();
+        }
+
+        function getRandomMotivation() {
+            return motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
+        }
+
+        function showCelebration() {
+            const emoji = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
+            const celebration = document.createElement('div');
+            celebration.className = 'celebration';
+            celebration.textContent = emoji;
+            document.body.appendChild(celebration);
+            
+            const removalTimer = window.requestAnimationFrame(() => {});
+            const removeAfterDelay = () => {
+                const now = Date.now();
+                const elapsed = now - startTime;
+                if (elapsed >= 1000) {
+                    celebration.remove();
+                } else {
+                    window.requestAnimationFrame(removeAfterDelay);
+                }
+            };
+            const startTime = Date.now();
+            window.requestAnimationFrame(removeAfterDelay);
+        }
+
+        function showMotivationMessage(message) {
+            const existingMessage = document.querySelector('.motivation-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'motivation-message';
+            messageDiv.textContent = message;
+            document.body.appendChild(messageDiv);
+            
+            const startTime = Date.now();
+            const removeAfterDelay = () => {
+                const now = Date.now();
+                const elapsed = now - startTime;
+                if (elapsed >= 3000) {
+                    messageDiv.remove();
+                } else {
+                    window.requestAnimationFrame(removeAfterDelay);
+                }
+            };
+            window.requestAnimationFrame(removeAfterDelay);
+        }
+
+        function createConfetti() {
+            const colors = ['#fd7e14', '#28a745', '#2196f3', '#ffc107', '#e91e63', '#9c27b0'];
+            
+            for (let i = 0; i < 30; i++) {
+                const delay = i * 50;
+                const createSingleConfetti = () => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = -10 + 'px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                    confetti.style.height = (Math.random() * 10 + 5) + 'px';
+                    document.body.appendChild(confetti);
+                    
+                    const startTime = Date.now();
+                    const removeAfterDelay = () => {
+                        const now = Date.now();
+                        const elapsed = now - startTime;
+                        if (elapsed >= 3000) {
+                            confetti.remove();
+                        } else {
+                            window.requestAnimationFrame(removeAfterDelay);
+                        }
+                    };
+                    window.requestAnimationFrame(removeAfterDelay);
+                };
+                
+                const startTime = Date.now();
+                const checkDelay = () => {
+                    const now = Date.now();
+                    const elapsed = now - startTime;
+                    if (elapsed >= delay) {
+                        createSingleConfetti();
+                    } else {
+                        window.requestAnimationFrame(checkDelay);
+                    }
+                };
+                window.requestAnimationFrame(checkDelay);
+            }
+        }
+
+        function updateStudentsList(questionNumber) {
+            const list = document.getElementById('studentsList' + questionNumber);
+            const students = studentAnswers[questionNumber] || [];
+
+            if (students.length === 0) {
+                list.innerHTML = '';
+                return;
+            }
+
+            list.innerHTML = students.map(s => 
+                `<span class="student-tag">Ученик ${s}</span>`
+            ).join('');
+        }
+
+        function updateStatistics() {
+            const studentScores = {};
+
+            for (const question in studentAnswers) {
+                studentAnswers[question].forEach(student => {
+                    studentScores[student] = (studentScores[student] || 0) + 1;
+                });
+            }
+
+            const sortedStudents = Object.entries(studentScores)
+                .sort((a, b) => b[1] - a[1]);
+
+            const statsContent = document.getElementById('statsContent');
+
+            if (sortedStudents.length === 0) {
+                statsContent.innerHTML = '<p style="text-align: center; color: #666;">Статистиката ще се появи когато започнете да добавяте ученици...</p>';
+                return;
+            }
+
+            const maxScore = sortedStudents[0][1];
+
+            statsContent.innerHTML = sortedStudents.map(([student, score], index) => {
+                const isTop = score === maxScore;
+                const position = index + 1;
+                const trophy = position === 1 ? '🏆 ' : position === 2 ? '🥈 ' : position === 3 ? '🥉 ' : '';
+                
+                return `
+                    <div class="student-score ${isTop ? 'top' : ''}">
+                        <span>${trophy}Ученик ${student}</span>
+                        <span class="score-number">${score} ${score === 1 ? 'въпрос' : 'въпроса'}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const target = e.target;
+                if (target.id && target.id.startsWith('studentInput')) {
+                    const questionNumber = target.id.replace('studentInput', '');
+                    addStudent(parseInt(questionNumber));
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,15 @@
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer04-ShoppingList/bin/Debug/net8.0/Primer04-ShoppingList
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer04-ShoppingList/bin/Debug/net8.0/Primer04-ShoppingList.deps.json
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer04-ShoppingList/bin/Debug/net8.0/Primer04-ShoppingList.runtimeconfig.json
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer04-ShoppingList/bin/Debug/net8.0/Primer04-ShoppingList.dll
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer04-ShoppingList/bin/Debug/net8.0/Primer04-ShoppingList.pdb
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer04-ShoppingList/obj/Debug/net8.0/Primer04-ShoppingList.GeneratedMSBuildEditorConfig.editorconfig
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer04-ShoppingList/obj/Debug/net8.0/Primer04-ShoppingList.AssemblyInfoInputs.cache
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer04-ShoppingList/obj/Debug/net8.0/Primer04-ShoppingList.AssemblyInfo.cs
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer04-ShoppingList/obj/Debug/net8.0/Primer04-ShoppingList.csproj.CoreCompileInputs.cache
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer04-ShoppingList/obj/Debug/net8.0/Primer04-ShoppingList.sourcelink.json
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer04-ShoppingList/obj/Debug/net8.0/Primer04-ShoppingList.dll
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer04-ShoppingList/obj/Debug/net8.0/refint/Primer04-ShoppingList.dll
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer04-ShoppingList/obj/Debug/net8.0/Primer04-ShoppingList.pdb
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer04-ShoppingList/obj/Debug/net8.0/Primer04-ShoppingList.genruntimeconfig.cache
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer04-ShoppingList/obj/Debug/net8.0/ref/Primer04-ShoppingList.dll

@@ -1,0 +1,15 @@
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer03-IComparer/bin/Debug/net8.0/Primer03-IComparer
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer03-IComparer/bin/Debug/net8.0/Primer03-IComparer.deps.json
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer03-IComparer/bin/Debug/net8.0/Primer03-IComparer.runtimeconfig.json
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer03-IComparer/bin/Debug/net8.0/Primer03-IComparer.dll
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer03-IComparer/bin/Debug/net8.0/Primer03-IComparer.pdb
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer03-IComparer/obj/Debug/net8.0/Primer03-IComparer.GeneratedMSBuildEditorConfig.editorconfig
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer03-IComparer/obj/Debug/net8.0/Primer03-IComparer.AssemblyInfoInputs.cache
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer03-IComparer/obj/Debug/net8.0/Primer03-IComparer.AssemblyInfo.cs
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer03-IComparer/obj/Debug/net8.0/Primer03-IComparer.csproj.CoreCompileInputs.cache
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer03-IComparer/obj/Debug/net8.0/Primer03-IComparer.sourcelink.json
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer03-IComparer/obj/Debug/net8.0/Primer03-IComparer.dll
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer03-IComparer/obj/Debug/net8.0/refint/Primer03-IComparer.dll
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer03-IComparer/obj/Debug/net8.0/Primer03-IComparer.pdb
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer03-IComparer/obj/Debug/net8.0/Primer03-IComparer.genruntimeconfig.cache
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer03-IComparer/obj/Debug/net8.0/ref/Primer03-IComparer.dll

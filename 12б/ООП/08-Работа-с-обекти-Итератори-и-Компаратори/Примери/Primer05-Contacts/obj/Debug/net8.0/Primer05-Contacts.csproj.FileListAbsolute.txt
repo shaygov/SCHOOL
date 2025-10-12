@@ -1,0 +1,15 @@
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer05-Contacts/bin/Debug/net8.0/Primer05-Contacts
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer05-Contacts/bin/Debug/net8.0/Primer05-Contacts.deps.json
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer05-Contacts/bin/Debug/net8.0/Primer05-Contacts.runtimeconfig.json
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer05-Contacts/bin/Debug/net8.0/Primer05-Contacts.dll
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer05-Contacts/bin/Debug/net8.0/Primer05-Contacts.pdb
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer05-Contacts/obj/Debug/net8.0/Primer05-Contacts.GeneratedMSBuildEditorConfig.editorconfig
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer05-Contacts/obj/Debug/net8.0/Primer05-Contacts.AssemblyInfoInputs.cache
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer05-Contacts/obj/Debug/net8.0/Primer05-Contacts.AssemblyInfo.cs
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer05-Contacts/obj/Debug/net8.0/Primer05-Contacts.csproj.CoreCompileInputs.cache
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer05-Contacts/obj/Debug/net8.0/Primer05-Contacts.sourcelink.json
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer05-Contacts/obj/Debug/net8.0/Primer05-Contacts.dll
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer05-Contacts/obj/Debug/net8.0/refint/Primer05-Contacts.dll
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer05-Contacts/obj/Debug/net8.0/Primer05-Contacts.pdb
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer05-Contacts/obj/Debug/net8.0/Primer05-Contacts.genruntimeconfig.cache
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer05-Contacts/obj/Debug/net8.0/ref/Primer05-Contacts.dll

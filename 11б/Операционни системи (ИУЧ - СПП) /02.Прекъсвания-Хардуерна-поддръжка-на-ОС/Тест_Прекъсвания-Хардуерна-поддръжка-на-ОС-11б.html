@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест: Прекъсвания. Хардуерна поддръжка на ОС — 11б</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #fd7e14;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .question {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #fd7e14;
+        }
+        
+        .question-number {
+            color: #fd7e14;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .question-text {
+            font-size: 16px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .show-answer-btn {
+            background-color: #fd7e14;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        
+        .show-answer-btn:hover {
+            background-color: #e67011;
+        }
+        
+        .answer {
+            display: none;
+            background-color: #e8f5e8;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #28a745;
+        }
+        
+        .answer.visible {
+            display: block;
+        }
+        
+        .answer strong {
+            color: #28a745;
+        }
+        
+        .options {
+            margin: 10px 0;
+        }
+        
+        .option {
+            padding: 8px 0;
+            margin: 5px 0;
+        }
+        
+        .student-input-section {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #fff3cd;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .student-input-section label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .student-input-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .student-input-controls input {
+            padding: 8px 12px;
+            border: 2px solid #ffc107;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 150px;
+        }
+        
+        .add-student-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        
+        .add-student-btn:hover {
+            background-color: #218838;
+        }
+        
+        .students-list {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e8f5e8;
+            border-radius: 5px;
+            min-height: 30px;
+        }
+        
+        .student-tag {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            margin: 3px;
+            border-radius: 15px;
+            font-size: 13px;
+        }
+        
+        .statistics {
+            margin-top: 40px;
+            padding: 30px;
+            background-color: #e3f2fd;
+            border-radius: 8px;
+            border: 3px solid #2196f3;
+        }
+        
+        .statistics h2 {
+            color: #2196f3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .stats-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        .student-score {
+            padding: 10px;
+            margin: 8px 0;
+            background-color: #f8f9fa;
+            border-left: 4px solid #2196f3;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .student-score.top {
+            background-color: #fff3cd;
+            border-left: 4px solid #fd7e14;
+            font-weight: bold;
+        }
+        
+        .score-number {
+            background-color: #2196f3;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+        
+        .student-score.top .score-number {
+            background-color: #fd7e14;
+        }
+        
+        .celebration {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 80px;
+            animation: celebrationPop 1s ease-out;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        @keyframes celebrationPop {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1) translateY(-100px);
+                opacity: 0;
+            }
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #fd7e14;
+            animation: confettiFall 3s linear;
+            pointer-events: none;
+            z-index: 999;
+        }
+        
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        .student-tag {
+            animation: tagAppear 0.5s ease-out;
+        }
+        
+        @keyframes tagAppear {
+            0% {
+                transform: scale(0) rotate(-10deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1) rotate(5deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+        
+        .motivation-message {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 35px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: slideIn 0.5s ease-out, slideOut 0.5s ease-in 2.5s;
+            z-index: 1000;
+            font-weight: bold;
+            font-size: 22px;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+        
+        .student-score.top {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+            .show-answer-btn {
+                display: none;
+            }
+            .answer {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Тест: Прекъсвания. Хардуерна поддръжка на ОС — 11б</h1>
+
+        <div class="question">
+            <div class="question-number">Въпрос 1</div>
+            <div class="question-text">Какво е прекъсване в контекста на операционните системи?</div>
+            <div class="options">
+                <div class="option">А) Грешка в програмата</div>
+                <div class="option">Б) Начин за спиране на вируси</div>
+                <div class="option">В) Сигнал, който казва на процесора да спре текущата задача и да изпълни друга</div>
+                <div class="option">Г) Програма, която спира работата на компютъра</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(1)">Покажи отговора</button>
+            <div class="answer" id="answer1">
+                <strong>Правилен отговор: В) Сигнал, който казва на процесора да спре текущата задача и да изпълни друга</strong>
+                <p>Прекъсването е сигнал, който казва на процесора: "Спри това, което правиш и направи нещо друго!" Това е като телефонен звън - не можеш да го игнорираш.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput1" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(1)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList1"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 2</div>
+            <div class="question-text">Кое от следните НЕ е пример за хардуерно прекъсване?</div>
+            <div class="options">
+                <div class="option">А) Системно извикване от програма</div>
+                <div class="option">Б) Свързване на USB устройство</div>
+                <div class="option">В) Движение на мишката</div>
+                <div class="option">Г) Натискане на клавиш</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(2)">Покажи отговора</button>
+            <div class="answer" id="answer2">
+                <strong>Правилен отговор: А) Системно извикване от програма</strong>
+                <p>Системните извиквания са софтуерни прекъсвания, не хардуерни. Хардуерните прекъсвания идват от физически устройства като клавиатура, мишка и USB устройства.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput2" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(2)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList2"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 3</div>
+            <div class="question-text">Каква е основната цел на защитата на паметта в операционната система?</div>
+            <div class="options">
+                <div class="option">А) Да увеличи скоростта на компютъра</div>
+                <div class="option">Б) Да улесни програмирането</div>
+                <div class="option">В) Да спести електричество</div>
+                <div class="option">Г) Да предотврати достъпа на една програма до паметта на друга</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(3)">Покажи отговора</button>
+            <div class="answer" id="answer3">
+                <strong>Правилен отговор: Г) Да предотврати достъпа на една програма до паметта на друга</strong>
+                <p>Защитата на паметта осигурява безопасност (една програма не може да чете данните на друга), стабилност (грешка в една програма не счупва системата) и приватност (всеки процес има своя памет).</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput3" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(3)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList3"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 4</div>
+            <div class="question-text">За какво се използват таймерите в операционната система?</div>
+            <div class="options">
+                <div class="option">А) За печатане на документи</div>
+                <div class="option">Б) Само за показване на часа</div>
+                <div class="option">В) За превключване между задачи и контрол на времето</div>
+                <div class="option">Г) За запазване на файлове</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(4)">Покажи отговора</button>
+            <div class="answer" id="answer4">
+                <strong>Правилен отговор: В) За превключване между задачи и контрол на времето</strong>
+                <p>Таймерите се използват за системен часовник, превключване между задачи (всеки процес работи малко време), timeout (ако нещо не работи, спри го) и контрол на анимации.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput4" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(4)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList4"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 5</div>
+            <div class="question-text">Какво означава съкращението DMA?</div>
+            <div class="options">
+                <div class="option">А) Direct Memory Access</div>
+                <div class="option">Б) Data Management Access</div>
+                <div class="option">В) Digital Memory Access</div>
+                <div class="option">Г) Dynamic Memory Allocation</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(5)">Покажи отговора</button>
+            <div class="answer" id="answer5">
+                <strong>Правилен отговор: А) Direct Memory Access (Пряк достъп до паметта)</strong>
+                <p>DMA позволява на устройствата да говорят директно с паметта без да ангажират CPU, което прави процеса по-бърз и ефективен.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput5" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(5)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList5"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 6</div>
+            <div class="question-text">Каква е основната цел на DMA?</div>
+            <div class="options">
+                <div class="option">А) Прави паметта по-голяма</div>
+                <div class="option">Б) Намалява броя на програмите</div>
+                <div class="option">В) Прави компютъра по-евтин</div>
+                <div class="option">Г) CPU не се занимава с копиране на данни и може да прави други неща</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(6)">Покажи отговора</button>
+            <div class="answer" id="answer6">
+                <strong>Правилен отговор: Г) CPU не се занимава с копиране на данни и може да прави други неща</strong>
+                <p>DMA работи без участието на CPU, което освобождава процесора да изпълнява други задачи, докато данните се копират директно между устройства и памет.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput6" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(6)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList6"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 7</div>
+            <div class="question-text">Какво е системно извикване?</div>
+            <div class="options">
+                <div class="option">А) Начин програмата да поиска услуга от операционната система</div>
+                <div class="option">Б) Грешка в системата</div>
+                <div class="option">В) Вид вирус</div>
+                <div class="option">Г) Начин за изключване на компютъра</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(7)">Покажи отговора</button>
+            <div class="answer" id="answer7">
+                <strong>Правилен отговор: А) Начин програмата да поиска услуга от операционната система</strong>
+                <p>Системното извикване е механизъм, чрез който програмата пита ОС за нещо (например "Може ли да отворя файл?"), ОС проверява правата и изпълнява операцията, ако има право.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput7" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(7)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList7"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 8</div>
+            <div class="question-text">Кое от следните е пример за софтуерно прекъсване?</div>
+            <div class="options">
+                <div class="option">А) Свързване на USB</div>
+                <div class="option">Б) Печатане на документ</div>
+                <div class="option">В) Деление на нула в програма</div>
+                <div class="option">Г) Движение на мишката</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(8)">Покажи отговора</button>
+            <div class="answer" id="answer8">
+                <strong>Правилен отговор: В) Деление на нула в програма</strong>
+                <p>Деление на нула е грешка в програмата, която генерира софтуерно прекъсване. Останалите опции са хардуерни прекъсвания.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput8" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(8)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList8"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 9</div>
+            <div class="question-text">Защо програмите не могат директно да четат от диска без операционната система?</div>
+            <div class="options">
+                <div class="option">А) Защото дисковете са скъпи</div>
+                <div class="option">Б) Защото не знаят как</div>
+                <div class="option">В) Защото са бавни</div>
+                <div class="option">Г) Заради безопасност и контрол на достъпа</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(9)">Покажи отговора</button>
+            <div class="answer" id="answer9">
+                <strong>Правилен отговор: Г) Заради безопасност и контрол на достъпа</strong>
+                <p>Операционната система контролира достъпа до хардуерни ресурси като диска, за да осигури безопасност, проверка на правата и правилно управление на ресурсите. Програмите трябва да използват системни извиквания.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput9" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(9)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList9"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 10</div>
+            <div class="question-text">Какво се случва при прекъсване?</div>
+            <div class="options">
+                <div class="option">А) Процесорът спира текущата работа, обработва прекъсването и се връща</div>
+                <div class="option">Б) Всички програми се затварят</div>
+                <div class="option">В) Паметта се изчиства</div>
+                <div class="option">Г) Компютърът се изключва</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(10)">Покажи отговора</button>
+            <div class="answer" id="answer10">
+                <strong>Правилен отговор: А) Процесорът спира текущата работа, обработва прекъсването и се връща</strong>
+                <p>Процесът на прекъсване включва: Нормална работа → Прекъсване → Обработка → Връщане към нормална работа.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput10" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(10)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList10"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 11</div>
+            <div class="question-text">Кой е пример за използване на таймер?</div>
+            <div class="options">
+                <div class="option">А) Отваряне на програма</div>
+                <div class="option">Б) Свързване към интернет</div>
+                <div class="option">В) Стартиране на скрийнсейвър след 5 минути бездействие</div>
+                <div class="option">Г) Копиране на файл</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(11)">Покажи отговора</button>
+            <div class="answer" id="answer11">
+                <strong>Правилен отговор: В) Стартиране на скрийнсейвър след 5 минути бездействие</strong>
+                <p>Таймерите се използват за контрол на време-зависими операции като стартиране на скрийнсейвър, спиране на неотговаряща програма, контрол на кадри в игри и изчакване на мрежов отговор.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput11" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(11)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList11"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-number">Въпрос 12</div>
+            <div class="question-text">Кое от следните НЕ е предимство на защитата на паметта?</div>
+            <div class="options">
+                <div class="option">А) Безопасност</div>
+                <div class="option">Б) Стабилност</div>
+                <div class="option">В) По-висока скорост на всички програми</div>
+                <div class="option">Г) Приватност</div>
+            </div>
+            <button class="show-answer-btn" onclick="toggleAnswer(12)">Покажи отговора</button>
+            <div class="answer" id="answer12">
+                <strong>Правилен отговор: В) По-висока скорост на всички програми</strong>
+                <p>Защитата на паметта осигурява безопасност, стабилност и приватност, но не увеличава скоростта на програмите. Всъщност, проверките за достъп могат леко да намалят производителността.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput12" placeholder="Номер на ученик (може повече, разделени със запетая)">
+                    <button class="add-student-btn" onclick="addStudent(12)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList12"></div>
+            </div>
+        </div>
+
+        <div class="statistics">
+            <h2>📊 Статистика на учениците</h2>
+            <div class="stats-content" id="statsContent">
+                <p style="text-align: center; color: #666;">Статистиката ще се появи когато започнете да добавяте ученици...</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const studentAnswers = {};
+
+        const motivationalMessages = [
+            '🎉 Браво! Отличен отговор!',
+            '🌟 Страхотна работа!',
+            '🚀 Перфектно!',
+            '💪 Така се отговаря!',
+            '🎯 Право в целта!',
+            '⭐ Звездно!',
+            '🔥 Огнено!',
+            '🏆 Шампионски!',
+            '💯 Изключително!',
+            '🎊 Блестящо!',
+            '👏 Аплодисменти!',
+            '🌈 Фантастично!',
+            '💎 Скъпоценен отговор!',
+            '🎪 Шоу!',
+            '🎨 Майсторски!'
+        ];
+
+        const celebrationEmojis = ['🎉', '🎊', '🥳', '🎈', '✨', '🌟', '⭐', '💫'];
+
+        function toggleAnswer(questionNumber) {
+            const answer = document.getElementById('answer' + questionNumber);
+            answer.classList.toggle('visible');
+            const button = answer.previousElementSibling;
+            if (answer.classList.contains('visible')) {
+                button.textContent = 'Скрий отговора';
+            } else {
+                button.textContent = 'Покажи отговора';
+            }
+        }
+
+        function addStudent(questionNumber) {
+            const input = document.getElementById('studentInput' + questionNumber);
+            const studentNumbers = input.value.split(',').map(s => s.trim()).filter(s => s !== '');
+
+            if (studentNumbers.length === 0) {
+                showMotivationMessage('❌ Моля въведете номер на ученик!');
+                return;
+            }
+
+            if (!studentAnswers[questionNumber]) {
+                studentAnswers[questionNumber] = [];
+            }
+
+            let addedCount = 0;
+            let alreadyAddedCount = 0;
+
+            studentNumbers.forEach(studentNumber => {
+                if (studentAnswers[questionNumber].includes(studentNumber)) {
+                    alreadyAddedCount++;
+                } else {
+                    studentAnswers[questionNumber].push(studentNumber);
+                    addedCount++;
+                }
+            });
+
+            input.value = '';
+
+            if (addedCount > 0) {
+                showCelebration();
+                if (addedCount === 1) {
+                    showMotivationMessage(getRandomMotivation());
+                } else {
+                    showMotivationMessage(`🎉 Добавени ${addedCount} ученика!`);
+                }
+                createConfetti();
+            }
+
+            if (alreadyAddedCount > 0) {
+                if (alreadyAddedCount === 1) {
+                    showMotivationMessage('⚠️ Един ученик вече е добавен!');
+                } else {
+                    showMotivationMessage(`⚠️ ${alreadyAddedCount} ученика вече са добавени!`);
+                }
+            }
+
+            updateStudentsList(questionNumber);
+            updateStatistics();
+        }
+
+        function getRandomMotivation() {
+            return motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
+        }
+
+        function showCelebration() {
+            const emoji = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
+            const celebration = document.createElement('div');
+            celebration.className = 'celebration';
+            celebration.textContent = emoji;
+            document.body.appendChild(celebration);
+            
+            setTimeout(() => celebration.remove(), 1000);
+        }
+
+        function showMotivationMessage(message) {
+            const existingMessage = document.querySelector('.motivation-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'motivation-message';
+            messageDiv.textContent = message;
+            document.body.appendChild(messageDiv);
+            
+            setTimeout(() => messageDiv.remove(), 3000);
+        }
+
+        function createConfetti() {
+            const colors = ['#fd7e14', '#28a745', '#2196f3', '#ffc107', '#e91e63', '#9c27b0'];
+            
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = -10 + 'px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                    confetti.style.height = (Math.random() * 10 + 5) + 'px';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 50);
+            }
+        }
+
+        function updateStudentsList(questionNumber) {
+            const list = document.getElementById('studentsList' + questionNumber);
+            const students = studentAnswers[questionNumber] || [];
+
+            if (students.length === 0) {
+                list.innerHTML = '';
+                return;
+            }
+
+            list.innerHTML = students.map(s => 
+                `<span class="student-tag">Ученик ${s}</span>`
+            ).join('');
+        }
+
+        function updateStatistics() {
+            const studentScores = {};
+
+            for (const question in studentAnswers) {
+                studentAnswers[question].forEach(student => {
+                    studentScores[student] = (studentScores[student] || 0) + 1;
+                });
+            }
+
+            const sortedStudents = Object.entries(studentScores)
+                .sort((a, b) => b[1] - a[1]);
+
+            const statsContent = document.getElementById('statsContent');
+
+            if (sortedStudents.length === 0) {
+                statsContent.innerHTML = '<p style="text-align: center; color: #666;">Статистиката ще се появи когато започнете да добавяте ученици...</p>';
+                return;
+            }
+
+            const maxScore = sortedStudents[0][1];
+
+            statsContent.innerHTML = sortedStudents.map(([student, score], index) => {
+                const isTop = score === maxScore;
+                const position = index + 1;
+                const trophy = position === 1 ? '🏆 ' : position === 2 ? '🥈 ' : position === 3 ? '🥉 ' : '';
+                
+                return `
+                    <div class="student-score ${isTop ? 'top' : ''}">
+                        <span>${trophy}Ученик ${student}</span>
+                        <span class="score-number">${score} ${score === 1 ? 'въпрос' : 'въпроса'}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const target = e.target;
+                if (target.id && target.id.startsWith('studentInput')) {
+                    const questionNumber = target.id.replace('studentInput', '');
+                    addStudent(parseInt(questionNumber));
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,15 @@
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer01-BasicIterator/bin/Debug/net8.0/Primer01-BasicIterator
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer01-BasicIterator/bin/Debug/net8.0/Primer01-BasicIterator.deps.json
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer01-BasicIterator/bin/Debug/net8.0/Primer01-BasicIterator.runtimeconfig.json
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer01-BasicIterator/bin/Debug/net8.0/Primer01-BasicIterator.dll
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer01-BasicIterator/bin/Debug/net8.0/Primer01-BasicIterator.pdb
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer01-BasicIterator/obj/Debug/net8.0/Primer01-BasicIterator.GeneratedMSBuildEditorConfig.editorconfig
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer01-BasicIterator/obj/Debug/net8.0/Primer01-BasicIterator.AssemblyInfoInputs.cache
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer01-BasicIterator/obj/Debug/net8.0/Primer01-BasicIterator.AssemblyInfo.cs
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer01-BasicIterator/obj/Debug/net8.0/Primer01-BasicIterator.csproj.CoreCompileInputs.cache
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer01-BasicIterator/obj/Debug/net8.0/Primer01-BasicIterator.sourcelink.json
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer01-BasicIterator/obj/Debug/net8.0/Primer01-BasicIterator.dll
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer01-BasicIterator/obj/Debug/net8.0/refint/Primer01-BasicIterator.dll
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer01-BasicIterator/obj/Debug/net8.0/Primer01-BasicIterator.pdb
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer01-BasicIterator/obj/Debug/net8.0/Primer01-BasicIterator.genruntimeconfig.cache
+/home/ahmed/Desktop/SCHOOL/12б/ООП/08-Работа-с-обекти-Итератори-и-Компаратори/Примери/Primer01-BasicIterator/obj/Debug/net8.0/ref/Primer01-BasicIterator.dll
