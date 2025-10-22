@@ -1,0 +1,15 @@
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example03_UserInput/bin/Debug/net8.0/Example03_UserInput
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example03_UserInput/bin/Debug/net8.0/Example03_UserInput.deps.json
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example03_UserInput/bin/Debug/net8.0/Example03_UserInput.runtimeconfig.json
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example03_UserInput/bin/Debug/net8.0/Example03_UserInput.dll
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example03_UserInput/bin/Debug/net8.0/Example03_UserInput.pdb
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example03_UserInput/obj/Debug/net8.0/Example03_UserInput.GeneratedMSBuildEditorConfig.editorconfig
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example03_UserInput/obj/Debug/net8.0/Example03_UserInput.AssemblyInfoInputs.cache
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example03_UserInput/obj/Debug/net8.0/Example03_UserInput.AssemblyInfo.cs
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example03_UserInput/obj/Debug/net8.0/Example03_UserInput.csproj.CoreCompileInputs.cache
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example03_UserInput/obj/Debug/net8.0/Example03_UserInput.sourcelink.json
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example03_UserInput/obj/Debug/net8.0/Example03_UserInput.dll
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example03_UserInput/obj/Debug/net8.0/refint/Example03_UserInput.dll
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example03_UserInput/obj/Debug/net8.0/Example03_UserInput.pdb
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example03_UserInput/obj/Debug/net8.0/Example03_UserInput.genruntimeconfig.cache
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example03_UserInput/obj/Debug/net8.0/ref/Example03_UserInput.dll

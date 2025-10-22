@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Example03_UserInput/1.0.0": {
+        "runtime": {
+          "Example03_UserInput.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Example03_UserInput/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
