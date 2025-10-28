@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тест: Основни принципи на ООП — 12б</title>
+    <title>Тест: Интернет и електронна търговия — 12а</title>
     <style>
         body {
             font-family: 'DejaVu Serif', 'Times New Roman', serif;
@@ -150,7 +150,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Тест: Основни принципи на ООП — 12б</h1>
+        <h1>Тест: Интернет и електронна търговия — 12а</h1>
 
         <div class="mode-selector">
             <h2>Режим на тестване</h2>
@@ -171,282 +171,425 @@
             </div>
         </div>
 
-        <!-- Въпроси 1-16: Основни принципи на ООП -->
+        <!-- Въпроси 1-16: Мрежови протоколи, Мрежови ОС, Мрежова сигурност и вируси -->
 
         <div class="question" data-correct="Б">
             <div class="question-number">Въпрос 1</div>
-            <div class="question-text">Какво представлява инкапсулацията в ООП?</div>
+            <div class="question-text">Кой протокол отговаря за надеждното предаване с потвърждения и повторно изпращане?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(1, 'А')">А) Създаване на много нови класове в една програма</div>
-                <div class="option" data-value="Б" onclick="selectOption(1, 'Б')">Б) Скриване на детайлите за имплементация и показване само на необходимия интерфейс</div>
-                <div class="option" data-value="В" onclick="selectOption(1, 'В')">В) Комбиниране на данни и методи в единичен клас за по-добра подредба на кода</div>
-                <div class="option" data-value="Г" onclick="selectOption(1, 'Г')">Г) Използване на структури вместо класове за подобряване на производителността</div>
+                <div class="option" data-value="А" onclick="selectOption(1, 'А')">А) UDP</div>
+                <div class="option" data-value="Б" onclick="selectOption(1, 'Б')">Б) TCP</div>
+                <div class="option" data-value="В" onclick="selectOption(1, 'В')">В) IP</div>
+                <div class="option" data-value="Г" onclick="selectOption(1, 'Г')">Г) ARP</div>
             </div>
-            <button class="submit-btn" id="submitBtn1" onclick="submitAnswer(1)" disabled>Изпрати отговор</button>
-            <button class="show-answer-btn" onclick="showAnswer(1)">Покажи отговора</button>
+            <button class="submit-btn" id="submitBtn1" onclick="submitAnswer(1)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback1"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(1)">Покажи отговора</button>
             <div class="answer" id="answer1">
-                <strong>Правилен отговор: Б</strong><br>
-                Инкапсулацията е механизмът за скриване на вътрешните детайли на реализацията от външния свят. Тя се постига чрез използване на модификатори за достъп и защита на данните.
+                <strong>Правилен отговор: TCP</strong>
+                <p>TCP осигурява надеждност чрез потвърждения (ACK), номерация на сегменти и повторно предаване.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput1" placeholder="Номер на ученик">
+                    <button class="add-student-btn" onclick="addStudent(1)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList1"></div>
             </div>
         </div>
 
         <div class="question" data-correct="В">
             <div class="question-number">Въпрос 2</div>
-            <div class="question-text">Какво представлява наследяването в ООП?</div>
+            <div class="question-text">За какво се използва DNS в мрежите?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(2, 'А')">А) Копиране на целия код от един клас към друг</div>
-                <div class="option" data-value="Б" onclick="selectOption(2, 'Б')">Б) Преизползване на същите променливи имена в множество класове</div>
-                <div class="option" data-value="В" onclick="selectOption(2, 'В')">В) Създаване на нови класове, които наследяват характеристики на съществуващи класове</div>
-                <div class="option" data-value="Г" onclick="selectOption(2, 'Г')">Г) Компилиране на програми в същия namespace за бърза обработка</div>
+                <div class="option" data-value="А" onclick="selectOption(2, 'А')">А) За криптиране на трафика между клиент и сървър</div>
+                <div class="option" data-value="Б" onclick="selectOption(2, 'Б')">Б) За откриване на MAC адрес по IP адрес</div>
+                <div class="option" data-value="В" onclick="selectOption(2, 'В')">В) За превод на домейн имена към IP адреси</div>
+                <div class="option" data-value="Г" onclick="selectOption(2, 'Г')">Г) За маршрутизация между автономни системи</div>
             </div>
-            <button class="submit-btn" id="submitBtn2" onclick="submitAnswer(2)" disabled>Изпрати отговор</button>
-            <button class="show-answer-btn" onclick="showAnswer(2)">Покажи отговора</button>
+            <button class="submit-btn" id="submitBtn2" onclick="submitAnswer(2)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback2"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(2)">Покажи отговора</button>
             <div class="answer" id="answer2">
-                <strong>Правилен отговор: В</strong><br>
-                Наследяването позволява нови класове (производни) да получат свойствата и методите на съществуващи класове (базови), намалявайки дублиране на код.
+                <strong>Правилен отговор: В) Превод на имена към IP</strong>
+                <p>DNS е „телефонният указател“ на Интернет.</p>
             </div>
-        </div>
-
-        <div class="question" data-correct="А">
-            <div class="question-number">Въпрос 3</div>
-            <div class="question-text">Какво представлява полиморфизмът в ООП?</div>
-            <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(3, 'А')">А) Възможност за използване на обекти с различни типове чрез един и същ интерфейс</div>
-                <div class="option" data-value="Б" onclick="selectOption(3, 'Б')">Б) Използване на множество копия на един и същ метод за по-бърза обработка</div>
-                <div class="option" data-value="В" onclick="selectOption(3, 'В')">В) Създаване на различни имена на методи които изпълняват едно и също действие</div>
-                <div class="option" data-value="Г" onclick="selectOption(3, 'Г')">Г) Организиране на кодът в различни папки и файлове</div>
-            </div>
-            <button class="submit-btn" id="submitBtn3" onclick="submitAnswer(3)" disabled>Изпрати отговор</button>
-            <button class="show-answer-btn" onclick="showAnswer(3)">Покажи отговора</button>
-            <div class="answer" id="answer3">
-                <strong>Правилен отговор: А</strong><br>
-                Полиморфизмът позволява различни класове да имплементират един и същ интерфейс или методи по различен начин.
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput2" placeholder="Номер на ученик">
+                    <button class="add-student-btn" onclick="addStudent(2)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList2"></div>
             </div>
         </div>
 
         <div class="question" data-correct="Г">
-            <div class="question-number">Въпрос 4</div>
-            <div class="question-text">Какво е разликата между абстрактен клас и обикновен клас?</div>
+            <div class="question-number">Въпрос 3</div>
+            <div class="question-text">Кой протокол използва порт 443 по подразбиране?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(4, 'А')">А) Няма разлика - те са абсолютно еднакви</div>
-                <div class="option" data-value="Б" onclick="selectOption(4, 'Б')">Б) Абстрактният клас съдържа само данни, а обикновеният клас - само методи</div>
-                <div class="option" data-value="В" onclick="selectOption(4, 'В')">В) Обикновеният клас не може да бъде инстанциран, докато абстрактният може</div>
-                <div class="option" data-value="Г" onclick="selectOption(4, 'Г')">Г) Не можем да създаваме обекти от абстрактен клас, трябва да го наследяваме</div>
+                <div class="option" data-value="А" onclick="selectOption(3, 'А')">А) HTTP</div>
+                <div class="option" data-value="Б" onclick="selectOption(3, 'Б')">Б) FTP</div>
+                <div class="option" data-value="В" onclick="selectOption(3, 'В')">В) SSH</div>
+                <div class="option" data-value="Г" onclick="selectOption(3, 'Г')">Г) HTTPS</div>
             </div>
-            <button class="submit-btn" id="submitBtn4" onclick="submitAnswer(4)" disabled>Изпрати отговор</button>
-            <button class="show-answer-btn" onclick="showAnswer(4)">Покажи отговора</button>
+            <button class="submit-btn" id="submitBtn3" onclick="submitAnswer(3)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback3"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(3)">Покажи отговора</button>
+            <div class="answer" id="answer3">
+                <strong>Правилен отговор: Г) HTTPS</strong>
+                <p>HTTPS е криптиран HTTP трафик върху TLS/SSL през порт 443.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput3" placeholder="Номер на ученик">
+                    <button class="add-student-btn" onclick="addStudent(3)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList3"></div>
+            </div>
+        </div>
+
+        <div class="question" data-correct="А">
+            <div class="question-number">Въпрос 4</div>
+            <div class="question-text">Кой слой от OSI модела включва IP и маршрутизация?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(4, 'А')">А) Мрежов слой (Layer 3)</div>
+                <div class="option" data-value="Б" onclick="selectOption(4, 'Б')">Б) Транспортен слой (Layer 4)</div>
+                <div class="option" data-value="В" onclick="selectOption(4, 'В')">В) Канален слой (Layer 2)</div>
+                <div class="option" data-value="Г" onclick="selectOption(4, 'Г')">Г) Приложен слой (Layer 7)</div>
+            </div>
+            <button class="submit-btn" id="submitBtn4" onclick="submitAnswer(4)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback4"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(4)">Покажи отговора</button>
             <div class="answer" id="answer4">
-                <strong>Правилен отговор: Г</strong><br>
-                Абстрактните класове не могат да бъдат инстанцирани. Те служат като базови класове с обща логика.
+                <strong>Правилен отговор: А) Мрежов слой</strong>
+                <p>IP, маршрутизиране и логическо адресиране са на Layer 3.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput4" placeholder="Номер на ученик">
+                    <button class="add-student-btn" onclick="addStudent(4)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList4"></div>
             </div>
         </div>
 
         <div class="question" data-correct="Б">
             <div class="question-number">Въпрос 5</div>
-            <div class="question-text">Какво е разликата между интерфейс и абстрактен клас?</div>
+            <div class="question-text">ARP протоколът служи за:</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(5, 'А')">А) Интерфейсите съдържат само данни, а абстрактните класове - методи</div>
-                <div class="option" data-value="Б" onclick="selectOption(5, 'Б')">Б) Клас може да имплементира множество интерфейси, но може да наследява само един абстрактен клас</div>
-                <div class="option" data-value="В" onclick="selectOption(5, 'В')">В) Интерфейсите могат да бъдат инстанцирани директно, а абстрактните класове не</div>
-                <div class="option" data-value="Г" onclick="selectOption(5, 'Г')">Г) Абстрактните класове могат да бъдат инстанцирани, а интерфейсите не</div>
+                <div class="option" data-value="А" onclick="selectOption(5, 'А')">А) Откриване на IP по домейн име</div>
+                <div class="option" data-value="Б" onclick="selectOption(5, 'Б')">Б) Откриване на MAC адрес по IP адрес</div>
+                <div class="option" data-value="В" onclick="selectOption(5, 'В')">В) Криптиране на мрежовия трафик</div>
+                <div class="option" data-value="Г" onclick="selectOption(5, 'Г')">Г) Компресиране на данните</div>
             </div>
-            <button class="submit-btn" id="submitBtn5" onclick="submitAnswer(5)" disabled>Изпрати отговор</button>
-            <button class="show-answer-btn" onclick="showAnswer(5)">Покажи отговора</button>
+            <button class="submit-btn" id="submitBtn5" onclick="submitAnswer(5)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback5"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(5)">Покажи отговора</button>
             <div class="answer" id="answer5">
-                <strong>Правилен отговор: Б</strong><br>
-                Класовете могат да имплементират множество интерфейси, но само един клас може да се наследява. C# поддържа множествено наследяване чрез интерфейси.
+                <strong>Правилен отговор: Б) Откриване на MAC по IP</strong>
+                <p>ARP работи на Layer 2/3 границата за адресна резолюция в локална мрежа.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput5" placeholder="Номер на ученик">
+                    <button class="add-student-btn" onclick="addStudent(5)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList5"></div>
             </div>
         </div>
 
         <div class="question" data-correct="В">
             <div class="question-number">Въпрос 6</div>
-            <div class="question-text">Какво е конструктор в клас?</div>
+            <div class="question-text">Кое твърдение за UDP е вярно?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(6, 'А')">А) Метод който унищожава обект и освобождава паметта</div>
-                <div class="option" data-value="Б" onclick="selectOption(6, 'Б')">Б) Свойство което използваме за достъп до private полета</div>
-                <div class="option" data-value="В" onclick="selectOption(6, 'В')">В) Специален метод който инициализира обект при създаването му</div>
-                <div class="option" data-value="Г" onclick="selectOption(6, 'Г')">Г) Метод което връща текущия обект на класа</div>
+                <div class="option" data-value="А" onclick="selectOption(6, 'А')">А) Винаги гарантира ред и доставка</div>
+                <div class="option" data-value="Б" onclick="selectOption(6, 'Б')">Б) Използва тройно ръкостискане (3-way handshake)</div>
+                <div class="option" data-value="В" onclick="selectOption(6, 'В')">В) Безсесийно и без гаранция за доставка</div>
+                <div class="option" data-value="Г" onclick="selectOption(6, 'Г')">Г) Използва TLS по подразбиране</div>
             </div>
-            <button class="submit-btn" id="submitBtn6" onclick="submitAnswer(6)" disabled>Изпрати отговор</button>
-            <button class="show-answer-btn" onclick="showAnswer(6)">Покажи отговора</button>
+            <button class="submit-btn" id="submitBtn6" onclick="submitAnswer(6)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback6"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(6)">Покажи отговора</button>
             <div class="answer" id="answer6">
-                <strong>Правилен отговор: В</strong><br>
-                Конструкторът е метод със същото име като класа, който се извиква автоматично при създаването на обект и инициализира полетата.
+                <strong>Правилен отговор: В) Безсесийно</strong>
+                <p>UDP е лек протокол без гаранции; подходящ за време-чувствителни приложения.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput6" placeholder="Номер на ученик">
+                    <button class="add-student-btn" onclick="addStudent(6)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList6"></div>
             </div>
         </div>
 
         <div class="question" data-correct="А">
             <div class="question-number">Въпрос 7</div>
-            <div class="question-text">Какво е разликата между virtual и override ключовите думи?</div>
+            <div class="question-text">Кой е основен компонент на мрежова операционна система (NOS)?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(7, 'А')">А) virtual се използва в базовия клас за да позволи презаписване, а override - в производния клас за да презапише метода</div>
-                <div class="option" data-value="Б" onclick="selectOption(7, 'Б')">Б) Няма разлика - и двете правят същото нещо</div>
-                <div class="option" data-value="В" onclick="selectOption(7, 'В')">В) virtual се използва само за статични методи, а override - за обикновени</div>
-                <div class="option" data-value="Г" onclick="selectOption(7, 'Г')">Г) override се използва в базовия клас, а virtual - в производния</div>
+                <div class="option" data-value="А" onclick="selectOption(7, 'А')">А) Директория услуги (Directory Services) – потребители, групи, политики</div>
+                <div class="option" data-value="Б" onclick="selectOption(7, 'Б')">Б) Комpилатор за C/C++</div>
+                <div class="option" data-value="В" onclick="selectOption(7, 'В')">В) Драйвер за графична карта</div>
+                <div class="option" data-value="Г" onclick="selectOption(7, 'Г')">Г) Видео редактор</div>
             </div>
-            <button class="submit-btn" id="submitBtn7" onclick="submitAnswer(7)" disabled>Изпрати отговор</button>
-            <button class="show-answer-btn" onclick="showAnswer(7)">Покажи отговора</button>
+            <button class="submit-btn" id="submitBtn7" onclick="submitAnswer(7)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback7"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(7)">Покажи отговора</button>
             <div class="answer" id="answer7">
-                <strong>Правилен отговор: А</strong><br>
-                virtual маркира метод като пренаписваем в базовия клас, докато override се използва в производния за реално презаписване. Това е основата на runtime polymorphism.
+                <strong>Правилен отговор: А) Директория услуги</strong>
+                <p>NOS управлява потребители, групи, права за достъп и политики в мрежа.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput7" placeholder="Номер на ученик">
+                    <button class="add-student-btn" onclick="addStudent(7)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList7"></div>
             </div>
         </div>
 
         <div class="question" data-correct="Г">
             <div class="question-number">Въпрос 8</div>
-            <div class="question-text">Какво е разликата между статично поле и обикновено поле?</div>
+            <div class="question-text">Коя функция е типична за домейн контролер (Windows Server/Active Directory)?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(8, 'А')">А) Статичното поле е променлива, а обикновеното - константа</div>
-                <div class="option" data-value="Б" onclick="selectOption(8, 'Б')">Б) Няма разлика - правят абсолютно същото нещо</div>
-                <div class="option" data-value="В" onclick="selectOption(8, 'В')">В) Статичното поле принадлежи на конкретен обект, обикновеното - на всички обекти</div>
-                <div class="option" data-value="Г" onclick="selectOption(8, 'Г')">Г) Статичното поле е споделено между всички обекти от класа, обикновеното принадлежи на конкретен обект</div>
+                <div class="option" data-value="А" onclick="selectOption(8, 'А')">А) Рендериране на 3D графика</div>
+                <div class="option" data-value="Б" onclick="selectOption(8, 'Б')">Б) Видео стрийминг</div>
+                <div class="option" data-value="В" onclick="selectOption(8, 'В')">В) Локален печат</div>
+                <div class="option" data-value="Г" onclick="selectOption(8, 'Г')">Г) Централизирана автентикация и групови политики</div>
             </div>
-            <button class="submit-btn" id="submitBtn8" onclick="submitAnswer(8)" disabled>Изпрати отговор</button>
-            <button class="show-answer-btn" onclick="showAnswer(8)">Покажи отговора</button>
+            <button class="submit-btn" id="submitBtn8" onclick="submitAnswer(8)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback8"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(8)">Покажи отговора</button>
             <div class="answer" id="answer8">
-                <strong>Правилен отговор: Г</strong><br>
-                Статично поле принадлежи на класа и се споделя от всички обекти. Обикновеното поле е уникално за всеки обект.
+                <strong>Правилен отговор: Г) Централизирана автентикация</strong>
+                <p>Домейн контролер управлява вход, права, политики и ресурси за домейн.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput8" placeholder="Номер на ученик">
+                    <button class="add-student-btn" onclick="addStudent(8)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList8"></div>
             </div>
         </div>
 
         <div class="question" data-correct="Б">
             <div class="question-number">Въпрос 9</div>
-            <div class="question-text">Какво представлява свойството (property) в C#?</div>
+            <div class="question-text">Кой протокол е подходящ за отдалечено администриране на сървъри по сигурен начин?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(9, 'А')">А) Поле което може да съдържа само числа</div>
-                <div class="option" data-value="Б" onclick="selectOption(9, 'Б')">Б) Специален тип член на класа, който предоставя контролиран достъп до private полета</div>
-                <div class="option" data-value="В" onclick="selectOption(9, 'В')">В) Метод който не изпълнява никакви действия</div>
-                <div class="option" data-value="Г" onclick="selectOption(9, 'Г')">Г) Име на клас в друг namespace</div>
+                <div class="option" data-value="А" onclick="selectOption(9, 'А')">А) Telnet</div>
+                <div class="option" data-value="Б" onclick="selectOption(9, 'Б')">Б) SSH</div>
+                <div class="option" data-value="В" onclick="selectOption(9, 'В')">В) FTP</div>
+                <div class="option" data-value="Г" onclick="selectOption(9, 'Г')">Г) HTTP</div>
             </div>
-            <button class="submit-btn" id="submitBtn9" onclick="submitAnswer(9)" disabled>Изпрати отговор</button>
-            <button class="show-answer-btn" onclick="showAnswer(9)">Покажи отговора</button>
+            <button class="submit-btn" id="submitBtn9" onclick="submitAnswer(9)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback9"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(9)">Покажи отговора</button>
             <div class="answer" id="answer9">
-                <strong>Правилен отговор: Б</strong><br>
-                Свойството е механизъм за контролиран достъп до private полета. То има get и set достъпори с допълнителна логика, част от инкапсулацията.
+                <strong>Правилен отговор: Б) SSH</strong>
+                <p>SSH криптира връзката и е стандарт за защитен отдалечен достъп.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput9" placeholder="Номер на ученик">
+                    <button class="add-student-btn" onclick="addStudent(9)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList9"></div>
             </div>
         </div>
 
         <div class="question" data-correct="В">
             <div class="question-number">Въпрос 10</div>
-            <div class="question-text">Какви са модификаторите за достъп и коя е тяхната йерархия според ограниченията?</div>
+            <div class="question-text">Кое е най-доброто първоначално действие при подозрение за зловреден софтуер на работна станция?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(10, 'А')">А) public - най-ограничен, private - най-отворен</div>
-                <div class="option" data-value="Б" onclick="selectOption(10, 'Б')">Б) private - споделя между всички класове, protected - само в рамките на класа</div>
-                <div class="option" data-value="В" onclick="selectOption(10, 'В')">В) private - най-ограничен (само в рамките на класа), protected - за наследниците, public - достъпен навсякъде</div>
-                <div class="option" data-value="Г" onclick="selectOption(10, 'Г')">Г) protected - достъпен само извън класа, public - само за наследниците</div>
+                <div class="option" data-value="А" onclick="selectOption(10, 'А')">А) Игнориране – вероятно е фалшива тревога</div>
+                <div class="option" data-value="Б" onclick="selectOption(10, 'Б')">Б) Незабавна преинсталация на ОС</div>
+                <div class="option" data-value="В" onclick="selectOption(10, 'В')">В) Изолиране от мрежата и сканиране с антивирус</div>
+                <div class="option" data-value="Г" onclick="selectOption(10, 'Г')">Г) Изпращане на имейл до всички колеги</div>
             </div>
-            <button class="submit-btn" id="submitBtn10" onclick="submitAnswer(10)" disabled>Изпрати отговор</button>
-            <button class="show-answer-btn" onclick="showAnswer(10)">Покажи отговора</button>
+            <button class="submit-btn" id="submitBtn10" onclick="submitAnswer(10)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback10"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(10)">Покажи отговора</button>
             <div class="answer" id="answer10">
-                <strong>Правилен отговор: В</strong><br>
-                private е най-ограничен - само в същия клас. protected е за наследниците. public е достъпен навсякъде. Това е основен механизъм за инкапсулация.
+                <strong>Правилен отговор: В) Изолиране и сканиране</strong>
+                <p>Изолирането предотвратява разпространение; сканирането потвърждава и подпомага премахване.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput10" placeholder="Номер на ученик">
+                    <button class="add-student-btn" onclick="addStudent(10)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList10"></div>
             </div>
         </div>
 
         <div class="question" data-correct="А">
             <div class="question-number">Въпрос 11</div>
-            <div class="question-text">Какво представлява абстракцията в ООП?</div>
+            <div class="question-text">Коя е най-силната форма на автентикация от изброените?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(11, 'А')">А) Създаване на упростена версия на сложна система, която показва само важните детайли</div>
-                <div class="option" data-value="Б" onclick="selectOption(11, 'Б')">Б) Добавяне на повече код и сложност в програмата за подобряване на производителността</div>
-                <div class="option" data-value="В" onclick="selectOption(11, 'В')">В) Премахване на всички методи от класа, оставяйки само полетата</div>
-                <div class="option" data-value="Г" onclick="selectOption(11, 'Г')">Г) Компилиране на код в байт код за по-бързо изпълнение</div>
+                <div class="option" data-value="А" onclick="selectOption(11, 'А')">А) Многофакторна (MFA)</div>
+                <div class="option" data-value="Б" onclick="selectOption(11, 'Б')">Б) Само парола</div>
+                <div class="option" data-value="В" onclick="selectOption(11, 'В')">В) Само PIN код</div>
+                <div class="option" data-value="Г" onclick="selectOption(11, 'Г')">Г) Само имейл потвърждение</div>
             </div>
-            <button class="submit-btn" id="submitBtn11" onclick="submitAnswer(11)" disabled>Изпрати отговор</button>
-            <button class="show-answer-btn" onclick="showAnswer(11)">Покажи отговора</button>
+            <button class="submit-btn" id="submitBtn11" onclick="submitAnswer(11)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback11"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(11)">Покажи отговора</button>
             <div class="answer" id="answer11">
-                <strong>Правилен отговор: А</strong><br>
-                Абстракцията позволява да се фокусираме върху важните аспекти, скривайки ненужните детайли чрез абстрактни класове и интерфейси.
+                <strong>Правилен отговор: А) MFA</strong>
+                <p>Комбинирането на фактори (знание, притежание, биометрия) значително повишава сигурността.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput11" placeholder="Номер на ученик">
+                    <button class="add-student-btn" onclick="addStudent(11)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList11"></div>
             </div>
         </div>
 
         <div class="question" data-correct="Г">
             <div class="question-number">Въпрос 12</div>
-            <div class="question-text">Какво е основната цел на ООП принципите?</div>
+            <div class="question-text">Кое описание най-точно отговаря на компютърен червей (worm)?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(12, 'А')">А) Намаляване на броя реда код в програмата</div>
-                <div class="option" data-value="Б" onclick="selectOption(12, 'Б')">Б) Увеличаване на скоростта на изпълнение на програмата</div>
-                <div class="option" data-value="В" onclick="selectOption(12, 'В')">В) Ограничаване на използваната памет</div>
-                <div class="option" data-value="Г" onclick="selectOption(12, 'Г')">Г) Създаване на структуриран, поддържаем и преизползваем код</div>
+                <div class="option" data-value="А" onclick="selectOption(12, 'А')">А) Нуждае се от носител (host file) за да се активира</div>
+                <div class="option" data-value="Б" onclick="selectOption(12, 'Б')">Б) Показва само реклами, без да се разпространява</div>
+                <div class="option" data-value="В" onclick="selectOption(12, 'В')">В) Заразява BIOS</div>
+                <div class="option" data-value="Г" onclick="selectOption(12, 'Г')">Г) Самостоятелно се разпространява по мрежата</div>
             </div>
-            <button class="submit-btn" id="submitBtn12" onclick="submitAnswer(12)" disabled>Изпрати отговор</button>
-            <button class="show-answer-btn" onclick="showAnswer(12)">Покажи отговора</button>
+            <button class="submit-btn" id="submitBtn12" onclick="submitAnswer(12)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback12"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(12)">Покажи отговора</button>
             <div class="answer" id="answer12">
-                <strong>Правилен отговор: Г</strong><br>
-                ООП принципите помагат за създаване на структуриран, поддържаем и преизползваем код. Програмите стават по-лесни за поддръжка и разширяване.
+                <strong>Правилен отговор: Г) Самостоятелно разпространение</strong>
+                <p>Червеите се разпространяват без потребителска намеса, често използвайки уязвимости.</p>
             </div>
-        </div>
-
-        <div class="question" data-correct="В">
-            <div class="question-number">Въпрос 13</div>
-            <div class="question-text">Какво е деструктор в клас?</div>
-            <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(13, 'А')">А) Метод който създава нов обект от класа</div>
-                <div class="option" data-value="Б" onclick="selectOption(13, 'Б')">Б) Свойство което използваме за достъп до private полета</div>
-                <div class="option" data-value="В" onclick="selectOption(13, 'В')">В) Специален метод който се извиква при унищожаване на обекта</div>
-                <div class="option" data-value="Г" onclick="selectOption(13, 'Г')">Г) Метод който връща текущия обект на класа</div>
-            </div>
-            <button class="submit-btn" id="submitBtn13" onclick="submitAnswer(13)" disabled>Изпрати отговор</button>
-            <button class="show-answer-btn" onclick="showAnswer(13)">Покажи отговора</button>
-            <div class="answer" id="answer13">
-                <strong>Правилен отговор: В</strong><br>
-                Деструкторът е метод със име ~ClassName(), който се извиква автоматично при унищожаване на обекта. Той се използва за почистване на ресурси и освобождаване на памет.
-            </div>
-        </div>
-
-        <div class="question" data-correct="А">
-            <div class="question-number">Въпрос 14</div>
-            <div class="question-text">Какво е разликата между статичен метод и обикновен метод?</div>
-            <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(14, 'А')">А) Статичният метод принадлежи на класа, обикновеният - на конкретен обект</div>
-                <div class="option" data-value="Б" onclick="selectOption(14, 'Б')">Б) Няма разлика - правят абсолютно същото нещо</div>
-                <div class="option" data-value="В" onclick="selectOption(14, 'В')">В) Статичният метод принадлежи на конкретен обект, обикновеният - на класа</div>
-                <div class="option" data-value="Г" onclick="selectOption(14, 'Г')">Г) Статичният метод е по-бърз от обикновения</div>
-            </div>
-            <button class="submit-btn" id="submitBtn14" onclick="submitAnswer(14)" disabled>Изпрати отговор</button>
-            <button class="show-answer-btn" onclick="showAnswer(14)">Покажи отговора</button>
-            <div class="answer" id="answer14">
-                <strong>Правилен отговор: А</strong><br>
-                Статичният метод принадлежи на класа и може да се извиква без създаване на обект. Обикновеният метод принадлежи на конкретен обект и се извиква чрез инстанция на класа.
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput12" placeholder="Номер на ученик">
+                    <button class="add-student-btn" onclick="addStudent(12)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList12"></div>
             </div>
         </div>
 
         <div class="question" data-correct="Б">
-            <div class="question-number">Въпрос 15</div>
-            <div class="question-text">Какво е разликата между композиция и наследяване?</div>
+            <div class="question-number">Въпрос 13</div>
+            <div class="question-text">Коя практика е най-ефективна срещу фишинг имейли?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(15, 'А')">А) Няма разлика - и двете правят същото нещо</div>
-                <div class="option" data-value="Б" onclick="selectOption(15, 'Б')">Б) Композицията е "has-a" връзка, наследяването е "is-a" връзка</div>
-                <div class="option" data-value="В" onclick="selectOption(15, 'В')">В) Композицията е по-бърза от наследяването</div>
-                <div class="option" data-value="Г" onclick="selectOption(15, 'Г')">Г) Наследяването е по-лесно за използване от композицията</div>
+                <div class="option" data-value="А" onclick="selectOption(13, 'А')">А) Отваряне на всички прикачени файлове за да се провери съдържанието</div>
+                <div class="option" data-value="Б" onclick="selectOption(13, 'Б')">Б) Проверка на домейна/адреса и съмнителни линкове преди клик</div>
+                <div class="option" data-value="В" onclick="selectOption(13, 'В')">В) Отговор с лични данни за потвърждение</div>
+                <div class="option" data-value="Г" onclick="selectOption(13, 'Г')">Г) Инсталиране на повече плъгини в браузъра</div>
             </div>
-            <button class="submit-btn" id="submitBtn15" onclick="submitAnswer(15)" disabled>Изпрати отговор</button>
-            <button class="show-answer-btn" onclick="showAnswer(15)">Покажи отговора</button>
-            <div class="answer" id="answer15">
-                <strong>Правилен отговор: Б</strong><br>
-                Композицията е "has-a" връзка (класът съдържа друг клас като член), докато наследяването е "is-a" връзка (производният клас е специален случай на базовия клас).
+            <button class="submit-btn" id="submitBtn13" onclick="submitAnswer(13)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback13"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(13)">Покажи отговора</button>
+            <div class="answer" id="answer13">
+                <strong>Правилен отговор: Б) Проверка на домейна/линковете</strong>
+                <p>Винаги валидирайте подателя и URL адресите; не споделяйте лични данни.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput13" placeholder="Номер на ученик">
+                    <button class="add-student-btn" onclick="addStudent(13)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList13"></div>
             </div>
         </div>
 
         <div class="question" data-correct="В">
-            <div class="question-number">Въпрос 16</div>
-            <div class="question-text">Какво представляват generics в C#?</div>
+            <div class="question-number">Въпрос 14</div>
+            <div class="question-text">Коя е основна функция на защитната стена (Firewall)?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(16, 'А')">А) Класове които съдържат само статични методи</div>
-                <div class="option" data-value="Б" onclick="selectOption(16, 'Б')">Б) Класове които не могат да бъдат инстанцирани</div>
-                <div class="option" data-value="В" onclick="selectOption(16, 'В')">В) Класове които могат да работят с различни типове данни</div>
-                <div class="option" data-value="Г" onclick="selectOption(16, 'Г')">Г) Класове които наследяват от множество базови класове</div>
+                <div class="option" data-value="А" onclick="selectOption(14, 'А')">А) Архивиране на данни</div>
+                <div class="option" data-value="Б" onclick="selectOption(14, 'Б')">Б) Ускоряване на Интернет</div>
+                <div class="option" data-value="В" onclick="selectOption(14, 'В')">В) Филтриране на трафик по правила</div>
+                <div class="option" data-value="Г" onclick="selectOption(14, 'Г')">Г) Управление на печат</div>
             </div>
-            <button class="submit-btn" id="submitBtn16" onclick="submitAnswer(16)" disabled>Изпрати отговор</button>
-            <button class="show-answer-btn" onclick="showAnswer(16)">Покажи отговора</button>
-            <div class="answer" id="answer16">
-                <strong>Правилен отговор: В</strong><br>
-                Generics в C# позволяват създаване на генерични класове, методи и интерфейси, които могат да работят с различни типове данни. Те осигуряват типова сигурност и преизползваемост на кода.
+            <button class="submit-btn" id="submitBtn14" onclick="submitAnswer(14)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback14"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(14)">Покажи отговора</button>
+            <div class="answer" id="answer14">
+                <strong>Правилен отговор: В) Филтриране по правила</strong>
+                <p>Firewall прилага политики за входящ и изходящ трафик по портове/протоколи/адреси.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput14" placeholder="Номер на ученик">
+                    <button class="add-student-btn" onclick="addStudent(14)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList14"></div>
             </div>
         </div>
 
-        
-<div class="statistics" id="statisticsSection">
+        <div class="question" data-correct="Г">
+            <div class="question-number">Въпрос 15</div>
+            <div class="question-text">Какво е ransomware?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(15, 'А')">А) Софтуер за легално архивиране</div>
+                <div class="option" data-value="Б" onclick="selectOption(15, 'Б')">Б) Инструмент за оптимизация на мрежата</div>
+                <div class="option" data-value="В" onclick="selectOption(15, 'В')">В) Нечервей, който не се разпространява</div>
+                <div class="option" data-value="Г" onclick="selectOption(15, 'Г')">Г) Зловреден софтуер, криптиращ данни и изискващ откуп</div>
+            </div>
+            <button class="submit-btn" id="submitBtn15" onclick="submitAnswer(15)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback15"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(15)">Покажи отговора</button>
+            <div class="answer" id="answer15">
+                <strong>Правилен отговор: Г) Криптира данни за откуп</strong>
+                <p>Ransomware блокира достъпа до файлове и изисква заплащане за възстановяване.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput15" placeholder="Номер на ученик">
+                    <button class="add-student-btn" onclick="addStudent(15)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList15"></div>
+            </div>
+        </div>
+
+        <div class="question" data-correct="А">
+            <div class="question-number">Въпрос 16</div>
+            <div class="question-text">Коя комбинация е добра практика за твърдяване (hardening) на мрежова ОС?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(16, 'А')">А) Обновления, силни пароли, минимални права, firewall</div>
+                <div class="option" data-value="Б" onclick="selectOption(16, 'Б')">Б) Деактивиране на защитата по подразбиране</div>
+                <div class="option" data-value="В" onclick="selectOption(16, 'В')">В) Споделяне на администраторската парола</div>
+                <div class="option" data-value="Г" onclick="selectOption(16, 'Г')">Г) Изключване на логването за по-добра производителност</div>
+            </div>
+            <button class="submit-btn" id="submitBtn16" onclick="submitAnswer(16)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback16"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(16)">Покажи отговора</button>
+            <div class="answer" id="answer16">
+                <strong>Правилен отговор: А) Обновления, силни пароли, минимални права, firewall</strong>
+                <p>Системното твърдяване намалява повърхността за атака чрез политики и контрол.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput16" placeholder="Номер на ученик">
+                    <button class="add-student-btn" onclick="addStudent(16)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList16"></div>
+            </div>
+        </div>
+
+        <div class="statistics" id="statisticsSection">
             <h2>📊 Статистика на учениците</h2>
             <div class="stats-content" id="statsContent">
                 <p style="text-align: center; color: #666;">Статистиката ще се появи когато започнете да добавяте ученици...</p>
@@ -499,10 +642,7 @@
                 selectedOption.classList.add('selected');
                 selectedAnswers[questionNumber] = value;
                 const submitBtn = document.getElementById(`submitBtn${questionNumber}`);
-                if (submitBtn) { 
-                    submitBtn.style.display = 'inline-block';
-                    submitBtn.disabled = false;
-                }
+                if (submitBtn) { submitBtn.style.display = 'inline-block'; }
             }
         }
 
@@ -525,7 +665,7 @@
                 feedback.style.display = 'block';
                 if (isCorrect) {
                     feedback.className = 'answer-feedback correct';
-                    feedback.innerHTML = `✓ ${getRandomMotivation()}`;
+                    feedback.innerHTML = '✓ Правилен отговор! Отлично! 🎉';
                     showCelebration();
                     showMotivationMessage(getRandomMotivation());
                     createConfetti();
@@ -537,15 +677,6 @@
             const submitBtn = document.getElementById(`submitBtn${questionNumber}`);
             if (submitBtn) { submitBtn.style.display = 'none'; }
             submittedQuestions.add(questionNumber);
-            
-            // Записване на отговора в статистиката
-            if (currentMode.value === 'individual' && currentStudent.number !== null) {
-                if (!studentAnswers[questionNumber]) { studentAnswers[questionNumber] = []; }
-                if (isCorrect && !studentAnswers[questionNumber].includes(currentStudent.number.toString())) {
-                    studentAnswers[questionNumber].push(currentStudent.number.toString());
-                }
-                updateCurrentStudentInfo();
-            }
             if (isCorrect && currentStudent.number) {
                 if (!studentAnswers[questionNumber]) { studentAnswers[questionNumber] = []; }
                 if (!studentAnswers[questionNumber].includes(currentStudent.number.toString())) {
@@ -788,3 +919,5 @@
     </script>
 </body>
 </html>
+
+
