@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="bg">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Създаване на дигитално съдържание с изкуствен интелект</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #17a2b8;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #17a2b8;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+        }
+        
+        ul {
+            margin: 15px 0;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        code {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            margin: 15px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        
+        .example {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+        }
+        
+        .important {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid #dc3545;
+            margin: 15px 0;
+        }
+        
+        .programming {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid #2196f3;
+            margin: 15px 0;
+        }
+        
+        .console {
+            background-color: #f3e5f5;
+            padding: 15px;
+            border-left: 4px solid #9c27b0;
+            margin: 15px 0;
+        }
+        
+        .steps {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+        }
+        
+        strong {
+            color: #2c3e50;
+        }
+        
+        .section-number {
+            color: #17a2b8;
+            font-weight: bold;
+        }
+        
+        .console-output {
+            background-color: #1e1e1e;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            border: 2px solid #333;
+        }
+        
+        .no-break {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .test-item::after {
+            content: ' ★';
+            color: #17a2b8;
+            font-weight: bold;
+        }
+        
+        .test-title::after {
+            content: ' ★';
+            color: #17a2b8;
+            font-weight: bold;
+        }
+        
+        .ai-tool {
+            background-color: #e1f5fe;
+            padding: 10px;
+            border-left: 3px solid #0288d1;
+            margin: 8px 0;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+            .example, .highlight, .important, .programming, .console, .steps, h2 {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Създаване на дигитално съдържание с изкуствен интелект (AI)</h1>
+
+        <h2><span class="section-number">1. Какво е изкуствен интелект (AI)?</span></h2>
+        <div class="programming no-break">
+            <p class="test-item"><strong>Изкуственият интелект (AI)</strong> е способността на машините да имитират човешки интелект и да извършват задачи като разпознаване на образци, обработка на естествен език и генериране на съдържание. В контекста на създаване на дигитално съдържание, AI може да помага за писане на текстове, генериране на изображения, създаване на аудио и видео.</p>
+        </div>
+        
+        <div class="highlight no-break">
+            <h4>Какво може AI да създава?</h4>
+            <ul>
+                <li class="test-item"><strong>Текстово съдържание</strong> - статии, блогове, постове, преводи</li>
+                <li class="test-item"><strong>Изображения</strong> - снимки, илюстрации, дизайни от текстово описание</li>
+                <li class="test-item"><strong>Аудио</strong> - глас, музика, звукови ефекти, подкастове</li>
+                <li class="test-item"><strong>Видео</strong> - анимации, клипове, монтаж, субтитри</li>
+                <li class="test-item"><strong>Код</strong> - програмиране, дебъгване, документация</li>
+                <li class="test-item"><strong>Мултимедия</strong> - презентации, инфографики, интерактивни съдържания</li>
+            </ul>
+        </div>
+
+        <h2 class="test-title">2. Популярни AI инструменти за създаване на съдържание</span></h2>
+        <div class="console no-break">
+            <h4>AI инструменти за текстово съдържание:</h4>
+            <ul>
+                <li class="test-item"><strong>ChatGPT</strong> - най-популярният AI асистент за писане и генериране на текстове</li>
+                <li class="test-item"><strong>Claude (Anthropic)</strong> - конкурент на ChatGPT с фокус върху безопасността</li>
+                <li class="test-item"><strong>Jasper AI</strong> - специализиран за маркетингови текстове</li>
+                <li class="test-item"><strong>Copy.ai</strong> - бързо генериране на текст за реклами и постове</li>
+                <li class="test-item"><strong>Grammarly</strong> - AI асистирана граматика и стил</li>
+                <li class="test-item"><strong>QuillBot</strong> - преформулиране на текстове</li>
+            </ul>
+        </div>
+
+        <div class="example no-break">
+            <h4>AI инструменти за изображения:</h4>
+            <ul>
+                <li class="test-item"><strong>DALL-E 3</strong> - генериране на висококачествени изображения от текст</li>
+                <li class="test-item"><strong>Midjourney</strong> - професионално качество на генерирани изображения</li>
+                <li class="test-item"><strong>Stable Diffusion</strong> - отворен модел за AI изображения</li>
+                <li class="test-item"><strong>Adobe Firefly</strong> - интегриран в Adobe Creative Cloud</li>
+                <li class="test-item"><strong>Leonardo.ai</strong> - безплатен алтернатива за AI изображения</li>
+                <li class="test-item"><strong>Canva Magic Design</strong> - автоматично генериране на графичен дизайн</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">3. Създаване на текст с AI</span></h2>
+        <div class="programming no-break">
+            <h4>Как да използваме AI за писане на текстове:</h4>
+            <ol>
+                <li class="test-item"><strong>Промпт инженеринг</strong> - формулирайте ясни и конкретни искания</li>
+                <li class="test-item"><strong>Предоставете контекст</strong> - обяснете целта и целевата аудитория</li>
+                <li class="test-item"><strong>Итерирайте</strong> - подобрявайте резултата с допълнителни промптове</li>
+                <li class="test-item"><strong>Редактирайте</strong> - AI е инструмент, прегладайте</li>
+            </ol>
+        </div>
+
+        <div class="example no-break">
+            <h4>Примерни промптове за различни задачи:</h4>
+            <pre><code>Блог пост:
+"Напиши блог пост от 500 думи за важността на технологиите в образованието. 
+Насочи се към ученици. Използвай неформален тон."
+
+Структура на статия:
+"Създай план на статия за 'Ефекти от социалните мрежи върху 
+успеваемостта на учениците' с 5 основни секции."</code></pre>
+        </div>
+
+        <div class="steps no-break">
+            <h4>Стъпка по стъпка: Създаване на текст с ChatGPT</h4>
+            <ol>
+                <li class="test-item">Отидете на chat.openai.com</li>
+                <li class="test-item">Създайте акаунт или влезте</li>
+                <li class="test-item">Напишете детайлния си промпт в чата</li>
+                <li class="test-item">Чакайте AI да генерира съдържанието</li>
+                <li class="test-item">Прочете резултата и поискайте промени: "Направи го по-кратко" или "Добави повече примери"</li>
+                <li class="test-item">Копирайте финалния текст и редактирайте го според нуждите</li>
+            </ol>
+        </div>
+
+        <h2><span class="section-number">4. Генериране на изображения с AI</span></h2>
+        <div class="highlight no-break">
+            <h4>Техники за създаване на добри AI изображения:</h4>
+            <ul>
+                <li class="test-item"><strong>Бъдете специфични</strong> - включете детайли за стил, цветове, атмосфера</li>
+                <li class="test-item"><strong>Използвайте художествени стилове</strong> - "в стил на Ван Гог", "реалистично", "футуристично"</li>
+                <li class="test-item"><strong>Описвайте композицията</strong> -  "landscape", "централен фокус"</li>
+                <li class="test-item"><strong>Добавяйте технически детайли</strong> - "4K", "високо качество", "детайлно"</li>
+            </ul>
+        </div>
+
+        <div class="example no-break">
+            <h4>Примерни промптове за изображения:</h4>
+            <pre><code>Базов:
+"Една красива планина при залез"
+
+Подобрен:
+"Реалистична снимка на сняготокана планина Рила при залез среща, 
+високо качество, драматични цветове, 8K резолюция"
+
+Стилизиран:
+"Абстрактна илюстрация на космически пътешествие в стил научна фантастика, 
+неоново осветление, детайлно, цифрово изкуство"</code></pre>
+        </div>
+
+        <h2 class="test-title">5. AI за аудио съдържание</span></h2>
+        <div class="programming no-break">
+            <h4>AI инструменти за аудио:</h4>
+            <ul>
+                <li class="test-item"><strong>Murf.ai</strong> - AI текст към говор с различни гласове</li>
+                <li class="test-item"><strong>ElevenLabs</strong> - клониране на глас и естествен AI говорител</li>
+                <li class="test-item"><strong>Speechify</strong> - превърнете текст в естествен звук</li>
+                <li class="test-item"><strong>Suno AI</strong> - генериране на музика от текст</li>
+                <li class="test-item"><strong>AIVA</strong> - AI композитор за фонова музика</li>
+            </ul>
+        </div>
+
+        <div class="example no-break">
+            <h4>Практическа задача: </h4>
+            <pre><code>С Murf.ai:
+
+1. Отидете на murf.ai и създайте акаунт
+2. Кликнете "New Project" → "Text to Speech"
+3. Въведете текста за вашето съдържание
+4. Изберете глас (Bulgarian, English, etc.)
+5. Настройте тона и скоростта
+6. Генерирайте и изтеглете MP3 файла</code></pre>
+        </div>
+
+        <div class="console no-break">
+            <h4>Примерен използваем сценарий:</h4>
+            <ul>
+                <li class="test-item">Създаване на аудио версия на статия</li>
+                <li class="test-item">Автоматични подкастове от текстови материали</li>
+                <li class="test-item">Многоезични субтитри и озвучки</li>
+                <li class="test-item">Музикални срещания за видео проекти</li>
+            </ul>
+        </div>
+        <h2><span class="section-number">6. AI за кодиране и програмиране</span></h2>
+        <div class="programming no-break">
+            <h4>AI инструменти за програмиране:</h4>
+            <ul>
+                <li class="test-item"><strong>GitHub Copilot</strong> - AI кодов помощник в IDE</li>
+                <li class="test-item"><strong>ChatGPT Code Interpreter</strong> - изпълнение и анализ на код</li>
+                <li class="test-item"><strong>Cursor AI</strong> - интелигентен код редактор</li>
+                <li class="test-item"><strong>CodeWhisperer</strong> - AI кодов съветник от Amazon</li>
+                <li class="test-item"><strong>Blackbox AI</strong> - бързо откриване и копиране на код от Google</li>
+            </ul>
+        </div>
+
+        <div class="console no-break">
+            <h4>Как AI може да помогне в програмирането:</h4>
+            <ul>
+                <li class="test-item"><strong>Генериране на код</strong> - от дизайн към функционален код</li>
+                <li class="test-item"><strong>Debugging</strong> - намиране и поправяне на грешки</li>
+                <li class="test-item"><strong>Документация</strong> - автоматично създаване на обяснения</li>
+                <li class="test-item"><strong>Code review</strong> - преглед и съвети за подобряване</li>
+                <li class="test-item"><strong>Превод на код</strong> - конвертиране между езици за програмиране</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">7. Комбиниране на AI инструменти</span></h2>
+        <div class="example no-break">
+            <h4>Пълен AI workflow за мултимедиен проект:</h4>
+            <pre><code>Стъпка 1: Текст
+   ChatGPT → Напиши сценарий за 3 минути на видео
+
+Стъпка 2: Изображения  
+   DALL-E → Създай 5 ключови изображения за видео
+
+Стъпка 3: Аудио
+   Murf.ai → Преобразувай сценария в гласово озвучаване
+
+Стъпка 4: Субтитри
+   CapCut AI → Добави автоматични субтитри
+
+Стъпка 5: Финал
+   Комбинирай всичко в видео редактор</code></pre>
+        </div>
+
+        <div class="steps no-break">
+            <h4>Практическа задача: Създайте AI презентация</h4>
+            <ol>
+                <li class="test-item">С ChatGPT създайте текст за 5 слайда</li>
+                <li class="test-item">С Leonardo.ai генерирайте изображения за всеки слайд</li>
+                <li class="test-item">С Canva Magic Design направете графичен дизайн</li>
+                <li class="test-item">С Murf.ai добавете AI озвучаване</li>
+                <li class="test-item">С PowerPoint или Google Slides съберете всичко</li>
+            </ol>
+        </div>
+
+        <h2 class="test-title">8. Добри практики при използване на AI</span></h2>
+        <div class="important no-break">
+            <h4>Златни правила за използване на AI:</h4>
+            <ul>
+                <li class="test-item"><strong>Вие сте отговорният</strong> - AI е инструмент, вие решавате дали резултатът е добър</li>
+                <li class="test-item"><strong>Редактирайте винаги</strong> - никога не публикувайте директно от AI</li>
+                <li class="test-item"><strong>Проверете факти</strong> - AI може да създава неточности</li>
+                <li class="test-item"><strong>Цитирайте AI използването</strong> - етичното е да споменавате когато използвате AI</li>
+                <li class="test-item"><strong>Запазете авторството</strong> - AI помощникът не отменя нуждата от човешка креативност</li>
+            </ul>
+        </div>
+
+        <div class="highlight no-break">
+            <h4>Принципи за етично AI използване:</h4>
+            <ul>
+                <li class="test-item">Не използвайте AI за създаване на заблуждаващо съдържание</li>
+                <li class="test-item">Уважавайте авторски права и интелектуална собственост</li>
+                <li class="test-item">Бъдете прозрачни за използването на AI</li>
+                <li class="test-item">Не използвайте AI за измама или манипулация</li>
+                <li class="test-item">Тествайте и проверявайте всички AI генерирани резултати</li>
+            </ul>
+        </div>
+
+        
+        <h2><span class="section-number">9. Безплатни AI инструменти</span></h2>
+        <div class="console no-break">
+            <h4>Най-добрите безплатни AI инструменти:</h4>
+            <ul>
+                <li class="test-item"><strong>ChatGPT (базова версия)</strong> - безплатен план с ограничения</li>
+                <li class="test-item"><strong>Claude (Anthropic)</strong> - безплатен при достъп</li>
+                <li class="test-item"><strong>Leonardo.ai</strong> - 150 безплатни изображения дневно</li>
+                <li class="test-item"><strong>Stable Diffusion (Local)</strong> - инсталирайте локално</li>
+                <li class="test-item"><strong>CapCut</strong> - безплатен видео монтаж с AI функции</li>
+                <li class="test-item"><strong>Grammarly Free</strong> - базови AI предложения за граматика</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">10. Практическа задача: AI проект от начало до край</span></h2>
+        <div class="highlight no-break">
+            <h4>Стъпки за създаване на AI-допълнена презентация:</h4>
+        </div>
+
+        <div class="steps no-break">
+            <h4>Етап 1: Планиране (10 минути)</h4>
+            <ol>
+                <li class="test-item">Изберете тема (например: "Бъдещето на AI в образованието")</li>
+                <li class="test-item">Определете структурата: 5 слайда (Заглавие, Въведение, Основна част, Примери, Заключение)</li>
+                <li class="test-item">Планирайте кои AI инструменти ще използвате</li>
+            </ol>
+        </div>
+
+        <div class="steps no-break">
+            <h4>Етап 2: Генериране на текст (20 минути)</h4>
+            <ol>
+                <li class="test-item">Отворете ChatGPT и генерирайте текстове за всеки слайд</li>
+                <li class="test-item">Използвайте промпт: "Напиши смислено заглавие за слайд за [тема]"</li>
+                <li class="test-item">Създайте 2-3 ключови момента за всеки слайд</li>
+                <li class="test-item">Редактирайте и персонализирайте текста</li>
+            </ol>
+        </div>
+
+        <div class="steps no-break">
+            <h4>Етап 3: Създаване на изображения (20 минути)</h4>
+            <ol>
+                <li class="test-item">Отворете Leonardo.ai или DALL-E</li>
+                <li class="test-item">Генерирайте 1 ключово изображение за всяка секция</li>
+                <li class="test-item">Използвайте промптове свързани с вашата тема</li>
+                <li class="test-item">Изтеглете изображенията</li>
+            </ol>
+        </div>
+
+        <div class="steps no-break">
+            <h4>Етап 4: Дизайн на презентацията (20 минути)</h4>
+            <ol>
+                <li class="test-item">Отворете Canva.com или PowerPoint</li>
+                <li class="test-item">Използвайте AI Magic Design функцията на Canva</li>
+                <li class="test-item">Поставете текста и изображенията</li>
+                <li class="test-item">Приложете единен стил и цветова схема</li>
+            </ol>
+        </div>
+
+        <div class="steps no-break">
+            <h4>Етап 5: AI озвучаване (15 минути)</h4>
+            <ol>
+                <li class="test-item">Копирайте текста във free Murf.ai или Speechify</li>
+                <li class="test-item">Изберете глас</li>
+                <li class="test-item">Генерирайте аудио версията</li>
+                <li class="test-item">Добавете фонова музика (Royalty-free)</li>
+            </ol>
+        </div>
+
+        <div class="steps no-break">
+            <h4>Етап 6: Финален монтаж (15 минути)</h4>
+            <ol>
+                <li class="test-item">Комбинирайте всичко в един финален проект</li>
+                <li class="test-item">Проверете звучнето на презентацията</li>
+                <li class="test-item">Тествайте на различни устройства</li>
+                <li class="test-item">Експортирайте финалния файл</li>
+            </ol>
+        </div>
+
+        <h2><span class="section-number">11. Заключение</span></h2>
+        <div class="highlight no-break">
+            <p class="test-item"><strong>AI трансформира начина, по който създаваме дигитално съдържание</strong>. От текст и изображения до аудио и видео - AI инструментите позволяват да създаваме професионално съдържание по-бързо от когато и да било. Въпреки това, успехът винаги зависи от комбинацията между AI капацитет и човешката креативност и критично мислене.</p>
+        </div>
+
+        <div class="programming no-break">
+            <h4>Ключови поуки:</h4>
+            <ul>
+                <li class="test-item"><strong>AI е мощностен инструмент</strong> - но важи е вашата същностни въведи</li>
+                <li class="test-item"><strong>Практиката прави майстор</strong> - колкото повече експериментирате, толкова по-добре</li>
+                <li class="test-item"><strong>Етичността е от ключово значение</strong> - използвайте AI отговорно</li>
+                <li class="test-item"><strong>Комбинирайте инструменти</strong> - най-добрите резултати идват от интеграция</li>
+                <li class="test-item"><strong>Останете любопитни</strong> - AI се развива бързо, следете новостите</li>
+            </ul>
+        </div>
+
+
+        <div class="important no-break">
+            <p><strong>Запомнете:</strong> AI е мощна технология, но е нужна практика да се научи как да се използва ефективно. Започнете с малки задачи, експериментирайте свободно и постепенно развивайте собствени стратегии за работа с AI. Бъдете творчески и отворени към възможностите!</p>
+        </div>
+    </div>
+</body>
+</html>
