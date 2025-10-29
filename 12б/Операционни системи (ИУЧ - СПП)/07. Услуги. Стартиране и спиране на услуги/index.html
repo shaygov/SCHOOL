@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги. Стартиране и спиране на услуги — 12б, Операционни системи</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #17a2b8;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #17a2b8;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+        }
+        
+        h4 {
+            color: #34495e;
+            margin-top: 20px;
+        }
+        
+        ul {
+            margin: 15px 0;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        code {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            margin: 15px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        
+        .example {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+        }
+        
+        .important {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid #dc3545;
+            margin: 15px 0;
+        }
+        
+        .windows {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid #0078d4;
+            margin: 15px 0;
+        }
+        
+        .linux {
+            background-color: #f3e5f5;
+            padding: 15px;
+            border-left: 4px solid #9c27b0;
+            margin: 15px 0;
+        }
+        
+        .concept {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid #2196f3;
+            margin: 15px 0;
+        }
+        
+        .service-box {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #17a2b8;
+            margin: 15px 0;
+        }
+        
+        .command-box {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        strong {
+            color: #2c3e50;
+        }
+        
+        .section-number {
+            color: #17a2b8;
+            font-weight: bold;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background-color: #17a2b8;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .state-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+        }
+        
+        .state-table th,
+        .state-table td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        .state-table th {
+            background-color: #17a2b8;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .state-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .no-break {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+            .highlight,
+            .example,
+            .important,
+            .windows,
+            .linux,
+            .concept,
+            .service-box {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Услуги. Стартиране и спиране на услуги — 12б, Операционни системи</h1>
+
+        <h2><span class="section-number">Увод</span></h2>
+        <div class="important no-break">
+            <p><strong>Услугите (services)</strong> в операционните системи са програми, които работят във фонов режим без директна интеракция с потребителя. Те се стартират автоматично при зареждане на операционната система и продължават да работят, докато системата е включена. Услугите са критични за функционирането на операционната система и много приложения.</p>
+        </div>
+
+        <div class="concept no-break">
+            <h4>Защо са важни услугите?</h4>
+            <ul>
+                <li><strong>Автоматично стартиране</strong> - услугите се стартират автоматично при зареждане на ОС</li>
+                <li><strong>Фонов режим</strong> - работят без потребителски интерфейс</li>
+                <li><strong>Надеждност</strong> - работят независимо от активните потребителски сесии</li>
+                <li><strong>Централизирано управление</strong> - лесно управление и мониториране</li>
+                <li><strong>Системни функции</strong> - осигуряват основни системни функции като мрежа, безопасност, печат</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">1. Какво представляват услугите?</span></h2>
+        <div class="concept no-break">
+            <h3>Определение</h3>
+            <p><strong>Услуга (Service)</strong> е програма, която:</p>
+            <ul>
+                <li>Работи във фонов режим (background)</li>
+                <li>Не изисква потребителски вход за функциониране</li>
+                <li>Може да се стартира автоматично при зареждане на системата</li>
+                <li>Работи под системен акаунт или специален акаунт</li>
+                <li>Осигурява конкретна функционалност на системата или приложение</li>
+            </ul>
+        </div>
+
+        <div class="service-box no-break">
+            <h4>Примери за услуги:</h4>
+            <ul>
+                <li><strong>Мрежови услуги</strong> - DHCP, DNS, FTP, HTTP</li>
+                <li><strong>Бази данни</strong> - MySQL, PostgreSQL, MongoDB</li>
+                <li><strong>Уеб сървъри</strong> - Apache, Nginx, IIS</li>
+                <li><strong>Системни услуги</strong> - Print Spooler, Event Log, Task Scheduler</li>
+                <li><strong>Безопасност</strong> - Firewall, Antivirus, VPN</li>
+                <li><strong>Печат</strong> - Print Spooler (Windows), CUPS (Linux)</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">2. Типове услуги по операционни системи</span></h2>
+        
+        <div class="windows no-break">
+            <h3>Windows услуги</h3>
+            <p>В Windows операционната система услугите се наричат <strong>Windows Services</strong> и се управляват чрез <strong>Services Management Console</strong> или чрез командния ред.</p>
+            
+            <h4>Характеристики на Windows услугите:</h4>
+            <ul>
+                <li>Стартират под системен акаунт или специален акаунт</li>
+                <li>Имат име, описание и тип стартиране</li>
+                <li>Могат да работят без потребителски вход</li>
+                <li>Управляват се чрез Services.msc или sc.exe команди</li>
+            </ul>
+        </div>
+
+        <div class="linux no-break">
+            <h3>Linux услуги (daemons)</h3>
+            <p>В Linux системите услугите се наричат <strong>daemons</strong> (демони) и се управляват чрез различни системи:</p>
+            
+            <h4>Системи за управление на услуги в Linux:</h4>
+            <ul>
+                <li><strong>systemd</strong> - модерна система за управление (Ubuntu, Debian, CentOS 7+)</li>
+                <li><strong>SysV init</strong> - по-стара система (по-стари версии на Linux)</li>
+                <li><strong>Upstart</strong> - междинна система (по-стари версии на Ubuntu)</li>
+            </ul>
+        </div>
+
+        <div class="no-break">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Аспект</th>
+                        <th>Windows</th>
+                        <th>Linux (systemd)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Име</strong></td>
+                        <td>Windows Services</td>
+                        <td>Daemons / systemd services</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Управление</strong></td>
+                        <td>Services.msc, sc.exe, PowerShell</td>
+                        <td>systemctl, service, chkconfig</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Конфигурационни файлове</strong></td>
+                        <td>Регистър (Registry)</td>
+                        <td>/etc/systemd/system/, /lib/systemd/system/</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Логове</strong></td>
+                        <td>Event Viewer</td>
+                        <td>journalctl, /var/log/</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Автоматично стартиране</strong></td>
+                        <td>Automatic, Manual, Disabled</td>
+                        <td>enabled, disabled</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2><span class="section-number">3. Състояния на услугите</span></h2>
+        <div class="concept no-break">
+            <p>Услугите могат да бъдат в различни състояния в зависимост от това дали работят и как са конфигурирани.</p>
+        </div>
+
+        <div class="no-break">
+            <table class="state-table">
+                <thead>
+                    <tr>
+                        <th>Състояние</th>
+                        <th>Описание</th>
+                        <th>Windows</th>
+                        <th>Linux (systemd)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Running / Active</strong></td>
+                        <td>Услугата работи в момента</td>
+                        <td>Running</td>
+                        <td>active (running)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stopped / Inactive</strong></td>
+                        <td>Услугата е спряна и не работи</td>
+                        <td>Stopped</td>
+                        <td>inactive (dead)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Starting</strong></td>
+                        <td>Услугата се стартира в момента</td>
+                        <td>Starting</td>
+                        <td>activating</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stopping</strong></td>
+                        <td>Услугата се спира в момента</td>
+                        <td>Stopping</td>
+                        <td>deactivating</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Paused</strong></td>
+                        <td>Услугата е поставена на пауза (само Windows)</td>
+                        <td>Paused</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Failed</strong></td>
+                        <td>Услугата не можа да се стартира или се срихна</td>
+                        <td>Failed</td>
+                        <td>failed</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2><span class="section-number">4. Типове стартиране на услуги (Windows)</span></h2>
+        <div class="windows no-break">
+            <h3>Windows типове стартиране:</h3>
+            <ul>
+                <li><strong>Automatic</strong> - услугата се стартира автоматично при зареждане на ОС</li>
+                <li><strong>Automatic (Delayed Start)</strong> - автоматично стартиране след малко забавяне</li>
+                <li><strong>Manual</strong> - услугата се стартира ръчно от потребител или друга услуга</li>
+                <li><strong>Disabled</strong> - услугата е деактивирана и не може да се стартира</li>
+            </ul>
+        </div>
+
+        <div class="example no-break">
+            <h4>Как да промените типа стартиране в Windows:</h4>
+            <ol>
+                <li>Отворете <strong>Services.msc</strong> (Win + R → services.msc)</li>
+                <li>Намерете услугата в списъка</li>
+                <li>Десен бутон → Properties</li>
+                <li>В таба "General" изберете "Startup type"</li>
+                <li>Изберете желания тип и натиснете OK</li>
+            </ol>
+        </div>
+
+        <h2><span class="section-number">5. Стартиране и спиране на услуги в Windows</span></h2>
+        
+        <div class="windows no-break">
+            <h3>Чрез графичен интерфейс (Services.msc)</h3>
+            <ol>
+                <li>Натиснете <code>Win + R</code></li>
+                <li>Въведете <code>services.msc</code> и натиснете Enter</li>
+                <li>Намерете услугата в списъка</li>
+                <li>Десен бутон върху услугата</li>
+                <li>Изберете:
+                    <ul>
+                        <li><strong>Start</strong> - за стартиране</li>
+                        <li><strong>Stop</strong> - за спиране</li>
+                        <li><strong>Restart</strong> - за рестартиране</li>
+                        <li><strong>Pause</strong> - за пауза (ако се поддържа)</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="windows no-break">
+            <h3>Чрез командния ред (sc.exe)</h3>
+            <p>Командата <code>sc</code> позволява управление на услуги от командния ред:</p>
+            
+            <div class="command-box">
+                <p><strong>Стартиране на услуга:</strong></p>
+                <code>sc start ServiceName</code>
+                
+                <p><strong>Спиране на услуга:</strong></p>
+                <code>sc stop ServiceName</code>
+                
+                <p><strong>Рестартиране на услуга:</strong></p>
+                <code>sc stop ServiceName</code><br>
+                <code>sc start ServiceName</code>
+                
+                <p><strong>Проверка на статус:</strong></p>
+                <code>sc query ServiceName</code>
+                
+                <p><strong>Промяна на тип стартиране:</strong></p>
+                <code>sc config ServiceName start= auto</code> (automatic)<br>
+                <code>sc config ServiceName start= demand</code> (manual)<br>
+                <code>sc config ServiceName start= disabled</code> (disabled)
+            </div>
+        </div>
+
+        <div class="example no-break">
+            <h4>Примери с sc.exe:</h4>
+            <div class="command-box">
+                <p><strong>Стартиране на Print Spooler:</strong></p>
+                <code>sc start Spooler</code>
+                
+                <p><strong>Спиране на Windows Update:</strong></p>
+                <code>sc stop wuauserv</code>
+                
+                <p><strong>Проверка на статус на DHCP:</strong></p>
+                <code>sc query dhcp</code>
+                
+                <p><strong>Промяна на тип стартиране на MySQL:</strong></p>
+                <code>sc config MySQL80 start= auto</code>
+            </div>
+        </div>
+
+        <div class="windows no-break">
+            <h3>Чрез PowerShell</h3>
+            <p>PowerShell предоставя cmdlets за управление на услуги:</p>
+            
+            <div class="command-box">
+                <p><strong>Стартиране:</strong></p>
+                <code>Start-Service -Name "ServiceName"</code>
+                
+                <p><strong>Спиране:</strong></p>
+                <code>Stop-Service -Name "ServiceName"</code>
+                
+                <p><strong>Рестартиране:</strong></p>
+                <code>Restart-Service -Name "ServiceName"</code>
+                
+                <p><strong>Проверка на статус:</strong></p>
+                <code>Get-Service -Name "ServiceName"</code>
+                
+                <p><strong>Списък на всички услуги:</strong></p>
+                <code>Get-Service</code>
+                
+                <p><strong>Промяна на тип стартиране:</strong></p>
+                <code>Set-Service -Name "ServiceName" -StartupType Automatic</code><br>
+                <code>Set-Service -Name "ServiceName" -StartupType Manual</code><br>
+                <code>Set-Service -Name "ServiceName" -StartupType Disabled</code>
+            </div>
+        </div>
+
+        <h2><span class="section-number">6. Стартиране и спиране на услуги в Linux (systemd)</span></h2>
+        
+        <div class="linux no-break">
+            <h3>systemctl команди</h3>
+            <p><strong>systemctl</strong> е основната команда за управление на услуги в модерните Linux системи:</p>
+            
+            <div class="command-box">
+                <p><strong>Стартиране на услуга:</strong></p>
+                <code>sudo systemctl start service-name</code>
+                
+                <p><strong>Спиране на услуга:</strong></p>
+                <code>sudo systemctl stop service-name</code>
+                
+                <p><strong>Рестартиране на услуга:</strong></p>
+                <code>sudo systemctl restart service-name</code>
+                
+                <p><strong>Презареждане на конфигурация (без спиране):</strong></p>
+                <code>sudo systemctl reload service-name</code>
+                
+                <p><strong>Проверка на статус:</strong></p>
+                <code>sudo systemctl status service-name</code>
+                
+                <p><strong>Включване на автоматично стартиране:</strong></p>
+                <code>sudo systemctl enable service-name</code>
+                
+                <p><strong>Изключване на автоматично стартиране:</strong></p>
+                <code>sudo systemctl disable service-name</code>
+                
+                <p><strong>Списък на всички услуги:</strong></p>
+                <code>sudo systemctl list-units --type=service</code>
+                
+                <p><strong>Списък на активни услуги:</strong></p>
+                <code>sudo systemctl list-units --type=service --state=running</code>
+                
+                <p><strong>Списък на изключени услуги:</strong></p>
+                <code>sudo systemctl list-units --type=service --state=stopped</code>
+            </div>
+        </div>
+
+        <div class="example no-break">
+            <h4>Примери с systemctl:</h4>
+            <div class="command-box">
+                <p><strong>Стартиране на Apache web сървър:</strong></p>
+                <code>sudo systemctl start apache2</code>
+                <code># или</code>
+                <code>sudo systemctl start httpd</code>
+                
+                <p><strong>Спиране на MySQL:</strong></p>
+                <code>sudo systemctl stop mysql</code>
+                <code># или</code>
+                <code>sudo systemctl stop mysqld</code>
+                
+                <p><strong>Рестартиране на SSH услуга:</strong></p>
+                <code>sudo systemctl restart ssh</code>
+                <code># или</code>
+                <code>sudo systemctl restart sshd</code>
+                
+                <p><strong>Включване на автоматично стартиране на Nginx:</strong></p>
+                <code>sudo systemctl enable nginx</code>
+                
+                <p><strong>Проверка на статус на Docker:</strong></p>
+                <code>sudo systemctl status docker</code>
+            </div>
+        </div>
+
+        <div class="linux no-break">
+            <h3>service команда (по-стара, но все още използвана)</h3>
+            <p>В някои Linux дистрибуции може да се използва и командата <code>service</code>:</p>
+            
+            <div class="command-box">
+                <p><strong>Стартиране:</strong></p>
+                <code>sudo service service-name start</code>
+                
+                <p><strong>Спиране:</strong></p>
+                <code>sudo service service-name stop</code>
+                
+                <p><strong>Рестартиране:</strong></p>
+                <code>sudo service service-name restart</code>
+                
+                <p><strong>Проверка на статус:</strong></p>
+                <code>sudo service service-name status</code>
+            </div>
+        </div>
+
+        <h2><span class="section-number">7. Проверка на статус на услуги</span></h2>
+        
+        <div class="windows no-break">
+            <h3>Windows - Проверка на статус</h3>
+            
+            <h4>Чрез Services.msc:</h4>
+            <ul>
+                <li>Отворете Services.msc</li>
+                <li>Статусът се показва в колоната "Status"</li>
+                <li>Двойно кликване върху услугата показва подробна информация</li>
+            </ul>
+            
+            <h4>Чрез sc.exe:</h4>
+            <div class="command-box">
+                <code>sc query</code> - показва всички услуги<br>
+                <code>sc query ServiceName</code> - показва статус на конкретна услуга<br>
+                <code>sc query state= running</code> - показва само активните услуги<br>
+                <code>sc query state= stopped</code> - показва само спрените услуги
+            </div>
+            
+            <h4>Чрез PowerShell:</h4>
+            <div class="command-box">
+                <code>Get-Service</code> - показва всички услуги<br>
+                <code>Get-Service -Name "ServiceName"</code> - статус на конкретна услуга<br>
+                <code>Get-Service | Where-Object {$_.Status -eq "Running"}</code> - само активни
+            </div>
+        </div>
+
+        <div class="linux no-break">
+            <h3>Linux - Проверка на статус</h3>
+            
+            <h4>Чрез systemctl status:</h4>
+            <div class="command-box">
+                <code>sudo systemctl status service-name</code>
+            </div>
+            <p>Тази команда показва:</p>
+            <ul>
+                <li>Текущ статус на услугата</li>
+                <li>Процес ID (PID)</li>
+                <li>Последни лог съобщения</li>
+                <li>Дали е активирана за автоматично стартиране</li>
+            </ul>
+            
+            <h4>Други полезни команди:</h4>
+            <div class="command-box">
+                <code>systemctl is-active service-name</code> - показва дали е активна<br>
+                <code>systemctl is-enabled service-name</code> - показва дали е активирана<br>
+                <code>systemctl is-failed service-name</code> - показва дали е срихна<br>
+                <code>sudo systemctl list-units --type=service</code> - всички услуги<br>
+                <code>sudo systemctl list-units --type=service --all</code> - включително неактивни
+            </div>
+        </div>
+
+        <h2><span class="section-number">8. Автоматично стартиране на услуги</span></h2>
+        
+        <div class="windows no-break">
+            <h3>Windows - Автоматично стартиране</h3>
+            <p>За да се стартира услуга автоматично при зареждане на Windows:</p>
+            
+            <h4>Чрез Services.msc:</h4>
+            <ol>
+                <li>Отворете Services.msc</li>
+                <li>Десен бутон върху услугата → Properties</li>
+                <li>В таба "General" изберете "Startup type: Automatic"</li>
+                <li>Натиснете OK</li>
+            </ol>
+            
+            <h4>Чрез sc.exe:</h4>
+            <div class="command-box">
+                <code>sc config ServiceName start= auto</code>
+            </div>
+            
+            <h4>Чрез PowerShell:</h4>
+            <div class="command-box">
+                <code>Set-Service -Name "ServiceName" -StartupType Automatic</code>
+            </div>
+        </div>
+
+        <div class="linux no-break">
+            <h3>Linux - Автоматично стартиране</h3>
+            <p>В Linux с systemd, за да се стартира услуга автоматично:</p>
+            
+            <div class="command-box">
+                <code>sudo systemctl enable service-name</code>
+            </div>
+            
+            <p>За да се изключи автоматичното стартиране:</p>
+            <div class="command-box">
+                <code>sudo systemctl disable service-name</code>
+            </div>
+            
+            <p>За да се види дали е активирана:</p>
+            <div class="command-box">
+                <code>sudo systemctl is-enabled service-name</code>
+            </div>
+            
+            <div class="highlight no-break">
+                <h4>Важно:</h4>
+                <p>В systemd има разлика между:</p>
+                <ul>
+                    <li><strong>enable</strong> - активира автоматично стартиране при зареждане</li>
+                    <li><strong>start</strong> - стартира услугата в момента</li>
+                    <li>Можете да използвате <code>enable --now</code> за едновременно активиране и стартиране</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2><span class="section-number">9. Често срещани проблеми и решения</span></h2>
+        
+        <div class="important no-break">
+            <h3>Проблем: Услугата не може да се стартира</h3>
+            <h4>Възможни причини:</h4>
+            <ul>
+                <li>Недостатъчни права - използвайте администраторски права</li>
+                <li>Зависимости - друга услуга, от която зависи тази, не работи</li>
+                <li>Грешна конфигурация - проверете конфигурационните файлове</li>
+                <li>Конфликт на портове - друг процес използва същия порт</li>
+                <li>Липсващи файлове - програмата или библиотеките липсват</li>
+            </ul>
+            
+            <h4>Как да проверите:</h4>
+            <p><strong>Windows:</strong> Event Viewer → Windows Logs → System</p>
+            <p><strong>Linux:</strong> <code>sudo journalctl -u service-name</code> или <code>sudo systemctl status service-name</code></p>
+        </div>
+
+        <div class="example no-break">
+            <h3>Проблем: Услугата се спира автоматично</h3>
+            <h4>Възможни причини:</h4>
+            <ul>
+                <li>Грешка в кода на услугата</li>
+                <li>Недостатъчни ресурси (памет, диск)</li>
+                <li>Грешка в конфигурацията</li>
+                <li>Проблем с зависимостта</li>
+            </ul>
+            
+            <h4>Как да проверите логовете:</h4>
+            <p><strong>Windows:</strong> Event Viewer, Windows Logs → Application</p>
+            <p><strong>Linux:</strong> <code>sudo journalctl -u service-name -f</code> (live проследяване)</p>
+        </div>
+
+        <div class="highlight no-break">
+            <h3>Проблем: Услугата не отговаря</h3>
+            <h4>Решения:</h4>
+            <ul>
+                <li><strong>Force stop:</strong> 
+                    <ul>
+                        <li>Windows: <code>sc stop ServiceName</code> (няколко пъти) или Task Manager</li>
+                        <li>Linux: <code>sudo systemctl kill service-name</code> или <code>sudo kill -9 PID</code></li>
+                    </ul>
+                </li>
+                <li><strong>Рестартиране:</strong> Спиране и стартиране отново</li>
+                <li><strong>Проверка на процесите:</strong> Погледнете дали процесът все още работи</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">10. Управление на зависимости</span></h2>
+        
+        <div class="concept no-break">
+            <h3>Какво са зависимости на услуги?</h3>
+            <p><strong>Зависимости</strong> определят кои други услуги трябва да работят, преди дадена услуга да може да се стартира. Например, уеб сървърът може да зависи от мрежовата услуга.</p>
+        </div>
+
+        <div class="windows no-break">
+            <h3>Windows - Проверка на зависимости</h3>
+            <p>Чрез sc.exe:</p>
+            <div class="command-box">
+                <code>sc qc ServiceName</code> - показва конфигурация и зависимости<br>
+                <code>sc enumdepend ServiceName</code> - показва услуги, които зависят от тази<br>
+                <code>sc sdshow ServiceName</code> - показва дескриптор за сигурност
+            </div>
+        </div>
+
+        <div class="linux no-break">
+            <h3>Linux - Управление на зависимости</h3>
+            <p>В systemd зависимостите се определят в .service файла чрез директиви като:</p>
+            <ul>
+                <li><code>Requires=</code> - изисква други услуги</li>
+                <li><code>After=</code> - стартира след други услуги</li>
+                <li><code>Wants=</code> - по-лека зависимост</li>
+            </ul>
+            
+            <div class="command-box">
+                <code>systemctl list-dependencies service-name</code> - показва зависимостите<br>
+                <code>systemctl list-dependencies --reverse service-name</code> - показва кой зависи от услугата
+            </div>
+        </div>
+
+        <h2><span class="section-number">11. Преглед на логове</h2>
+        
+        <div class="windows no-break">
+            <h3>Windows - Event Viewer</h3>
+            <p>Windows услугите записват събития в Event Viewer:</p>
+            <ol>
+                <li>Отворете <code>eventvwr.msc</code></li>
+                <li>Windows Logs → System (системни събития)</li>
+                <li>Windows Logs → Application (приложни събития)</li>
+                <li>Филтрирайте по името на услугата</li>
+            </ol>
+        </div>
+
+        <div class="linux no-break">
+            <h3>Linux - journalctl</h3>
+            <p>В Linux с systemd използвайте journalctl за преглед на логове:</p>
+            
+            <div class="command-box">
+                <p><strong>Логове на конкретна услуга:</strong></p>
+                <code>sudo journalctl -u service-name</code>
+                
+                <p><strong>Последни 50 реда:</strong></p>
+                <code>sudo journalctl -u service-name -n 50</code>
+                
+                <p><strong>Live проследяване (като tail -f):</strong></p>
+                <code>sudo journalctl -u service-name -f</code>
+                
+                <p><strong>От определено време:</strong></p>
+                <code>sudo journalctl -u service-name --since "2024-01-01 10:00:00"</code>
+                
+                <p><strong>Само грешки:</strong></p>
+                <code>sudo journalctl -u service-name -p err</code>
+            </div>
+        </div>
+
+        <h2><span class="section-number">12. Практически примери</span></h2>
+        
+        <div class="example no-break">
+            <h3>Пример 1: Стартиране на уеб сървър</h3>
+            <p><strong>Windows (IIS):</strong></p>
+            <div class="command-box">
+                <code>sc start W3SVC</code>
+            </div>
+            
+            <p><strong>Linux (Apache):</strong></p>
+            <div class="command-box">
+                <code>sudo systemctl start apache2</code><br>
+                <code>sudo systemctl enable apache2</code> - за автоматично стартиране
+            </div>
+        </div>
+
+        <div class="example no-break">
+            <h3>Пример 2: Работа с база данни</h3>
+            <p><strong>Windows (MySQL):</strong></p>
+            <div class="command-box">
+                <code>sc start MySQL80</code><br>
+                <code>sc query MySQL80</code>
+            </div>
+            
+            <p><strong>Linux (MySQL/MariaDB):</strong></p>
+            <div class="command-box">
+                <code>sudo systemctl start mysql</code> # или mysqld<br>
+                <code>sudo systemctl status mysql</code>
+            </div>
+        </div>
+
+        <div class="example no-break">
+            <h3>Пример 3: Мрежови услуги</h3>
+            <p><strong>Windows (DHCP):</strong></p>
+            <div class="command-box">
+                <code>sc start dhcp</code>
+            </div>
+            
+            <p><strong>Linux (SSH):</strong></p>
+            <div class="command-box">
+                <code>sudo systemctl start ssh</code> # или sshd<br>
+                <code>sudo systemctl enable ssh</code> - за автоматично стартиране при зареждане
+            </div>
+        </div>
+
+        <div class="important no-break">
+            <h3>Пример 4: Рестартиране на услуга след промяна на конфигурация</h3>
+            <p><strong>Windows:</strong></p>
+            <div class="command-box">
+                <code>sc stop ServiceName</code><br>
+                <code>sc start ServiceName</code>
+            </div>
+            
+            <p><strong>Linux:</strong></p>
+            <div class="command-box">
+                <code>sudo systemctl restart service-name</code> # или<br>
+                <code>sudo systemctl reload service-name</code> # ако услугата поддържа reload
+            </div>
+            
+            <p><strong>Разлика между restart и reload:</strong></p>
+            <ul>
+                <li><strong>restart</strong> - спира и стартира услугата отново (прекъсване на връзки)</li>
+                <li><strong>reload</strong> - презарежда конфигурацията без спиране (без прекъсване)</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">13. Сигурност при управление на услуги</span></h2>
+        
+        <div class="important no-break">
+            <h3>Важни съображения за сигурност:</h3>
+            <ul>
+                <li><strong>Минимални привилегии</strong> - услугите трябва да работят с минимално необходимите права</li>
+                <li><strong>Изолирани акаунти</strong> - използвайте отделни акаунти за различни услуги</li>
+                <li><strong>Регулярни актуализации</strong> - поддържайте услугите актуални</li>
+                <li><strong>Мониториране</strong> - следете логовете за необичайна активност</li>
+                <li><strong>Забраняване на ненужни услуги</strong> - спрете и забраните услуги, които не използвате</li>
+            </ul>
+        </div>
+
+        <div class="highlight no-break">
+            <h4>Списък с услуги, които често се отключват по грешка:</h4>
+            <ul>
+                <li>Telnet (несигурно)</li>
+                <li>FTP (без SSL/TLS)</li>
+                <li>Неизползвани мрежови протоколи</li>
+                <li>Остарели версии на сървъри</li>
+            </ul>
+            <p><strong>Правило:</strong> Ако не използвате услуга, я спрете и забраните!</p>
+        </div>
+
+        <h2><span class="section-number">14. Добри практики</span></h2>
+        
+        <div class="concept no-break">
+            <h3>Препоръки за управление на услуги:</h3>
+            <ul>
+                <li><strong>Документирайте промените</strong> - записвайте какво и защо променяте</li>
+                <li><strong>Тествайте в тестова среда</strong> - преди да променяте продукционни услуги</li>
+                <li><strong>Правете резервни копия</strong> - на конфигурационните файлове преди промени</li>
+                <li><strong>Следете логовете</strong> - редовно проверявайте за грешки</li>
+                <li><strong>Използвайте автоматично стартиране разумно</strong> - не активирайте всичко автоматично</li>
+                <li><strong>Разбирайте зависимостите</strong> - знайте кои услуги зависят от други</li>
+                <li><strong>Планирайте поддръжка</strong> - планирайте рестартиране за часове с ниска натовареност</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">Заключение</span></h2>
+        <div class="important no-break">
+            <p>Управлението на услуги е основна задача за всеки системен администратор. Разбирането на как да стартирате, спирате и конфигурирате услуги е критично за поддръжката и сигурността на операционната система. Различните операционни системи използват различни инструменти, но концепциите остават сходни.</p>
+        </div>
+
+        <div class="concept no-break">
+            <h4>Ключови изводи:</h4>
+            <ul>
+                <li><strong>Услугите</strong> работят във фонов режим и осигуряват системни функции</li>
+                <li><strong>Windows</strong> използва Services.msc, sc.exe и PowerShell за управление</li>
+                <li><strong>Linux</strong> използва systemctl (systemd) за управление на услуги</li>
+                <li><strong>Типовете стартиране</strong> определят дали услугата се стартира автоматично</li>
+                <li><strong>Логовете</strong> са критични за отстраняване на проблеми</li>
+                <li><strong>Зависимостите</strong> определят реда на стартиране на услугите</li>
+                <li><strong>Сигурността</strong> изисква минимални права и правилна конфигурация</li>
+            </ul>
+        </div>
+
+        <div class="example no-break">
+            <h4>Практически съвет:</h4>
+            <p>Започнете с разглеждане на услугите на вашата система. В Windows използвайте Services.msc, а в Linux - <code>systemctl list-units --type=service</code>. Разгледайте статуса и конфигурацията на познати услуги. Практикувайте стартиране и спиране на тестови услуги, преди да работите с критични системни услуги.</p>
+        </div>
+
+        <div class="highlight no-break">
+            <h4>Полезни команди за справка:</h4>
+            <p><strong>Windows:</strong></p>
+            <ul>
+                <li><code>services.msc</code> - графичен интерфейс</li>
+                <li><code>sc query</code> - списък на услуги</li>
+                <li><code>Get-Service</code> - PowerShell команда</li>
+            </ul>
+            <p><strong>Linux:</strong></p>
+            <ul>
+                <li><code>systemctl list-units --type=service</code> - списък на услуги</li>
+                <li><code>systemctl status service-name</code> - статус на услуга</li>
+                <li><code>journalctl -u service-name</code> - логове на услуга</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+

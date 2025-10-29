@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Технологии за електронен бизнес — 12а, Интернет и електронна търговия</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #ff6b35;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #ff6b35;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+        }
+        
+        ul {
+            margin: 15px 0;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        
+        .example {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+        }
+        
+        .important {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid #dc3545;
+            margin: 15px 0;
+        }
+        
+        .network {
+            background-color: #f3e5f5;
+            padding: 15px;
+            border-left: 4px solid #9c27b0;
+            margin: 15px 0;
+        }
+        
+        .hardware {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid #2196f3;
+            margin: 15px 0;
+        }
+        
+        .concept {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid #2196f3;
+            margin: 15px 0;
+        }
+        
+        .business {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-left: 4px solid #4caf50;
+            margin: 15px 0;
+        }
+        
+        .technology {
+            background-color: #f3e5f5;
+            padding: 15px;
+            border-left: 4px solid #9c27b0;
+            margin: 15px 0;
+        }
+        
+        strong {
+            color: #2c3e50;
+        }
+        
+        .section-number {
+            color: #ff6b35;
+            font-weight: bold;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .pros-cons-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .pros {
+            background-color: #d4edda;
+            padding: 15px;
+            border-radius: 5px;
+            border: 2px solid #28a745;
+        }
+        
+        .cons {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-radius: 5px;
+            border: 2px solid #dc3545;
+        }
+        
+        .pros h4 { color: #28a745; margin-top: 0; }
+        .cons h4 { color: #dc3545; margin-top: 0; }
+        
+        .no-break { break-inside: avoid; page-break-inside: avoid; }
+        
+        .diagram-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            border: 2px solid #dee2e6;
+        }
+        
+        .diagram-container svg { max-width: 100%; height: auto; }
+        
+        .diagram-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        .feature-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin: 2px;
+        }
+        
+        .badge-primary {
+            background-color: #2196f3;
+            color: white;
+        }
+        
+        .badge-success {
+            background-color: #4caf50;
+            color: white;
+        }
+        
+        .badge-warning {
+            background-color: #ff9800;
+            color: white;
+        }
+        
+        .badge-info {
+            background-color: #00bcd4;
+            color: white;
+        }
+        
+        @media print {
+            body { background-color: white; }
+            .container { box-shadow: none; padding: 0; }
+            .comparison-table, .highlight, .example, .important, .network, .hardware, .business, .technology {
+                break-inside: avoid; page-break-inside: avoid;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .pros-cons-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Технологии за електронен бизнес — 12а, Интернет и електронна търговия</h1>
+
+        <h2><span class="section-number">Увод</span></h2>
+        <div class="important no-break">
+            <p><strong>Електронният бизнес (e-business)</strong> е използването на интернет технологии за извършване на бизнес дейности, включително покупки, продажби, маркетинг, управление на клиенти и партньорства. Технологиите за електронен бизнес обхващат широк спектър от системи и инструменти, които подпомагат дигиталните бизнес операции.</p>
+        </div>
+
+        <div class="concept no-break">
+            <h4>Защо технологиите за електронен бизнес са важни?</h4>
+            <ul>
+                <li><strong>Глобален достъп</strong> – достигане до клиенти по целия свят 24/7</li>
+                <li><strong>Намаляване на разходите</strong> – по-ниски оперативни разходи спрямо традиционния бизнес</li>
+                <li><strong>Повишаване на ефективността</strong> – автоматизация на процеси и по-бързо обслужване</li>
+                <li><strong>Персонализация</strong> – възможности за по-добро обслужване на клиенти</li>
+                <li><strong>Анализ и данни</strong> – възможност за задълбочен анализ на поведението на клиентите</li>
+                <li><strong>Конкурентно предимство</strong> – иновативни решения и по-бърза реакция на пазара</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">1. Видове електронен бизнес</span></h2>
+        <div class="no-break">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Модел</th>
+                        <th>Описание</th>
+                        <th>Примери</th>
+                        <th>Характеристики</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>B2C<br>(Business-to-Consumer)</strong></td>
+                        <td>Бизнес продава на крайни потребители</td>
+                        <td>Amazon, eBay, онлайн магазини</td>
+                        <td>Директни продажби, масово обслужване</td>
+                    </tr>
+                    <tr>
+                        <td><strong>B2B<br>(Business-to-Business)</strong></td>
+                        <td>Бизнес продава на други бизнеси</td>
+                        <td>Alibaba B2B, SAP Ariba</td>
+                        <td>Големи поръчки, дългосрочни договори</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C2C<br>(Consumer-to-Consumer)</strong></td>
+                        <td>Потребители продават на потребители</td>
+                        <td>eBay, OLX, Facebook Marketplace</td>
+                        <td>Платформи, комисионни такси</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C2B<br>(Consumer-to-Business)</strong></td>
+                        <td>Потребители продават на бизнеси</td>
+                        <td>Freelancer, Upwork, Getty Images</td>
+                        <td>Услуги, фрийланс, краудсорсинг</td>
+                    </tr>
+                    <tr>
+                        <td><strong>B2G<br>(Business-to-Government)</strong></td>
+                        <td>Бизнес продава на държавни институции</td>
+                        <td>Електронни портали за обществени поръчки</td>
+                        <td>Процедури, документация</td>
+                    </tr>
+                    <tr>
+                        <td><strong>G2C<br>(Government-to-Citizen)</strong></td>
+                        <td>Държава предоставя услуги на граждани</td>
+                        <td>Електронно правителство, данъчни портали</td>
+                        <td>Публични услуги онлайн</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2><span class="section-number">2. E-commerce платформи</span></h2>
+        <div class="business no-break">
+            <h3>Основни типове платформи</h3>
+            <div class="technology">
+                <h4>Собствени (Self-hosted) решения</h4>
+                <ul>
+                    <li><strong>Magento</strong> – мощна, open-source платформа за големи бизнеси</li>
+                    <li><strong>WooCommerce</strong> – WordPress плагин, подходящ за малки и средни бизнеси</li>
+                    <li><strong>PrestaShop</strong> – лека, open-source платформа</li>
+                    <li><strong>OpenCart</strong> – open-source решение с много теми</li>
+                </ul>
+                <p><strong>Предимства</strong>: Пълен контрол, гъвкавост, персонализация<br>
+                <strong>Недостатъци</strong>: По-високи разходи за поддръжка, изисква техническа експертиза</p>
+            </div>
+
+            <div class="technology">
+                <h4>Cloud-based (SaaS) платформи</h4>
+                <ul>
+                    <li><strong>Shopify</strong> – най-популярната SaaS платформа, лесна за използване</li>
+                    <li><strong>BigCommerce</strong> – мащабируема платформа с много функции</li>
+                    <li><strong>Squarespace Commerce</strong> – интегрирана с уебсайт дизайн</li>
+                    <li><strong>Wix eCommerce</strong> – drag-and-drop интерфейс</li>
+                </ul>
+                <p><strong>Предимства</strong>: Бърз старт, автоматични актуализации, техническа поддръжка<br>
+                <strong>Недостатъци</strong>: Месечни разходи, ограничения в персонализацията</p>
+            </div>
+        </div>
+
+        <div class="highlight no-break">
+            <h4>Ключови компоненти на e-commerce платформата:</h4>
+            <ul>
+                <li><strong>Каталог от продукти</strong> – управление на продукти, категории, цени</li>
+                <li><strong>Кошница за пазаруване</strong> – добавяне, преглед, промяна на поръчки</li>
+                <li><strong>Система за плащане</strong> – обработка на транзакции</li>
+                <li><strong>Управление на поръчки</strong> – проследяване, обработка, доставка</li>
+                <li><strong>Система за доставка</strong> – изчисляване на разходи и срокове</li>
+                <li><strong>Управление на клиенти</strong> – регистрация, автентикация, профили</li>
+                <li><strong>Маркетинг инструменти</strong> – промоции, ваучери, кодове за отстъпка</li>
+                <li><strong>Аналитика</strong> – отчети за продажби, клиенти, конверсии</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">3. Системи за електронни плащания</span></h2>
+        <div class="diagram-container no-break">
+            <div class="diagram-title">Схема на процеса на електронно плащане</div>
+            <svg width="720" height="300" viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
+                <rect x="50" y="50" width="120" height="60" fill="#e8f5e8" stroke="#28a745" stroke-width="2" rx="5"/>
+                <text x="110" y="80" text-anchor="middle" font-size="14" fill="#2c3e50" font-weight="bold">Клиент</text>
+                
+                <rect x="250" y="50" width="120" height="60" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" rx="5"/>
+                <text x="310" y="80" text-anchor="middle" font-size="14" fill="#2c3e50" font-weight="bold">E-commerce сайт</text>
+                
+                <rect x="450" y="50" width="120" height="60" fill="#fff3cd" stroke="#ffc107" stroke-width="2" rx="5"/>
+                <text x="510" y="80" text-anchor="middle" font-size="14" fill="#2c3e50" font-weight="bold">Payment Gateway</text>
+                
+                <rect x="250" y="170" width="120" height="60" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2" rx="5"/>
+                <text x="310" y="200" text-anchor="middle" font-size="14" fill="#2c3e50" font-weight="bold">Банка на търговеца</text>
+                
+                <rect x="450" y="170" width="120" height="60" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                <text x="510" y="200" text-anchor="middle" font-size="14" fill="#2c3e50" font-weight="bold">Банка на клиента</text>
+                
+                <defs>
+                    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                        <path d="M0,0 L0,6 L9,3 z" fill="#2196f3"/>
+                    </marker>
+                </defs>
+                
+                <line x1="170" y1="80" x2="240" y2="80" stroke="#2196f3" stroke-width="2" marker-end="url(#arrow)"/>
+                <text x="205" y="75" text-anchor="middle" font-size="11" fill="#2196f3">1. Поръчка</text>
+                
+                <line x1="370" y1="80" x2="440" y2="80" stroke="#2196f3" stroke-width="2" marker-end="url(#arrow)"/>
+                <text x="405" y="75" text-anchor="middle" font-size="11" fill="#2196f3">2. Данни за плащане</text>
+                
+                <line x1="510" y1="110" x2="510" y2="160" stroke="#2196f3" stroke-width="2" marker-end="url(#arrow)"/>
+                <text x="525" y="135" text-anchor="middle" font-size="11" fill="#2196f3">3. Авторизация</text>
+                
+                <line x1="450" y1="200" x2="370" y2="200" stroke="#2196f3" stroke-width="2" marker-end="url(#arrow)"/>
+                <text x="410" y="195" text-anchor="middle" font-size="11" fill="#2196f3">4. Проверка</text>
+                
+                <line x1="310" y1="110" x2="310" y2="160" stroke="#28a745" stroke-width="2" marker-end="url(#arrow)"/>
+                <text x="320" y="135" text-anchor="middle" font-size="11" fill="#28a745">5. Потвърждение</text>
+            </svg>
+        </div>
+
+        <div class="no-break">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Метод на плащане</th>
+                        <th>Описание</th>
+                        <th>Примери</th>
+                        <th>Безопасност</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Кредитни/дебитни карти</strong></td>
+                        <td>Традиционен метод чрез карти</td>
+                        <td>Visa, Mastercard, American Express</td>
+                        <td><span class="feature-badge badge-success">Високо</span> (3D Secure)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Digital Wallets</strong></td>
+                        <td>Електронни портфейли за съхранение на данни за плащане</td>
+                        <td>PayPal, Apple Pay, Google Pay, Samsung Pay</td>
+                        <td><span class="feature-badge badge-success">Много високо</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Банкови трансфери</strong></td>
+                        <td>Директно прехвърляне от банкова сметка</td>
+                        <td>SEPA, Wire Transfer, ACH</td>
+                        <td><span class="feature-badge badge-success">Високо</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cryptocurrency</strong></td>
+                        <td>Плащане с цифрови валути</td>
+                        <td>Bitcoin, Ethereum, Stablecoins</td>
+                        <td><span class="feature-badge badge-warning">Променливо</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Buy Now Pay Later</strong></td>
+                        <td>Разсрочено плащане</td>
+                        <td>Klarna, Afterpay, Affirm</td>
+                        <td><span class="feature-badge badge-primary">Средно</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mobile Payments</strong></td>
+                        <td>Плащане през мобилни приложения</td>
+                        <td>Мобилни банкови приложения</td>
+                        <td><span class="feature-badge badge-success">Високо</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="important no-break">
+            <h4>Сигурност на плащанията:</h4>
+            <ul>
+                <li><strong>PCI DSS</strong> – стандарт за сигурност на платежните карти</li>
+                <li><strong>3D Secure</strong> – допълнителна автентикация (Verified by Visa, Mastercard SecureCode)</li>
+                <li><strong>TLS/SSL</strong> – шифриране на данните при предаване</li>
+                <li><strong>Tokenization</strong> – заместване на данните за карти с токени</li>
+                <li><strong>Fraud Detection</strong> – системи за откриване на измами</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">4. Облачни технологии и SaaS</span></h2>
+        <div class="network no-break">
+            <h3>Cloud Computing модели</h3>
+            <div class="pros-cons-grid">
+                <div class="pros">
+                    <h4>IaaS (Infrastructure as a Service)</h4>
+                    <ul>
+                        <li>Виртуални сървъри и мрежи</li>
+                        <li>Пълна контрол над ОС</li>
+                        <li>Примери: AWS EC2, Google Compute Engine, Azure VMs</li>
+                    </ul>
+                </div>
+                <div class="pros">
+                    <h4>PaaS (Platform as a Service)</h4>
+                    <ul>
+                        <li>Среда за разработка и разгръщане</li>
+                        <li>Управление на инфраструктурата</li>
+                        <li>Примери: Heroku, Google App Engine, AWS Elastic Beanstalk</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pros">
+                <h4>SaaS (Software as a Service)</h4>
+                <ul>
+                    <li>Готови софтуерни решения</li>
+                    <li>Няма нужда от инсталация и поддръжка</li>
+                    <li>Примери: Salesforce, Microsoft 365, Google Workspace, Slack, Dropbox</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="example no-break">
+            <h4>Предимства на облачните технологии за бизнеса:</h4>
+            <ul>
+                <li><strong>Мащабируемост</strong> – бързо разширяване и свиване на ресурсите</li>
+                <li><strong>Намалени разходи</strong> – няма нужда от собствени сървъри и ИТ екипи</li>
+                <li><strong>Гъвкавост</strong> – достъп от всякъде, по всяко време</li>
+                <li><strong>Автоматични актуализации</strong> – винаги актуален софтуер</li>
+                <li><strong>Дисaster Recovery</strong> – автоматично резервно копие и възстановяване</li>
+                <li><strong>Колaboration</strong> – работа в екип в реално време</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">5. CRM и ERP системи</span></h2>
+        <div class="business no-break">
+            <h3>CRM (Customer Relationship Management)</h3>
+            <p>Системи за управление на взаимоотношенията с клиентите</p>
+            <div class="hardware">
+                <h4>Основни функции:</h4>
+                <ul>
+                    <li><strong>Управление на контакти</strong> – централизирана база данни за клиенти</li>
+                    <li><strong>Sales Pipeline</strong> – проследяване на продажбени процеси</li>
+                    <li><strong>Marketing Automation</strong> – автоматизация на маркетингови кампании</li>
+                    <li><strong>Customer Support</strong> – система за обслужване на клиенти</li>
+                    <li><strong>Аналитика</strong> – отчети и анализ на клиентското поведение</li>
+                    <li><strong>Forecasting</strong> – прогнози за продажби</li>
+                </ul>
+            </div>
+            <div class="technology">
+                <h4>Популярни CRM платформи:</h4>
+                <ul>
+                    <li><strong>Salesforce</strong> – най-голямата облачна CRM платформа</li>
+                    <li><strong>HubSpot</strong> – безплатна базова версия, отлично за малки бизнеси</li>
+                    <li><strong>Microsoft Dynamics 365</strong> – интеграция с Microsoft екосистемата</li>
+                    <li><strong>Zoho CRM</strong> – достъпна с много функции</li>
+                    <li><strong>Pipedrive</strong> – фокус върху sales pipeline управлението</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="business no-break">
+            <h3>ERP (Enterprise Resource Planning)</h3>
+            <p>Системи за управление на ресурсите на предприятието</p>
+            <div class="hardware">
+                <h4>Основни модули:</h4>
+                <ul>
+                    <li><strong>Финанси</strong> – счетоводство, бюджетиране, финансова отчетност</li>
+                    <li><strong>Inventory Management</strong> – управление на складовите наличности</li>
+                    <li><strong>Human Resources</strong> – управление на персонала, заплати</li>
+                    <li><strong>Supply Chain</strong> – управление на веригата на доставки</li>
+                    <li><strong>Manufacturing</strong> – планиране и контрол на производството</li>
+                    <li><strong>Reporting & Analytics</strong> – бизнес аналитика</li>
+                </ul>
+            </div>
+            <div class="technology">
+                <h4>Популярни ERP системи:</h4>
+                <ul>
+                    <li><strong>SAP</strong> – водещата ERP система за големи предприятия</li>
+                    <li><strong>Oracle ERP Cloud</strong> – пълна облачна ERP платформа</li>
+                    <li><strong>Microsoft Dynamics 365</strong> – модулна система с гъвкава конфигурация</li>
+                    <li><strong>NetSuite</strong> – първата 100% облачна ERP система</li>
+                    <li><strong>Odoo</strong> – open-source решение с модулна архитектура</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2><span class="section-number">6. Мобилен бизнес (Mobile Commerce)</span></h2>
+        <div class="example no-break">
+            <h4>M-commerce характеристики:</h4>
+            <ul>
+                <li><strong>Мобилни приложения</strong> – нативни приложения за iOS и Android</li>
+                <li><strong>Responsive Web Design</strong> – уебсайтове адаптирани за мобилни устройства</li>
+                <li><strong>Mobile Payments</strong> – плащане чрез мобилни устройства</li>
+                <li><strong>Location-based Services</strong> – персонализирани оферти базирани на местоположение</li>
+                <li><strong>Push Notifications</strong> – моментални известия за промоции и поръчки</li>
+                <li><strong>QR Codes</strong> – бърз достъп до продукти и плащане</li>
+            </ul>
+        </div>
+
+        <div class="highlight no-break">
+            <h4>Mobile-first подход:</h4>
+            <p>С нарастването на мобилните транзакции (над 60% от e-commerce трафика), съвременните бизнеси трябва да приоритизират мобилния опит. Това включва:</p>
+            <ul>
+                <li>Бързо зареждане на страници (под 3 секунди)</li>
+                <li>Интуитивен интерфейс с един ръка</li>
+                <li>Оптимизирани форми за плащане</li>
+                <li>Мобилна оптимизация на изображенията</li>
+                <li>Gesture-based навигация</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">7. Маркетингови технологии</span></h2>
+        <div class="network no-break">
+            <h3>Digital Marketing инструменти</h3>
+            <div class="business">
+                <h4>Email Marketing</h4>
+                <ul>
+                    <li><strong>Marketing Automation</strong> – автоматизирани email кампании</li>
+                    <li><strong>Personalization</strong> – персонализирани съобщения</li>
+                    <li><strong>A/B Testing</strong> – тестване на различни версии</li>
+                    <li><strong>Примери</strong>: Mailchimp, Constant Contact, SendGrid</li>
+                </ul>
+            </div>
+
+            <div class="business">
+                <h4>Social Media Marketing</h4>
+                <ul>
+                    <li><strong>Social Media Management</strong> – управление на множество профили</li>
+                    <li><strong>Scheduling Tools</strong> – планиране на публикации</li>
+                    <li><strong>Analytics</strong> – анализ на въздействието</li>
+                    <li><strong>Примери</strong>: Hootsuite, Buffer, Sprout Social</li>
+                </ul>
+            </div>
+
+            <div class="business">
+                <h4>Search Engine Optimization (SEO)</h4>
+                <ul>
+                    <li><strong>Keyword Research</strong> – изследване на ключови думи</li>
+                    <li><strong>On-page SEO</strong> – оптимизация на съдържанието</li>
+                    <li><strong>Link Building</strong> – изграждане на обратни връзки</li>
+                    <li><strong>Примери</strong>: SEMrush, Ahrefs, Moz</li>
+                </ul>
+            </div>
+
+            <div class="business">
+                <h4>Pay-Per-Click (PPC) реклама</h4>
+                <ul>
+                    <li><strong>Google Ads</strong> – реклами в търсачките</li>
+                    <li><strong>Social Media Ads</strong> – реклами в социалните мрежи</li>
+                    <li><strong>Retargeting</strong> – повторно таргетиране на посетители</li>
+                    <li><strong>Примери</strong>: Google Ads, Facebook Ads, LinkedIn Ads</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2><span class="section-number">8. Аналитика и Business Intelligence</span></h2>
+        <div class="technology no-break">
+            <h3>Web Analytics</h3>
+            <ul>
+                <li><strong>Google Analytics</strong> – най-популярната безплатна аналитична платформа</li>
+                <li><strong>Adobe Analytics</strong> – enterprise решение с разширени функции</li>
+                <li><strong>Matomo</strong> – open-source алтернатива с фокус върху поверителността</li>
+            </ul>
+            <h4>Ключови метрики:</h4>
+            <ul>
+                <li><strong>Traffic</strong> – брой посетители, sessions, page views</li>
+                <li><strong>Conversions</strong> – конверсионна скорост, цели</li>
+                <li><strong>Bounce Rate</strong> – процент на незадоволените посетители</li>
+                <li><strong>Customer Lifetime Value (CLV)</strong> – обща стойност на клиента</li>
+                <li><strong>Cart Abandonment Rate</strong> – процент на изоставени кошници</li>
+            </ul>
+        </div>
+
+        <div class="hardware no-break">
+            <h3>Business Intelligence (BI) инструменти</h3>
+            <ul>
+                <li><strong>Tableau</strong> – визуализация на данни и бизнес аналитика</li>
+                <li><strong>Power BI</strong> – Microsoft BI платформа с интеграция към Excel</li>
+                <li><strong>QlikSense</strong> – самообслужваща BI платформа</li>
+                <li><strong>Looker</strong> – облачна BI платформа за анализи на данни</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">9. Възникващи технологии</span></h2>
+        <div class="network no-break">
+            <h3>Изкуствен интелект (AI) и Машинно обучение (ML)</h3>
+            <ul>
+                <li><strong>Chatbots</strong> – автоматизирано обслужване на клиенти 24/7</li>
+                <li><strong>Personalization</strong> – AI-driven персонализация на съдържанието</li>
+                <li><strong>Recommendation Engines</strong> – препоръки за продукти базирани на ML</li>
+                <li><strong>Fraud Detection</strong> – машинно обучение за откриване на измами</li>
+                <li><strong>Price Optimization</strong> – динамично ценообразуване с AI</li>
+            </ul>
+        </div>
+
+        <div class="technology no-break">
+            <h3>Blockchain технологии</h3>
+            <ul>
+                <li><strong>Smart Contracts</strong> – автоматични договори за B2B транзакции</li>
+                <li><strong>Supply Chain Transparency</strong> – проследяване на веригата на доставки</li>
+                <li><strong>Digital Identity</strong> – децентрализирана самоличност</li>
+                <li><strong>Loyalty Programs</strong> – токен-базирани програми за лоялност</li>
+            </ul>
+        </div>
+
+        <div class="hardware no-break">
+            <h3>Internet of Things (IoT)</h3>
+            <ul>
+                <li><strong>Smart Inventory</strong> – автоматично следене на наличности</li>
+                <li><strong>Connected Devices</strong> – устройства които комуникират помежду си</li>
+                <li><strong>Predictive Maintenance</strong> – предсказване на нужда от поддръжка</li>
+            </ul>
+        </div>
+
+        <div class="example no-break">
+            <h3>Augmented Reality (AR) и Virtual Reality (VR)</h3>
+            <ul>
+                <li><strong>Virtual Try-On</strong> – виртуално пробване на продукти</li>
+                <li><strong>3D Product Visualization</strong> – триизмерна визуализация</li>
+                <li><strong>Virtual Showrooms</strong> – виртуални търговски обекти</li>
+                <li><strong>Примери</strong>: IKEA Place, Sephora Virtual Artist, Warby Parker</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">10. Сигурност и съответствие</span></h2>
+        <div class="important no-break">
+            <h3>Киберсигурност за e-business</h3>
+            <ul>
+                <li><strong>SSL/TLS сертификати</strong> – шифриране на данните</li>
+                <li><strong>Two-Factor Authentication (2FA)</strong> – допълнителна автентикация</li>
+                <li><strong>Regular Security Audits</strong> – редовни проверки за сигурност</li>
+                <li><strong>DDoS Protection</strong> – защита срещу атаки за отказ на услуга</li>
+                <li><strong>Data Encryption</strong> – шифриране на данните в покой и в движение</li>
+            </ul>
+        </div>
+
+        <div class="highlight no-break">
+            <h3>Регулации и съответствие</h3>
+            <ul>
+                <li><strong>GDPR</strong> – защита на личните данни в ЕС</li>
+                <li><strong>PCI DSS</strong> – стандарт за обработка на данни за карти</li>
+                <li><strong>CCPA</strong> – Калифорнийски закон за защита на потребителските данни</li>
+                <li><strong>CAN-SPAM Act</strong> – регулации за email маркетинга в САЩ</li>
+                <li><strong>E-commerce Regulations</strong> – местни регулации за онлайн търговия</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">11. Интеграции и API</span></h2>
+        <div class="concept no-break">
+            <h3>Важността на интеграциите</h3>
+            <p>Съвременните e-business системи изискват интеграция между различни платформи и услуги:</p>
+            <ul>
+                <li><strong>Payment Gateways</strong> – интеграция с платежни процесори</li>
+                <li><strong>Shipping Providers</strong> – свързване с куриерски компании</li>
+                <li><strong>Accounting Software</strong> – автоматично прехвърляне на данни</li>
+                <li><strong>Inventory Management</strong> – синхронизация на наличности</li>
+                <li><strong>Email Marketing</strong> – интеграция с CRM системи</li>
+                <li><strong>Social Media</strong> – синхронизация на продукти и поръчки</li>
+            </ul>
+        </div>
+
+        <div class="technology no-break">
+            <h3>REST API и GraphQL</h3>
+            <ul>
+                <li><strong>REST API</strong> – стандартизиран начин за комуникация между системи</li>
+                <li><strong>GraphQL</strong> – по-гъвкав подход за заявки на данни</li>
+                <li><strong>Webhooks</strong> – реално-времева комуникация при събития</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">12. Бъдещи тенденции</span></h2>
+        <div class="network no-break">
+            <h3>Еволюция на e-business технологиите</h3>
+            <ul>
+                <li><strong>Voice Commerce</strong> – пазаруване чрез гласови команди (Alexa, Google Assistant)</li>
+                <li><strong>Social Commerce</strong> – директни продажби в социалните мрежи</li>
+                <li><strong>Sustainable E-commerce</strong> – фокус върху екологичността</li>
+                <li><strong>Headless Commerce</strong> – разделяне на frontend и backend</li>
+                <li><strong>Progressive Web Apps (PWA)</strong> – приложен опит без инсталация</li>
+                <li><strong>Hyper-personalization</strong> – екстремна персонализация с AI</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">Заключение</span></h2>
+        <div class="important no-break">
+            <p>Технологиите за електронен бизнес продължават да еволюират и да трансформират начина, по който бизнесите работят и взаимодействат с клиентите. От основните e-commerce платформи до напредналите AI решения, тези технологии предлагат безброй възможности за растеж и иновации. Успехът в цифровия бизнес изисква разбиране на различните технологични решения и способност за адаптиране към бързо променящите се пазарни условия.</p>
+        </div>
+
+        <div class="network no-break">
+            <h4>Ключови изводи:</h4>
+            <ul>
+                <li><strong>Платформата има значение</strong> – изборът между собствена и cloud платформа зависи от бизнес нуждите</li>
+                <li><strong>Сигурността е критична</strong> – защитата на данните на клиентите е от съществено значение</li>
+                <li><strong>Мобилният опит е задължителен</strong> – повечето потребители пазаруват от мобилни устройства</li>
+                <li><strong>Данните са мощност</strong> – аналитиката и BI помагат за информирани бизнес решения</li>
+                <li><strong>Интеграциите са ключът</strong> – свързаните системи работят по-ефективно</li>
+                <li><strong>Иновациите продължават</strong> – AI, AR/VR и blockchain формират бъдещето</li>
+            </ul>
+        </div>
+
+        <div class="example no-break">
+            <p><strong>Практически съвет</strong>: Когато избирате технологии за вашия електронен бизнес, започнете с ясно определение на бизнес нуждите и целите. Използвайте безплатни пробни периоди за тестване на различни решения преди да инвестирате. Помнете, че най-добрата технология е тази, която най-добре отговаря на специфичните нужди на вашия бизнес, а не тази с най-много функции.</p>
+        </div>
+    </div>
+</body>
+</html>
+
