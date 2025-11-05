@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Файлови системи. Физическа и логическа организация на файловата система</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #fd7e14;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #fd7e14;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2c3e50;
+            margin-top: 22px;
+        }
+        ul { margin: 12px 0; }
+        li { margin: 6px 0; }
+        .concept {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid #2196f3;
+            margin: 15px 0;
+        }
+        .example {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 12px 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        .remember {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .format-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .format-card {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .format-card h4 { color: #fd7e14; margin: 0 0 8px 0; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Файлови системи. Физическа и логическа организация на файловата система</h1>
+
+        <h2>1. Какво е файлова система?</h2>
+        <div class="concept">
+            <p><strong>Определение:</strong> Файловата система е метод за <em>организиране, съхранение и управление</em> на данни върху компютърен носител (твърд диск, SSD, флаш памет).</p>
+            <p>Тя определя как се записват, четат и управляват файловете и директориите, като осигурява:</p>
+            <ul>
+                <li><strong>Надеждност</strong> – защита срещу загуба на данни при срив</li>
+                <li><strong>Бърз достъп</strong> – ефективно намиране и четене на файлове</li>
+                <li><strong>Управление на права</strong> – контрол на достъпа до файлове и директории</li>
+                <li><strong>Управление на пространство</strong> – разпределение на свободни блокове</li>
+            </ul>
+        </div>
+
+        <h2>2. Физическа организация на файловата система</h2>
+        <div class="highlight">
+            <p><strong>Физическата организация</strong> описва как данните се разполагат <em>на хардуерно ниво</em> – върху сектори и блокове на диска.</p>
+        </div>
+        <ul>
+            <li><strong>Сектори</strong> – най-малките единици за запис (обикновено 512 байта или 4 KB)</li>
+            <li><strong>Блокове/Кластери</strong> – групирани сектори, които файловата система управлява (обикновено 4 KB, 8 KB или повече)</li>
+            <li><strong>Суперблок (Superblock)</strong> – съдържа информация за файловата система (размер, брой свободни блокове)</li>
+            <li><strong>Индексна област</strong> – таблица с метаданни за файловете (inode таблица в ext4, MFT в NTFS)</li>
+            <li><strong>Област за данни</strong> – действителното съдържание на файловете</li>
+            <li><strong>Фрагментация</strong> – файлът е разпределен в несвързани блокове; <strong>дефрагментация</strong> реорганизира файловете в съседни блокове</li>
+        </ul>
+
+        <h2>3. Логическа организация на файловата система</h2>
+        <div class="highlight">
+            <p><strong>Логическата организация</strong> описва как потребителят и програмите <em>виждат и достъпват</em> файловете – чрез йерархия от директории и файлове.</p>
+        </div>
+
+        <ul>
+            <li><strong>Йерархична структура</strong> – коренова директория (/) с поддиректории и файлове</li>
+            <li><strong>Пътища</strong> – абсолютни (от корена) и относителни (спрямо текущата директория)</li>
+            <li><strong>Метаданни</strong> – име, размер, права за достъп (r/w/x), собственик, времеви печати, местоположение на данните</li>
+            <li><strong>Индексни възли</strong>:
+                <ul>
+                    <li><strong>inode</strong> (ext4, Linux) – уникален номер за всеки файл</li>
+                    <li><strong>MFT</strong> (NTFS) – централизирана таблица с записи за всички файлове</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>4. Примери за файлови системи</h2>
+
+        <div class="format-comparison">
+            <div class="format-card">
+                <h4>ext4</h4>
+                <ul>
+                    <li><strong>Платформа:</strong> Linux</li>
+                    <li><strong>Особенности:</strong> Журналиране, големи файлове (до 16 TB), extents оптимизация</li>
+                    <li><strong>Предимства:</strong> Висока производителност, надеждност</li>
+                </ul>
+            </div>
+
+            <div class="format-card">
+                <h4>NTFS</h4>
+                <ul>
+                    <li><strong>Платформа:</strong> Windows</li>
+                    <li><strong>Особенности:</strong> ACL права, компресиране, EFS шифриране, журналиране, MFT</li>
+                    <li><strong>Предимства:</strong> Надеждност, сигурност, големи томове</li>
+                </ul>
+            </div>
+
+            <div class="format-card">
+                <h4>FAT32</h4>
+                <ul>
+                    <li><strong>Платформа:</strong> Универсална</li>
+                    <li><strong>Особенности:</strong> Проста структура, широка съвместимост</li>
+                    <li><strong>Ограничения:</strong> Макс. 4 GB за файл, 2 TB за том, липса на права и журналиране</li>
+                </ul>
+            </div>
+
+            <div class="format-card">
+                <h4>exFAT</h4>
+                <ul>
+                    <li><strong>Платформа:</strong> Универсална</li>
+                    <li><strong>Особенности:</strong> Подобрена FAT32, без 4 GB лимит, оптимизирана за флаш памети</li>
+                    <li><strong>Предимства:</strong> Големи файлове, подходяща за USB и SD карти</li>
+                </ul>
+            </div>
+
+            <div class="format-card">
+                <h4>ReiserFS</h4>
+                <ul>
+                    <li><strong>Платформа:</strong> Linux</li>
+                    <li><strong>Особенности:</strong> B+ дърво, журналиране, ефективна за файлове под 4 KB</li>
+                    <li><strong>Предимства:</strong> Отлична производителност за дребни файлове</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>5. Сравнителна таблица на файловите системи</h2>
+        <table>
+            <tr>
+                <th>Файлова система</th>
+                <th>Макс. размер на файл</th>
+                <th>Макс. размер на том</th>
+                <th>Журналиране</th>
+                <th>Права за достъп</th>
+                <th>Основно използване</th>
+            </tr>
+            <tr>
+                <td><strong>ext4</strong></td>
+                <td>16 TB</td>
+                <td>1 EB</td>
+                <td>Да</td>
+                <td>Да (POSIX)</td>
+                <td>Linux системи</td>
+            </tr>
+            <tr>
+                <td><strong>NTFS</strong></td>
+                <td>16 EB</td>
+                <td>256 TB</td>
+                <td>Да</td>
+                <td>Да (ACL)</td>
+                <td>Windows системи</td>
+            </tr>
+            <tr>
+                <td><strong>FAT32</strong></td>
+                <td>4 GB</td>
+                <td>2 TB</td>
+                <td>Не</td>
+                <td>Не</td>
+                <td>Съвместимост, USB устройства</td>
+            </tr>
+            <tr>
+                <td><strong>exFAT</strong></td>
+                <td>16 EB</td>
+                <td>128 PB</td>
+                <td>Не</td>
+                <td>Не</td>
+                <td>Флаш памети, външни дискове</td>
+            </tr>
+            <tr>
+                <td><strong>ReiserFS</strong></td>
+                <td>8 TB</td>
+                <td>16 TB</td>
+                <td>Да</td>
+                <td>Да (POSIX)</td>
+                <td>Linux (специфични случаи)</td>
+            </tr>
+        </table>
+
+        <h2>6. Ключови понятия</h2>
+        <div class="concept">
+            <p><strong>Журналиране (Journaling):</strong> Операциите се записват в журнал преди изпълнение. При срив системата може да възстанови непълно записаните операции. Видове: Metadata journaling (само метаданни) и Full journaling (метаданни + данни).</p>
+        </div>
+        <div class="example">
+            <p><strong>Монтиране:</strong> Процес на "закачане" на файловата система към директория (в Linux: <code>mount /dev/sda1 /mnt/usb</code>; в Windows: автоматично).</p>
+        </div>
+        <ul>
+            <li><strong>Управление на свободно пространство:</strong> Bitmap (битова карта), свързан списък или групиране на свободните блокове</li>
+        </ul>
+
+        <h2>7. Препоръки за избор</h2>
+        <div class="remember">
+            <ul>
+                <li><strong>Linux десктоп/сървър:</strong> ext4 (по подразбиране)</li>
+                <li><strong>Windows системен дял:</strong> NTFS (задължително)</li>
+                <li><strong>USB флаш памети, външни дискове:</strong> exFAT (за съвместимост) или NTFS</li>
+                <li><strong>Стари устройства:</strong> FAT32 (за максимална съвместимост)</li>
+            </ul>
+        </div>
+
+        <h2>8. Важни моменти за запомняне</h2>
+        <div class="remember">
+            <ul>
+                <li><strong>Физическата организация</strong> определя как данните се съхраняват на диска (блокове, сектори)</li>
+                <li><strong>Логическата организация</strong> определя как потребителят вижда файловете (директории, пътища)</li>
+                <li><strong>Журналирането</strong> осигурява защита срещу загуба на данни при срив</li>
+                <li><strong>Индексните възли</strong> (inode/MFT) съдържат метаданните на файловете</li>
+                <li><strong>Изборът на файлова система</strong> зависи от нуждите: ОС, размер на файлове, надеждност, съвместимост</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
