@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ограничаване на броя на извежданите записи с клауза LIMIT — 12б, Бази данни</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #17a2b8;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #17a2b8;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+        }
+        
+        h4 {
+            color: #34495e;
+            margin-top: 20px;
+        }
+        
+        ul {
+            margin: 15px 0;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        code {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            margin: 15px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        
+        .example {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+        }
+        
+        .important {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid #dc3545;
+            margin: 15px 0;
+        }
+        
+        .supabase {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid #3ECF8E;
+            margin: 15px 0;
+        }
+        
+        .concept {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid #2196f3;
+            margin: 15px 0;
+        }
+        
+        .sql-box {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        strong {
+            color: #2c3e50;
+        }
+        
+        .section-number {
+            color: #17a2b8;
+            font-weight: bold;
+        }
+        
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            font-size: 14px;
+        }
+        
+        .result-table th,
+        .result-table td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .result-table th {
+            background-color: #17a2b8;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .result-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background-color: #17a2b8;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .no-break {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+            .highlight,
+            .example,
+            .important,
+            .supabase,
+            .concept {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ограничаване на броя на извежданите записи с клауза LIMIT</h1>
+
+        <h2><span class="section-number">Увод</span></h2>
+        <div class="important no-break">
+            <p><strong>Клаузата LIMIT</strong> е мощна SQL команда, която позволява да ограничим броя на редовете, върнати от заявка. Това е особено полезно при работа с големи таблици, където искаме да видим само първите няколко записа или да имплементираме пагинация (разделяне на резултатите на страници).</p>
+        </div>
+
+        <div class="concept no-break">
+            <h4>Защо е важна клаузата LIMIT?</h4>
+            <ul>
+                <li><strong>Производителност</strong> - намалява времето за изпълнение на заявките</li>
+                <li><strong>Пагинация</strong> - показване на резултатите на страници (например 10 записа на страница)</li>
+                <li><strong>Топ резултати</strong> - показване само на най-важните записи</li>
+                <li><strong>Тестване</strong> - бърза проверка на данните без зареждане на всички записи</li>
+                <li><strong>Намаляване на мрежов трафик</strong> - трансферира се по-малко данни</li>
+                <li><strong>Подобряване на потребителското изживяване</strong> - по-бързо зареждане</li>
+            </ul>
+        </div>
+
+        <div class="supabase no-break">
+            <h4>Работа с Supabase</h4>
+            <p>В този урок ще използваме <strong>Supabase</strong> - модерна cloud платформа за PostgreSQL бази данни. Supabase предоставя:</p>
+            <ul>
+                <li>SQL Editor за изпълнение на заявки</li>
+                <li>Table Editor за визуална работа с данни</li>
+                <li>Автоматична генерация на REST API</li>
+                <li>Реално време поддръжка</li>
+            </ul>
+            <p><strong>Достъп:</strong> https://supabase.com/dashboard → Изберете проекта → SQL Editor</p>
+        </div>
+
+        <div class="important no-break">
+            <h4>База данни за упражнения: DB-online_shop</h4>
+            <p>В този урок ще работим с базата данни <strong>DB-online_shop</strong>, която съдържа:</p>
+            <ul>
+                <li><strong>categories</strong> - категории продукти (id, category_name, description, created_at)</li>
+                <li><strong>products</strong> - продукти (id, product_name, price, stock_quantity, category_id, is_active, created_at)</li>
+                <li><strong>customers</strong> - клиенти (id, first_name, last_name, email, phone, city, created_at)</li>
+                <li><strong>orders</strong> - поръчки (id, customer_id, order_date, total_amount, status)</li>
+                <li><strong>order_items</strong> - детайли на поръчките (id, order_id, product_id, quantity, unit_price, total_price)</li>
+            </ul>
+            <p><strong>За да заредите базата:</strong> Отворете SQL Editor в Supabase и изпълнете файла <code>DB-online_shop/online_shop_database.sql</code></p>
+        </div>
+
+        <h2><span class="section-number">1. Основен синтаксис на LIMIT</span></h2>
+        
+        <div class="concept no-break">
+            <h3>Базов синтаксис</h3>
+            <p>Клаузата <code>LIMIT</code> се поставя в края на SELECT заявката и указва максималния брой редове, които да бъдат върнати.</p>
+        </div>
+
+        <div class="sql-box">
+            <p><strong>Основен синтаксис:</strong></p>
+            <code>SELECT колона1, колона2, ...<br>
+FROM таблица<br>
+LIMIT число;</code>
+        </div>
+
+        <div class="example no-break">
+            <h4>Пример 1: Извеждане на първите 5 записа</h4>
+            <p>От таблицата <code>products</code> искаме да видим само първите 5 продукта:</p>
+            
+            <div class="sql-box">
+                <code>SELECT id, product_name, price<br>
+FROM products<br>
+LIMIT 5;</code>
+            </div>
+            
+            <p>Тази заявка ще върне само първите 5 записа от таблицата products.</p>
+        </div>
+
+        <div class="important no-break">
+            <h4>Важно за PostgreSQL/Supabase:</h4>
+            <ul>
+                <li>В <strong>PostgreSQL</strong> (който използва Supabase), <code>LIMIT</code> се поддържа напълно</li>
+                <li>Ако искате определена подредба, трябва да използвате <code>ORDER BY</code> преди <code>LIMIT</code></li>
+                <li>Без <code>ORDER BY</code>, резултатите могат да бъдат в произволен ред</li>
+                <li><code>LIMIT</code> приема само положителни цели числа</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">2. LIMIT с ORDER BY</span></h2>
+        
+        <div class="concept no-break">
+            <h3>Защо е важен ORDER BY?</h3>
+            <p>Когато искаме определени резултати (най-нови, най-скъпи, най-популярни), трябва първо да сортираме данните с <code>ORDER BY</code>, а след това да приложим <code>LIMIT</code>.</p>
+        </div>
+
+        <div class="example no-break">
+            <h4>Пример 2: Най-скъпите 3 продукта</h4>
+            <p>Искаме да намерим 3-те най-скъпи продукта от базата DB-online_shop:</p>
+            
+            <div class="sql-box">
+                <code>SELECT id, product_name, price<br>
+FROM products<br>
+ORDER BY price DESC<br>
+LIMIT 3;</code>
+            </div>
+            
+            <p><strong>Обяснение:</strong></p>
+            <ul>
+                <li><code>ORDER BY price DESC</code> - сортира продуктите по цена в намаляващ ред</li>
+                <li><code>LIMIT 3</code> - взема само първите 3 записа от сортирания резултат</li>
+            </ul>
+        </div>
+
+        <div class="example no-break">
+            <h4>Пример 3: Най-новите 5 поръчки</h4>
+            <p>Искаме да видим последните 5 направени поръчки:</p>
+            
+            <div class="sql-box">
+                <code>SELECT id, customer_id, total_amount, order_date<br>
+FROM orders<br>
+ORDER BY order_date DESC<br>
+LIMIT 5;</code>
+            </div>
+            
+            <p>Резултатът ще покаже 5-те най-нови поръчки, сортирани по дата на създаване (най-новите първо).</p>
+        </div>
+
+        <div class="example no-break">
+            <h4>Пример 4: Най-евтините 10 продукта</h4>
+            <div class="sql-box">
+                <code>SELECT id, product_name, price<br>
+FROM products<br>
+WHERE is_active = TRUE<br>
+ORDER BY price ASC<br>
+LIMIT 10;</code>
+            </div>
+            
+            <p>Тук комбинираме <code>WHERE</code> (за филтриране), <code>ORDER BY</code> (за сортиране) и <code>LIMIT</code> (за ограничаване).</p>
+        </div>
+
+        <h2><span class="section-number">3. LIMIT с OFFSET за пагинация</span></h2>
+        
+        <div class="concept no-break">
+            <h3>Какво е OFFSET?</h3>
+            <p><strong>OFFSET</strong> указва колко редове да се пропуснат преди да започне да връща резултати. Това е основно за имплементиране на пагинация.</p>
+        </div>
+
+        <div class="sql-box">
+            <p><strong>Синтаксис с OFFSET:</strong></p>
+            <code>SELECT колона1, колона2, ...<br>
+FROM таблица<br>
+ORDER BY колона<br>
+LIMIT число OFFSET число;</code>
+        </div>
+
+        <div class="example no-break">
+            <h4>Пример 5: Пагинация - Първа страница (първите 10 записа)</h4>
+            <div class="sql-box">
+                <code>SELECT id, product_name, price<br>
+FROM products<br>
+ORDER BY product_name<br>
+LIMIT 10 OFFSET 0;</code>
+            </div>
+            
+            <p>Това ще върне записи 1-10.</p>
+        </div>
+
+        <div class="example no-break">
+            <h4>Пример 6: Пагинация - Втора страница (следващите 10 записа)</h4>
+            <div class="sql-box">
+                <code>SELECT id, product_name, price<br>
+FROM products<br>
+ORDER BY product_name<br>
+LIMIT 10 OFFSET 10;</code>
+            </div>
+            
+            <p>Това ще върне записи 11-20 (пропуска първите 10 и взима следващите 10).</p>
+        </div>
+
+        <div class="example no-break">
+            <h4>Пример 7: Пагинация - Трета страница</h4>
+            <div class="sql-box">
+                <code>SELECT id, product_name, price<br>
+FROM products<br>
+ORDER BY product_name<br>
+LIMIT 10 OFFSET 20;</code>
+            </div>
+            
+            <p>Това ще върне записи 21-30.</p>
+        </div>
+
+        <div class="highlight no-break">
+            <h4>Формула за пагинация:</h4>
+            <p>За страница <code>N</code> с размер на страницата <code>PageSize</code>:</p>
+            <ul>
+                <li><code>LIMIT = PageSize</code></li>
+                <li><code>OFFSET = (N - 1) × PageSize</code></li>
+            </ul>
+            <p><strong>Пример:</strong> За страница 3 с 10 записа на страница:</p>
+            <ul>
+                <li><code>LIMIT 10</code></li>
+                <li><code>OFFSET 20</code> (защото (3-1) × 10 = 20)</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">4. Алтернативен синтаксис: LIMIT число1, число2</span></h2>
+        
+        <div class="concept no-break">
+            <h3>Кратък синтаксис за LIMIT и OFFSET</h3>
+            <p>В PostgreSQL/Supabase можете да използвате и кратък синтаксис, където първото число е OFFSET, а второто е LIMIT.</p>
+        </div>
+
+        <div class="sql-box">
+            <p><strong>Алтернативен синтаксис:</strong></p>
+            <code>SELECT колона1, колона2, ...<br>
+FROM таблица<br>
+ORDER BY колона<br>
+LIMIT OFFSET, LIMIT;</code>
+        </div>
+
+        <div class="example no-break">
+            <h4>Пример 8: Кратък синтаксис</h4>
+            <p>Следните две заявки са еквивалентни:</p>
+            
+            <div class="sql-box">
+                <p><strong>Вариант 1 (стандартен):</strong></p>
+                <code>SELECT * FROM products<br>
+ORDER BY price DESC<br>
+LIMIT 5 OFFSET 10;</code>
+                
+                <p><strong>Вариант 2 (кратък):</strong></p>
+                <code>SELECT * FROM products<br>
+ORDER BY price DESC<br>
+LIMIT 10, 5;</code>
+            </div>
+            
+            <p><strong>Внимание:</strong> При кратък синтаксис редът е <code>OFFSET, LIMIT</code> (не LIMIT, OFFSET)!</p>
+        </div>
+
+        <div class="important no-break">
+            <h4>Препоръка:</h4>
+            <p>Препоръчително е да използвате <code>LIMIT ... OFFSET ...</code> синтаксиса, защото е по-ясен и четим. Кратък синтаксис може да обърка реда на параметрите.</p>
+        </div>
+
+        <h2><span class="section-number">5. Практически примери с Supabase</span></h2>
+        
+        <div class="supabase no-break">
+            <h3>Работа в Supabase SQL Editor</h3>
+            <p>Всички примери по-долу могат да се изпълнят директно в Supabase SQL Editor:</p>
+            <ol>
+                <li>Отидете на https://supabase.com/dashboard</li>
+                <li>Изберете вашия проект</li>
+                <li>Кликнете на <strong>SQL Editor</strong> в лявото меню</li>
+                <li>Копирайте заявката и я поставете</li>
+                <li>Кликнете <strong>Run</strong> или натиснете <code>Ctrl+Enter</code></li>
+            </ol>
+        </div>
+
+        <div class="example no-break">
+            <h4>Пример 9: Топ 5 клиенти по брой поръчки</h4>
+            <p>Искаме да намерим клиентите, които са направили най-много поръчки:</p>
+            
+            <div class="sql-box">
+                <code>SELECT c.first_name, c.last_name, COUNT(o.id) AS order_count<br>
+FROM customers c<br>
+LEFT JOIN orders o ON c.id = o.customer_id<br>
+GROUP BY c.id, c.first_name, c.last_name<br>
+ORDER BY order_count DESC<br>
+LIMIT 5;</code>
+            </div>
+            
+            <p>Резултатът ще покаже 5-те клиента с най-много поръчки.</p>
+        </div>
+
+        <div class="example no-break">
+            <h4>Пример 10: Най-продаваните 10 продукта</h4>
+            <div class="sql-box">
+                <code>SELECT p.product_name, SUM(oi.quantity) AS total_sold<br>
+FROM products p<br>
+JOIN order_items oi ON p.id = oi.product_id<br>
+GROUP BY p.id, p.product_name<br>
+ORDER BY total_sold DESC<br>
+LIMIT 10;</code>
+            </div>
+        </div>
+
+        <div class="example no-break">
+            <h4>Пример 11: Последните 20 поръчки с детайли</h4>
+            <div class="sql-box">
+                <code>SELECT o.id, <br>
+       c.first_name || ' ' || c.last_name AS customer_name,<br>
+       o.total_amount,<br>
+       o.status,<br>
+       o.order_date<br>
+FROM orders o<br>
+JOIN customers c ON o.customer_id = c.id<br>
+ORDER BY o.order_date DESC<br>
+LIMIT 20;</code>
+            </div>
+            
+            <p>Ще покаже последните 20 поръчки с имената на клиентите.</p>
+        </div>
+
+        <div class="example no-break">
+            <h4>Пример 12: Продукти с най-ниско наличност (за зареждане)</h4>
+            <div class="sql-box">
+                <code>SELECT id, product_name, stock_quantity<br>
+FROM products<br>
+WHERE is_active = TRUE<br>
+ORDER BY stock_quantity ASC<br>
+LIMIT 10;</code>
+            </div>
+            
+            <p>Ще покаже 10-те продукта с най-малко наличност.</p>
+        </div>
+
+        <h2><span class="section-number">6. LIMIT с агрегатни функции</span></h2>
+        
+        <div class="concept no-break">
+            <h3>Използване на LIMIT след GROUP BY</h3>
+            <p>Когато използваме <code>GROUP BY</code> с агрегатни функции, <code>LIMIT</code> се прилага върху групираните резултати.</p>
+        </div>
+
+        <div class="example no-break">
+            <h4>Пример 13: Категории с най-много продукти</h4>
+            <div class="sql-box">
+                <code>SELECT c.category_name, COUNT(p.id) AS product_count<br>
+FROM categories c<br>
+LEFT JOIN products p ON c.id = p.category_id<br>
+GROUP BY c.id, c.category_name<br>
+ORDER BY product_count DESC<br>
+LIMIT 5;</code>
+            </div>
+        </div>
+
+        <div class="example no-break">
+            <h4>Пример 14: Месеци с най-висок оборот</h4>
+            <div class="sql-box">
+                <code>SELECT DATE_TRUNC('month', o.order_date) AS month,<br>
+       SUM(o.total_amount) AS monthly_revenue<br>
+FROM orders o<br>
+WHERE o.status IN ('delivered', 'shipped')<br>
+GROUP BY DATE_TRUNC('month', o.order_date)<br>
+ORDER BY monthly_revenue DESC<br>
+LIMIT 6;</code>
+            </div>
+            
+            <p>Ще покаже 6-те месеца с най-висок оборот.</p>
+        </div>
+
+        <h2><span class="section-number">7. LIMIT в подзаявки (Subqueries)</span></h2>
+        
+        <div class="concept no-break">
+            <h3>Използване на LIMIT в подзаявки</h3>
+            <p>Можем да използваме <code>LIMIT</code> и в подзаявки, което е полезно за сложни заявки.</p>
+        </div>
+
+        <div class="example no-break">
+            <h4>Пример 15: Клиенти, които са поръчали най-скъпия продукт</h4>
+            <div class="sql-box">
+                <code>SELECT c.first_name, c.last_name, o.total_amount<br>
+FROM customers c<br>
+JOIN orders o ON c.id = o.customer_id<br>
+JOIN order_items oi ON o.id = oi.order_id<br>
+WHERE oi.product_id = (<br>
+    SELECT id<br>
+    FROM products<br>
+    ORDER BY price DESC<br>
+    LIMIT 1<br>
+)<br>
+ORDER BY o.order_date DESC<br>
+LIMIT 10;</code>
+            </div>
+            
+            <p>Подзаявката намира най-скъпия продукт, а главната заявка намира клиентите, които са го поръчали.</p>
+        </div>
+
+        <h2><span class="section-number">8. Често срещани грешки и проблеми</span></h2>
+        
+        <div class="important no-break">
+            <h3>Грешка 1: Забравен ORDER BY</h3>
+            <p><strong>Проблем:</strong> Използване на <code>LIMIT</code> без <code>ORDER BY</code> може да върне произволни резултати.</p>
+            
+            <div class="sql-box">
+                <p><strong>❌ Грешно:</strong></p>
+                <code>SELECT * FROM products LIMIT 5;</code>
+                
+                <p><strong>✅ Правилно:</strong></p>
+                <code>SELECT * FROM products<br>
+ORDER BY created_at DESC<br>
+LIMIT 5;</code>
+            </div>
+        </div>
+
+        <div class="important no-break">
+            <h3>Грешка 2: Грешен ред при кратък синтаксис</h3>
+            <p><strong>Проблем:</strong> При <code>LIMIT offset, limit</code> лесно може да се обърка редът.</p>
+            
+            <div class="sql-box">
+                <p><strong>❌ Грешно (объркан ред):</strong></p>
+                <code>SELECT * FROM products LIMIT 5, 10;  -- Това ще върне 10 записа, пропускайки първите 5!</code>
+                
+                <p><strong>✅ Правилно:</strong></p>
+                <code>SELECT * FROM products LIMIT 10 OFFSET 5;  -- Ясно и разбираемо</code>
+            </div>
+        </div>
+
+        <div class="important no-break">
+            <h3>Грешка 3: OFFSET без ORDER BY</h3>
+            <p><strong>Проблем:</strong> Използване на <code>OFFSET</code> без <code>ORDER BY</code> няма гарантиран ред.</p>
+            
+            <div class="sql-box">
+                <p><strong>❌ Грешно:</strong></p>
+                <code>SELECT * FROM products LIMIT 10 OFFSET 20;</code>
+                
+                <p><strong>✅ Правилно:</strong></p>
+                <code>SELECT * FROM products<br>
+ORDER BY id<br>
+LIMIT 10 OFFSET 20;</code>
+            </div>
+        </div>
+
+        <div class="important no-break">
+            <h3>Грешка 4: Отрицателни стойности</h3>
+            <p><strong>Проблем:</strong> <code>LIMIT</code> и <code>OFFSET</code> не приемат отрицателни числа.</p>
+            
+            <div class="sql-box">
+                <p><strong>❌ Грешно:</strong></p>
+                <code>SELECT * FROM products LIMIT -5;  -- Грешка!</code>
+                <code>SELECT * FROM products LIMIT 10 OFFSET -5;  -- Грешка!</code>
+            </div>
+        </div>
+
+        <div class="important no-break">
+            <h3>Грешка 5: LIMIT преди ORDER BY</h3>
+            <p><strong>Проблем:</strong> В SQL редът на клаузите е важен. <code>LIMIT</code> трябва да е след <code>ORDER BY</code>.</p>
+            
+            <div class="sql-box">
+                <p><strong>❌ Грешно (синтактична грешка):</strong></p>
+                <code>SELECT * FROM products LIMIT 5 ORDER BY price;  -- Грешка!</code>
+                
+                <p><strong>✅ Правилно:</strong></p>
+                <code>SELECT * FROM products ORDER BY price LIMIT 5;</code>
+            </div>
+        </div>
+
+        <h2><span class="section-number">9. Най-добри практики</span></h2>
+        
+        <div class="concept no-break">
+            <h3>Препоръки при използване на LIMIT</h3>
+            <ul>
+                <li><strong>Винаги използвайте ORDER BY</strong> преди LIMIT, когато редът е важен</li>
+                <li><strong>Използвайте разумен размер</strong> - не взимайте прекалено много или прекалено малко записа</li>
+                <li><strong>Избягвайте кратък синтаксис</strong> - <code>LIMIT ... OFFSET ...</code> е по-ясен</li>
+                <li><strong>При пагинация</strong> - използвайте фиксиран размер на страницата (например 10, 20, 50)</li>
+                <li><strong>Проверявайте границите</strong> - ако OFFSET е твърде голям, резултатът може да е празен</li>
+                <li><strong>Индексиране</strong> - за бързодействие при LIMIT с ORDER BY, индексирайте колоните в ORDER BY</li>
+            </ul>
+        </div>
+
+        <div class="highlight no-break">
+            <h4>Ред на клаузите в SELECT заявка:</h4>
+            <ol>
+                <li><code>SELECT</code></li>
+                <li><code>FROM</code></li>
+                <li><code>WHERE</code></li>
+                <li><code>GROUP BY</code></li>
+                <li><code>HAVING</code></li>
+                <li><code>ORDER BY</code></li>
+                <li><code>LIMIT</code></li>
+                <li><code>OFFSET</code></li>
+            </ol>
+        </div>
+
+        <h2><span class="section-number">10. Практически упражнения в Supabase</span></h2>
+        
+        <div class="supabase no-break">
+            <h3>Упражнение 1: Базово използване</h3>
+            <p>Заредете базата данни <code>DB-online_shop</code> (файл: <code>DB-online_shop/online_shop_database.sql</code>) и изпълнете:</p>
+            <ol>
+                <li>Изведете първите 5 продукта от таблицата <code>products</code></li>
+                <li>Изведете най-скъпите 3 продукта</li>
+                <li>Изведете най-новите 10 поръчки</li>
+            </ol>
+        </div>
+
+        <div class="supabase no-break">
+            <h3>Упражнение 2: Пагинация</h3>
+            <p>Имплементирайте пагинация за продуктите:</p>
+            <ol>
+                <li>Изведете продукти 1-10 (първа страница)</li>
+                <li>Изведете продукти 11-20 (втора страница)</li>
+                <li>Изведете продукти 21-30 (трета страница)</li>
+            </ol>
+            <p>Подсказка: Използвайте <code>ORDER BY id</code> и подходящи <code>LIMIT</code> и <code>OFFSET</code>.</p>
+        </div>
+
+        <div class="supabase no-break">
+            <h3>Упражнение 3: Агрегатни заявки</h3>
+            <p>Намерете:</p>
+            <ol>
+                <li>Топ 5 клиента по сума на поръчките</li>
+                <li>Най-продаваните 10 продукта</li>
+                <li>Категориите с най-много продукти (топ 3)</li>
+            </ol>
+        </div>
+
+        <div class="supabase no-break">
+            <h3>Упражнение 4: Комбинация с JOIN</h3>
+            <p>Създайте заявка, която извежда:</p>
+            <ul>
+                <li>Последните 15 поръчки</li>
+                <li>С името на клиента</li>
+                <li>И броя на артикулите в поръчката</li>
+                <li>Сортирани по дата (най-новите първо)</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">11. Сравнение с други бази данни</span></h2>
+        
+        <div class="no-break">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>База данни</th>
+                        <th>Синтаксис за LIMIT</th>
+                        <th>Бележки</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>PostgreSQL / Supabase</strong></td>
+                        <td><code>LIMIT число</code><br><code>LIMIT число OFFSET число</code></td>
+                        <td>Пълна поддръжка. Стандартният синтаксис.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MySQL / MariaDB</strong></td>
+                        <td><code>LIMIT число</code><br><code>LIMIT offset, limit</code></td>
+                        <td>Поддържа и двата синтаксиса. Краткият синтаксис е често използван.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SQL Server</strong></td>
+                        <td><code>TOP число</code><br><code>OFFSET ... ROWS FETCH NEXT ... ROWS ONLY</code></td>
+                        <td>Използва <code>TOP</code> вместо <code>LIMIT</code>. По-нов синтаксис поддържа OFFSET.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Oracle</strong></td>
+                        <td><code>ROWNUM</code><br><code>OFFSET ... ROWS FETCH NEXT ... ROWS ONLY</code></td>
+                        <td>По-старите версии използват <code>ROWNUM</code>. По-новите поддържат OFFSET/FETCH.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SQLite</strong></td>
+                        <td><code>LIMIT число</code><br><code>LIMIT offset, limit</code></td>
+                        <td>Подобно на MySQL синтаксиса.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="highlight no-break">
+            <h4>Важно за Supabase:</h4>
+            <p>Тъй като Supabase използва PostgreSQL, винаги използвайте PostgreSQL синтаксиса:</p>
+            <ul>
+                <li><code>LIMIT число</code></li>
+                <li><code>LIMIT число OFFSET число</code></li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">12. Производителност и оптимизация</span></h2>
+        
+        <div class="concept no-break">
+            <h3>Как LIMIT подобрява производителността?</h3>
+            <ul>
+                <li><strong>Намалява обработените данни</strong> - базата данни спира след намиране на достатъчно резултати</li>
+                <li><strong>Намалява мрежовия трафик</strong> - по-малко данни се трансферират</li>
+                <li><strong>Намалява използването на памет</strong> - по-малко резултати в паметта</li>
+                <li><strong>По-бързо изпълнение</strong> - особено с индекси и ORDER BY</li>
+            </ul>
+        </div>
+
+        <div class="important no-break">
+            <h4>Подсказки за оптимизация:</h4>
+            <ul>
+                <li><strong>Индексирайте колоните в ORDER BY</strong> - това значително ускорява заявките с LIMIT</li>
+                <li><strong>Използвайте разумен LIMIT</strong> - прекалено голям LIMIT губи ползите от оптимизацията</li>
+                <li><strong>Избягвайте големи OFFSET стойности</strong> - при много голям OFFSET, производителността може да пострада</li>
+                <li><strong>Кеширане</strong> - резултатите от LIMIT заявки лесно могат да се кешират</li>
+            </ul>
+        </div>
+
+        <div class="example no-break">
+            <h4>Пример: Оптимизирана заявка</h4>
+            <p>За да се оптимизира следната заявка, трябва да има индекс на <code>price</code> (индексът вече е създаден в <code>online_shop_database.sql</code>):</p>
+            
+            <div class="sql-box">
+                <code>-- Индексът вече е създаден в online_shop_database.sql:<br>
+-- CREATE INDEX idx_products_price ON products(price);<br>
+<br>
+-- Оптимизирана заявка<br>
+SELECT id, product_name, price<br>
+FROM products<br>
+ORDER BY price DESC<br>
+LIMIT 10;</code>
+            </div>
+        </div>
+
+        <h2><span class="section-number">13. Реални сценарии за използване</span></h2>
+        
+        <div class="example no-break">
+            <h3>Сценарий 1: Уеб приложение - Начална страница</h3>
+            <p>В уеб приложение искате да покажете последните продукти на началната страница:</p>
+            
+            <div class="sql-box">
+                <code>SELECT id, product_name, price<br>
+FROM products<br>
+WHERE is_active = TRUE<br>
+ORDER BY created_at DESC<br>
+LIMIT 8;</code>
+            </div>
+        </div>
+
+        <div class="example no-break">
+            <h3>Сценарий 2: Табло за управление - Статистика</h3>
+            <p>Показване на топ клиенти в администраторско табло:</p>
+            
+            <div class="sql-box">
+                <code>SELECT c.first_name || ' ' || c.last_name AS customer_name,<br>
+       COUNT(o.id) AS total_orders,<br>
+       SUM(o.total_amount) AS total_spent<br>
+FROM customers c<br>
+JOIN orders o ON c.id = o.customer_id<br>
+GROUP BY c.id, c.first_name, c.last_name<br>
+ORDER BY total_spent DESC<br>
+LIMIT 10;</code>
+            </div>
+        </div>
+
+        <div class="example no-break">
+            <h3>Сценарий 3: Мобилно приложение - Пагинация</h3>
+            <p>При скролване в мобилно приложение, зареждане на следващата страница:</p>
+            
+            <div class="sql-box">
+                <code>-- Страница 1<br>
+SELECT * FROM products ORDER BY product_name LIMIT 20 OFFSET 0;<br>
+<br>
+-- Страница 2 (след скролване)<br>
+SELECT * FROM products ORDER BY product_name LIMIT 20 OFFSET 20;<br>
+<br>
+-- Страница 3<br>
+SELECT * FROM products ORDER BY product_name LIMIT 20 OFFSET 40;</code>
+            </div>
+        </div>
+
+        <div class="example no-break">
+            <h3>Сценарий 4: Поръчки в изчакване</h3>
+            <p>Показване на последните поръчки, които са в статус "pending" (чакащи обработка):</p>
+            
+            <div class="sql-box">
+                <code>SELECT id, customer_id, total_amount, order_date<br>
+FROM orders<br>
+WHERE status = 'pending'<br>
+ORDER BY order_date DESC<br>
+LIMIT 5;</code>
+            </div>
+            
+            <p>Това е полезно за показване на поръчки, които трябва да бъдат обработени.</p>
+        </div>
+
+        <h2><span class="section-number">14. Комбиниране с други SQL функции</span></h2>
+        
+        <div class="example no-break">
+            <h3>LIMIT с CASE за условна логика</h3>
+            <div class="sql-box">
+                <code>SELECT id, product_name, price,<br>
+       CASE<br>
+           WHEN stock_quantity < 10 THEN 'Нисък запас'<br>
+           WHEN stock_quantity < 50 THEN 'Среден запас'<br>
+           ELSE 'Добър запас'<br>
+       END AS stock_status<br>
+FROM products<br>
+ORDER BY stock_quantity ASC<br>
+LIMIT 10;</code>
+            </div>
+        </div>
+
+        <div class="example no-break">
+            <h3>LIMIT с подзаявки и EXISTS</h3>
+            <div class="sql-box">
+                <code>SELECT id, product_name, price<br>
+FROM products p<br>
+WHERE EXISTS (<br>
+    SELECT 1 FROM order_items oi<br>
+    WHERE oi.product_id = p.id<br>
+)<br>
+ORDER BY price DESC<br>
+LIMIT 5;</code>
+            </div>
+            
+            <p>Ще покаже 5-те най-скъпи продукта, които поне веднъж са били поръчани.</p>
+        </div>
+
+        <h2><span class="section-number">Заключение</span></h2>
+        <div class="important no-break">
+            <p>Клаузата <code>LIMIT</code> е основен инструмент за работа с бази данни, който позволява ефективно управление на обема на върнатите данни. Особено важно е правилното й комбиниране с <code>ORDER BY</code> за гарантиране на коректни резултати. При работа със Supabase и PostgreSQL, <code>LIMIT</code> и <code>OFFSET</code> предоставят мощна функционалност за пагинация и извличане на конкретни подмножества от данни.</p>
+        </div>
+
+        <div class="concept no-break">
+            <h4>Ключови изводи:</h4>
+            <ul>
+                <li><strong>LIMIT</strong> ограничава броя на върнатите редове</li>
+                <li><strong>OFFSET</strong> пропуска определен брой редове преди да започне да връща резултати</li>
+                <li><strong>Винаги използвайте ORDER BY</strong> преди LIMIT, когато редът е важен</li>
+                <li><strong>Пагинацията</strong> се имплементира с комбинация от LIMIT и OFFSET</li>
+                <li><strong>LIMIT подобрява производителността</strong> чрез намаляване на обработените данни</li>
+                <li><strong>В PostgreSQL/Supabase</strong> синтаксисът е <code>LIMIT число OFFSET число</code></li>
+                <li><strong>Редът на клаузите</strong> е важен: ORDER BY трябва да е преди LIMIT</li>
+            </ul>
+        </div>
+
+        <div class="highlight no-break">
+            <h4>Практически съвет:</h4>
+            <p>Започнете с прости заявки, използвайки LIMIT за тестване. Когато работите с пагинация, винаги използвайте ORDER BY, за да гарантирате консистентен ред на резултатите между различните страници. Не забравяйте да тествате граничните случаи - какво се случва, когато OFFSET е по-голям от общия брой записи?</p>
+        </div>
+
+        <div class="supabase no-break">
+            <h4>Полезни команди за Supabase:</h4>
+            <ul>
+                <li><strong>SQL Editor</strong> - за изпълнение на заявки: Dashboard → SQL Editor</li>
+                <li><strong>Table Editor</strong> - за визуална работа: Dashboard → Table Editor</li>
+                <li><strong>Query History</strong> - преглед на последните заявки</li>
+                <li><strong>Explain Analyze</strong> - анализ на производителността на заявките</li>
+            </ul>
+        </div>
+
+        <div class="example no-break">
+            <h4>Домашна работа (използвайте базата данни DB-online_shop):</h4>
+            <ol>
+                <li>Създайте заявка, която извежда топ 10 продукта по продажби (по количество от таблицата <code>order_items</code>)</li>
+                <li>Имплементирайте пагинация за поръчките - създайте заявки за страници 1, 2 и 3 (по 15 записа на страница)</li>
+                <li>Намерете 5-те клиента с най-голяма средна стойност на поръчка (използвайте <code>AVG(total_amount)</code>)</li>
+                <li>Изведете последните 20 поръчки с името на клиента (<code>first_name || ' ' || last_name</code>) и общата сума</li>
+                <li>Създайте заявка за топ 3 категории по брой продукти (от таблицата <code>categories</code>)</li>
+            </ol>
+            <p><strong>Подсказка:</strong> Всички таблици използват snake_case номенклатура: <code>products</code>, <code>orders</code>, <code>customers</code>, <code>categories</code>, <code>order_items</code>.</p>
+        </div>
+    </div>
+</body>
+</html>
