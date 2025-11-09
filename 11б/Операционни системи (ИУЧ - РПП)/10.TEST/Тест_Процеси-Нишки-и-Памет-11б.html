@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тест: Операционни системи — 11б</title>
+    <title>Тест: Процеси, нишки и памет — 11б</title>
     <style>
         body {
             font-family: 'DejaVu Serif', 'Times New Roman', serif;
@@ -13,14 +13,14 @@
             padding: 20px;
             background-color: #f9f9f9;
         }
-        
+
         .container {
             background-color: white;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
+
         h1 {
             color: #2c3e50;
             text-align: center;
@@ -28,7 +28,7 @@
             padding-bottom: 10px;
             margin-bottom: 30px;
         }
-        
+
         .mode-selector {
             background-color: #e3f2fd;
             padding: 20px;
@@ -36,20 +36,20 @@
             border-radius: 8px;
             border: 2px solid #2196f3;
         }
-        
+
         .mode-selector h2 {
             color: #2196f3;
             margin-top: 0;
             margin-bottom: 15px;
         }
-        
+
         .mode-buttons {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
             margin-bottom: 20px;
         }
-        
+
         .mode-btn {
             background-color: #2196f3;
             color: white;
@@ -61,17 +61,17 @@
             font-weight: bold;
             transition: all 0.3s;
         }
-        
+
         .mode-btn:hover {
             background-color: #1976d2;
             transform: translateY(-2px);
         }
-        
+
         .mode-btn.active {
             background-color: #fd7e14;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-        
+
         .current-student-info {
             background-color: #fff3cd;
             padding: 15px;
@@ -80,16 +80,16 @@
             border-left: 4px solid #ffc107;
             display: none;
         }
-        
+
         .current-student-info.active {
             display: block;
         }
-        
+
         .current-student-info h3 {
             margin: 0;
             color: #2c3e50;
         }
-        
+
         .student-number-input {
             background-color: #e8f5e9;
             padding: 15px;
@@ -98,11 +98,11 @@
             border-left: 4px solid #28a745;
             display: none;
         }
-        
+
         .student-number-input.active {
             display: block;
         }
-        
+
         .student-number-input label {
             display: block;
             margin-bottom: 8px;
@@ -110,13 +110,13 @@
             color: #2c3e50;
             font-size: 15px;
         }
-        
+
         .student-number-controls {
             display: flex;
             gap: 10px;
             align-items: center;
         }
-        
+
         .student-number-controls input {
             padding: 10px 15px;
             border: 2px solid #28a745;
@@ -124,7 +124,7 @@
             font-size: 15px;
             width: 200px;
         }
-        
+
         .set-student-btn {
             background-color: #28a745;
             color: white;
@@ -136,11 +136,11 @@
             font-weight: bold;
             transition: background-color 0.3s;
         }
-        
+
         .set-student-btn:hover {
             background-color: #218838;
         }
-        
+
         .question {
             background-color: #f8f9fa;
             padding: 20px;
@@ -148,20 +148,20 @@
             border-radius: 8px;
             border-left: 4px solid #fd7e14;
         }
-        
+
         .question-number {
             color: #fd7e14;
             font-weight: bold;
             font-size: 18px;
             margin-bottom: 10px;
         }
-        
+
         .question-text {
             font-size: 16px;
             color: #2c3e50;
             margin-bottom: 15px;
         }
-        
+
         .show-answer-btn {
             background-color: #fd7e14;
             color: white;
@@ -173,15 +173,15 @@
             transition: background-color 0.3s;
             display: none;
         }
-        
+
         .show-answer-btn.active {
             display: inline-block;
         }
-        
+
         .show-answer-btn:hover {
             background-color: #e67011;
         }
-        
+
         .submit-btn {
             background-color: #28a745;
             color: white;
@@ -195,18 +195,18 @@
             margin-top: 15px;
             display: none;
         }
-        
+
         .submit-btn:hover {
             background-color: #218838;
             transform: scale(1.05);
         }
-        
+
         .submit-btn:disabled {
             background-color: #6c757d;
             cursor: not-allowed;
             transform: none;
         }
-        
+
         .answer-feedback {
             display: none;
             padding: 15px;
@@ -216,19 +216,19 @@
             font-size: 16px;
             margin-bottom: 15px;
         }
-        
+
         .answer-feedback.correct {
             background-color: #d4edda;
             color: #155724;
             border-left: 4px solid #28a745;
         }
-        
+
         .answer-feedback.incorrect {
             background-color: #f8d7da;
             color: #721c24;
             border-left: 4px solid #dc3545;
         }
-        
+
         .answer {
             display: none;
             background-color: #e8f5e8;
@@ -237,19 +237,19 @@
             border-radius: 5px;
             border-left: 4px solid #28a745;
         }
-        
+
         .answer.visible {
             display: block;
         }
-        
+
         .answer strong {
             color: #28a745;
         }
-        
+
         .options {
             margin: 10px 0;
         }
-        
+
         .option {
             padding: 12px 15px;
             margin: 8px 0;
@@ -260,38 +260,38 @@
             background-color: white;
             font-size: 15px;
         }
-        
+
         .option:hover {
             background-color: #f0f0f0;
             border-color: #fd7e14;
             transform: translateX(5px);
         }
-        
+
         .option.selected {
             background-color: #fff3cd;
             border-color: #ffc107;
             border-width: 3px;
             font-weight: bold;
         }
-        
+
         .option.correct {
             background-color: #d4edda;
             border-color: #28a745;
             border-width: 3px;
             font-weight: bold;
         }
-        
+
         .option.incorrect {
             background-color: #f8d7da;
             border-color: #dc3545;
             border-width: 3px;
         }
-        
+
         .option.disabled {
             pointer-events: none;
             opacity: 0.6;
         }
-        
+
         .student-input-section {
             margin-top: 15px;
             padding: 15px;
@@ -300,20 +300,20 @@
             border-left: 4px solid #ffc107;
             display: none;
         }
-        
+
         .student-input-section label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
             color: #2c3e50;
         }
-        
+
         .student-input-controls {
             display: flex;
             gap: 10px;
             align-items: center;
         }
-        
+
         .student-input-controls input {
             padding: 8px 12px;
             border: 2px solid #ffc107;
@@ -321,7 +321,7 @@
             font-size: 14px;
             width: 150px;
         }
-        
+
         .add-student-btn {
             background-color: #28a745;
             color: white;
@@ -332,11 +332,11 @@
             font-size: 14px;
             transition: background-color 0.3s;
         }
-        
+
         .add-student-btn:hover {
             background-color: #218838;
         }
-        
+
         .students-list {
             margin-top: 10px;
             padding: 10px;
@@ -344,7 +344,7 @@
             border-radius: 5px;
             min-height: 30px;
         }
-        
+
         .student-tag {
             display: inline-block;
             background-color: #28a745;
@@ -353,8 +353,23 @@
             margin: 3px;
             border-radius: 15px;
             font-size: 13px;
+            animation: tagAppear 0.5s ease-out;
         }
-        
+
+        @keyframes tagAppear {
+            0% {
+                transform: scale(0) rotate(-10deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1) rotate(5deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
         .statistics {
             margin-top: 40px;
             padding: 30px;
@@ -363,17 +378,17 @@
             border: 3px solid #2196f3;
             display: none;
         }
-        
+
         .statistics.active {
             display: block;
         }
-        
+
         .statistics h2 {
             color: #2196f3;
             text-align: center;
             margin-bottom: 20px;
         }
-        
+
         .current-grade-display {
             margin-top: 40px;
             padding: 30px;
@@ -381,25 +396,25 @@
             border-radius: 8px;
             display: none;
         }
-        
+
         .current-grade-display.active {
             display: block;
         }
-        
+
         .current-grade-display h2 {
             color: white;
             text-align: center;
             margin-bottom: 20px;
             font-size: 24px;
         }
-        
+
         .grade-content {
             background-color: white;
             padding: 30px;
             border-radius: 10px;
             text-align: center;
         }
-        
+
         .grade-big {
             font-size: 72px;
             font-weight: bold;
@@ -407,33 +422,33 @@
             margin: 20px 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
-        
+
         .grade-description {
             font-size: 20px;
             color: #2c3e50;
             margin: 10px 0;
         }
-        
+
         .grade-percentage {
             font-size: 28px;
             color: #28a745;
             font-weight: bold;
             margin: 15px 0;
         }
-        
+
         .grade-progress {
             margin: 20px 0;
             padding: 15px;
             background-color: #f8f9fa;
             border-radius: 10px;
         }
-        
+
         .grade-progress-text {
             font-size: 16px;
             color: #2c3e50;
             margin-bottom: 10px;
         }
-        
+
         .progress-bar-container {
             background-color: #e0e0e0;
             border-radius: 20px;
@@ -441,7 +456,7 @@
             overflow: hidden;
             position: relative;
         }
-        
+
         .progress-bar {
             height: 100%;
             background: linear-gradient(90deg, #28a745 0%, #20c997 100%);
@@ -453,13 +468,13 @@
             font-weight: bold;
             font-size: 14px;
         }
-        
+
         .stats-content {
             background-color: white;
             padding: 20px;
             border-radius: 5px;
         }
-        
+
         .student-score {
             padding: 10px;
             margin: 8px 0;
@@ -470,13 +485,23 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .student-score.top {
             background-color: #fff3cd;
             border-left: 4px solid #fd7e14;
             font-weight: bold;
+            animation: pulse 2s infinite;
         }
-        
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
         .score-number {
             background-color: #2196f3;
             color: white;
@@ -484,11 +509,22 @@
             border-radius: 15px;
             font-weight: bold;
         }
-        
+
         .student-score.top .score-number {
             background-color: #fd7e14;
         }
-        
+
+        .grade-display {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
         .celebration {
             position: fixed;
             top: 50%;
@@ -499,7 +535,7 @@
             pointer-events: none;
             z-index: 1000;
         }
-        
+
         @keyframes celebrationPop {
             0% {
                 transform: translate(-50%, -50%) scale(0);
@@ -514,7 +550,7 @@
                 opacity: 0;
             }
         }
-        
+
         .confetti {
             position: fixed;
             width: 10px;
@@ -524,7 +560,7 @@
             pointer-events: none;
             z-index: 999;
         }
-        
+
         @keyframes confettiFall {
             0% {
                 transform: translateY(0) rotate(0deg);
@@ -535,25 +571,7 @@
                 opacity: 0;
             }
         }
-        
-        .student-tag {
-            animation: tagAppear 0.5s ease-out;
-        }
-        
-        @keyframes tagAppear {
-            0% {
-                transform: scale(0) rotate(-10deg);
-                opacity: 0;
-            }
-            50% {
-                transform: scale(1.1) rotate(5deg);
-            }
-            100% {
-                transform: scale(1) rotate(0deg);
-                opacity: 1;
-            }
-        }
-        
+
         .motivation-message {
             position: fixed;
             bottom: 20px;
@@ -568,7 +586,7 @@
             font-weight: bold;
             font-size: 22px;
         }
-        
+
         @keyframes slideIn {
             from {
                 transform: translateX(400px);
@@ -579,7 +597,7 @@
                 opacity: 1;
             }
         }
-        
+
         @keyframes slideOut {
             from {
                 transform: translateX(0);
@@ -590,31 +608,7 @@
                 opacity: 0;
             }
         }
-        
-        .student-score.top {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.02);
-            }
-        }
-        
-        .grade-display {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 10px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        
+
         @media print {
             body {
                 background-color: white;
@@ -634,17 +628,17 @@
 </head>
 <body>
     <div class="container">
-        <h1>Тест: Операционни системи — 11б</h1>
+        <h1>Тест: Процеси, нишки и управление на паметта — 11б</h1>
 
         <div class="mode-selector">
             <h2>Режим на тестване</h2>
             <div class="mode-buttons">
-                <button class="mode-btn active" onclick="setMode('individual')">Индивидуално тестване</button>
-                <button class="mode-btn" onclick="setMode('group')">Групова статистика</button>
+                <button class="mode-btn active" onclick="setMode('individual', event)">Индивидуално тестване</button>
+                <button class="mode-btn" onclick="setMode('group', event)">Групова статистика</button>
             </div>
             <div class="current-student-info" id="currentStudentInfo">
                 <h3>🎯 Текущ ученик: <span id="currentStudentName">-</span></h3>
-                <p>Правилни отговори: <strong id="currentStudentScore">0</strong> / 20</p>
+                <p>Правилни отговори: <strong id="currentStudentScore">0</strong> / 16</p>
             </div>
             <div class="student-number-input" id="studentNumberInput">
                 <label for="studentNumberField">Въведете номер на ученик:</label>
@@ -655,21 +649,21 @@
             </div>
         </div>
 
-        <div class="question" data-correct="Б">
+        <div class="question" data-question="1" data-correct="А">
             <div class="question-number">Въпрос 1</div>
-            <div class="question-text">Какво е Process Control Block (PCB)?</div>
+            <div class="question-text">Каква е най-точната дефиниция за процес в операционната система?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(1, 'А')">А) Управляваща програма за изпълнение на процеси и ресурсите им в операционната система</div>
-                <div class="option" data-value="Б" onclick="selectOption(1, 'Б')">Б) Структура данни с информация за процеса</div>
-                <div class="option" data-value="В" onclick="selectOption(1, 'В')">В) Хардуерен модул за контрол на изчислителните операции в процесора</div>
-                <div class="option" data-value="Г" onclick="selectOption(1, 'Г')">Г) Специален алгоритъм за разпределение и управление на изчислителните ресурси</div>
+                <div class="option" data-value="А" onclick="selectOption(1, 'А')">А) Програма в изпълнение със своите ресурси</div>
+                <div class="option" data-value="Б" onclick="selectOption(1, 'Б')">Б) Набор инструкции, записани на диска</div>
+                <div class="option" data-value="В" onclick="selectOption(1, 'В')">В) Нишка, която работи вътре в процеса</div>
+                <div class="option" data-value="Г" onclick="selectOption(1, 'Г')">Г) Потребителят, който стартира програмата</div>
             </div>
             <button class="submit-btn" id="submitBtn1" onclick="submitAnswer(1)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback1"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(1)">Покажи отговора</button>
             <div class="answer" id="answer1">
-                <strong>Правилен отговор: Б) Структура данни съдържаща цялата информация за процеса</strong>
-                <p>PCB (Process Control Block) е структура данни, която съдържа цялата информация за процеса: процесен ID, състояние, регистри, памет, отворени файлове, приоритет и др. Това е като "лична карта" на всеки процес.</p>
+                <strong>Правилен отговор: А) Програма в изпълнение със своите ресурси</strong>
+                <p>Процесът е динамичен обект: код + данни + състояние на изпълнение и всички ресурси, които ОС управлява за него.</p>
             </div>
             <div class="student-input-section">
                 <label>Номер на ученик който отговори правилно:</label>
@@ -681,21 +675,21 @@
             </div>
         </div>
 
-        <div class="question" data-correct="В">
+        <div class="question" data-question="2" data-correct="Б">
             <div class="question-number">Въпрос 2</div>
-            <div class="question-text">Какво е Context Switch и защо е важен?</div>
+            <div class="question-text">Кои са класическите основни състояния на процес в ОС?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(2, 'А')">А) Преминаване на процес между Ready и Waiting</div>
-                <div class="option" data-value="Б" onclick="selectOption(2, 'Б')">Б) Създаване на процес</div>
-                <div class="option" data-value="В" onclick="selectOption(2, 'В')">В) Превключване на процесорът между процеси с запазване и зареждане на състоянието</div>
-                <div class="option" data-value="Г" onclick="selectOption(2, 'Г')">Г) Затваряне на процес</div>
+                <div class="option" data-value="А" onclick="selectOption(2, 'А')">А) Създаване, архивиране, изтриване</div>
+                <div class="option" data-value="Б" onclick="selectOption(2, 'Б')">Б) Готов, изпълнение, блокиран</div>
+                <div class="option" data-value="В" onclick="selectOption(2, 'В')">В) Стартиране, печат, завършване</div>
+                <div class="option" data-value="Г" onclick="selectOption(2, 'Г')">Г) Нисък, среден, висок приоритет</div>
             </div>
             <button class="submit-btn" id="submitBtn2" onclick="submitAnswer(2)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback2"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(2)">Покажи отговора</button>
             <div class="answer" id="answer2">
-                <strong>Правилен отговор: В) Превключване на процесорът от един процес към друг, като се запазва и зарежда състоянието</strong>
-                <p>Context Switch е механизмът чрез който ОС превключва от един процес към друг, запазвайки текущото състояние на процеса в PCB и зареждайки състоянието на следващия процес. Това позволява многозадачност и справедливо разпределение на процесорното време.</p>
+                <strong>Правилен отговор: Б) Готов, изпълнение, блокиран</strong>
+                <p>Моделът ready–running–blocked описва основните преходи на процесите при управление от процесния планировчик.</p>
             </div>
             <div class="student-input-section">
                 <label>Номер на ученик който отговори правилно:</label>
@@ -707,21 +701,21 @@
             </div>
         </div>
 
-        <div class="question" data-correct="Б">
+        <div class="question" data-question="3" data-correct="В">
             <div class="question-number">Въпрос 3</div>
-            <div class="question-text">Какъв е основният недостатък на монолитната архитектура на ОС?</div>
+            <div class="question-text">Каква е основната роля на Process Control Block (PCB)?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(3, 'А')">А) Работи твърде бавно и не постига оптимална ефективност при управление на ресурсите</div>
-                <div class="option" data-value="Б" onclick="selectOption(3, 'Б')">Б) Грешка в модул счупва системата</div>
-                <div class="option" data-value="В" onclick="selectOption(3, 'В')">В) Ограничена съвместимост с многопроцесорни архитектури и напреднали компютърни системи</div>
-                <div class="option" data-value="Г" onclick="selectOption(3, 'Г')">Г) Недостатъчна памет и ограничени възможности за управление на големи данни</div>
+                <div class="option" data-value="А" onclick="selectOption(3, 'А')">А) Регистър за всички отворени файлове</div>
+                <div class="option" data-value="Б" onclick="selectOption(3, 'Б')">Б) Панел за настройките на системата</div>
+                <div class="option" data-value="В" onclick="selectOption(3, 'В')">В) Структура със състоянието на процеса</div>
+                <div class="option" data-value="Г" onclick="selectOption(3, 'Г')">Г) Модул за управление на графиката</div>
             </div>
             <button class="submit-btn" id="submitBtn3" onclick="submitAnswer(3)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback3"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(3)">Покажи отговора</button>
             <div class="answer" id="answer3">
-                <strong>Правилен отговор: Б) Грешка в един модул може да счупи цялата система</strong>
-                <p>В монолитната архитектура всички компоненти са свързани в едно голямо ядро. Проблем във функция намалява стабилността и поддръжката. Микроядрото разделя функционалността на отделни модули за по-добра изолация и стабилност.</p>
+                <strong>Правилен отговор: В) Структура със състоянието на процеса</strong>
+                <p>PCB е „личното досие“ на процеса и позволява на ОС да следи състоянието и ресурсите му.</p>
             </div>
             <div class="student-input-section">
                 <label>Номер на ученик който отговори правилно:</label>
@@ -733,21 +727,21 @@
             </div>
         </div>
 
-        <div class="question" data-correct="А">
+        <div class="question" data-question="4" data-correct="Г">
             <div class="question-number">Въпрос 4</div>
-            <div class="question-text">Какъв е проблемът с изгладването (starvation) в Priority Scheduling алгоритъма?</div>
+            <div class="question-text">Какво се случва при превключване на контекста (context switch)?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(4, 'А')">А) Процесите с ниск приоритет никога не работят</div>
-                <div class="option" data-value="Б" onclick="selectOption(4, 'Б')">Б) Процесите с висок приоритет имат забавяне и проблеми с ефективността</div>
-                <div class="option" data-value="В" onclick="selectOption(4, 'В')">В) Имплементацията е сложна и изисква много изчислителни ресурси</div>
-                <div class="option" data-value="Г" onclick="selectOption(4, 'Г')">Г) Ограничения при използването с многопроцесорни и многоятрени системи</div>
+                <div class="option" data-value="А" onclick="selectOption(4, 'А')">А) Процесът получава допълнителен приоритет</div>
+                <div class="option" data-value="Б" onclick="selectOption(4, 'Б')">Б) Системата принудително изпълнява рестарт</div>
+                <div class="option" data-value="В" onclick="selectOption(4, 'В')">В) Процесът се премахва изцяло от паметта</div>
+                <div class="option" data-value="Г" onclick="selectOption(4, 'Г')">Г) Записваме един процес и зареждаме друг</div>
             </div>
             <button class="submit-btn" id="submitBtn4" onclick="submitAnswer(4)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback4"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(4)">Покажи отговора</button>
             <div class="answer" id="answer4">
-                <strong>Правилен отговор: А) Процесите с ниск приоритет могат никога да не работят</strong>
-                <p>Когато постоянно пристигат процеси с по-висок приоритет, процесите с нисък приоритет могат да чакат завинаги и никога да не получат възможност да работят - това се нарича "изгладване" (starvation).</p>
+                <strong>Правилен отговор: Г) Записваме един процес и зареждаме друг</strong>
+                <p>Context switch позволява на ОС да споделя процесорното време между процеси чрез запазване и зареждане на техните контексти.</p>
             </div>
             <div class="student-input-section">
                 <label>Номер на ученик който отговори правилно:</label>
@@ -759,21 +753,21 @@
             </div>
         </div>
 
-        <div class="question" data-correct="В">
+        <div class="question" data-question="5" data-correct="А">
             <div class="question-number">Въпрос 5</div>
-            <div class="question-text">Какво е разликата между нишка (thread) и процес?</div>
+            <div class="question-text">Как ОС различава CPU-bound от I/O-bound процеси?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(5, 'А')">А) Няма разлика, това са синоними - и нишката и процесът са еднакви елементи</div>
-                <div class="option" data-value="Б" onclick="selectOption(5, 'Б')">Б) Нишката е винаги по-голяма и по-мощна от процеса, защото има достъп до повече ресурси и памет</div>
-                <div class="option" data-value="В" onclick="selectOption(5, 'В')">В) Нишката споделя паметта, а процесът има собствена памет</div>
-                <div class="option" data-value="Г" onclick="selectOption(5, 'Г')">Г) Процесът е винаги част от нишка и не може да съществува самостоятелно</div>
+                <div class="option" data-value="А" onclick="selectOption(5, 'А')">А) По съотношението процесор срещу вход/изход</div>
+                <div class="option" data-value="Б" onclick="selectOption(5, 'Б')">Б) По броя направени заявки за памет</div>
+                <div class="option" data-value="В" onclick="selectOption(5, 'В')">В) По количеството активни нишки</div>
+                <div class="option" data-value="Г" onclick="selectOption(5, 'Г')">Г) По това дали има графичен интерфейс</div>
             </div>
             <button class="submit-btn" id="submitBtn5" onclick="submitAnswer(5)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback5"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(5)">Покажи отговора</button>
             <div class="answer" id="answer5">
-                <strong>Правилен отговор: В) Нишката споделя паметта на процеса, докато процесът има собствена памет</strong>
-                <p>Процесът има собствена памет и ресурси, докато нишката е по-лека единица за изпълнение, която споделя паметта и ресурсите с други нишки от същия процес. Един процес може да съдържа множество нишки.</p>
+                <strong>Правилен отговор: А) По съотношението процесор срещу вход/изход</strong>
+                <p>CPU-bound процесите използват основно процесора, а I/O-bound прекарват повече време в операции по вход/изход.</p>
             </div>
             <div class="student-input-section">
                 <label>Номер на ученик който отговори правилно:</label>
@@ -785,21 +779,21 @@
             </div>
         </div>
 
-        <div class="question" data-correct="Б">
+        <div class="question" data-question="6" data-correct="Б">
             <div class="question-number">Въпрос 6</div>
-            <div class="question-text">Какво е Round Robin алгоритъмът за планиране и как работи?</div>
+            <div class="question-text">Каква е ключовата разлика между preemptive и non-preemptive планиране?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(6, 'А')">А) Най-краткият процес първи</div>
-                <div class="option" data-value="Б" onclick="selectOption(6, 'Б')">Б) Всеки процес работи определено време, после отива в опашката</div>
-                <div class="option" data-value="В" onclick="selectOption(6, 'В')">В) Сортиране по приоритет и изпълнение</div>
-                <div class="option" data-value="Г" onclick="selectOption(6, 'Г')">Г) Първият процес работи докато не завърши</div>
+                <div class="option" data-value="А" onclick="selectOption(6, 'А')">А) По използваните структури от данни</div>
+                <div class="option" data-value="Б" onclick="selectOption(6, 'Б')">Б) По това дали ОС прекъсва процеса</div>
+                <div class="option" data-value="В" onclick="selectOption(6, 'В')">В) По нуждата от графичен интерфейс</div>
+                <div class="option" data-value="Г" onclick="selectOption(6, 'Г')">Г) По наличието на зададен квант</div>
             </div>
             <button class="submit-btn" id="submitBtn6" onclick="submitAnswer(6)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback6"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(6)">Покажи отговора</button>
             <div class="answer" id="answer6">
-                <strong>Правилен отговор: Б) Всеки процес работи определено време (квант), после отива в опашката и следващият процес работи</strong>
-                <p>Round Robin дава на всеки процес малко време за работа (квант, обикновено 10-100ms), след което го изпраща накрая на опашката и дава шанс на следващия процес. Това осигурява справедливост и добра отзивчивост.</p>
+                <strong>Правилен отговор: Б) По това дали ОС прекъсва процеса</strong>
+                <p>При preemptive планиране ОС може да отнеме процесора, докато при non-preemptive процесът го държи до завършване или блокиране.</p>
             </div>
             <div class="student-input-section">
                 <label>Номер на ученик който отговори правилно:</label>
@@ -811,21 +805,21 @@
             </div>
         </div>
 
-        <div class="question" data-correct="Г">
+        <div class="question" data-question="7" data-correct="В">
             <div class="question-number">Въпрос 7</div>
-            <div class="question-text">Какво е Race Condition в конкурентното програмиране?</div>
+            <div class="question-text">Кой алгоритъм е пример за preemptive планиране?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(7, 'А')">А) Състояние когато процесорът е прекалено натоварен и не може да изпълнява задачи ефективно</div>
-                <div class="option" data-value="Б" onclick="selectOption(7, 'Б')">Б) Алгоритъм за планиране на процеси който помага за справедливо разпределение на ресурсите между различен брой задачи</div>
-                <div class="option" data-value="В" onclick="selectOption(7, 'В')">В) Състояние когато всички процеси в системата чакат и никой не работи</div>
-                <div class="option" data-value="Г" onclick="selectOption(7, 'Г')">Г) Когато няколко нишки променят една и съща памет едновременно</div>
+                <div class="option" data-value="А" onclick="selectOption(7, 'А')">А) First Come First Served (FCFS)</div>
+                <div class="option" data-value="Б" onclick="selectOption(7, 'Б')">Б) Shortest Job First (SJF)</div>
+                <div class="option" data-value="В" onclick="selectOption(7, 'В')">В) Round Robin (RR)</div>
+                <div class="option" data-value="Г" onclick="selectOption(7, 'Г')">Г) Priority Scheduling без aging</div>
             </div>
             <button class="submit-btn" id="submitBtn7" onclick="submitAnswer(7)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback7"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(7)">Покажи отговора</button>
             <div class="answer" id="answer7">
-                <strong>Правилен отговор: Г) Когато две или повече нишки опитват да променят една и съща памет едновременно</strong>
-                <p>Race Condition е проблем когато няколко нишки опитват да променят една и съща споделена памет или ресурс едновременно. Резултатът зависи от реда на изпълнение, което може да доведе до непредсказуем резултат или загуба на данни.</p>
+                <strong>Правилен отговор: В) Round Robin (RR)</strong>
+                <p>RR използва квант и ОС може да прекъсне процеса след изтичането му, което го прави preemptive алгоритъм.</p>
             </div>
             <div class="student-input-section">
                 <label>Номер на ученик който отговори правилно:</label>
@@ -837,21 +831,21 @@
             </div>
         </div>
 
-        <div class="question" data-correct="В">
+        <div class="question" data-question="8" data-correct="Г">
             <div class="question-number">Въпрос 8</div>
-            <div class="question-text">Какво е предимството на микроядрената архитектура спрямо монолитната?</div>
+            <div class="question-text">Какъв е ефектът, ако квантът в Round Robin е твърде голям?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(8, 'А')">А) По-бърза работа, по-малко памет</div>
-                <div class="option" data-value="Б" onclick="selectOption(8, 'Б')">Б) По-проста имплементация</div>
-                <div class="option" data-value="В" onclick="selectOption(8, 'В')">В) Грешка в модул не счупва системата</div>
-                <div class="option" data-value="Г" onclick="selectOption(8, 'Г')">Г) Използва по-малко памет от монолитната архитектура</div>
+                <div class="option" data-value="А" onclick="selectOption(8, 'А')">А) Възниква деление на нула</div>
+                <div class="option" data-value="Б" onclick="selectOption(8, 'Б')">Б) Системата се блокира и спира</div>
+                <div class="option" data-value="В" onclick="selectOption(8, 'В')">В) Процесите работят паралелно на отделни процесори</div>
+                <div class="option" data-value="Г" onclick="selectOption(8, 'Г')">Г) Държи се като FCFS и реакцията на системата пада</div>
             </div>
             <button class="submit-btn" id="submitBtn8" onclick="submitAnswer(8)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback8"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(8)">Покажи отговора</button>
             <div class="answer" id="answer8">
-                <strong>Правилен отговор: В) По-голяма надеждност - грешка в един модул не счупва цялата система</strong>
-                <p>В микроядрната архитектура основните функции са в малко ядро, а останалите модули работят извън ядрото. Грешка в модул не може да счупи цялата система, защото модулите са изолирани.</p>
+                <strong>Правилен отговор: Г) Държи се като FCFS и реакцията на системата пада</strong>
+                <p>Големият квант намалява честотата на превключвания, но губи предимството на RR за бърза реакция.</p>
             </div>
             <div class="student-input-section">
                 <label>Номер на ученик който отговори правилно:</label>
@@ -863,21 +857,21 @@
             </div>
         </div>
 
-        <div class="question" data-correct="Б">
+        <div class="question" data-question="9" data-correct="А">
             <div class="question-number">Въпрос 9</div>
-            <div class="question-text">Какво представлява Deadlock (мъртва хватка)?</div>
+            <div class="question-text">Кой подход помага да се намали изгладняването при Priority Scheduling?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(9, 'А')">А) Процесорът престава да работи</div>
-                <div class="option" data-value="Б" onclick="selectOption(9, 'Б')">Б) Два или повече процеса чакат един друг да освободят ресурси</div>
-                <div class="option" data-value="В" onclick="selectOption(9, 'В')">В) Алгоритъм за управление на паметта и оптимизация на ресурсите в системата</div>
-                <div class="option" data-value="Г" onclick="selectOption(9, 'Г')">Г) Вид процес който никога не завършва</div>
+                <div class="option" data-value="А" onclick="selectOption(9, 'А')">А) Aging – дългото чакане вдига приоритета</div>
+                <div class="option" data-value="Б" onclick="selectOption(9, 'Б')">Б) Изтриване на процеси с нисък приоритет</div>
+                <div class="option" data-value="В" onclick="selectOption(9, 'В')">В) Забрана на операции по вход и изход</div>
+                <div class="option" data-value="Г" onclick="selectOption(9, 'Г')">Г) Удвояване на стойността на квантата</div>
             </div>
             <button class="submit-btn" id="submitBtn9" onclick="submitAnswer(9)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback9"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(9)">Покажи отговора</button>
             <div class="answer" id="answer9">
-                <strong>Правилен отговор: Б) Състояние когато два или повече процеса чакат един друг да освободят ресурси</strong>
-                <p>Deadlock е ситуация, при която два или повече процеса чакат взаимно един друг да освободят ресурси, което създава безкраен цикъл на чакане и системата блокира. Например: Процес 1 държи ресурс А и чака ресурс Б, а Процес 2 държи ресурс Б и чака ресурс А.</p>
+                <strong>Правилен отговор: А) Aging – дългото чакане вдига приоритета</strong>
+                <p>Aging гарантира, че процеси с нисък приоритет в крайна сметка достигат достатъчно висок приоритет за изпълнение.</p>
             </div>
             <div class="student-input-section">
                 <label>Номер на ученик който отговори правилно:</label>
@@ -889,21 +883,21 @@
             </div>
         </div>
 
-        <div class="question" data-correct="А">
+        <div class="question" data-question="10" data-correct="Б">
             <div class="question-number">Въпрос 10</div>
-            <div class="question-text">Какъв е основният проблем на SJF (Shortest Job First) алгоритъма?</div>
+            <div class="question-text">Какво представлява нишката (thread)?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(10, 'А')">А) Дългите процеси чакат завинаги (изгладване)</div>
-                <div class="option" data-value="Б" onclick="selectOption(10, 'Б')">Б) Работи твърде бавно и не постига оптимална ефективност при изпълнение</div>
-                <div class="option" data-value="В" onclick="selectOption(10, 'В')">В) Ограничена съвместимост с многоядрени процесорни архитектури</div>
-                <div class="option" data-value="Г" onclick="selectOption(10, 'Г')">Г) Не поддържа работа с файлови операции и I/O процеси</div>
+                <div class="option" data-value="А" onclick="selectOption(10, 'А')">А) Самостоятелна операционна система</div>
+                <div class="option" data-value="Б" onclick="selectOption(10, 'Б')">Б) Най-малката единица работа в процес</div>
+                <div class="option" data-value="В" onclick="selectOption(10, 'В')">В) Отделна секция от командния ред</div>
+                <div class="option" data-value="Г" onclick="selectOption(10, 'Г')">Г) Файл, съхранен във виртуалната памет</div>
             </div>
             <button class="submit-btn" id="submitBtn10" onclick="submitAnswer(10)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback10"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(10)">Покажи отговора</button>
             <div class="answer" id="answer10">
-                <strong>Правилен отговор: А) Дългите процеси могат да чакат завинаги</strong>
-                <p>SJF има проблема с изгладването - дългите процеси могат да чакат завинаги, ако постоянно пристигат по-кратки процеси, защото алгоритъмът винаги дава приоритет на най-краткия процес.</p>
+                <strong>Правилен отговор: Б) Най-малката единица работа в процес</strong>
+                <p>Нишките споделят ресурсите на процеса, но имат собствен стек и брояч на инструкциите.</p>
             </div>
             <div class="student-input-section">
                 <label>Номер на ученик който отговори правилно:</label>
@@ -915,21 +909,21 @@
             </div>
         </div>
 
-        <div class="question" data-correct="В">
+        <div class="question" data-question="11" data-correct="В">
             <div class="question-number">Въпрос 11</div>
-            <div class="question-text">Какво е разликата между конкурентност (concurrency) и паралелизъм (parallelism)?</div>
+            <div class="question-text">Кое твърдение е вярно за връзката между процес и нишки?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(11, 'А')">А) Синоними са</div>
-                <div class="option" data-value="Б" onclick="selectOption(11, 'Б')">Б) Конкурентността изисква по-малко памет и ресурси</div>
-                <div class="option" data-value="В" onclick="selectOption(11, 'В')">В) Конкурентност е превключване на един процесор, паралелизъм е едновременно изпълнение на множество ядра</div>
-                <div class="option" data-value="Г" onclick="selectOption(11, 'Г')">Г) Паралелизъм работи само с един процес и ограничена памет</div>
+                <div class="option" data-value="А" onclick="selectOption(11, 'А')">А) Процесът не може да съдържа повече от една работеща нишка</div>
+                <div class="option" data-value="Б" onclick="selectOption(11, 'Б')">Б) Всяка нишка има собствена виртуална памет, отделена от процеса</div>
+                <div class="option" data-value="В" onclick="selectOption(11, 'В')">В) Нишките в процес делят адресно пространство и ресурси</div>
+                <div class="option" data-value="Г" onclick="selectOption(11, 'Г')">Г) Превключването между нишки става само след рестарт на системата</div>
             </div>
             <button class="submit-btn" id="submitBtn11" onclick="submitAnswer(11)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback11"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(11)">Покажи отговора</button>
             <div class="answer" id="answer11">
-                <strong>Правилен отговор: В) Конкурентност е многозадачност на един процесор, докато паралелизъм е реално едновременно изпълнение на множество ядра</strong>
-                <p>Конкурентността е бързо превключване между задачи на един процесор (изглежда едновременно), докато паралелизмът е реално едновременно изпълнение на множество ядра/процесори. Аналогия: конкурентност = един сервитьор обслужва 10 маси (бързо се върти); паралелизъм = 10 сервитьори обслужват 10 маси едновременно.</p>
+                <strong>Правилен отговор: В) Нишките в процес делят адресно пространство и ресурси</strong>
+                <p>Всички нишки в рамките на един процес използват общи код, данни и отворени файлове, което позволява бърза комуникация.</p>
             </div>
             <div class="student-input-section">
                 <label>Номер на ученик който отговори правилно:</label>
@@ -941,21 +935,21 @@
             </div>
         </div>
 
-        <div class="question" data-correct="Б">
+        <div class="question" data-question="12" data-correct="Г">
             <div class="question-number">Въпрос 12</div>
-            <div class="question-text">Какво е предимство на multithreading (множество нишки) в сравнение с multiprocessing?</div>
+            <div class="question-text">Кое е основно предимство на многоннишковите (multithreaded) процеси?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(12, 'А')">А) Нишките използват по-малко памет и по-малко ресурси от процесите, което прави системата по-ефективна и по-стабилна при голям брой задачи</div>
-                <div class="option" data-value="Б" onclick="selectOption(12, 'Б')">Б) По-бърза комуникация между нишките поради споделена памет, по-леко превключване между нишки</div>
-                <div class="option" data-value="В" onclick="selectOption(12, 'В')">В) Нишките винаги работят по-бързо от процесите и правят системата по-мощна и по-надеждна</div>
-                <div class="option" data-value="Г" onclick="selectOption(12, 'Г')">Г) По-лесно за програмиране, с по-малко грешки и по-добра съвместимост между различни платформи</div>
+                <div class="option" data-value="А" onclick="selectOption(12, 'А')">А) Намаляват нуждата от синхронизация</div>
+                <div class="option" data-value="Б" onclick="selectOption(12, 'Б')">Б) Не използват процесор</div>
+                <div class="option" data-value="В" onclick="selectOption(12, 'В')">В) Заменят нуждата от планиране на процеси</div>
+                <div class="option" data-value="Г" onclick="selectOption(12, 'Г')">Г) Използват много ядра и пазят отзивчивост</div>
             </div>
             <button class="submit-btn" id="submitBtn12" onclick="submitAnswer(12)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback12"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(12)">Покажи отговора</button>
             <div class="answer" id="answer12">
-                <strong>Правилен отговор: Б) По-бърза комуникация поради споделена памет и по-леко превключване</strong>
-                <p>Нишките споделят паметта, което позволява по-бързо предаване на данни и по-леко превключване. Процесите имат отделна памет и се нуждаят от по-тежки механизми за комуникация (интер-процесна комуникация).</p>
+                <strong>Правилен отговор: Г) Използват много ядра и пазят отзивчивост</strong>
+                <p>Разделянето на задачите в нишки води до паралелизъм и по-добра реакция на интерфейса.</p>
             </div>
             <div class="student-input-section">
                 <label>Номер на ученик който отговори правилно:</label>
@@ -967,21 +961,21 @@
             </div>
         </div>
 
-        <div class="question" data-correct="А">
+        <div class="question" data-question="13" data-correct="А">
             <div class="question-number">Въпрос 13</div>
-            <div class="question-text">Кой алгоритъм за планиране е най-подходящ за интерактивни приложения като текстов редактор?</div>
+            <div class="question-text">Какво описва критичната секция в многонишковите програми?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(13, 'А')">А) Round Robin - осигурява добра отзивчивост</div>
-                <div class="option" data-value="Б" onclick="selectOption(13, 'Б')">Б) SJF - най-кратките задачи първи</div>
-                <div class="option" data-value="В" onclick="selectOption(13, 'В')">В) FCFS - първият дойде работи</div>
-                <div class="option" data-value="Г" onclick="selectOption(13, 'Г')">Г) Priority Scheduling</div>
+                <div class="option" data-value="А" onclick="selectOption(13, 'А')">А) Код, в който нишките споделят ресурс и искат синхрон</div>
+                <div class="option" data-value="Б" onclick="selectOption(13, 'Б')">Б) Блок от код, който никога не се стартира</div>
+                <div class="option" data-value="В" onclick="selectOption(13, 'В')">В) Резервен процес за аварийни ситуации</div>
+                <div class="option" data-value="Г" onclick="selectOption(13, 'Г')">Г) Модул, който управлява графичния интерфейс</div>
             </div>
             <button class="submit-btn" id="submitBtn13" onclick="submitAnswer(13)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback13"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(13)">Покажи отговора</button>
             <div class="answer" id="answer13">
-                <strong>Правилен отговор: А) Round Robin</strong>
-                <p>Round Robin е идеален за интерактивни приложения, защото осигурява редовни шансове на всеки процес да работи, което прави потребителския интерфейс отзивчив. Всеки процес получава кратки квантови от време, което не позволява на една задача да блокира интерфейса дълго.</p>
+                <strong>Правилен отговор: А) Код, в който нишките споделят ресурс и искат синхрон</strong>
+                <p>Правилната синхронизация в критичните секции предотвратява състезателни условия и неконсистентни данни.</p>
             </div>
             <div class="student-input-section">
                 <label>Номер на ученик който отговори правилно:</label>
@@ -993,21 +987,21 @@
             </div>
         </div>
 
-        <div class="question" data-correct="В">
+        <div class="question" data-question="14" data-correct="Б">
             <div class="question-number">Въпрос 14</div>
-            <div class="question-text">Какъв е проблемът с FCFS (First Come First Served) при наличието на и к кратки и дълги процеси?</div>
+            <div class="question-text">Каква е основната цел на управлението на паметта в ОС?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(14, 'А')">А) Не работи с интерактивни приложения</div>
-                <div class="option" data-value="Б" onclick="selectOption(14, 'Б')">Б) Процесите замръзват и блокират системата</div>
-                <div class="option" data-value="В" onclick="selectOption(14, 'В')">В) Голямо средно време на чакане</div>
-                <div class="option" data-value="Г" onclick="selectOption(14, 'Г')">Г) Не поддържа многопроцесорни и многоятрени системи</div>
+                <div class="option" data-value="А" onclick="selectOption(14, 'А')">А) Да изключва захранването на процесора</div>
+                <div class="option" data-value="Б" onclick="selectOption(14, 'Б')">Б) Да разпределя, следи и пази паметта между процесите</div>
+                <div class="option" data-value="В" onclick="selectOption(14, 'В')">В) Да блокира всички процеси освен един</div>
+                <div class="option" data-value="Г" onclick="selectOption(14, 'Г')">Г) Да управлява входно-изходните устройства</div>
             </div>
             <button class="submit-btn" id="submitBtn14" onclick="submitAnswer(14)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback14"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(14)">Покажи отговора</button>
             <div class="answer" id="answer14">
-                <strong>Правилен отговор: В) Голямо средно време на чакане</strong>
-                <p>FCFS има големи средно време на чакане. Ако дълъг процес пристигне преди кратък процес, кратък процес трябва да чака дълъг процес да завърши, което влошава средното време на чакане за всички процеси.</p>
+                <strong>Правилен отговор: Б) Да разпределя, следи и пази паметта между процесите</strong>
+                <p>Управлението на паметта гарантира оптимално използване и защита между процесите.</p>
             </div>
             <div class="student-input-section">
                 <label>Номер на ученик който отговори правилно:</label>
@@ -1019,21 +1013,21 @@
             </div>
         </div>
 
-        <div class="question" data-correct="Г">
+        <div class="question" data-question="15" data-correct="В">
             <div class="question-number">Въпрос 15</div>
-            <div class="question-text">Какво е предимството на SJF (Shortest Job First) алгоритъма?</div>
+            <div class="question-text">Какво описва понятието „виртуална памет“?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(15, 'А')">А) Най-справедлив за всички процеси - всеки процес получава равен шанс да работи независимо от дължината на задачата му или времето за изпълнение</div>
-                <div class="option" data-value="Б" onclick="selectOption(15, 'Б')">Б) Най-бърза работа за дългите процеси които изискват много изчислителни ресурси и време за завършване</div>
-                <div class="option" data-value="В" onclick="selectOption(15, 'В')">В) Най-добър за интерактивни приложения където потребителят очаква бърза реакция и отзивчив интерфейс</div>
-                <div class="option" data-value="Г" onclick="selectOption(15, 'Г')">Г) Минимално средно време на чакане</div>
+                <div class="option" data-value="А" onclick="selectOption(15, 'А')">А) Архивирани файлове върху USB устройство</div>
+                <div class="option" data-value="Б" onclick="selectOption(15, 'Б')">Б) Памет, която съществува само в мрежата</div>
+                <div class="option" data-value="В" onclick="selectOption(15, 'В')">В) Илюзия за повече памет чрез RAM и диск</div>
+                <div class="option" data-value="Г" onclick="selectOption(15, 'Г')">Г) BIOS паметта на дънната платка</div>
             </div>
             <button class="submit-btn" id="submitBtn15" onclick="submitAnswer(15)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback15"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(15)">Покажи отговора</button>
             <div class="answer" id="answer15">
-                <strong>Правилен отговор: Г) Минимално средно време на чакане</strong>
-                <p>SJF теоретично дава минимално средно време на чакане за всички процеси, защото оптимизира времето като първо изпълнява най-кратките процеси. Това означава, че повече процеси завършват по-бързо общо.</p>
+                <strong>Правилен отговор: В) Илюзия за повече памет чрез RAM и диск</strong>
+                <p>Виртуалната памет позволява на процесите да използват адресно пространство, по-голямо от наличната физическа RAM.</p>
             </div>
             <div class="student-input-section">
                 <label>Номер на ученик който отговори правилно:</label>
@@ -1045,21 +1039,21 @@
             </div>
         </div>
 
-        <div class="question" data-correct="А">
+        <div class="question" data-question="16" data-correct="Г">
             <div class="question-number">Въпрос 16</div>
-            <div class="question-text">Какво е хибридната архитектура на ОС?</div>
+            <div class="question-text">Кое твърдение за странирането (paging) е вярно?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(16, 'А')">А) Комбинация от монолитна и микроядрна архитектура</div>
-                <div class="option" data-value="Б" onclick="selectOption(16, 'Б')">Б) Архитектура за хибридни процесорни системи с различен брой ядра</div>
-                <div class="option" data-value="В" onclick="selectOption(16, 'В')">В) Облачна архитектура за работа в виртуална среда</div>
-                <div class="option" data-value="Г" onclick="selectOption(16, 'Г')">Г) Система която използва два процесора за повишаване на производителността</div>
+                <div class="option" data-value="А" onclick="selectOption(16, 'А')">А) Изисква сегменти с различна дължина</div>
+                <div class="option" data-value="Б" onclick="selectOption(16, 'Б')">Б) Премахва нуждата от таблица на страниците</div>
+                <div class="option" data-value="В" onclick="selectOption(16, 'В')">В) Позволява само по един процес в паметта</div>
+                <div class="option" data-value="Г" onclick="selectOption(16, 'Г')">Г) Делят паметта на рамки и страници с еднакъв размер</div>
             </div>
             <button class="submit-btn" id="submitBtn16" onclick="submitAnswer(16)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback16"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(16)">Покажи отговора</button>
             <div class="answer" id="answer16">
-                <strong>Правилен отговор: А) Комбинация от монолитна и микроядрна архитектура</strong>
-                <p>Хибридната архитектура комбинира предимствата на двете архитектури: използва монолитно ядро за бързина, но добавя модулна структура за по-добра поддръжка. Модерните ОС като Linux и Windows са хибридни.</p>
+                <strong>Правилен отговор: Г) Делят паметта на рамки и страници с еднакъв размер</strong>
+                <p>Paging използва равни блокове, за да минимизира вътрешната фрагментация и да улесни управлението на паметта.</p>
             </div>
             <div class="student-input-section">
                 <label>Номер на ученик който отговори правилно:</label>
@@ -1068,110 +1062,6 @@
                     <button class="add-student-btn" onclick="addStudent(16)">Добави</button>
                 </div>
                 <div class="students-list" id="studentsList16"></div>
-            </div>
-        </div>
-
-        <div class="question" data-correct="В">
-            <div class="question-number">Въпрос 17</div>
-            <div class="question-text">При какви условия може да възникне прехвърляне на приоритет (priority inversion) и какъв е проблемът?</div>
-            <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(17, 'А')">А) Процесите имат еднакъв приоритет</div>
-                <div class="option" data-value="Б" onclick="selectOption(17, 'Б')">Б) Няколко процеса чакат същия ресурс и се конфликтват помежду си</div>
-                <div class="option" data-value="В" onclick="selectOption(17, 'В')">В) Процес с висок приоритет чака процес с ниск приоритет, а процес със среден приоритет работи и блокира високия</div>
-                <div class="option" data-value="Г" onclick="selectOption(17, 'Г')">Г) Всички процеси работят едновременно и се смесват</div>
-            </div>
-            <button class="submit-btn" id="submitBtn17" onclick="submitAnswer(17)">✓ Изпрати отговор</button>
-            <div class="answer-feedback" id="feedback17"></div>
-            <button class="show-answer-btn" onclick="toggleAnswer(17)">Покажи отговора</button>
-            <div class="answer" id="answer17">
-                <strong>Правилен отговор: В) Когато процес с висок приоритет чака процес с ниск приоритет</strong>
-                <p>Priority inversion е проблем, при който процес с висок приоритет чака ресурс, държан от процес с ниск приоритет, докато процес със среден приоритет работи и блокира процеса с висок приоритет. Това нарушава справедливостта и може да блокира критични задачи.</p>
-            </div>
-            <div class="student-input-section">
-                <label>Номер на ученик който отговори правилно:</label>
-                <div class="student-input-controls">
-                    <input type="text" id="studentInput17" placeholder="Номер на ученик">
-                    <button class="add-student-btn" onclick="addStudent(17)">Добави</button>
-                </div>
-                <div class="students-list" id="studentsList17"></div>
-            </div>
-        </div>
-
-        <div class="question" data-correct="Б">
-            <div class="question-number">Въпрос 18</div>
-            <div class="question-text">Какво представлява Producer-Consumer проблемът в конкурентното програмиране?</div>
-            <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(18, 'А')">А) Проблем с изпълнение и синхронизация на множество процеси които работят паралелно и използват споделени изчислителни ресурси</div>
-                <div class="option" data-value="Б" onclick="selectOption(18, 'Б')">Б) Производител създава данни, потребител ги консумира - синхронизация чрез буфер</div>
-                <div class="option" data-value="В" onclick="selectOption(18, 'В')">В) Проблем с мрежовата връзка и комуникация между различни компоненти</div>
-                <div class="option" data-value="Г" onclick="selectOption(18, 'Г')">Г) Проблем с управление на паметта и ограничено пространство за съхранение на данни</div>
-            </div>
-            <button class="submit-btn" id="submitBtn18" onclick="submitAnswer(18)">✓ Изпрати отговор</button>
-            <div class="answer-feedback" id="feedback18"></div>
-            <button class="show-answer-btn" onclick="toggleAnswer(18)">Покажи отговора</button>
-            <div class="answer" id="answer18">
-                <strong>Правилен отговор: Б) Производител създава данни, потребител ги консумира</strong>
-                <p>Producer-Consumer проблемът е класически проблем за синхронизация, при който producer създава елементи и ги поставя в споделен буфер, а consumer ги чете от буфера. Нужна е синхронизация за да се избегне race condition и да се осигури правилна работа при празен или пълен буфер.</p>
-            </div>
-            <div class="student-input-section">
-                <label>Номер на ученик който отговори правилно:</label>
-                <div class="student-input-controls">
-                    <input type="text" id="studentInput18" placeholder="Номер на ученик">
-                    <button class="add-student-btn" onclick="addStudent(18)">Добави</button>
-                </div>
-                <div class="students-list" id="studentsList18"></div>
-            </div>
-        </div>
-
-        <div class="question" data-correct="Г">
-            <div class="question-number">Въпрос 19</div>
-            <div class="question-text">Какво е преимуществото на използването на семафори (semaphores) спрямо други механизми за синхронизация?</div>
-            <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(19, 'А')">А) По-бърза работа и по-ефективно управление на ресурсите на системата</div>
-                <div class="option" data-value="Б" onclick="selectOption(19, 'Б')">Б) Използват по-малко памет и по-оптимално разпределение на ресурси</div>
-                <div class="option" data-value="В" onclick="selectOption(19, 'В')">В) По-лесно за имплементация и програмиране с по-малко сложност</div>
-                <div class="option" data-value="Г" onclick="selectOption(19, 'Г')">Г) Контрол на достъпа от определен брой нишки</div>
-            </div>
-            <button class="submit-btn" id="submitBtn19" onclick="submitAnswer(19)">✓ Изпрати отговор</button>
-            <div class="answer-feedback" id="feedback19"></div>
-            <button class="show-answer-btn" onclick="toggleAnswer(19)">Покажи отговора</button>
-            <div class="answer" id="answer19">
-                <strong>Правилен отговор: Г) Позволяват контрол на достъпа от определен брой нишки</strong>
-                <p>Семафорите позволяват контрол на достъпа до споделени ресурси от определен брой нишки едновременно. Например, семафор със стойност 3 позволява до 3 нишки да работят с ресурса едновременно. Това е по-гъвкаво от mutex, който позволява само една нишка.</p>
-            </div>
-            <div class="student-input-section">
-                <label>Номер на ученик който отговори правилно:</label>
-                <div class="student-input-controls">
-                    <input type="text" id="studentInput19" placeholder="Номер на ученик">
-                    <button class="add-student-btn" onclick="addStudent(19)">Добави</button>
-                </div>
-                <div class="students-list" id="studentsList19"></div>
-            </div>
-        </div>
-
-        <div class="question" data-correct="А">
-            <div class="question-number">Въпрос 20</div>
-            <div class="question-text">Какво представлява livelock и как се различава от deadlock?</div>
-            <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(20, 'А')">А) Процесите продължават да се опитват да решат конфликт, но никога не завършват - постоянно променят състоянието</div>
-                <div class="option" data-value="Б" onclick="selectOption(20, 'Б')">Б) Процесите замръзват напълно и не работят</div>
-                <div class="option" data-value="В" onclick="selectOption(20, 'В')">В) Процесите работят твърде бавно</div>
-                <div class="option" data-value="Г" onclick="selectOption(20, 'Г')">Г) Процесите имат недостатъчно ресурси</div>
-            </div>
-            <button class="submit-btn" id="submitBtn20" onclick="submitAnswer(20)">✓ Изпрати отговор</button>
-            <div class="answer-feedback" id="feedback20"></div>
-            <button class="show-answer-btn" onclick="toggleAnswer(20)">Покажи отговора</button>
-            <div class="answer" id="answer20">
-                <strong>Правилен отговор: А) Процесите постоянно се опитват но никога не завършват</strong>
-                <p>Livelock е състояние, при което процесите не са блокирани като при deadlock, а постоянно се опитват да решат конфликт, но никога не го решават успешно. Процесите се променят между състояния, но не напредват. При deadlock процесите са напълно блокирани и не правят нищо.</p>
-            </div>
-            <div class="student-input-section">
-                <label>Номер на ученик който отговори правилно:</label>
-                <div class="student-input-controls">
-                    <input type="text" id="studentInput20" placeholder="Номер на ученик">
-                    <button class="add-student-btn" onclick="addStudent(20)">Добави</button>
-                </div>
-                <div class="students-list" id="studentsList20"></div>
             </div>
         </div>
 
@@ -1189,7 +1079,7 @@
                 <div class="grade-description" id="gradeDescription">Въведете номер на ученик за да започнете</div>
                 <div class="grade-percentage" id="gradePercentage"></div>
                 <div class="grade-progress">
-                    <div class="grade-progress-text" id="gradeProgressText">0 / 20 въпроса</div>
+                    <div class="grade-progress-text" id="gradeProgressText">0 / 16 въпроса</div>
                     <div class="progress-bar-container">
                         <div class="progress-bar" id="progressBar" style="width: 0%">0%</div>
                     </div>
@@ -1200,12 +1090,12 @@
     </div>
 
     <script>
+        const TOTAL_QUESTIONS = 16;
         const studentAnswers = {};
         const currentMode = { value: 'individual' };
         const currentStudent = { number: null };
         const selectedAnswers = {};
         const submittedQuestions = new Set();
-
         const motivationalMessages = [
             '🎉 Браво! Отличен отговор!',
             '🌟 Страхотна работа!',
@@ -1226,15 +1116,20 @@
 
         const celebrationEmojis = ['🎉', '🎊', '🥳', '🎈', '✨', '🌟', '⭐', '💫'];
 
+        function getQuestionElement(questionNumber) {
+            return document.querySelector(`.question[data-question="${questionNumber}"]`);
+        }
+
         function selectOption(questionNumber, value) {
-            if (submittedQuestions.has(questionNumber)) {
+            const questionDiv = getQuestionElement(questionNumber);
+            if (!questionDiv || submittedQuestions.has(questionNumber)) {
                 return;
             }
 
-            const options = document.querySelectorAll(`.question[data-correct]:nth-of-type(${questionNumber + 1}) .option`);
+            const options = questionDiv.querySelectorAll('.option');
             options.forEach(opt => opt.classList.remove('selected'));
 
-            const selectedOption = document.querySelector(`.question[data-correct]:nth-of-type(${questionNumber + 1}) .option[data-value="${value}"]`);
+            const selectedOption = questionDiv.querySelector(`.option[data-value="${value}"]`);
             if (selectedOption) {
                 selectedOption.classList.add('selected');
                 selectedAnswers[questionNumber] = value;
@@ -1257,15 +1152,19 @@
                 return;
             }
 
-            const questionDiv = document.querySelector(`.question[data-correct]:nth-of-type(${questionNumber + 1})`);
+            const questionDiv = getQuestionElement(questionNumber);
+            if (!questionDiv) {
+                return;
+            }
+
             const correctAnswer = questionDiv.getAttribute('data-correct');
             const isCorrect = selected === correctAnswer;
 
-            const options = document.querySelectorAll(`.question[data-correct]:nth-of-type(${questionNumber + 1}) .option`);
+            const options = questionDiv.querySelectorAll('.option');
             options.forEach(opt => {
                 opt.classList.remove('selected');
                 opt.classList.add('disabled');
-                
+
                 if (opt.getAttribute('data-value') === correctAnswer) {
                     opt.classList.add('correct');
                 } else if (opt.getAttribute('data-value') === selected && !isCorrect) {
@@ -1299,8 +1198,9 @@
                 if (!studentAnswers[questionNumber]) {
                     studentAnswers[questionNumber] = [];
                 }
-                if (!studentAnswers[questionNumber].includes(currentStudent.number.toString())) {
-                    studentAnswers[questionNumber].push(currentStudent.number.toString());
+                const studentKey = currentStudent.number.toString();
+                if (!studentAnswers[questionNumber].includes(studentKey)) {
+                    studentAnswers[questionNumber].push(studentKey);
                     updateStudentsList(questionNumber);
                     updateStatistics();
                     updateCurrentStudentInfo();
@@ -1308,18 +1208,20 @@
             }
         }
 
-        function setMode(mode) {
+        function setMode(mode, ev) {
             currentMode.value = mode;
             document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
+            if (ev && ev.target) {
+                ev.target.classList.add('active');
+            }
+
             const currentStudentInfo = document.getElementById('currentStudentInfo');
             const studentInputSections = document.querySelectorAll('.student-input-section');
             const studentNumberInput = document.getElementById('studentNumberInput');
             const statisticsSection = document.getElementById('statisticsSection');
             const currentGradeDisplay = document.getElementById('currentGradeDisplay');
             const showAnswerButtons = document.querySelectorAll('.show-answer-btn');
-            
+
             if (mode === 'individual') {
                 currentStudentInfo.classList.add('active');
                 studentNumberInput.classList.add('active');
@@ -1335,29 +1237,30 @@
                 studentInputSections.forEach(section => section.style.display = 'block');
                 showAnswerButtons.forEach(btn => btn.classList.add('active'));
             }
-            
+
             updateStatistics();
             updateCurrentGradeDisplay();
         }
-        
+
         function setCurrentStudent() {
             const studentNumberField = document.getElementById('studentNumberField');
             const studentNumber = studentNumberField.value.trim();
-            
+
             if (studentNumber === '') {
                 showMotivationMessage('❌ Моля въведете номер на ученик!');
                 return;
             }
-            
+
             currentStudent.number = studentNumber;
             updateCurrentStudentInfo();
             studentNumberField.value = '';
-            
+
             showMotivationMessage(`✅ Ученик ${studentNumber} е зададен за тестване!`);
         }
 
         function toggleAnswer(questionNumber) {
             const answer = document.getElementById('answer' + questionNumber);
+            if (!answer) return;
             answer.classList.toggle('visible');
             const button = answer.previousElementSibling;
             if (answer.classList.contains('visible')) {
@@ -1369,6 +1272,7 @@
 
         function addStudent(questionNumber) {
             const input = document.getElementById('studentInput' + questionNumber);
+            if (!input) return;
             const studentNumber = input.value.trim();
 
             if (studentNumber === '') {
@@ -1394,7 +1298,7 @@
 
             updateStudentsList(questionNumber);
             updateStatistics();
-            
+
             if (currentMode.value === 'individual') {
                 currentStudent.number = studentNumber;
                 updateCurrentStudentInfo();
@@ -1411,18 +1315,8 @@
             celebration.className = 'celebration';
             celebration.textContent = emoji;
             document.body.appendChild(celebration);
-            
-            const startTime = Date.now();
-            const removeAfterDelay = () => {
-                const now = Date.now();
-                const elapsed = now - startTime;
-                if (elapsed >= 1000) {
-                    celebration.remove();
-                } else {
-                    window.requestAnimationFrame(removeAfterDelay);
-                }
-            };
-            window.requestAnimationFrame(removeAfterDelay);
+
+            setTimeout(() => celebration.remove(), 1000);
         }
 
         function showMotivationMessage(message) {
@@ -1435,64 +1329,35 @@
             messageDiv.className = 'motivation-message';
             messageDiv.textContent = message;
             document.body.appendChild(messageDiv);
-            
-            const startTime = Date.now();
-            const removeAfterDelay = () => {
-                const now = Date.now();
-                const elapsed = now - startTime;
-                if (elapsed >= 3000) {
+
+            setTimeout(() => {
+                if (messageDiv.parentNode) {
                     messageDiv.remove();
-                } else {
-                    window.requestAnimationFrame(removeAfterDelay);
                 }
-            };
-            window.requestAnimationFrame(removeAfterDelay);
+            }, 3000);
         }
 
         function createConfetti() {
             const colors = ['#fd7e14', '#28a745', '#2196f3', '#ffc107', '#e91e63', '#9c27b0'];
-            
+
             for (let i = 0; i < 30; i++) {
-                const delay = i * 50;
-                const createSingleConfetti = () => {
+                setTimeout(() => {
                     const confetti = document.createElement('div');
                     confetti.className = 'confetti';
                     confetti.style.left = Math.random() * 100 + '%';
-                    confetti.style.top = -10 + 'px';
+                    confetti.style.top = '-10px';
                     confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                     confetti.style.width = (Math.random() * 10 + 5) + 'px';
                     confetti.style.height = (Math.random() * 10 + 5) + 'px';
                     document.body.appendChild(confetti);
-                    
-                    const startTime = Date.now();
-                    const removeAfterDelay = () => {
-                        const now = Date.now();
-                        const elapsed = now - startTime;
-                        if (elapsed >= 3000) {
-                            confetti.remove();
-                        } else {
-                            window.requestAnimationFrame(removeAfterDelay);
-                        }
-                    };
-                    window.requestAnimationFrame(removeAfterDelay);
-                };
-                
-                const startTime = Date.now();
-                const checkDelay = () => {
-                    const now = Date.now();
-                    const elapsed = now - startTime;
-                    if (elapsed >= delay) {
-                        createSingleConfetti();
-                    } else {
-                        window.requestAnimationFrame(checkDelay);
-                    }
-                };
-                window.requestAnimationFrame(checkDelay);
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 50);
             }
         }
 
         function updateStudentsList(questionNumber) {
             const list = document.getElementById('studentsList' + questionNumber);
+            if (!list) return;
             const students = studentAnswers[questionNumber] || [];
 
             if (students.length === 0) {
@@ -1500,14 +1365,14 @@
                 return;
             }
 
-            list.innerHTML = students.map(s => 
+            list.innerHTML = students.map(s =>
                 `<span class="student-tag">Ученик ${s}</span>`
             ).join('');
         }
 
         function calculateGrade(correctAnswers, totalQuestions) {
             const percentage = (correctAnswers / totalQuestions) * 100;
-            
+
             if (percentage >= 90) return 6;
             if (percentage >= 75) return 5;
             if (percentage >= 60) return 4;
@@ -1518,44 +1383,43 @@
 
         function updateCurrentStudentInfo() {
             if (currentStudent.number === null) return;
-            
+
             let correctCount = 0;
             for (const question in studentAnswers) {
                 if (studentAnswers[question].includes(currentStudent.number.toString())) {
                     correctCount++;
                 }
             }
-            
+
             document.getElementById('currentStudentName').textContent = currentStudent.number;
             document.getElementById('currentStudentScore').textContent = correctCount;
-            
+
             updateCurrentGradeDisplay();
         }
-        
+
         function updateCurrentGradeDisplay() {
             if (currentStudent.number === null) {
                 document.getElementById('gradeBig').textContent = '-';
                 document.getElementById('gradeDescription').textContent = 'Въведете номер на ученик за да започнете';
                 document.getElementById('gradePercentage').textContent = '';
-                document.getElementById('gradeProgressText').textContent = '0 / 20 въпроса';
+                document.getElementById('gradeProgressText').textContent = `0 / ${TOTAL_QUESTIONS} въпроса`;
                 document.getElementById('progressBar').style.width = '0%';
                 document.getElementById('progressBar').textContent = '0%';
                 return;
             }
-            
+
             let correctCount = 0;
             for (const question in studentAnswers) {
                 if (studentAnswers[question].includes(currentStudent.number.toString())) {
                     correctCount++;
                 }
             }
-            
-            const totalQuestions = 20;
-            const grade = calculateGrade(correctCount, totalQuestions);
-            const percentage = ((correctCount / totalQuestions) * 100).toFixed(0);
-            
+
+            const grade = calculateGrade(correctCount, TOTAL_QUESTIONS);
+            const percentage = ((correctCount / TOTAL_QUESTIONS) * 100).toFixed(0);
+
             document.getElementById('gradeBig').textContent = grade;
-            
+
             const gradeDescriptions = {
                 6: 'Отличен! 🏆',
                 5: 'Много добър! ⭐',
@@ -1563,11 +1427,11 @@
                 3: 'Среден 📚',
                 2: 'Слаб 📖'
             };
-            document.getElementById('gradeDescription').textContent = gradeDescriptions[grade] || 'Слаб';
-            
+            document.getElementById('gradeDescription').textContent = gradeDescriptions[grade] || 'Слаб 📖';
+
             document.getElementById('gradePercentage').textContent = `${percentage}%`;
-            
-            document.getElementById('gradeProgressText').textContent = `${correctCount} / ${totalQuestions} въпроса`;
+
+            document.getElementById('gradeProgressText').textContent = `${correctCount} / ${TOTAL_QUESTIONS} въпроса`;
             document.getElementById('progressBar').style.width = `${percentage}%`;
             document.getElementById('progressBar').textContent = `${percentage}%`;
         }
@@ -1578,10 +1442,9 @@
             for (const question in studentAnswers) {
                 studentAnswers[question].forEach(student => {
                     if (!studentScores[student]) {
-                        studentScores[student] = { correct: 0, questions: [] };
+                        studentScores[student] = { correct: 0 };
                     }
                     studentScores[student].correct++;
-                    studentScores[student].questions.push(parseInt(question));
                 });
             }
 
@@ -1596,22 +1459,21 @@
             }
 
             const maxScore = sortedStudents[0][1].correct;
-            const totalQuestions = 20;
 
             statsContent.innerHTML = sortedStudents.map(([student, data], index) => {
                 const isTop = data.correct === maxScore;
                 const position = index + 1;
                 const trophy = position === 1 ? '🏆 ' : position === 2 ? '🥈 ' : position === 3 ? '🥉 ' : '';
-                
-                const grade = calculateGrade(data.correct, totalQuestions);
-                
+
+                const grade = calculateGrade(data.correct, TOTAL_QUESTIONS);
+
                 return `
                     <div class="student-score ${isTop ? 'top' : ''}">
                         <span>${trophy}Ученик ${student}</span>
-                        <span class="score-number">${data.correct} / ${totalQuestions} (Оценка: ${grade})</span>
+                        <span class="score-number">${data.correct} / ${TOTAL_QUESTIONS} (Оценка: ${grade})</span>
                     </div>
                     <div class="grade-display">
-                        ${getGradeMessage(grade, data.correct, totalQuestions)}
+                        ${getGradeMessage(grade, data.correct, TOTAL_QUESTIONS)}
                     </div>
                 `;
             }).join('');
@@ -1619,7 +1481,7 @@
 
         function getGradeMessage(grade, correct, total) {
             const percentage = ((correct / total) * 100).toFixed(0);
-            
+
             if (grade === 6) return `Отличен (6) - ${percentage}% 🏆`;
             if (grade === 5) return `Много добър (5) - ${percentage}% ⭐`;
             if (grade === 4) return `Добър (4) - ${percentage}% 👍`;
@@ -1631,25 +1493,26 @@
         document.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 const target = e.target;
-                
+
                 if (target.id === 'studentNumberField') {
                     setCurrentStudent();
                     return;
                 }
-                
+
                 if (target.id && target.id.startsWith('studentInput')) {
                     const questionNumber = target.id.replace('studentInput', '');
                     const studentNumber = target.value.trim();
-                    
+
                     if (currentMode.value === 'individual' && studentNumber) {
                         currentStudent.number = studentNumber;
                         updateCurrentStudentInfo();
                     }
-                    
-                    addStudent(parseInt(questionNumber));
+
+                    addStudent(parseInt(questionNumber, 10));
                 }
             }
         });
+
     </script>
 </body>
 </html>
