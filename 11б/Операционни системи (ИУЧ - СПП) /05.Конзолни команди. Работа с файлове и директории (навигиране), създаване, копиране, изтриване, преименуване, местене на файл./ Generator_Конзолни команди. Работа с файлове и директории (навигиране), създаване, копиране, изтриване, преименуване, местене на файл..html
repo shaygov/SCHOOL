@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конзолни команди. Работа с файлове и директории — 11б</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #fd7e14;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #fd7e14;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+        }
+        
+        ul {
+            margin: 15px 0;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        code {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            margin: 15px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        
+        .example {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        
+        .important {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid #dc3545;
+            margin: 15px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        
+        .config {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid #2196f3;
+            margin: 15px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        
+        .patterns {
+            background-color: #f3e5f5;
+            padding: 15px;
+            border-left: 4px solid #9c27b0;
+            margin: 15px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        
+        strong {
+            color: #2c3e50;
+        }
+        
+        .section-number {
+            color: #fd7e14;
+            font-weight: bold;
+        }
+        
+        .command-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .command-card {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        
+        .command-card h4 {
+            color: #fd7e14;
+            margin-top: 0;
+        }
+        
+        .command-card.windows {
+            border-left: 4px solid #0078d4;
+        }
+        
+        .command-card.linux {
+            border-left: 4px solid #ff6600;
+        }
+        
+        .command-card.universal {
+            border-left: 4px solid #28a745;
+        }
+        
+        .command-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .command-table th,
+        .command-table td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        .command-table th {
+            background-color: #fd7e14;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .command-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .command-table code {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+            .command-comparison {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Конзолни команди. Работа с файлове и директории</h1>
+
+        <h2><span class="section-number">1. Въведение в конзолата</span></h2>
+        <div class="important">
+            <p>Конзолата (терминалът) е текстов интерфейс за работа с компютъра. Чрез команди можем да управляваме файлове, директории и програми без да използваме графичен интерфейс.</p>
+        </div>
+
+        <div class="config">
+            <h4>Как да отворим конзола:</h4>
+            <ul>
+                <li><strong>Windows:</strong> Натисни <code>Win + R</code>, напиши <code>cmd</code> или <code>powershell</code> и натисни Enter</li>
+                <li><strong>Linux:</strong> Натисни <code>Ctrl + Alt + T</code> или намери "Terminal" в менюто</li>
+                <li><strong>macOS:</strong> Отвори "Terminal" от Applications → Utilities</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">2. Навигиране (движение) в директории</span></h2>
+        
+        <div class="highlight">
+            <h4>Основни команди за навигиране:</h4>
+            <p>Преди да работим с файлове, трябва да знаем къде сме и как да се движим между директориите.</p>
+        </div>
+
+        <table class="command-table">
+            <thead>
+                <tr>
+                    <th>Действие</th>
+                    <th>Windows (CMD)</th>
+                    <th>Windows (PowerShell)</th>
+                    <th>Linux/macOS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Покажи текущата директория</td>
+                    <td><code>cd</code></td>
+                    <td><code>pwd</code></td>
+                    <td><code>pwd</code></td>
+                </tr>
+                <tr>
+                    <td>Промени директория</td>
+                    <td><code>cd име_на_директория</code></td>
+                    <td><code>cd име_на_директория</code></td>
+                    <td><code>cd име_на_директория</code></td>
+                </tr>
+                <tr>
+                    <td>Отиди една директория нагоре</td>
+                    <td><code>cd ..</code></td>
+                    <td><code>cd ..</code></td>
+                    <td><code>cd ..</code></td>
+                </tr>
+                <tr>
+                    <td>Отиди в главната директория</td>
+                    <td><code>cd \</code></td>
+                    <td><code>cd \</code></td>
+                    <td><code>cd /</code></td>
+                </tr>
+                <tr>
+                    <td>Отиди в домашната директория</td>
+                    <td><code>cd %USERPROFILE%</code></td>
+                    <td><code>cd ~</code></td>
+                    <td><code>cd ~</code></td>
+                </tr>
+                <tr>
+                    <td>Покажи съдържанието на директория</td>
+                    <td><code>dir</code></td>
+                    <td><code>ls</code> или <code>dir</code></td>
+                    <td><code>ls</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="example">
+            <h4>Примери за навигиране:</h4>
+            <pre><code># Windows (CMD)
+C:\Users\Иван> cd Documents
+C:\Users\Иван\Documents> cd ..
+C:\Users\Иван> cd \Windows
+C:\Windows>
+
+# Linux/macOS
+user@computer:~$ cd Documents
+user@computer:~/Documents$ cd ..
+user@computer:~$ cd /home/user
+user@computer:~$</code></pre>
+        </div>
+
+        <div class="important">
+            <h4>Важно:</h4>
+            <ul>
+                <li>В <strong>Windows</strong> използваме обратна наклонена черта <code>\</code> за пътища</li>
+                <li>В <strong>Linux/macOS</strong> използваме права наклонена черта <code>/</code> за пътища</li>
+                <li>В <strong>PowerShell</strong> можем да използваме и двете</li>
+                <li>За да видим скрити файлове в Linux: <code>ls -a</code></li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">3. Създаване на директории</span></h2>
+        
+        <div class="config">
+            <h4>Команди за създаване на директории:</h4>
+            <table class="command-table">
+                <thead>
+                    <tr>
+                        <th>Действие</th>
+                        <th>Windows (CMD)</th>
+                        <th>Windows (PowerShell)</th>
+                        <th>Linux/macOS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Създай една директория</td>
+                        <td><code>mkdir име_на_директория</code></td>
+                        <td><code>mkdir име_на_директория</code></td>
+                        <td><code>mkdir име_на_директория</code></td>
+                    </tr>
+                    <tr>
+                        <td>Създай няколко директории</td>
+                        <td><code>mkdir dir1 dir2 dir3</code></td>
+                        <td><code>mkdir dir1, dir2, dir3</code></td>
+                        <td><code>mkdir dir1 dir2 dir3</code></td>
+                    </tr>
+                    <tr>
+                        <td>Създай вложени директории</td>
+                        <td><code>mkdir dir1\dir2\dir3</code></td>
+                        <td><code>mkdir -p dir1/dir2/dir3</code></td>
+                        <td><code>mkdir -p dir1/dir2/dir3</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="example">
+            <h4>Примери:</h4>
+            <pre><code># Създаване на проста директория
+mkdir МоиДокументи
+
+# Създаване на вложена структура (Linux/PowerShell)
+mkdir -p Проекти/2024/Януари
+
+# Windows CMD - трябва да създадеш всяка директория отделно
+mkdir Проекти
+cd Проекти
+mkdir 2024
+cd 2024
+mkdir Януари</code></pre>
+        </div>
+
+        <h2><span class="section-number">4. Създаване на файлове</span></h2>
+        
+        <div class="highlight">
+            <h4>Команди за създаване на файлове:</h4>
+            <table class="command-table">
+                <thead>
+                    <tr>
+                        <th>Действие</th>
+                        <th>Windows (CMD)</th>
+                        <th>Windows (PowerShell)</th>
+                        <th>Linux/macOS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Създай празен файл</td>
+                        <td><code>type nul > файл.txt</code></td>
+                        <td><code>New-Item файл.txt</code> или <code>ni файл.txt</code></td>
+                        <td><code>touch файл.txt</code></td>
+                    </tr>
+                    <tr>
+                        <td>Създай файл с текст</td>
+                        <td><code>echo текст > файл.txt</code></td>
+                        <td><code>"текст" > файл.txt</code></td>
+                        <td><code>echo "текст" > файл.txt</code></td>
+                    </tr>
+                    <tr>
+                        <td>Добави текст към файл</td>
+                        <td><code>echo текст >> файл.txt</code></td>
+                        <td><code>"текст" >> файл.txt</code></td>
+                        <td><code>echo "текст" >> файл.txt</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="example">
+            <h4>Примери:</h4>
+            <pre><code># Създаване на празен файл
+# Windows CMD:
+type nul > документ.txt
+
+# Windows PowerShell:
+New-Item документ.txt
+
+# Linux/macOS:
+touch документ.txt
+
+# Създаване на файл с текст
+# Windows CMD:
+echo Здравей свят > hello.txt
+
+# Windows PowerShell:
+"Здравей свят" > hello.txt
+
+# Linux/macOS:
+echo "Здравей свят" > hello.txt</code></pre>
+        </div>
+
+        <h2><span class="section-number">5. Копиране на файлове и директории</span></h2>
+        
+        <div class="config">
+            <h4>Команди за копиране:</h4>
+            <table class="command-table">
+                <thead>
+                    <tr>
+                        <th>Действие</th>
+                        <th>Windows (CMD)</th>
+                        <th>Windows (PowerShell)</th>
+                        <th>Linux/macOS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Копирай файл</td>
+                        <td><code>copy файл.txt ново_име.txt</code></td>
+                        <td><code>Copy-Item файл.txt ново_име.txt</code> или <code>cp файл.txt ново_име.txt</code></td>
+                        <td><code>cp файл.txt ново_име.txt</code></td>
+                    </tr>
+                    <tr>
+                        <td>Копирай файл в друга директория</td>
+                        <td><code>copy файл.txt C:\ДругаДиректория\</code></td>
+                        <td><code>Copy-Item файл.txt C:\ДругаДиректория\</code></td>
+                        <td><code>cp файл.txt /home/user/ДругаДиректория/</code></td>
+                    </tr>
+                    <tr>
+                        <td>Копирай директория рекурсивно</td>
+                        <td><code>xcopy директория нова_директория /E /I</code></td>
+                        <td><code>Copy-Item -Recurse директория нова_директория</code></td>
+                        <td><code>cp -r директория нова_директория</code></td>
+                    </tr>
+                    <tr>
+                        <td>Копирай всички файлове</td>
+                        <td><code>copy *.* C:\Дестинация\</code></td>
+                        <td><code>Copy-Item *.* C:\Дестинация\</code></td>
+                        <td><code>cp *.* /home/user/Дестинация/</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="example">
+            <h4>Примери:</h4>
+            <pre><code># Копиране на файл
+# Windows CMD:
+copy документ.txt копие.txt
+
+# Windows PowerShell:
+Copy-Item документ.txt копие.txt
+
+# Linux/macOS:
+cp документ.txt копие.txt
+
+# Копиране на директория с всичко в нея
+# Windows CMD:
+xcopy МояПроект Резервно /E /I
+
+# Windows PowerShell:
+Copy-Item -Recurse МояПроект Резервно
+
+# Linux/macOS:
+cp -r МояПроект Резервно</code></pre>
+        </div>
+
+        <h2><span class="section-number">6. Преименуване на файлове и директории</span></h2>
+        
+        <div class="highlight">
+            <h4>Команди за преименуване:</h4>
+            <table class="command-table">
+                <thead>
+                    <tr>
+                        <th>Действие</th>
+                        <th>Windows (CMD)</th>
+                        <th>Windows (PowerShell)</th>
+                        <th>Linux/macOS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Преименувай файл</td>
+                        <td><code>ren старо_име.txt ново_име.txt</code></td>
+                        <td><code>Rename-Item старо_име.txt ново_име.txt</code> или <code>ren старо_име.txt ново_име.txt</code></td>
+                        <td><code>mv старо_име.txt ново_име.txt</code></td>
+                    </tr>
+                    <tr>
+                        <td>Преименувай директория</td>
+                        <td><code>ren СтараДиректория НоваДиректория</code></td>
+                        <td><code>Rename-Item СтараДиректория НоваДиректория</code></td>
+                        <td><code>mv СтараДиректория НоваДиректория</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="example">
+            <h4>Примери:</h4>
+            <pre><code># Преименуване на файл
+# Windows CMD:
+ren документ.txt нов_документ.txt
+
+# Windows PowerShell:
+Rename-Item документ.txt нов_документ.txt
+
+# Linux/macOS:
+mv документ.txt нов_документ.txt
+
+# Преименуване на директория
+# Windows CMD:
+ren СтараПапка НоваПапка
+
+# Windows PowerShell:
+Rename-Item СтараПапка НоваПапка
+
+# Linux/macOS:
+mv СтараПапка НоваПапка</code></pre>
+        </div>
+
+        <h2><span class="section-number">7. Местене на файлове и директории</span></h2>
+        
+        <div class="config">
+            <h4>Команди за местене:</h4>
+            <p>Местенето е като копиране + изтриване на оригинала. В Linux/macOS командата <code>mv</code> се използва и за преименуване, и за местене.</p>
+            <table class="command-table">
+                <thead>
+                    <tr>
+                        <th>Действие</th>
+                        <th>Windows (CMD)</th>
+                        <th>Windows (PowerShell)</th>
+                        <th>Linux/macOS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Премести файл</td>
+                        <td><code>move файл.txt C:\ДругаДиректория\</code></td>
+                        <td><code>Move-Item файл.txt C:\ДругаДиректория\</code> или <code>mv файл.txt C:\ДругаДиректория\</code></td>
+                        <td><code>mv файл.txt /home/user/ДругаДиректория/</code></td>
+                    </tr>
+                    <tr>
+                        <td>Премести директория</td>
+                        <td><code>move Директория C:\НовоМясто\</code></td>
+                        <td><code>Move-Item Директория C:\НовоМясто\</code></td>
+                        <td><code>mv Директория /home/user/НовоМясто/</code></td>
+                    </tr>
+                    <tr>
+                        <td>Премести всички файлове</td>
+                        <td><code>move *.txt C:\Дестинация\</code></td>
+                        <td><code>Move-Item *.txt C:\Дестинация\</code></td>
+                        <td><code>mv *.txt /home/user/Дестинация/</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="example">
+            <h4>Примери:</h4>
+            <pre><code># Преместване на файл
+# Windows CMD:
+move документ.txt C:\Documents\
+
+# Windows PowerShell:
+Move-Item документ.txt C:\Documents\
+
+# Linux/macOS:
+mv документ.txt ~/Documents/
+
+# Преместване на директория
+# Windows CMD:
+move МояПроект C:\Projects\
+
+# Windows PowerShell:
+Move-Item МояПроект C:\Projects\
+
+# Linux/macOS:
+mv МояПроект ~/Projects/</code></pre>
+        </div>
+
+        <h2><span class="section-number">8. Изтриване на файлове и директории</span></h2>
+        
+        <div class="important">
+            <h4>Внимание!</h4>
+            <p>Изтриването в конзолата обикновено е <strong>необратимо</strong>! Файловете не отиват в кошчето, а се изтриват завинаги. Бъди внимателен!</p>
+        </div>
+
+        <div class="config">
+            <h4>Команди за изтриване:</h4>
+            <table class="command-table">
+                <thead>
+                    <tr>
+                        <th>Действие</th>
+                        <th>Windows (CMD)</th>
+                        <th>Windows (PowerShell)</th>
+                        <th>Linux/macOS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Изтрий файл</td>
+                        <td><code>del файл.txt</code></td>
+                        <td><code>Remove-Item файл.txt</code> или <code>rm файл.txt</code></td>
+                        <td><code>rm файл.txt</code></td>
+                    </tr>
+                    <tr>
+                        <td>Изтрий директория (празна)</td>
+                        <td><code>rmdir директория</code></td>
+                        <td><code>Remove-Item директория</code> или <code>rmdir директория</code></td>
+                        <td><code>rmdir директория</code></td>
+                    </tr>
+                    <tr>
+                        <td>Изтрий директория с всичко в нея</td>
+                        <td><code>rmdir /S директория</code></td>
+                        <td><code>Remove-Item -Recurse директория</code> или <code>rm -r директория</code></td>
+                        <td><code>rm -r директория</code></td>
+                    </tr>
+                    <tr>
+                        <td>Изтрий всички файлове</td>
+                        <td><code>del *.txt</code></td>
+                        <td><code>Remove-Item *.txt</code></td>
+                        <td><code>rm *.txt</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="example">
+            <h4>Примери:</h4>
+            <pre><code># Изтриване на файл
+# Windows CMD:
+del документ.txt
+
+# Windows PowerShell:
+Remove-Item документ.txt
+
+# Linux/macOS:
+rm документ.txt
+
+# Изтриване на директория с всичко в нея
+# Windows CMD:
+rmdir /S СтараДиректория
+
+# Windows PowerShell:
+Remove-Item -Recurse СтараДиректория
+
+# Linux/macOS:
+rm -r СтараДиректория</code></pre>
+        </div>
+
+        <h2><span class="section-number">9. Полезни команди за преглед</span></h2>
+        
+        <div class="patterns">
+            <h4>Допълнителни команди:</h4>
+            <table class="command-table">
+                <thead>
+                    <tr>
+                        <th>Действие</th>
+                        <th>Windows (CMD)</th>
+                        <th>Windows (PowerShell)</th>
+                        <th>Linux/macOS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Покажи съдържанието на файл</td>
+                        <td><code>type файл.txt</code></td>
+                        <td><code>Get-Content файл.txt</code> или <code>cat файл.txt</code></td>
+                        <td><code>cat файл.txt</code></td>
+                    </tr>
+                    <tr>
+                        <td>Покажи първите редове</td>
+                        <td><code>type файл.txt | more</code></td>
+                        <td><code>Get-Content файл.txt -Head 10</code></td>
+                        <td><code>head файл.txt</code></td>
+                    </tr>
+                    <tr>
+                        <td>Покажи последните редове</td>
+                        <td><code>type файл.txt | more</code></td>
+                        <td><code>Get-Content файл.txt -Tail 10</code></td>
+                        <td><code>tail файл.txt</code></td>
+                    </tr>
+                    <tr>
+                        <td>Търси текст в файл</td>
+                        <td><code>findstr "текст" файл.txt</code></td>
+                        <td><code>Select-String "текст" файл.txt</code></td>
+                        <td><code>grep "текст" файл.txt</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2><span class="section-number">10. Практически примери</span></h2>
+        
+        <div class="example">
+            <h4>Сценарий 1: Създаване на структура за проект</h4>
+            <pre><code># Windows PowerShell / Linux/macOS
+mkdir -p МойПроект/{Документи,ИзходенКод,Изображения}
+cd МойПроект
+echo "# Мой проект" > README.txt
+cd ИзходенКод
+touch main.py
+cd ../..
+
+# Windows CMD
+mkdir МойПроект
+cd МойПроект
+mkdir Документи ИзходенКод Изображения
+echo # Мой проект > README.txt
+cd ИзходенКод
+type nul > main.py
+cd ..\..</code></pre>
+        </div>
+
+        <div class="example">
+            <h4>Сценарий 2: Организиране на файлове</h4>
+            <pre><code># Преместване на всички .txt файлове в папка "Текстове"
+# Windows PowerShell / Linux/macOS
+mkdir Текстове
+mv *.txt Текстове/
+
+# Windows CMD
+mkdir Текстове
+move *.txt Текстове\</code></pre>
+        </div>
+
+        <div class="example">
+            <h4>Сценарий 3: Резервно копие</h4>
+            <pre><code># Създаване на резервно копие на директория
+# Windows PowerShell
+Copy-Item -Recurse МояПроект МояПроект_Резервно
+
+# Linux/macOS
+cp -r МояПроект МояПроект_Резервно
+
+# Windows CMD
+xcopy МояПроект МояПроект_Резервно /E /I</code></pre>
+        </div>
+
+        <h2><span class="section-number">11. Съвети и добри практики</span></h2>
+        
+        <div class="important">
+            <h4>Важни съвети:</h4>
+            <ul>
+                <li><strong>Винаги проверявай пътя</strong> - използвай <code>pwd</code> или <code>cd</code> преди да изпълниш команда</li>
+                <li><strong>Използвай Tab за автодопълване</strong> - натискай Tab за автоматично допълване на имената</li>
+                <li><strong>Бъди внимателен с изтриването</strong> - файловете изтрити от конзолата не отиват в кошчето</li>
+                <li><strong>Използвай пълни пътища</strong> когато не си сигурен къде си</li>
+                <li><strong>Тествай командите</strong> с неважни файлове преди да ги използваш за важни данни</li>
+            </ul>
+        </div>
+
+        <div class="config">
+            <h4>Кратки пътища (wildcards):</h4>
+            <ul>
+                <li><code>*</code> - замества всякакви символи (напр. <code>*.txt</code> = всички .txt файлове)</li>
+                <li><code>?</code> - замества един символ (напр. <code>file?.txt</code> = file1.txt, file2.txt, но не file10.txt)</li>
+                <li><code>..</code> - родителска директория</li>
+                <li><code>.</code> - текуща директория</li>
+                <li><code>~</code> - домашна директория (Linux/PowerShell)</li>
+            </ul>
+        </div>
+
+        <h2><span class="section-number">12. Резюме</span></h2>
+        <div class="patterns">
+            <h4>Основни команди за запомняне:</h4>
+            <table class="command-table">
+                <thead>
+                    <tr>
+                        <th>Операция</th>
+                        <th>Windows (CMD)</th>
+                        <th>Windows (PowerShell)</th>
+                        <th>Linux/macOS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Навигиране</td>
+                        <td><code>cd</code>, <code>dir</code></td>
+                        <td><code>cd</code>, <code>ls</code>, <code>pwd</code></td>
+                        <td><code>cd</code>, <code>ls</code>, <code>pwd</code></td>
+                    </tr>
+                    <tr>
+                        <td>Създаване на директория</td>
+                        <td><code>mkdir</code></td>
+                        <td><code>mkdir</code></td>
+                        <td><code>mkdir</code></td>
+                    </tr>
+                    <tr>
+                        <td>Създаване на файл</td>
+                        <td><code>type nul ></code></td>
+                        <td><code>New-Item</code></td>
+                        <td><code>touch</code></td>
+                    </tr>
+                    <tr>
+                        <td>Копиране</td>
+                        <td><code>copy</code>, <code>xcopy</code></td>
+                        <td><code>Copy-Item</code></td>
+                        <td><code>cp</code></td>
+                    </tr>
+                    <tr>
+                        <td>Преименуване</td>
+                        <td><code>ren</code></td>
+                        <td><code>Rename-Item</code></td>
+                        <td><code>mv</code></td>
+                    </tr>
+                    <tr>
+                        <td>Местене</td>
+                        <td><code>move</code></td>
+                        <td><code>Move-Item</code></td>
+                        <td><code>mv</code></td>
+                    </tr>
+                    <tr>
+                        <td>Изтриване</td>
+                        <td><code>del</code>, <code>rmdir</code></td>
+                        <td><code>Remove-Item</code></td>
+                        <td><code>rm</code>, <code>rmdir</code></td>
+                    </tr>
+                    <tr>
+                        <td>Преглед на файл</td>
+                        <td><code>type</code></td>
+                        <td><code>Get-Content</code>, <code>cat</code></td>
+                        <td><code>cat</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="highlight">
+            <h4>Запомни:</h4>
+            <ul>
+                <li>В <strong>PowerShell</strong> и <strong>Linux</strong> много команди са сходни</li>
+                <li>В <strong>CMD</strong> командите са различни, но логиката е същата</li>
+                <li>Винаги проверявай къде си преди да изпълниш команда</li>
+                <li>Използвай <code>Tab</code> за автодопълване на имена</li>
+                <li>Бъди внимателен с изтриването - то е необратимо!</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
