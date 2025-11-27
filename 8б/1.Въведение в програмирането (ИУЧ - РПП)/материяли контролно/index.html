@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подготвителни материали по C# - Въведение в програмирането</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0.8cm;
+        }
+        
+        body {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-size: 8.5pt;
+            line-height: 1.3;
+            max-width: 100%;
+            margin: 0;
+            padding: 5px;
+            background-color: white;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            width: 100%;
+            align-items: flex-start;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 0;
+            border-right: 1px solid #ddd;
+            padding-right: 8px;
+        }
+        
+        .column:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+        
+        h1 {
+            font-size: 14pt;
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #17a2b8;
+            padding-bottom: 3px;
+            margin-bottom: 8px;
+            width: 100%;
+        }
+        
+        h2 {
+            font-size: 10pt;
+            color: #34495e;
+            border-left: 2px solid #17a2b8;
+            padding-left: 5px;
+            margin-top: 8px;
+            margin-bottom: 4px;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        h3 {
+            font-size: 9.5pt;
+            color: #2c3e50;
+            margin-top: 6px;
+            margin-bottom: 3px;
+        }
+        
+        h4 {
+            font-size: 9pt;
+            color: #2c3e50;
+            margin-top: 5px;
+            margin-bottom: 2px;
+        }
+        
+        p {
+            margin: 2px 0;
+            font-size: 8.5pt;
+        }
+        
+        ul, ol {
+            margin: 3px 0;
+            padding-left: 15px;
+        }
+        
+        li {
+            margin: 1px 0;
+            font-size: 8.5pt;
+        }
+        
+        code {
+            background-color: #f4f4f4;
+            color: #c7254e;
+            padding: 1px 2px;
+            border-radius: 2px;
+            font-family: 'Courier New', monospace;
+            font-size: 7.5pt;
+        }
+        
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 4px;
+            border-radius: 2px;
+            overflow-x: auto;
+            margin: 3px 0;
+            font-size: 7pt;
+            line-height: 1.2;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 4px;
+            border-left: 2px solid #ffc107;
+            margin: 4px 0;
+            font-size: 8pt;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .example {
+            background-color: #e8f5e8;
+            padding: 4px;
+            border-left: 2px solid #28a745;
+            margin: 4px 0;
+            font-size: 8pt;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .important {
+            background-color: #f8d7da;
+            padding: 4px;
+            border-left: 2px solid #dc3545;
+            margin: 4px 0;
+            font-size: 8pt;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .note {
+            background-color: #e3f2fd;
+            padding: 4px;
+            border-left: 2px solid #2196f3;
+            margin: 4px 0;
+            font-size: 8pt;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 4px 0;
+            font-size: 7.5pt;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 3px;
+            text-align: left;
+        }
+        
+        table th {
+            background-color: #17a2b8;
+            color: white;
+            font-weight: bold;
+            font-size: 8pt;
+        }
+        
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .section-number {
+            color: #17a2b8;
+            font-weight: bold;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                display: flex !important;
+                flex-direction: row !important;
+                gap: 10px !important;
+            }
+            .example, .highlight, .important, .note, h2, h3, table, pre {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+        
+        @media screen {
+            .container {
+                display: flex !important;
+                flex-direction: row !important;
+                gap: 10px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Подготвителни материали по C# - Въведение в програмирането</h1>
+    <div class="container">
+        <div class="column">
+    <h2><span class="section-number">1. C# Въведение</span></h2>
+    <div class="note">
+        <p><strong>C#</strong> е модерен, обектно-ориентиран език за програмиране, разработен от Microsoft. Използва се за създаване на различни типове приложения: уеб, десктоп, мобилни и игри.</p>
+    </div>
+    <ul>
+        <li><strong>Синтаксис:</strong> Подобен на Java и C++</li>
+        <li><strong>Платформа:</strong> .NET Framework</li>
+        <li><strong>Тип:</strong> Статично типизиран език</li>
+        <li><strong>Парадигма:</strong> Обектно-ориентирано програмиране</li>
+    </ul>
+
+    <h2><span class="section-number">2. Първа програма - Hello World</span></h2>
+    <div class="example">
+        <pre><code>using System;
+
+class Program {
+    static void Main() {
+        Console.WriteLine("Hello World!");
+    }
+}</code></pre>
+    </div>
+    <div class="highlight">
+        <p><strong>Обяснение:</strong></p>
+        <ul>
+            <li><code>using System;</code> - включва системната библиотека</li>
+            <li><code>class Program</code> - дефинира клас с име Program</li>
+            <li><code>static void Main()</code> - начална точка на програмата</li>
+            <li><code>Console.WriteLine()</code> - извежда текст в конзолата</li>
+        </ul>
+    </div>
+
+    <h2><span class="section-number">3. C# Синтаксис</span></h2>
+    <div class="important">
+        <p><strong>Основни правила:</strong></p>
+        <ul>
+            <li>Всяка команда завършва с <code>;</code> (точка и запетая)</li>
+            <li>Блоковете код се ограждат с <code>{}</code> (фигурни скоби)</li>
+            <li>Чувствителен е към малки/големи букви (case-sensitive)</li>
+            <li>Коментарите: <code>//</code> за един ред, <code>/* */</code> за няколко реда</li>
+        </ul>
+    </div>
+    <div class="example">
+        <pre><code>// Това е коментар на един ред
+/* Това е
+   коментар на
+   няколко реда */
+
+class Example {
+    static void Main() {
+        Console.WriteLine("Пример");
+    }
+}</code></pre>
+    </div>
+
+    <h2><span class="section-number">4. C# Изход (Output)</span></h2>
+    <div class="note">
+        <p><strong>Console.WriteLine()</strong> - извежда текст и преминава на нов ред</p>
+        <p><strong>Console.Write()</strong> - извежда текст без да преминава на нов ред</p>
+    </div>
+    <div class="example">
+        <pre><code>using System;
+
+class Program {
+    static void Main() {
+        Console.WriteLine("Първи ред");
+        Console.WriteLine("Втори ред");
+        Console.Write("Текст на ");
+        Console.Write("същия ред");
+    }
+}</code></pre>
+    </div>
+    <div class="highlight">
+        <p><strong>Резултат:</strong></p>
+        <pre style="background-color: #1e1e1e; color: #00ff00; padding: 4px;">Първи ред
+Втори ред
+Текст на същия ред</pre>
+    </div>
+
+    <h2><span class="section-number">5. C# Коментари</span></h2>
+    <div class="note">
+        <p>Коментарите се използват за обяснение на кода и не се изпълняват от програмата.</p>
+    </div>
+    <div class="example">
+        <pre><code>// Едноредов коментар
+
+/* Многоредов
+   коментар */
+
+/// XML коментар за документация
+/// Използва се за описание на методи и класове</code></pre>
+    </div>
+
+    <h2><span class="section-number">6. C# Променливи (Variables)</span></h2>
+    <div class="important">
+        <p><strong>Променливата</strong> е контейнер за съхранение на данни. В C# трябва да декларираме типа преди да използваме променливата.</p>
+    </div>
+    <div class="example">
+        <pre><code>using System;
+
+class Program {
+    static void Main() {
+        // Деклариране и инициализация
+        string name = "Иван";
+        int age = 15;
+        double height = 1.75;
+        
+        // Деклариране, след това присвояване
+        int number;
+        number = 10;
+        
+        // Множествена декларация
+        int x = 5, y = 10, z = 15;
+        
+        Console.WriteLine($"Име: {name}, Възраст: {age}");
+    }
+}</code></pre>
+    </div>
+    <div class="highlight">
+        <p><strong>Правила за имена на променливи:</strong></p>
+        <ul>
+            <li>Започват с буква или _</li>
+            <li>Могат да съдържат букви, цифри и _</li>
+            <li>Не могат да съдържат интервали</li>
+            <li>Не могат да са запазени думи (int, string, class и др.)</li>
+        </ul>
+    </div>
+
+    <h2><span class="section-number">7. C# Типове данни (Data Types)</span></h2>
+    <table>
+        <tr>
+            <th>Тип</th>
+            <th>Описание</th>
+            <th>Размер</th>
+            <th>Пример</th>
+        </tr>
+        <tr>
+            <td><code>int</code></td>
+            <td>Цели числа</td>
+            <td>4 байта</td>
+            <td>25, -10, 0</td>
+        </tr>
+        <tr>
+            <td><code>long</code></td>
+            <td>Големи цели числа</td>
+            <td>8 байта</td>
+            <td>1000000L</td>
+        </tr>
+        <tr>
+            <td><code>float</code></td>
+            <td>Десетични числа (прецизност)</td>
+            <td>4 байта</td>
+            <td>3.14f</td>
+        </tr>
+        <tr>
+            <td><code>double</code></td>
+            <td>Десетични числа (висока прецизност)</td>
+            <td>8 байта</td>
+            <td>3.14159</td>
+        </tr>
+        <tr>
+            <td><code>bool</code></td>
+            <td>Логически тип</td>
+            <td>1 бит</td>
+            <td>true, false</td>
+        </tr>
+        <tr>
+            <td><code>char</code></td>
+            <td>Един символ</td>
+            <td>2 байта</td>
+            <td>'A', '5'</td>
+        </tr>
+        <tr>
+            <td><code>string</code></td>
+            <td>Текст</td>
+            <td>2 байта/символ</td>
+            <td>"Здравей"</td>
+        </tr>
+    </table>
+    <div class="example">
+        <pre><code>int age = 15;
+double price = 19.99;
+bool isStudent = true;
+char grade = 'A';
+string name = "Мария";</code></pre>
+    </div>
+
+    <h2><span class="section-number">8. C# Преобразуване на типове (Type Casting)</span></h2>
+    <div class="note">
+        <p><strong>Има два вида преобразуване:</strong></p>
+        <ul>
+            <li><strong>Имплицитно (автоматично)</strong> - от по-малък към по-голям тип</li>
+            <li><strong>Експлицитно (ръчно)</strong> - от по-голям към по-малък тип</li>
+        </ul>
+    </div>
+    <div class="example">
+        <pre><code>// Имплицитно преобразуване
+int myInt = 9;
+double myDouble = myInt;  // Автоматично: int → double
+
+// Експлицитно преобразуване
+double myDouble2 = 9.78;
+int myInt2 = (int)myDouble2;  // Ръчно: double → int (резултат: 9)
+
+// Преобразуване с методи
+string numberText = "123";
+int number = int.Parse(numberText);  // string → int
+int number2 = Convert.ToInt32(numberText);  // Алтернативен метод
+
+// Преобразуване на числа в текст
+int age = 15;
+string ageText = age.ToString();  // int → string</code></pre>
+    </div>
+
+    <h2><span class="section-number">9. C# Потребителски вход (User Input)</span></h2>
+    <div class="important">
+        <p><strong>Console.ReadLine()</strong> - чете ред от конзолата и връща string</p>
+        <p><strong>Console.ReadKey()</strong> - чете един символ и чака натискане на клавиш</p>
+    </div>
+    <div class="example">
+        <pre><code>using System;
+
+class Program {
+    static void Main() {
+        // Четене на текст
+        Console.Write("Въведете вашето име: ");
+        string name = Console.ReadLine();
+        
+        // Четене на число
+        Console.Write("Въведете вашата възраст: ");
+        int age = int.Parse(Console.ReadLine());
+        
+        // Четене на десетично число
+        Console.Write("Въведете цена: ");
+        double price = double.Parse(Console.ReadLine());
+        
+        // Извеждане на резултата
+        Console.WriteLine($"Здравей, {name}! Ти си на {age} години.");
+        Console.WriteLine($"Цената е {price} лева.");
+        
+        Console.WriteLine("\nНатисни клавиш за изход...");
+        Console.ReadKey();
+    }
+}</code></pre>
+    </div>
+        </div>
+        <div class="column">
+    <h2><span class="section-number">10. C# Оператори (Operators)</span></h2>
+    <h3>Аритметични оператори</h3>
+    <table>
+        <tr>
+            <th>Оператор</th>
+            <th>Име</th>
+            <th>Пример</th>
+            <th>Резултат</th>
+        </tr>
+        <tr>
+            <td><code>+</code></td>
+            <td>Събиране</td>
+            <td>x + y</td>
+            <td>Сума на x и y</td>
+        </tr>
+        <tr>
+            <td><code>-</code></td>
+            <td>Изваждане</td>
+            <td>x - y</td>
+            <td>Разлика на x и y</td>
+        </tr>
+        <tr>
+            <td><code>*</code></td>
+            <td>Умножение</td>
+            <td>x * y</td>
+            <td>Произведение на x и y</td>
+        </tr>
+        <tr>
+            <td><code>/</code></td>
+            <td>Деление</td>
+            <td>x / y</td>
+            <td>Частно на x и y</td>
+        </tr>
+        <tr>
+            <td><code>%</code></td>
+            <td>Модуло (остатък)</td>
+            <td>x % y</td>
+            <td>Остатък от деление</td>
+        </tr>
+        <tr>
+            <td><code>++</code></td>
+            <td>Инкремент</td>
+            <td>x++</td>
+            <td>Увеличава с 1</td>
+        </tr>
+        <tr>
+            <td><code>--</code></td>
+            <td>Декремент</td>
+            <td>x--</td>
+            <td>Намалява с 1</td>
+        </tr>
+    </table>
+    <div class="example">
+        <pre><code>int a = 10, b = 3;
+Console.WriteLine(a + b);  // 13
+Console.WriteLine(a - b);  // 7
+Console.WriteLine(a * b);  // 30
+Console.WriteLine(a / b);  // 3 (целочислено деление)
+Console.WriteLine(a % b);  // 1 (остатък)
+a++;  // a става 11
+b--;  // b става 2</code></pre>
+    </div>
+
+    <h3>Оператори за присвояване</h3>
+    <table>
+        <tr>
+            <th>Оператор</th>
+            <th>Пример</th>
+            <th>Еквивалентно на</th>
+        </tr>
+        <tr>
+            <td><code>=</code></td>
+            <td>x = 5</td>
+            <td>x = 5</td>
+        </tr>
+        <tr>
+            <td><code>+=</code></td>
+            <td>x += 3</td>
+            <td>x = x + 3</td>
+        </tr>
+        <tr>
+            <td><code>-=</code></td>
+            <td>x -= 3</td>
+            <td>x = x - 3</td>
+        </tr>
+        <tr>
+            <td><code>*=</code></td>
+            <td>x *= 3</td>
+            <td>x = x * 3</td>
+        </tr>
+        <tr>
+            <td><code>/=</code></td>
+            <td>x /= 3</td>
+            <td>x = x / 3</td>
+        </tr>
+        <tr>
+            <td><code>%=</code></td>
+            <td>x %= 3</td>
+            <td>x = x % 3</td>
+        </tr>
+    </table>
+
+    <h3>Оператори за сравнение</h3>
+    <table>
+        <tr>
+            <th>Оператор</th>
+            <th>Име</th>
+            <th>Пример</th>
+        </tr>
+        <tr>
+            <td><code>==</code></td>
+            <td>Равно</td>
+            <td>x == y</td>
+        </tr>
+        <tr>
+            <td><code>!=</code></td>
+            <td>Различно</td>
+            <td>x != y</td>
+        </tr>
+        <tr>
+            <td><code>&gt;</code></td>
+            <td>По-голямо</td>
+            <td>x &gt; y</td>
+        </tr>
+        <tr>
+            <td><code>&lt;</code></td>
+            <td>По-малко</td>
+            <td>x &lt; y</td>
+        </tr>
+        <tr>
+            <td><code>&gt;=</code></td>
+            <td>По-голямо или равно</td>
+            <td>x &gt;= y</td>
+        </tr>
+        <tr>
+            <td><code>&lt;=</code></td>
+            <td>По-малко или равно</td>
+            <td>x &lt;= y</td>
+        </tr>
+    </table>
+
+    <h3>Логически оператори</h3>
+    <table>
+        <tr>
+            <th>Оператор</th>
+            <th>Име</th>
+            <th>Описание</th>
+            <th>Пример</th>
+        </tr>
+        <tr>
+            <td><code>&amp;&amp;</code></td>
+            <td>Логическо И</td>
+            <td>Връща true ако и двата операнда са true</td>
+            <td>x &lt; 5 &amp;&amp; x &gt; 0</td>
+        </tr>
+        <tr>
+            <td><code>||</code></td>
+            <td>Логическо ИЛИ</td>
+            <td>Връща true ако поне един операнд е true</td>
+            <td>x &lt; 5 || x &gt; 10</td>
+        </tr>
+        <tr>
+            <td><code>!</code></td>
+            <td>Логическо НЕ</td>
+            <td>Обръща резултата</td>
+            <td>!(x &lt; 5)</td>
+        </tr>
+    </table>
+
+    <h2><span class="section-number">11. C# Математика (Math)</span></h2>
+    <div class="note">
+        <p>Класът <code>Math</code> предоставя методи за математически операции.</p>
+    </div>
+    <table>
+        <tr>
+            <th>Метод</th>
+            <th>Описание</th>
+            <th>Пример</th>
+            <th>Резултат</th>
+        </tr>
+        <tr>
+            <td><code>Math.Max(x, y)</code></td>
+            <td>Връща по-голямото число</td>
+            <td>Math.Max(5, 10)</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td><code>Math.Min(x, y)</code></td>
+            <td>Връща по-малкото число</td>
+            <td>Math.Min(5, 10)</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td><code>Math.Sqrt(x)</code></td>
+            <td>Квадратен корен</td>
+            <td>Math.Sqrt(16)</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td><code>Math.Abs(x)</code></td>
+            <td>Абсолютна стойност</td>
+            <td>Math.Abs(-4.7)</td>
+            <td>4.7</td>
+        </tr>
+        <tr>
+            <td><code>Math.Round(x)</code></td>
+            <td>Закръгляване</td>
+            <td>Math.Round(4.6)</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td><code>Math.Pow(x, y)</code></td>
+            <td>Степенуване</td>
+            <td>Math.Pow(2, 3)</td>
+            <td>8</td>
+        </tr>
+    </table>
+    <div class="example">
+        <pre><code>double a = 5.7;
+double b = 3.2;
+
+Console.WriteLine(Math.Max(a, b));    // 5.7
+Console.WriteLine(Math.Min(a, b));    // 3.2
+Console.WriteLine(Math.Sqrt(25));      // 5
+Console.WriteLine(Math.Abs(-10));      // 10
+Console.WriteLine(Math.Round(4.6));   // 5
+Console.WriteLine(Math.Pow(2, 3));      // 8</code></pre>
+    </div>
+
+    <h2><span class="section-number">12. C# Низове (Strings)</span></h2>
+    <div class="important">
+        <p><strong>String</strong> е последователност от символи. В C# strings са неизменими (immutable).</p>
+    </div>
+    <div class="example">
+        <pre><code>string firstName = "Иван";
+string lastName = "Петров";
+string fullName = firstName + " " + lastName;  // Конкатенация
+Console.WriteLine(fullName);  // Иван Петров
+
+// Дължина на низ
+int length = fullName.Length;  // 11
+
+// Доступ до символи
+char firstChar = fullName[0];  // 'И'
+
+// Методи за работа със strings
+string text = "Hello World";
+Console.WriteLine(text.ToUpper());      // HELLO WORLD
+Console.WriteLine(text.ToLower());      // hello world
+Console.WriteLine(text.Substring(0, 5)); // Hello
+Console.WriteLine(text.IndexOf("World")); // 6
+
+// Интерполация на низове
+string name = "Мария";
+int age = 15;
+string message = $"Име: {name}, Възраст: {age}";
+Console.WriteLine(message);  // Име: Мария, Възраст: 15</code></pre>
+    </div>
+    <div class="highlight">
+        <p><strong>Основни string методи:</strong></p>
+        <ul>
+            <li><code>Length</code> - дължина на низа</li>
+            <li><code>ToUpper()</code> - преобразува в главни букви</li>
+            <li><code>ToLower()</code> - преобразува в малки букви</li>
+            <li><code>Substring(start, length)</code> - извлича подниз</li>
+            <li><code>IndexOf(text)</code> - намира позиция на текст</li>
+            <li><code>Replace(old, new)</code> - замества текст</li>
+            <li><code>Contains(text)</code> - проверява дали съдържа текст</li>
+        </ul>
+    </div>
+
+    <h2><span class="section-number">13. C# Булеви стойности (Booleans)</span></h2>
+    <div class="note">
+        <p><strong>bool</strong> типът може да има само две стойности: <code>true</code> или <code>false</code>.</p>
+    </div>
+    <div class="example">
+        <pre><code>bool isStudent = true;
+bool isAdult = false;
+
+// Булеви изрази
+int age = 15;
+bool canVote = age >= 18;  // false
+
+// Логически операции
+bool result1 = true && false;   // false (И)
+bool result2 = true || false;    // true (ИЛИ)
+bool result3 = !true;            // false (НЕ)
+
+// Използване в условия
+if (isStudent) {
+    Console.WriteLine("Ти си студент");
+}</code></pre>
+    </div>
+
+    <h2><span class="section-number">14. C# Условия (If...Else)</span></h2>
+    <div class="important">
+        <p>Условията позволяват на програмата да взема решения въз основа на различни ситуации.</p>
+    </div>
+    <h3>If изявление</h3>
+    <div class="example">
+        <pre><code>int age = 15;
+
+if (age >= 18) {
+    Console.WriteLine("Ти си пълнолетен");
+}</code></pre>
+    </div>
+
+    <h3>If-Else изявление</h3>
+    <div class="example">
+        <pre><code>int age = 15;
+
+if (age >= 18) {
+    Console.WriteLine("Ти си пълнолетен");
+} else {
+    Console.WriteLine("Ти си непълнолетен");
+}</code></pre>
+    </div>
+
+    <h3>If-Else If-Else изявление</h3>
+    <div class="example">
+        <pre><code>int grade = 85;
+
+if (grade >= 90) {
+    Console.WriteLine("Отличен");
+} else if (grade >= 80) {
+    Console.WriteLine("Много добър");
+} else if (grade >= 70) {
+    Console.WriteLine("Добър");
+} else if (grade >= 60) {
+    Console.WriteLine("Среден");
+} else {
+    Console.WriteLine("Слаб");
+}</code></pre>
+    </div>
+
+    <h3>Тернарен оператор (кратък if-else)</h3>
+    <div class="example">
+        <pre><code>int age = 15;
+string status = (age >= 18) ? "Пълнолетен" : "Непълнолетен";
+Console.WriteLine(status);  // Непълнолетен</code></pre>
+    </div>
+
+    <h3>Switch изявление</h3>
+    <div class="example">
+        <pre><code>int day = 3;
+string dayName;
+
+switch (day) {
+    case 1:
+        dayName = "Понеделник";
+        break;
+    case 2:
+        dayName = "Вторник";
+        break;
+    case 3:
+        dayName = "Сряда";
+        break;
+    default:
+        dayName = "Невалиден ден";
+        break;
+}
+
+Console.WriteLine(dayName);  // Сряда</code></pre>
+    </div>
+
+    <h2><span class="section-number">15. Практически примери</span></h2>
+    
+    <h3>Пример 1: Калкулатор</h3>
+    <div class="example">
+        <pre><code>using System;
+
+class Program {
+    static void Main() {
+        Console.Write("Въведете първо число: ");
+        double num1 = double.Parse(Console.ReadLine());
+        
+        Console.Write("Въведете второ число: ");
+        double num2 = double.Parse(Console.ReadLine());
+        
+        Console.WriteLine($"{num1} + {num2} = {num1 + num2}");
+        Console.WriteLine($"{num1} - {num2} = {num1 - num2}");
+        Console.WriteLine($"{num1} * {num2} = {num1 * num2}");
+        Console.WriteLine($"{num1} / {num2} = {num1 / num2:F2}");
+    }
+}</code></pre>
+    </div>
+
+    <h3>Пример 2: Проверка на възраст</h3>
+    <div class="example">
+        <pre><code>using System;
+
+class Program {
+    static void Main() {
+        Console.Write("Въведете възраст: ");
+        int age = int.Parse(Console.ReadLine());
+        
+        if (age >= 18) {
+            Console.WriteLine("Пълнолетен - можеш да гласуваш");
+        } else {
+            Console.WriteLine($"Непълнолетен - остават {18 - age} години до пълнолетие");
+        }
+    }
+}</code></pre>
+    </div>
+
+    <h3>Пример 3: Работа със strings</h3>
+    <div class="example">
+        <pre><code>using System;
+
+class Program {
+    static void Main() {
+        Console.Write("Въведете вашето име: ");
+        string name = Console.ReadLine();
+        
+        Console.WriteLine($"Дължина на името: {name.Length} символа");
+        Console.WriteLine($"Име с главни букви: {name.ToUpper()}");
+        Console.WriteLine($"Име с малки букви: {name.ToLower()}");
+        
+        if (name.Contains("а")) {
+            Console.WriteLine("Името съдържа буквата 'а'");
+        }
+    }
+}</code></pre>
+    </div>
+
+    <h2><span class="section-number">16. Ключови думи за запомняне</span></h2>
+    <div class="highlight">
+        <table>
+            <tr>
+                <th>Ключова дума</th>
+                <th>Употреба</th>
+            </tr>
+            <tr>
+                <td><code>using</code></td>
+                <td>Включване на библиотеки</td>
+            </tr>
+            <tr>
+                <td><code>class</code></td>
+                <td>Дефиниране на клас</td>
+            </tr>
+            <tr>
+                <td><code>static</code></td>
+                <td>Статичен член</td>
+            </tr>
+            <tr>
+                <td><code>void</code></td>
+                <td>Метод без връщане на стойност</td>
+            </tr>
+            <tr>
+                <td><code>int</code></td>
+                <td>Целочислен тип</td>
+            </tr>
+            <tr>
+                <td><code>string</code></td>
+                <td>Текстов тип</td>
+            </tr>
+            <tr>
+                <td><code>double</code></td>
+                <td>Десетичен тип</td>
+            </tr>
+            <tr>
+                <td><code>bool</code></td>
+                <td>Логически тип</td>
+            </tr>
+            <tr>
+                <td><code>if</code></td>
+                <td>Условно изпълнение</td>
+            </tr>
+            <tr>
+                <td><code>else</code></td>
+                <td>Алтернативно изпълнение</td>
+            </tr>
+        </table>
+    </div>
+
+    <h2><span class="section-number">17. Често срещани грешки</span></h2>
+    <div class="important">
+        <ul>
+            <li><strong>Забравена точка и запетая:</strong> Всяка команда трябва да завършва с <code>;</code></li>
+            <li><strong>Неправилни кавички:</strong> Strings използват <code>"</code>, chars използват <code>'</code></li>
+            <li><strong>Case-sensitive:</strong> <code>Console</code> не е същото като <code>console</code></li>
+            <li><strong>Недекларирана променлива:</strong> Винаги декларирай променливата преди употреба</li>
+            <li><strong>Несъвместими типове:</strong> Не може да присвоиш string на int без преобразуване</li>
+            <li><strong>Липсващи скоби:</strong> Условията и методите трябва да имат <code>()</code></li>
+        </ul>
+    </div>
+
+    <h2><span class="section-number">18. Полезни съвети</span></h2>
+    <div class="note">
+        <ul>
+            <li>Винаги използвай смислени имена на променливи</li>
+            <li>Добавяй коментари за обяснение на сложен код</li>
+            <li>Тествай програмата с различни входни данни</li>
+            <li>Проверявай за възможни грешки (например деление на нула)</li>
+            <li>Използвай интерполация на низове (<code>$"..."</code>) за по-четим код</li>
+            <li>Практикувай редовно с различни задачи</li>
+        </ul>
+    </div>
+        </div>
+    </div>
+</body>
+</html>
