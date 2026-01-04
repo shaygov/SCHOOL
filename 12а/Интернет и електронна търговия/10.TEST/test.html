@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест: Интернет и електронна търговия — 12а (Обобщение)</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        .mode-selector {
+            background-color: #e3f2fd;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            border: 2px solid #2196f3;
+        }
+        .mode-selector h2 {
+            color: #2196f3;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .mode-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .mode-btn {
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .mode-btn:hover { background-color: #1976d2; transform: translateY(-2px); }
+        .mode-btn.active { background-color: #e74c3c; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+
+        .current-student-info { background-color: #fff3cd; padding: 15px; margin-bottom: 20px; border-radius: 8px; border-left: 4px solid #ffc107; display: none; }
+        .current-student-info.active { display: block; }
+
+        .student-number-input { background-color: #e8f5e9; padding: 15px; margin-top: 15px; border-radius: 8px; border-left: 4px solid #28a745; display: none; }
+        .student-number-input.active { display: block; }
+        .student-number-input label { display: block; margin-bottom: 8px; font-weight: bold; color: #2c3e50; font-size: 15px; }
+        .student-number-controls { display: flex; gap: 10px; align-items: center; }
+        .student-number-controls input { padding: 10px 15px; border: 2px solid #28a745; border-radius: 5px; font-size: 15px; width: 200px; }
+        .set-student-btn { background-color: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 14px; font-weight: bold; transition: background-color 0.3s; }
+        .set-student-btn:hover { background-color: #218838; }
+
+        .question { background-color: #f8f9fa; padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 4px solid #e74c3c; }
+        .question-number { color: #e74c3c; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+        .question-text { font-size: 16px; color: #2c3e50; margin-bottom: 15px; }
+
+        .show-answer-btn { background-color: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 14px; transition: background-color 0.3s; display: none; }
+        .show-answer-btn.active { display: inline-block; }
+        .show-answer-btn:hover { background-color: #c0392b; }
+
+        .submit-btn { background-color: #28a745; color: white; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold; transition: all 0.3s; margin-top: 15px; display: none; }
+        .submit-btn:hover { background-color: #218838; transform: scale(1.05); }
+        .submit-btn:disabled { background-color: #6c757d; cursor: not-allowed; transform: none; }
+
+        .answer-feedback { display: none; padding: 15px; margin-top: 15px; border-radius: 5px; font-weight: bold; font-size: 16px; margin-bottom: 15px; }
+        .answer-feedback.correct { background-color: #d4edda; color: #155724; border-left: 4px solid #28a745; }
+        .answer-feedback.incorrect { background-color: #f8d7da; color: #721c24; border-left: 4px solid #dc3545; }
+
+        .answer { display: none; background-color: #e8f5e8; padding: 15px; margin-top: 15px; border-radius: 5px; border-left: 4px solid #28a745; }
+        .answer.visible { display: block; }
+        .answer strong { color: #28a745; }
+
+        .options { margin: 10px 0; }
+        .option { padding: 12px 15px; margin: 8px 0; border: 2px solid #ddd; border-radius: 8px; cursor: pointer; transition: all 0.3s; background-color: white; font-size: 15px; }
+        .option:hover { background-color: #f0f0f0; border-color: #e74c3c; transform: translateX(5px); }
+        .option.selected { background-color: #fff3cd; border-color: #ffc107; border-width: 3px; font-weight: bold; }
+        .option.correct { background-color: #d4edda; border-color: #28a745; border-width: 3px; font-weight: bold; }
+        .option.incorrect { background-color: #f8d7da; border-color: #dc3545; border-width: 3px; }
+        .option.disabled { pointer-events: none; opacity: 0.6; }
+
+        .student-input-section { margin-top: 15px; padding: 15px; background-color: #fff3cd; border-radius: 5px; border-left: 4px solid #ffc107; display: none; }
+        .student-input-section label { display: block; margin-bottom: 5px; font-weight: bold; color: #2c3e50; }
+        .student-input-controls { display: flex; gap: 10px; align-items: center; }
+        .student-input-controls input { padding: 8px 12px; border: 2px solid #ffc107; border-radius: 5px; font-size: 14px; width: 150px; }
+        .add-student-btn { background-color: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; transition: background-color 0.3s; }
+        .add-student-btn:hover { background-color: #218838; }
+        .students-list { margin-top: 10px; padding: 10px; background-color: #e8f5e8; border-radius: 5px; min-height: 30px; }
+        .student-tag { display: inline-block; background-color: #28a745; color: white; padding: 5px 10px; margin: 3px; border-radius: 15px; font-size: 13px; }
+
+        .statistics { margin-top: 40px; padding: 30px; background-color: #e3f2fd; border-radius: 8px; border: 3px solid #2196f3; display: none; }
+        .statistics.active { display: block; }
+        .statistics h2 { color: #2196f3; text-align: center; margin-bottom: 20px; }
+        .stats-content { background-color: white; padding: 20px; border-radius: 5px; }
+        .student-score { padding: 10px; margin: 8px 0; background-color: #f8f9fa; border-left: 4px solid #2196f3; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; }
+        .student-score.top { background-color: #fff3cd; border-left: 4px solid #e74c3c; font-weight: bold; animation: pulse 2s infinite; }
+        .score-number { background-color: #2196f3; color: white; padding: 5px 15px; border-radius: 15px; font-weight: bold; }
+        .student-score.top .score-number { background-color: #e74c3c; }
+
+        .current-grade-display { margin-top: 40px; padding: 30px; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); border-radius: 8px; display: none; }
+        .current-grade-display.active { display: block; }
+        .current-grade-display h2 { color: white; text-align: center; margin-bottom: 20px; font-size: 24px; }
+        .grade-content { background-color: white; padding: 30px; border-radius: 10px; text-align: center; }
+        .grade-big { font-size: 72px; font-weight: bold; color: #e74c3c; margin: 20px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+        .grade-description { font-size: 20px; color: #2c3e50; margin: 10px 0; }
+        .grade-percentage { font-size: 28px; color: #28a745; font-weight: bold; margin: 15px 0; }
+        .grade-progress { margin: 20px 0; padding: 15px; background-color: #f8f9fa; border-radius: 10px; }
+        .grade-progress-text { font-size: 16px; color: #2c3e50; margin-bottom: 10px; }
+        .progress-bar-container { background-color: #e0e0e0; border-radius: 20px; height: 30px; overflow: hidden; position: relative; }
+        .progress-bar { height: 100%; background: linear-gradient(90deg, #28a745 0%, #20c997 100%); transition: width 0.5s ease; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px; }
+
+        .celebration { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 80px; animation: celebrationPop 1s ease-out; pointer-events: none; z-index: 1000; }
+        @keyframes celebrationPop {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1) translateY(-100px); opacity: 0; }
+        }
+        .confetti { position: fixed; width: 10px; height: 10px; background-color: #e74c3c; animation: confettiFall 3s linear; pointer-events: none; z-index: 999; }
+        @keyframes confettiFall { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
+        .motivation-message { position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; padding: 20px 35px; border-radius: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); animation: slideIn 0.5s ease-out, slideOut 0.5s ease-in 2.5s; z-index: 1000; font-weight: bold; font-size: 22px; }
+        @keyframes slideIn { from { transform: translateX(400px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(400px); opacity: 0; } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+        @media print {
+            body { background-color: white; }
+            .container { box-shadow: none; padding: 0; }
+            .show-answer-btn { display: none; }
+            .answer { display: block; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Тест: Интернет и електронна търговия — 12а (Обобщение)</h1>
+
+        <div class="mode-selector">
+            <h2>Режим на тестване</h2>
+            <div class="mode-buttons">
+                <button class="mode-btn active" onclick="setMode('individual')">Индивидуално тестване</button>
+                <button class="mode-btn" onclick="setMode('group')">Групова статистика</button>
+            </div>
+            <div class="current-student-info" id="currentStudentInfo">
+                <h3>🎯 Текущ ученик: <span id="currentStudentName">-</span></h3>
+                <p>Правилни отговори: <strong id="currentStudentScore">0</strong> / 20</p>
+            </div>
+            <div class="student-number-input" id="studentNumberInput">
+                <label for="studentNumberField">Въведете номер на ученик:</label>
+                <div class="student-number-controls">
+                    <input type="text" id="studentNumberField" placeholder="Номер на ученик">
+                    <button class="set-student-btn" onclick="setCurrentStudent()">Задай ученик</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Въпрос 1 - Мрежови протоколи -->
+        <div class="question" data-correct="В">
+            <div class="question-number">Въпрос 1</div>
+            <div class="question-text">Кой протокол осигурява надеждно предаване с потвърждения?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(1, 'А')">А) UDP</div>
+                <div class="option" data-value="Б" onclick="selectOption(1, 'Б')">Б) IP</div>
+                <div class="option" data-value="В" onclick="selectOption(1, 'В')">В) TCP</div>
+                <div class="option" data-value="Г" onclick="selectOption(1, 'Г')">Г) ARP</div>
+            </div>
+            <button class="submit-btn" id="submitBtn1" onclick="submitAnswer(1)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback1"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(1)">Покажи отговора</button>
+            <div class="answer" id="answer1">
+                <strong>Правилен отговор: В) TCP</strong>
+                <p>TCP осигурява надеждност чрез потвърждения (ACK) и повторно предаване.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput1" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(1)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList1"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 2 - DNS -->
+        <div class="question" data-correct="А">
+            <div class="question-number">Въпрос 2</div>
+            <div class="question-text">Каква е основната функция на DNS?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(2, 'А')">А) Превод на домейни към IP</div>
+                <div class="option" data-value="Б" onclick="selectOption(2, 'Б')">Б) Криптиране на трафика</div>
+                <div class="option" data-value="В" onclick="selectOption(2, 'В')">В) Филтриране на пакети</div>
+                <div class="option" data-value="Г" onclick="selectOption(2, 'Г')">Г) Управление на сесии</div>
+            </div>
+            <button class="submit-btn" id="submitBtn2" onclick="submitAnswer(2)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback2"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(2)">Покажи отговора</button>
+            <div class="answer" id="answer2">
+                <strong>Правилен отговор: А) Превод на домейни към IP</strong>
+                <p>DNS е „телефонният указател" на Интернет.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput2" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(2)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList2"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 3 - HTTPS -->
+        <div class="question" data-correct="Б">
+            <div class="question-number">Въпрос 3</div>
+            <div class="question-text">Кой протокол използва порт 443?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(3, 'А')">А) HTTP</div>
+                <div class="option" data-value="Б" onclick="selectOption(3, 'Б')">Б) HTTPS</div>
+                <div class="option" data-value="В" onclick="selectOption(3, 'В')">В) FTP</div>
+                <div class="option" data-value="Г" onclick="selectOption(3, 'Г')">Г) SSH</div>
+            </div>
+            <button class="submit-btn" id="submitBtn3" onclick="submitAnswer(3)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback3"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(3)">Покажи отговора</button>
+            <div class="answer" id="answer3">
+                <strong>Правилен отговор: Б) HTTPS</strong>
+                <p>HTTPS е криптиран HTTP трафик през порт 443.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput3" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(3)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList3"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 4 - OSI модел -->
+        <div class="question" data-correct="Г">
+            <div class="question-number">Въпрос 4</div>
+            <div class="question-text">На кой слой от OSI (Open Systems Interconnection) модела работи IP?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(4, 'А')">А) Канален</div>
+                <div class="option" data-value="Б" onclick="selectOption(4, 'Б')">Б) Транспортен</div>
+                <div class="option" data-value="В" onclick="selectOption(4, 'В')">В) Приложен</div>
+                <div class="option" data-value="Г" onclick="selectOption(4, 'Г')">Г) Мрежов</div>
+            </div>
+            <button class="submit-btn" id="submitBtn4" onclick="submitAnswer(4)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback4"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(4)">Покажи отговора</button>
+            <div class="answer" id="answer4">
+                <strong>Правилен отговор: Г) Мрежов</strong>
+                <p>IP, маршрутизиране и логическо адресиране са на Layer 3.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput4" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(4)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList4"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 5 - SSH -->
+        <div class="question" data-correct="А">
+            <div class="question-number">Въпрос 5</div>
+            <div class="question-text">Кой протокол е подходящ за сигурно отдалечено администриране?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(5, 'А')">А) SSH</div>
+                <div class="option" data-value="Б" onclick="selectOption(5, 'Б')">Б) Telnet</div>
+                <div class="option" data-value="В" onclick="selectOption(5, 'В')">В) FTP</div>
+                <div class="option" data-value="Г" onclick="selectOption(5, 'Г')">Г) HTTP</div>
+            </div>
+            <button class="submit-btn" id="submitBtn5" onclick="submitAnswer(5)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback5"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(5)">Покажи отговора</button>
+            <div class="answer" id="answer5">
+                <strong>Правилен отговор: А) SSH</strong>
+                <p>SSH криптира връзката и е стандарт за защитен достъп.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput5" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(5)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList5"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 6 - Firewall -->
+        <div class="question" data-correct="В">
+            <div class="question-number">Въпрос 6</div>
+            <div class="question-text">Каква е основната функция на Firewall?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(6, 'А')">А) Архивиране</div>
+                <div class="option" data-value="Б" onclick="selectOption(6, 'Б')">Б) Ускоряване на интернет</div>
+                <div class="option" data-value="В" onclick="selectOption(6, 'В')">В) Филтриране на трафик</div>
+                <div class="option" data-value="Г" onclick="selectOption(6, 'Г')">Г) Управление на печат</div>
+            </div>
+            <button class="submit-btn" id="submitBtn6" onclick="submitAnswer(6)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback6"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(6)">Покажи отговора</button>
+            <div class="answer" id="answer6">
+                <strong>Правилен отговор: В) Филтриране на трафик</strong>
+                <p>Firewall прилага политики за входящ и изходящ трафик.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput6" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(6)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList6"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 7 - MFA -->
+        <div class="question" data-correct="Б">
+            <div class="question-number">Въпрос 7</div>
+            <div class="question-text">Коя е най-силната форма на автентикация?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(7, 'А')">А) Само парола</div>
+                <div class="option" data-value="Б" onclick="selectOption(7, 'Б')">Б) Многофакторна (MFA)</div>
+                <div class="option" data-value="В" onclick="selectOption(7, 'В')">В) Само PIN код</div>
+                <div class="option" data-value="Г" onclick="selectOption(7, 'Г')">Г) Само имейл</div>
+            </div>
+            <button class="submit-btn" id="submitBtn7" onclick="submitAnswer(7)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback7"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(7)">Покажи отговора</button>
+            <div class="answer" id="answer7">
+                <strong>Правилен отговор: Б) Многофакторна (MFA)</strong>
+                <p>Комбинирането на фактори повишава сигурността.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput7" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(7)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList7"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 8 - Ransomware -->
+        <div class="question" data-correct="Г">
+            <div class="question-number">Въпрос 8</div>
+            <div class="question-text">Какво е ransomware?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(8, 'А')">А) Софтуер за създаване на резервни копия на данни</div>
+                <div class="option" data-value="Б" onclick="selectOption(8, 'Б')">Б) Инструмент за оптимизация на мрежови връзки</div>
+                <div class="option" data-value="В" onclick="selectOption(8, 'В')">В) Програма за защита от вируси и зловреден код</div>
+                <div class="option" data-value="Г" onclick="selectOption(8, 'Г')">Г) Зловреден софтуер</div>
+            </div>
+            <button class="submit-btn" id="submitBtn8" onclick="submitAnswer(8)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback8"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(8)">Покажи отговора</button>
+            <div class="answer" id="answer8">
+                <strong>Правилен отговор: Г) Криптира данни за откуп</strong>
+                <p>Ransomware блокира достъпа до файлове и изисква заплащане.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput8" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(8)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList8"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 9 - B2C -->
+        <div class="question" data-correct="А">
+            <div class="question-number">Въпрос 9</div>
+            <div class="question-text">Кой модел описва продажба от бизнес към потребител?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(9, 'А')">А) B2C</div>
+                <div class="option" data-value="Б" onclick="selectOption(9, 'Б')">Б) B2B</div>
+                <div class="option" data-value="В" onclick="selectOption(9, 'В')">В) C2C</div>
+                <div class="option" data-value="Г" onclick="selectOption(9, 'Г')">Г) G2C</div>
+            </div>
+            <button class="submit-btn" id="submitBtn9" onclick="submitAnswer(9)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback9"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(9)">Покажи отговора</button>
+            <div class="answer" id="answer9">
+                <strong>Правилен отговор: А) B2C</strong>
+                <p>B2C (Business-to-Consumer) е модел за директни продажби към клиенти.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput9" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(9)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList9"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 10 - SaaS -->
+        <div class="question" data-correct="В">
+            <div class="question-number">Въпрос 10</div>
+            <div class="question-text">Кой облачен модел предлага готов софтуер без инсталация?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(10, 'А')">А) IaaS</div>
+                <div class="option" data-value="Б" onclick="selectOption(10, 'Б')">Б) PaaS</div>
+                <div class="option" data-value="В" onclick="selectOption(10, 'В')">В) SaaS</div>
+                <div class="option" data-value="Г" onclick="selectOption(10, 'Г')">Г) DaaS</div>
+            </div>
+            <button class="submit-btn" id="submitBtn10" onclick="submitAnswer(10)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback10"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(10)">Покажи отговора</button>
+            <div class="answer" id="answer10">
+                <strong>Правилен отговор: В) SaaS</strong>
+                <p>SaaS (Software as a Service) предоставя готови софтуерни решения в облака.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput10" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(10)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList10"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 11 - CRM -->
+        <div class="question" data-correct="Б">
+            <div class="question-number">Въпрос 11</div>
+            <div class="question-text">За какво служи CRM система?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(11, 'А')">А) Управление на сървъри</div>
+                <div class="option" data-value="Б" onclick="selectOption(11, 'Б')">Б) Управление на клиенти</div>
+                <div class="option" data-value="В" onclick="selectOption(11, 'В')">В) Управление на мрежи</div>
+                <div class="option" data-value="Г" onclick="selectOption(11, 'Г')">Г) Управление на хардуер</div>
+            </div>
+            <button class="submit-btn" id="submitBtn11" onclick="submitAnswer(11)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback11"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(11)">Покажи отговора</button>
+            <div class="answer" id="answer11">
+                <strong>Правилен отговор: Б) Управление на клиенти</strong>
+                <p>CRM (Customer Relationship Management) управлява взаимоотношенията с клиентите.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput11" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(11)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList11"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 12 - PCI DSS -->
+        <div class="question" data-correct="Г">
+            <div class="question-number">Въпрос 12</div>
+            <div class="question-text">Какво е PCI DSS (Payment Card Industry Data Security Standard)?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(12, 'А')">А) Мрежов протокол</div>
+                <div class="option" data-value="Б" onclick="selectOption(12, 'Б')">Б) Операционна система</div>
+                <div class="option" data-value="В" onclick="selectOption(12, 'В')">В) Програмен език</div>
+                <div class="option" data-value="Г" onclick="selectOption(12, 'Г')">Г) Стандарт за сигурност</div>
+            </div>
+            <button class="submit-btn" id="submitBtn12" onclick="submitAnswer(12)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback12"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(12)">Покажи отговора</button>
+            <div class="answer" id="answer12">
+                <strong>Правилен отговор: Г) Стандарт за сигурност</strong>
+                <p>PCI DSS е стандарт за сигурност на платежните карти.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput12" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(12)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList12"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 13 - Web 1.0 -->
+        <div class="question" data-correct="А">
+            <div class="question-number">Въпрос 13</div>
+            <div class="question-text">Какво характеризира Web 1.0?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(13, 'А')">А) Статични HTML страници</div>
+                <div class="option" data-value="Б" onclick="selectOption(13, 'Б')">Б) Социални мрежи</div>
+                <div class="option" data-value="В" onclick="selectOption(13, 'В')">В) Изкуствен интелект</div>
+                <div class="option" data-value="Г" onclick="selectOption(13, 'Г')">Г) Блокчейн технологии</div>
+            </div>
+            <button class="submit-btn" id="submitBtn13" onclick="submitAnswer(13)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback13"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(13)">Покажи отговора</button>
+            <div class="answer" id="answer13">
+                <strong>Правилен отговор: А) Статични HTML страници</strong>
+                <p>Web 1.0 е доминиран от статични страници без интерактивност.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput13" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(13)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList13"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 14 - Web 2.0 -->
+        <div class="question" data-correct="В">
+            <div class="question-number">Въпрос 14</div>
+            <div class="question-text">Кое е характерно за Web 2.0?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(14, 'А')">А) Статично съдържание</div>
+                <div class="option" data-value="Б" onclick="selectOption(14, 'Б')">Б) Децентрализация</div>
+                <div class="option" data-value="В" onclick="selectOption(14, 'В')">В) Социални платформи</div>
+                <div class="option" data-value="Г" onclick="selectOption(14, 'Г')">Г) Смарт контракти</div>
+            </div>
+            <button class="submit-btn" id="submitBtn14" onclick="submitAnswer(14)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback14"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(14)">Покажи отговора</button>
+            <div class="answer" id="answer14">
+                <strong>Правилен отговор: В) Социални платформи</strong>
+                <p>Web 2.0 въвежда социални мрежи и потребителско съдържание.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput14" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(14)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList14"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 15 - Web 3.0 -->
+        <div class="question" data-correct="Б">
+            <div class="question-number">Въпрос 15</div>
+            <div class="question-text">Кое е характерно за Web 3.0?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(15, 'А')">А) Статични страници</div>
+                <div class="option" data-value="Б" onclick="selectOption(15, 'Б')">Б) AI и семантичен уеб</div>
+                <div class="option" data-value="В" onclick="selectOption(15, 'В')">В) Само текстове</div>
+                <div class="option" data-value="Г" onclick="selectOption(15, 'Г')">Г) Без интернет</div>
+            </div>
+            <button class="submit-btn" id="submitBtn15" onclick="submitAnswer(15)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback15"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(15)">Покажи отговора</button>
+            <div class="answer" id="answer15">
+                <strong>Правилен отговор: Б) AI и семантичен уеб</strong>
+                <p>Web 3.0 използва AI и структурирани данни за интелигентни услуги.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput15" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(15)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList15"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 16 - IoT -->
+        <div class="question" data-correct="Г">
+            <div class="question-number">Въпрос 16</div>
+            <div class="question-text">Какво означава IoT?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(16, 'А')">А) Internet of Text</div>
+                <div class="option" data-value="Б" onclick="selectOption(16, 'Б')">Б) Input of Technology</div>
+                <div class="option" data-value="В" onclick="selectOption(16, 'В')">В) Internal of Trust</div>
+                <div class="option" data-value="Г" onclick="selectOption(16, 'Г')">Г) Internet of Things</div>
+            </div>
+            <button class="submit-btn" id="submitBtn16" onclick="submitAnswer(16)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback16"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(16)">Покажи отговора</button>
+            <div class="answer" id="answer16">
+                <strong>Правилен отговор: Г) Internet of Things</strong>
+                <p>IoT е мрежа от свързани устройства, които комуникират онлайн.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput16" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(16)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList16"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 17 - Shopify -->
+        <div class="question" data-correct="А">
+            <div class="question-number">Въпрос 17</div>
+            <div class="question-text">Коя е популярна SaaS e-commerce платформа?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(17, 'А')">А) Shopify</div>
+                <div class="option" data-value="Б" onclick="selectOption(17, 'Б')">Б) Windows</div>
+                <div class="option" data-value="В" onclick="selectOption(17, 'В')">В) Photoshop</div>
+                <div class="option" data-value="Г" onclick="selectOption(17, 'Г')">Г) Chrome</div>
+            </div>
+            <button class="submit-btn" id="submitBtn17" onclick="submitAnswer(17)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback17"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(17)">Покажи отговора</button>
+            <div class="answer" id="answer17">
+                <strong>Правилен отговор: А) Shopify</strong>
+                <p>Shopify е най-популярната SaaS платформа за онлайн магазини.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput17" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(17)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList17"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 18 - GDPR -->
+        <div class="question" data-correct="В">
+            <div class="question-number">Въпрос 18</div>
+            <div class="question-text">За какво е GDPR регулацията?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(18, 'А')">А) Мрежова скорост</div>
+                <div class="option" data-value="Б" onclick="selectOption(18, 'Б')">Б) Хардуерни стандарти</div>
+                <div class="option" data-value="В" onclick="selectOption(18, 'В')">В) Защита на лични данни</div>
+                <div class="option" data-value="Г" onclick="selectOption(18, 'Г')">Г) Видео стрийминг</div>
+            </div>
+            <button class="submit-btn" id="submitBtn18" onclick="submitAnswer(18)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback18"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(18)">Покажи отговора</button>
+            <div class="answer" id="answer18">
+                <strong>Правилен отговор: В) Защита на лични данни</strong>
+                <p>GDPR е европейска регулация за защита на личните данни.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput18" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(18)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList18"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 19 - API -->
+        <div class="question" data-correct="Б">
+            <div class="question-number">Въпрос 19</div>
+            <div class="question-text">Какво е API?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(19, 'А')">А) Специализирана антивирусна програма за сървъри</div>
+                <div class="option" data-value="Б" onclick="selectOption(19, 'Б')">Б) Интерфейс за данни</div>
+                <div class="option" data-value="В" onclick="selectOption(19, 'В')">В) Операционна система за мобилни устройства</div>
+                <div class="option" data-value="Г" onclick="selectOption(19, 'Г')">Г) Вид хардуер за съхранение на информация</div>
+            </div>
+            <button class="submit-btn" id="submitBtn19" onclick="submitAnswer(19)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback19"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(19)">Покажи отговора</button>
+            <div class="answer" id="answer19">
+                <strong>Правилен отговор: Б) Интерфейс за обмен на данни</strong>
+                <p>API позволява обмен на данни между приложения и услуги.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput19" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(19)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList19"></div>
+            </div>
+        </div>
+
+        <!-- Въпрос 20 - ERP -->
+        <div class="question" data-correct="Г">
+            <div class="question-number">Въпрос 20</div>
+            <div class="question-text">Кой модул НЕ е част от типична ERP (Enterprise Resource Planning) система?</div>
+            <div class="options">
+                <div class="option" data-value="А" onclick="selectOption(20, 'А')">А) Финанси</div>
+                <div class="option" data-value="Б" onclick="selectOption(20, 'Б')">Б) Human Resources</div>
+                <div class="option" data-value="В" onclick="selectOption(20, 'В')">В) Inventory</div>
+                <div class="option" data-value="Г" onclick="selectOption(20, 'Г')">Г) Видео игри</div>
+            </div>
+            <button class="submit-btn" id="submitBtn20" onclick="submitAnswer(20)">✓ Изпрати отговор</button>
+            <div class="answer-feedback" id="feedback20"></div>
+            <button class="show-answer-btn" onclick="toggleAnswer(20)">Покажи отговора</button>
+            <div class="answer" id="answer20">
+                <strong>Правилен отговор: Г) Видео игри</strong>
+                <p>ERP включва финанси, HR, складове, но не видео игри.</p>
+            </div>
+            <div class="student-input-section">
+                <label>Номер на ученик който отговори правилно:</label>
+                <div class="student-input-controls">
+                    <input type="text" id="studentInput20" placeholder="Номер">
+                    <button class="add-student-btn" onclick="addStudent(20)">Добави</button>
+                </div>
+                <div class="students-list" id="studentsList20"></div>
+            </div>
+        </div>
+
+        <div class="statistics" id="statisticsSection">
+            <h2>📊 Статистика на учениците</h2>
+            <div class="stats-content" id="statsContent">
+                <p style="text-align: center; color: #666;">Статистиката ще се появи когато започнете да добавяте ученици...</p>
+            </div>
+        </div>
+
+        <div class="current-grade-display" id="currentGradeDisplay">
+            <h2>🎯 Текуща оценка</h2>
+            <div class="grade-content" id="gradeContent">
+                <div class="grade-big" id="gradeBig">-</div>
+                <div class="grade-description" id="gradeDescription">Въведете номер на ученик за да започнете</div>
+                <div class="grade-percentage" id="gradePercentage"></div>
+                <div class="grade-progress">
+                    <div class="grade-progress-text" id="gradeProgressText">0 / 20 въпроса</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progressBar" style="width: 0%">0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const studentAnswers = {};
+        const currentMode = { value: 'individual' };
+        const currentStudent = { number: null };
+        const selectedAnswers = {};
+        const submittedQuestions = new Set();
+        const totalQuestions = 20;
+
+        const motivationalMessages = [
+            '🎉 Браво! Отличен отговор!',
+            '🌟 Страхотна работа!',
+            '🚀 Перфектно!',
+            '💪 Така се отговаря!',
+            '🎯 Право в целта!',
+            '⭐ Звездно!',
+            '🔥 Огнено!',
+            '🏆 Шампионски!'
+        ];
+
+        const celebrationEmojis = ['🎉', '🎊', '🥳', '🎈', '✨', '🌟', '⭐', '💫'];
+
+        function selectOption(questionNumber, value) {
+            if (submittedQuestions.has(questionNumber)) { return; }
+            const questionDiv = document.querySelectorAll('.question')[questionNumber - 1];
+            const options = questionDiv.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            const selectedOption = questionDiv.querySelector(`.option[data-value="${value}"]`);
+            if (selectedOption) {
+                selectedOption.classList.add('selected');
+                selectedAnswers[questionNumber] = value;
+                const submitBtn = document.getElementById(`submitBtn${questionNumber}`);
+                if (submitBtn) { submitBtn.style.display = 'inline-block'; }
+            }
+        }
+
+        function submitAnswer(questionNumber) {
+            if (submittedQuestions.has(questionNumber)) { return; }
+            const selected = selectedAnswers[questionNumber];
+            if (!selected) { showMotivationMessage('⚠️ Моля изберете отговор!'); return; }
+            const questionDiv = document.querySelectorAll('.question')[questionNumber - 1];
+            const correctAnswer = questionDiv.getAttribute('data-correct');
+            const isCorrect = selected === correctAnswer;
+            const options = questionDiv.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.classList.remove('selected');
+                opt.classList.add('disabled');
+                if (opt.getAttribute('data-value') === correctAnswer) { opt.classList.add('correct'); }
+                else if (opt.getAttribute('data-value') === selected && !isCorrect) { opt.classList.add('incorrect'); }
+            });
+            const feedback = document.getElementById(`feedback${questionNumber}`);
+            if (feedback) {
+                feedback.style.display = 'block';
+                if (isCorrect) {
+                    feedback.className = 'answer-feedback correct';
+                    feedback.innerHTML = '✓ Правилен отговор! Отлично! 🎉';
+                    showCelebration();
+                    showMotivationMessage(getRandomMotivation());
+                    createConfetti();
+                } else {
+                    feedback.className = 'answer-feedback incorrect';
+                    feedback.innerHTML = `✗ Грешен отговор. Правилният е: ${correctAnswer}`;
+                }
+            }
+            const submitBtn = document.getElementById(`submitBtn${questionNumber}`);
+            if (submitBtn) { submitBtn.style.display = 'none'; }
+            submittedQuestions.add(questionNumber);
+            if (isCorrect && currentStudent.number) {
+                if (!studentAnswers[questionNumber]) { studentAnswers[questionNumber] = []; }
+                if (!studentAnswers[questionNumber].includes(currentStudent.number.toString())) {
+                    studentAnswers[questionNumber].push(currentStudent.number.toString());
+                    updateStudentsList(questionNumber);
+                    updateStatistics();
+                    updateCurrentStudentInfo();
+                }
+            }
+        }
+
+        function setMode(mode) {
+            currentMode.value = mode;
+            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            const currentStudentInfo = document.getElementById('currentStudentInfo');
+            const studentInputSections = document.querySelectorAll('.student-input-section');
+            const studentNumberInput = document.getElementById('studentNumberInput');
+            const statisticsSection = document.getElementById('statisticsSection');
+            const currentGradeDisplay = document.getElementById('currentGradeDisplay');
+            const showAnswerButtons = document.querySelectorAll('.show-answer-btn');
+            if (mode === 'individual') {
+                currentStudentInfo.classList.add('active');
+                studentNumberInput.classList.add('active');
+                currentGradeDisplay.classList.add('active');
+                statisticsSection.classList.remove('active');
+                studentInputSections.forEach(section => section.style.display = 'none');
+                showAnswerButtons.forEach(btn => btn.classList.remove('active'));
+            } else {
+                currentStudentInfo.classList.remove('active');
+                studentNumberInput.classList.remove('active');
+                currentGradeDisplay.classList.remove('active');
+                statisticsSection.classList.add('active');
+                studentInputSections.forEach(section => section.style.display = 'block');
+                showAnswerButtons.forEach(btn => btn.classList.add('active'));
+            }
+            updateStatistics();
+            updateCurrentGradeDisplay();
+        }
+
+        function setCurrentStudent() {
+            const studentNumberField = document.getElementById('studentNumberField');
+            const studentNumber = studentNumberField.value.trim();
+            if (studentNumber === '') { showMotivationMessage('❌ Моля въведете номер!'); return; }
+            currentStudent.number = studentNumber;
+            updateCurrentStudentInfo();
+            studentNumberField.value = '';
+            showMotivationMessage(`✅ Ученик ${studentNumber} е зададен!`);
+        }
+
+        function toggleAnswer(questionNumber) {
+            const answer = document.getElementById('answer' + questionNumber);
+            answer.classList.toggle('visible');
+            const button = answer.previousElementSibling;
+            if (answer.classList.contains('visible')) { button.textContent = 'Скрий отговора'; }
+            else { button.textContent = 'Покажи отговора'; }
+        }
+
+        function addStudent(questionNumber) {
+            const input = document.getElementById('studentInput' + questionNumber);
+            const studentNumber = input.value.trim();
+            if (studentNumber === '') { showMotivationMessage('❌ Въведете номер!'); return; }
+            if (!studentAnswers[questionNumber]) { studentAnswers[questionNumber] = []; }
+            if (studentAnswers[questionNumber].includes(studentNumber)) { showMotivationMessage('⚠️ Вече е добавен!'); return; }
+            studentAnswers[questionNumber].push(studentNumber);
+            input.value = '';
+            showCelebration();
+            showMotivationMessage(getRandomMotivation());
+            createConfetti();
+            updateStudentsList(questionNumber);
+            updateStatistics();
+            if (currentMode.value === 'individual') { currentStudent.number = studentNumber; updateCurrentStudentInfo(); }
+        }
+
+        function getRandomMotivation() { return motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)]; }
+
+        function showCelebration() {
+            const emoji = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
+            const celebration = document.createElement('div');
+            celebration.className = 'celebration';
+            celebration.textContent = emoji;
+            document.body.appendChild(celebration);
+            setTimeout(() => celebration.remove(), 1000);
+        }
+
+        function showMotivationMessage(message) {
+            const existingMessage = document.querySelector('.motivation-message');
+            if (existingMessage) { existingMessage.remove(); }
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'motivation-message';
+            messageDiv.textContent = message;
+            document.body.appendChild(messageDiv);
+            setTimeout(() => messageDiv.remove(), 3000);
+        }
+
+        function createConfetti() {
+            const colors = ['#e74c3c', '#28a745', '#2196f3', '#ffc107', '#e91e63', '#9c27b0'];
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = -10 + 'px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                    confetti.style.height = (Math.random() * 10 + 5) + 'px';
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 50);
+            }
+        }
+
+        function updateStudentsList(questionNumber) {
+            const list = document.getElementById('studentsList' + questionNumber);
+            const students = studentAnswers[questionNumber] || [];
+            if (students.length === 0) { list.innerHTML = ''; return; }
+            list.innerHTML = students.map(s => `<span class="student-tag">Ученик ${s}</span>`).join('');
+        }
+
+        function calculateGrade(correctAnswers, total) {
+            const percentage = (correctAnswers / total) * 100;
+            if (percentage >= 90) return 6;
+            if (percentage >= 75) return 5;
+            if (percentage >= 60) return 4;
+            if (percentage >= 45) return 3;
+            return 2;
+        }
+
+        function updateCurrentStudentInfo() {
+            if (currentStudent.number === null) return;
+            let correctCount = 0;
+            for (const question in studentAnswers) {
+                if (studentAnswers[question].includes(currentStudent.number.toString())) { correctCount++; }
+            }
+            document.getElementById('currentStudentName').textContent = currentStudent.number;
+            document.getElementById('currentStudentScore').textContent = correctCount;
+            updateCurrentGradeDisplay();
+        }
+
+        function updateCurrentGradeDisplay() {
+            if (currentStudent.number === null) {
+                document.getElementById('gradeBig').textContent = '-';
+                document.getElementById('gradeDescription').textContent = 'Въведете номер на ученик';
+                document.getElementById('gradePercentage').textContent = '';
+                document.getElementById('gradeProgressText').textContent = '0 / 20 въпроса';
+                document.getElementById('progressBar').style.width = '0%';
+                document.getElementById('progressBar').textContent = '0%';
+                return;
+            }
+            let correctCount = 0;
+            for (const question in studentAnswers) {
+                if (studentAnswers[question].includes(currentStudent.number.toString())) { correctCount++; }
+            }
+            const grade = calculateGrade(correctCount, totalQuestions);
+            const percentage = ((correctCount / totalQuestions) * 100).toFixed(0);
+            document.getElementById('gradeBig').textContent = grade;
+            const gradeDescriptions = { 6: 'Отличен! 🏆', 5: 'Много добър! ⭐', 4: 'Добър! 👍', 3: 'Среден 📚', 2: 'Слаб 📖' };
+            document.getElementById('gradeDescription').textContent = gradeDescriptions[grade] || 'Слаб';
+            document.getElementById('gradePercentage').textContent = `${percentage}%`;
+            document.getElementById('gradeProgressText').textContent = `${correctCount} / ${totalQuestions} въпроса`;
+            document.getElementById('progressBar').style.width = `${percentage}%`;
+            document.getElementById('progressBar').textContent = `${percentage}%`;
+        }
+
+        function updateStatistics() {
+            const studentScores = {};
+            for (const question in studentAnswers) {
+                studentAnswers[question].forEach(student => {
+                    if (!studentScores[student]) { studentScores[student] = { correct: 0, questions: [] }; }
+                    studentScores[student].correct++;
+                    studentScores[student].questions.push(parseInt(question));
+                });
+            }
+            const sortedStudents = Object.entries(studentScores).sort((a, b) => b[1].correct - a[1].correct);
+            const statsContent = document.getElementById('statsContent');
+            if (sortedStudents.length === 0) {
+                statsContent.innerHTML = '<p style="text-align: center; color: #666;">Статистиката ще се появи когато започнете...</p>';
+                return;
+            }
+            const maxScore = sortedStudents[0][1].correct;
+            statsContent.innerHTML = sortedStudents.map(([student, data], index) => {
+                const isTop = data.correct === maxScore;
+                const position = index + 1;
+                const trophy = position === 1 ? '🏆 ' : position === 2 ? '🥈 ' : position === 3 ? '🥉 ' : '';
+                const grade = calculateGrade(data.correct, totalQuestions);
+                return `
+                    <div class="student-score ${isTop ? 'top' : ''}">
+                        <span>${trophy}Ученик ${student}</span>
+                        <span class="score-number">${data.correct} / ${totalQuestions} (Оценка: ${grade})</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const target = e.target;
+                if (target.id === 'studentNumberField') { setCurrentStudent(); return; }
+                if (target.id && target.id.startsWith('studentInput')) {
+                    const questionNumber = target.id.replace('studentInput', '');
+                    addStudent(parseInt(questionNumber));
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
