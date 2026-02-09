@@ -1,0 +1,15 @@
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example09_AreaCalculator/bin/Debug/net8.0/Example09_AreaCalculator
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example09_AreaCalculator/bin/Debug/net8.0/Example09_AreaCalculator.deps.json
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example09_AreaCalculator/bin/Debug/net8.0/Example09_AreaCalculator.runtimeconfig.json
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example09_AreaCalculator/bin/Debug/net8.0/Example09_AreaCalculator.dll
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example09_AreaCalculator/bin/Debug/net8.0/Example09_AreaCalculator.pdb
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example09_AreaCalculator/obj/Debug/net8.0/Example09_AreaCalculator.GeneratedMSBuildEditorConfig.editorconfig
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example09_AreaCalculator/obj/Debug/net8.0/Example09_AreaCalculator.AssemblyInfoInputs.cache
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example09_AreaCalculator/obj/Debug/net8.0/Example09_AreaCalculator.AssemblyInfo.cs
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example09_AreaCalculator/obj/Debug/net8.0/Example09_AreaCalculator.csproj.CoreCompileInputs.cache
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example09_AreaCalculator/obj/Debug/net8.0/Example09_AreaCalculator.sourcelink.json
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example09_AreaCalculator/obj/Debug/net8.0/Example09_AreaCalculator.dll
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example09_AreaCalculator/obj/Debug/net8.0/refint/Example09_AreaCalculator.dll
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example09_AreaCalculator/obj/Debug/net8.0/Example09_AreaCalculator.pdb
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example09_AreaCalculator/obj/Debug/net8.0/Example09_AreaCalculator.genruntimeconfig.cache
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example09_AreaCalculator/obj/Debug/net8.0/ref/Example09_AreaCalculator.dll

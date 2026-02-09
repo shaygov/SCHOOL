@@ -648,7 +648,7 @@
             </div>
             <div class="current-student-info" id="currentStudentInfo">
                 <h3>🎯 Текущ ученик: <span id="currentStudentName">-</span></h3>
-                <p>Правилни отговори: <strong id="currentStudentScore">0</strong> / 15</p>
+                <p>Правилни отговори: <strong id="currentStudentScore">0</strong> / 10</p>
             </div>
             <div class="student-number-input" id="studentNumberInput">
                 <label for="studentNumberField">Въведете номер на ученик:</label>
@@ -666,16 +666,16 @@
             <div class="question-number">Въпрос 1</div>
             <div class="question-text">Кои са основните нива на продукта според маркетинговата теория?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(1, 'А')">А) Цена, качество, количество</div>
-                <div class="option" data-value="Б" onclick="selectOption(1, 'Б')">Б) Ядро, реален продукт, разширен продукт</div>
-                <div class="option" data-value="В" onclick="selectOption(1, 'В')">В) Производство, дистрибуция, продажба</div>
-                <div class="option" data-value="Г" onclick="selectOption(1, 'Г')">Г) Марка, етикет, опаковка</div>
+                <div class="option" data-value="А" onclick="selectOption(1, 'А')">А) Цена, качество и количество на един стандартен продукт, без да се отчита маркетинговото му позициониране</div>
+                <div class="option" data-value="Б" onclick="selectOption(1, 'Б')">Б) Ядро, реален продукт и разширен продукт</div>
+                <div class="option" data-value="В" onclick="selectOption(1, 'В')">В) Производство, дистрибуция и продажба на един пазарен продукт</div>
+                <div class="option" data-value="Г" onclick="selectOption(1, 'Г')">Г) Марка, етикет и външна опаковка на завършен продукт</div>
             </div>
             <button class="submit-btn" id="submitBtn1" onclick="submitAnswer(1)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback1"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(1)">Покажи отговора</button>
             <div class="answer" id="answer1">
-                <strong>Правилен отговор: Б) Ядро, реален продукт, разширен продукт</strong>
+                <strong>Правилен отговор: Б) Ядро, реален продукт и разширен продукт в маркетинговия смисъл</strong>
                 <p>Ядрото е основната полза, реалният продукт включва физическите характеристики, а разширеният продукт добавя допълнителни услуги и ползи.</p>
             </div>
             <div class="student-input-section">
@@ -692,16 +692,16 @@
             <div class="question-number">Въпрос 2</div>
             <div class="question-text">Какво представлява „ядрото на продукта"?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(2, 'А')">А) Основната полза или потребност, която продуктът задоволява</div>
-                <div class="option" data-value="Б" onclick="selectOption(2, 'Б')">Б) Физическите съставки на продукта</div>
-                <div class="option" data-value="В" onclick="selectOption(2, 'В')">В) Опаковката и етикета</div>
-                <div class="option" data-value="Г" onclick="selectOption(2, 'Г')">Г) Гаранционното обслужване</div>
+                <div class="option" data-value="А" onclick="selectOption(2, 'А')">А) Основната полза и потребност, която продуктът реално задоволява за клиента</div>
+                <div class="option" data-value="Б" onclick="selectOption(2, 'Б')">Б) Физическите съставки и материали, от които е изграден всеки продукт, без значение от неговата реална пазарна стойност</div>
+                <div class="option" data-value="В" onclick="selectOption(2, 'В')">В) Опаковката, етикетът и визуалното представяне в търговския обект</div>
+                <div class="option" data-value="Г" onclick="selectOption(2, 'Г')">Г) Гаранционното обслужване и следпродажбените услуги след покупката</div>
             </div>
             <button class="submit-btn" id="submitBtn2" onclick="submitAnswer(2)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback2"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(2)">Покажи отговора</button>
             <div class="answer" id="answer2">
-                <strong>Правилен отговор: А) Основната полза или потребност, която продуктът задоволява</strong>
+                <strong>Правилен отговор: А) Основната полза и потребност, която продуктът задоволява за клиента</strong>
                 <p>Ядрото на продукта е централната полза – това, което клиентът всъщност купува (напр. при автомобил – транспорт и мобилност).</p>
             </div>
             <div class="student-input-section">
@@ -718,16 +718,16 @@
             <div class="question-number">Въпрос 3</div>
             <div class="question-text">Кое НЕ е елемент на реалния (физически) продукт?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(3, 'А')">А) Качество</div>
-                <div class="option" data-value="Б" onclick="selectOption(3, 'Б')">Б) Дизайн и стил</div>
-                <div class="option" data-value="В" onclick="selectOption(3, 'В')">В) Гаранционен срок</div>
-                <div class="option" data-value="Г" onclick="selectOption(3, 'Г')">Г) Марка и опаковка</div>
+                <div class="option" data-value="А" onclick="selectOption(3, 'А')">А) Качество, което показва нивото на изработка и надеждност на продукта, както и неговата трайност при продължителна употреба</div>
+                <div class="option" data-value="Б" onclick="selectOption(3, 'Б')">Б) Дизайн и стил, които оформят външния вид и усещане на продукта</div>
+                <div class="option" data-value="В" onclick="selectOption(3, 'В')">В) Гаранционен срок и следпродажбени условия при използване на продукта</div>
+                <div class="option" data-value="Г" onclick="selectOption(3, 'Г')">Г) Марка и опаковка, които ясно отличават продукта на пазара</div>
             </div>
             <button class="submit-btn" id="submitBtn3" onclick="submitAnswer(3)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback3"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(3)">Покажи отговора</button>
             <div class="answer" id="answer3">
-                <strong>Правилен отговор: В) Гаранционен срок</strong>
+                <strong>Правилен отговор: В) Гаранционен срок и следпродажбени условия на ползване</strong>
                 <p>Гаранционният срок е част от разширения продукт (допълнителни услуги), а не от реалния физически продукт.</p>
             </div>
             <div class="student-input-section">
@@ -744,16 +744,16 @@
             <div class="question-number">Въпрос 4</div>
             <div class="question-text">Какво включва разширеният продукт?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(4, 'А')">А) Само физическите характеристики</div>
-                <div class="option" data-value="Б" onclick="selectOption(4, 'Б')">Б) Само цената на продукта</div>
-                <div class="option" data-value="В" onclick="selectOption(4, 'В')">В) Само марката и логото</div>
-                <div class="option" data-value="Г" onclick="selectOption(4, 'Г')">Г) Допълнителни услуги като доставка, гаранция, сервиз, кредитиране</div>
+                <div class="option" data-value="А" onclick="selectOption(4, 'А')">А) Само физическите характеристики и основните технически параметри на продукта, без да се отчита допълнителната стойност за клиента</div>
+                <div class="option" data-value="Б" onclick="selectOption(4, 'Б')">Б) Само цената на продукта и предлаганите начини на заплащане</div>
+                <div class="option" data-value="В" onclick="selectOption(4, 'В')">В) Само марката, фирменото лого и търговското наименование</div>
+                <div class="option" data-value="Г" onclick="selectOption(4, 'Г')">Г) Допълнителни услуги като доставка, гаранция, сервиз и кредитиране</div>
             </div>
             <button class="submit-btn" id="submitBtn4" onclick="submitAnswer(4)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback4"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(4)">Покажи отговора</button>
             <div class="answer" id="answer4">
-                <strong>Правилен отговор: Г) Допълнителни услуги като доставка, гаранция, сервиз, кредитиране</strong>
+                <strong>Правилен отговор: Г) Допълнителни услуги като доставка, гаранция, сервиз и кредитиране</strong>
                 <p>Разширеният продукт надгражда реалния с допълнителни ползи и услуги, които увеличават стойността за клиента.</p>
             </div>
             <div class="student-input-section">
@@ -770,16 +770,16 @@
             <div class="question-number">Въпрос 5</div>
             <div class="question-text">Каква е основната функция на търговската марка?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(5, 'А')">А) Да намали производствените разходи</div>
-                <div class="option" data-value="Б" onclick="selectOption(5, 'Б')">Б) Да идентифицира продукта и да го отличава от конкурентите</div>
-                <div class="option" data-value="В" onclick="selectOption(5, 'В')">В) Да определи цената на продукта</div>
-                <div class="option" data-value="Г" onclick="selectOption(5, 'Г')">Г) Да посочи мястото на производство</div>
+                <div class="option" data-value="А" onclick="selectOption(5, 'А')">А) Да намали производствените разходи на фирмата при изработка на продукта чрез стандартизиране на процесите и материалите</div>
+                <div class="option" data-value="Б" onclick="selectOption(5, 'Б')">Б) Да идентифицира продукта и ясно да го отличава от всички конкуренти</div>
+                <div class="option" data-value="В" onclick="selectOption(5, 'В')">В) Да определи крайната продажна цена на конкретния пазарен продукт</div>
+                <div class="option" data-value="Г" onclick="selectOption(5, 'Г')">Г) Да посочи мястото на производство и държавата на произход на продукта</div>
             </div>
             <button class="submit-btn" id="submitBtn5" onclick="submitAnswer(5)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback5"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(5)">Покажи отговора</button>
             <div class="answer" id="answer5">
-                <strong>Правилен отговор: Б) Да идентифицира продукта и да го отличава от конкурентите</strong>
+                <strong>Правилен отговор: Б) Да идентифицира продукта и ясно да го отличава от конкурентите</strong>
                 <p>Търговската марка е знак за разпознаване, който създава идентичност и лоялност у потребителите.</p>
             </div>
             <div class="student-input-section">
@@ -799,16 +799,16 @@
             <div class="question-number">Въпрос 6</div>
             <div class="question-text">Кой е първият етап при подготовката на нов продукт за пазара?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(6, 'А')">А) Генериране и подбор на идеи</div>
-                <div class="option" data-value="Б" onclick="selectOption(6, 'Б')">Б) Масово производство</div>
-                <div class="option" data-value="В" onclick="selectOption(6, 'В')">В) Рекламна кампания</div>
-                <div class="option" data-value="Г" onclick="selectOption(6, 'Г')">Г) Определяне на цената</div>
+                <div class="option" data-value="А" onclick="selectOption(6, 'А')">А) Генериране и подбор на идеи за нов продукт и неговите основни свойства</div>
+                <div class="option" data-value="Б" onclick="selectOption(6, 'Б')">Б) Масово производство на продукта за всички предварително избрани пазари и сегменти, без преди това да е направен подробен пазарен анализ</div>
+                <div class="option" data-value="В" onclick="selectOption(6, 'В')">В) Провеждане на голяма рекламна кампания по различни медийни канали</div>
+                <div class="option" data-value="Г" onclick="selectOption(6, 'Г')">Г) Определяне на крайната продажна цена и предлаганите отстъпки</div>
             </div>
             <button class="submit-btn" id="submitBtn6" onclick="submitAnswer(6)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback6"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(6)">Покажи отговора</button>
             <div class="answer" id="answer6">
-                <strong>Правилен отговор: А) Генериране и подбор на идеи</strong>
+                <strong>Правилен отговор: А) Генериране и подбор на идеи за нов продукт и неговите свойства</strong>
                 <p>Процесът започва с генериране на множество идеи, след което се извършва подбор на най-перспективните.</p>
             </div>
             <div class="student-input-section">
@@ -825,10 +825,10 @@
             <div class="question-number">Въпрос 7</div>
             <div class="question-text">Какво представлява тестовият маркетинг?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(7, 'А')">А) Маркетинг само в интернет</div>
-                <div class="option" data-value="Б" onclick="selectOption(7, 'Б')">Б) Маркетинг без реклама</div>
+                <div class="option" data-value="А" onclick="selectOption(7, 'А')">А) Маркетингова дейност, провеждана единствено в онлайн интернет среда, насочена към краткосрочни промоции и временни кампании</div>
+                <div class="option" data-value="Б" onclick="selectOption(7, 'Б')">Б) Провеждане на маркетинг без използване на какъвто и да е вид реклама</div>
                 <div class="option" data-value="В" onclick="selectOption(7, 'В')">В) Пробен пазар за оценка на реакцията на потребителите преди масово производство</div>
-                <div class="option" data-value="Г" onclick="selectOption(7, 'Г')">Г) Маркетинг само за тестови продукти</div>
+                <div class="option" data-value="Г" onclick="selectOption(7, 'Г')">Г) Маркетинг, насочен само към тестови и предварителни версии на продукти</div>
             </div>
             <button class="submit-btn" id="submitBtn7" onclick="submitAnswer(7)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback7"></div>
@@ -851,10 +851,10 @@
             <div class="question-number">Въпрос 8</div>
             <div class="question-text">Какво е позициониране на продукта?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(8, 'А')">А) Физическото разполагане на продукта в склада</div>
+                <div class="option" data-value="А" onclick="selectOption(8, 'А')">А) Физическото разполагане на продукта в склада или магазина на фирмата, без значение как го възприемат клиентите</div>
                 <div class="option" data-value="Б" onclick="selectOption(8, 'Б')">Б) Създаване на уникален образ на продукта в съзнанието на потребителите</div>
-                <div class="option" data-value="В" onclick="selectOption(8, 'В')">В) Определяне на производствената локация</div>
-                <div class="option" data-value="Г" onclick="selectOption(8, 'Г')">Г) Подреждане на продуктите на рафта</div>
+                <div class="option" data-value="В" onclick="selectOption(8, 'В')">В) Определяне на точната географска производствена и логистична локация</div>
+                <div class="option" data-value="Г" onclick="selectOption(8, 'Г')">Г) Подреждане на наличните продукти на рафта в търговския обект</div>
             </div>
             <button class="submit-btn" id="submitBtn8" onclick="submitAnswer(8)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback8"></div>
@@ -877,16 +877,16 @@
             <div class="question-number">Въпрос 9</div>
             <div class="question-text">Кое е важно при избора на целеви пазар за нов продукт?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(9, 'А')">А) Да се насочим към всички потребители едновременно</div>
-                <div class="option" data-value="Б" onclick="selectOption(9, 'Б')">Б) Да игнорираме конкуренцията</div>
-                <div class="option" data-value="В" onclick="selectOption(9, 'В')">В) Да определим цената преди да познаваме пазара</div>
-                <div class="option" data-value="Г" onclick="selectOption(9, 'Г')">Г) Да идентифицираме сегменти с достатъчен потенциал и да оценим конкуренцията</div>
+                <div class="option" data-value="А" onclick="selectOption(9, 'А')">А) Да се насочим към всички потребители едновременно без никакво сегментиране и без да се анализират специфичните им потребности, навици и предпочитания на различните групи</div>
+                <div class="option" data-value="Б" onclick="selectOption(9, 'Б')">Б) Да игнорираме конкуренцията и нейните действия и стратегии на пазара</div>
+                <div class="option" data-value="В" onclick="selectOption(9, 'В')">В) Да определим крайната цена още преди да сме проучили пазара и клиентите</div>
+                <div class="option" data-value="Г" onclick="selectOption(9, 'Г')">Г) Да идентифицираме сегменти с потенциал и подробно да анализираме конкуренцията</div>
             </div>
             <button class="submit-btn" id="submitBtn9" onclick="submitAnswer(9)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback9"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(9)">Покажи отговора</button>
             <div class="answer" id="answer9">
-                <strong>Правилен отговор: Г) Да идентифицираме сегменти с достатъчен потенциал и да оценим конкуренцията</strong>
+                <strong>Правилен отговор: Г) Да идентифицираме сегменти с потенциал и да анализираме конкуренцията</strong>
                 <p>Успешното въвеждане изисква внимателен анализ на пазарните сегменти и конкурентната среда.</p>
             </div>
             <div class="student-input-section">
@@ -903,16 +903,16 @@
             <div class="question-number">Въпрос 10</div>
             <div class="question-text">Коя стратегия за ценообразуване се използва често при въвеждане на иновативен продукт?</div>
             <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(10, 'А')">А) Стратегия на „обиране на каймака" (skimming) – висока начална цена</div>
-                <div class="option" data-value="Б" onclick="selectOption(10, 'Б')">Б) Стратегия на безплатно раздаване</div>
-                <div class="option" data-value="В" onclick="selectOption(10, 'В')">В) Стратегия на постоянно намаляващи цени</div>
-                <div class="option" data-value="Г" onclick="selectOption(10, 'Г')">Г) Стратегия на случайно ценообразуване</div>
+                <div class="option" data-value="А" onclick="selectOption(10, 'А')">А) Стратегия на „обиране на каймака" – висока начална цена за ранните клиенти на иновативния продукт</div>
+                <div class="option" data-value="Б" onclick="selectOption(10, 'Б')">Б) Стратегия на напълно безплатно раздаване на всички произведени продукти на пазара, без да се търси възвръщаемост на инвестициите или дългосрочна печалба</div>
+                <div class="option" data-value="В" onclick="selectOption(10, 'В')">В) Стратегия на постоянно и напълно произволно намаляващи продажни цени</div>
+                <div class="option" data-value="Г" onclick="selectOption(10, 'Г')">Г) Стратегия на случайно и изцяло безконтролно определяне на цените</div>
             </div>
             <button class="submit-btn" id="submitBtn10" onclick="submitAnswer(10)">✓ Изпрати отговор</button>
             <div class="answer-feedback" id="feedback10"></div>
             <button class="show-answer-btn" onclick="toggleAnswer(10)">Покажи отговора</button>
             <div class="answer" id="answer10">
-                <strong>Правилен отговор: А) Стратегия на „обиране на каймака" (skimming) – висока начална цена</strong>
+                <strong>Правилен отговор: А) Стратегия на „обиране на каймака" – висока начална цена за ранни клиенти</strong>
                 <p>При иновативни продукти се започва с висока цена за early adopters, след което цената постепенно се намалява.</p>
             </div>
             <div class="student-input-section">
@@ -925,138 +925,6 @@
             </div>
         </div>
 
-        <!-- СЕКЦИЯ 3: Жизнен цикъл на продукта -->
-        <div class="section-title">📈 Жизнен цикъл на продукта</div>
-
-        <div class="question" data-question="11" data-correct="В">
-            <div class="question-number">Въпрос 11</div>
-            <div class="question-text">Кои са четирите основни фази на жизнения цикъл на продукта?</div>
-            <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(11, 'А')">А) Идея, производство, продажба, печалба</div>
-                <div class="option" data-value="Б" onclick="selectOption(11, 'Б')">Б) Планиране, изпълнение, контрол, оценка</div>
-                <div class="option" data-value="В" onclick="selectOption(11, 'В')">В) Въвеждане, растеж, зрялост, спад</div>
-                <div class="option" data-value="Г" onclick="selectOption(11, 'Г')">Г) Създаване, развитие, стабилност, край</div>
-            </div>
-            <button class="submit-btn" id="submitBtn11" onclick="submitAnswer(11)">✓ Изпрати отговор</button>
-            <div class="answer-feedback" id="feedback11"></div>
-            <button class="show-answer-btn" onclick="toggleAnswer(11)">Покажи отговора</button>
-            <div class="answer" id="answer11">
-                <strong>Правилен отговор: В) Въвеждане, растеж, зрялост, спад</strong>
-                <p>Жизненият цикъл на продукта (PLC) преминава през тези четири класически етапа с различни характеристики на продажби и печалби.</p>
-            </div>
-            <div class="student-input-section">
-                <label>Номер на ученик който отговори правилно:</label>
-                <div class="student-input-controls">
-                    <input type="text" id="studentInput11" placeholder="Номер на ученик">
-                    <button class="add-student-btn" onclick="addStudent(11)">Добави</button>
-                </div>
-                <div class="students-list" id="studentsList11"></div>
-            </div>
-        </div>
-
-        <div class="question" data-question="12" data-correct="Б">
-            <div class="question-number">Въпрос 12</div>
-            <div class="question-text">Какво е характерно за фазата на ВЪВЕЖДАНЕ?</div>
-            <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(12, 'А')">А) Максимални печалби и ниски разходи</div>
-                <div class="option" data-value="Б" onclick="selectOption(12, 'Б')">Б) Бавен растеж на продажбите, високи маркетингови разходи, ниски или отрицателни печалби</div>
-                <div class="option" data-value="В" onclick="selectOption(12, 'В')">В) Намаляващи продажби и изтегляне от пазара</div>
-                <div class="option" data-value="Г" onclick="selectOption(12, 'Г')">Г) Масови продажби и много конкуренти</div>
-            </div>
-            <button class="submit-btn" id="submitBtn12" onclick="submitAnswer(12)">✓ Изпрати отговор</button>
-            <div class="answer-feedback" id="feedback12"></div>
-            <button class="show-answer-btn" onclick="toggleAnswer(12)">Покажи отговора</button>
-            <div class="answer" id="answer12">
-                <strong>Правилен отговор: Б) Бавен растеж на продажбите, високи маркетингови разходи, ниски или отрицателни печалби</strong>
-                <p>Във фазата на въвеждане компанията инвестира много в промоция, за да създаде познаваемост на продукта.</p>
-            </div>
-            <div class="student-input-section">
-                <label>Номер на ученик който отговори правилно:</label>
-                <div class="student-input-controls">
-                    <input type="text" id="studentInput12" placeholder="Номер на ученик">
-                    <button class="add-student-btn" onclick="addStudent(12)">Добави</button>
-                </div>
-                <div class="students-list" id="studentsList12"></div>
-            </div>
-        </div>
-
-        <div class="question" data-question="13" data-correct="А">
-            <div class="question-number">Въпрос 13</div>
-            <div class="question-text">В коя фаза печалбите са най-високи?</div>
-            <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(13, 'А')">А) Зрялост</div>
-                <div class="option" data-value="Б" onclick="selectOption(13, 'Б')">Б) Въвеждане</div>
-                <div class="option" data-value="В" onclick="selectOption(13, 'В')">В) Растеж</div>
-                <div class="option" data-value="Г" onclick="selectOption(13, 'Г')">Г) Спад</div>
-            </div>
-            <button class="submit-btn" id="submitBtn13" onclick="submitAnswer(13)">✓ Изпрати отговор</button>
-            <div class="answer-feedback" id="feedback13"></div>
-            <button class="show-answer-btn" onclick="toggleAnswer(13)">Покажи отговора</button>
-            <div class="answer" id="answer13">
-                <strong>Правилен отговор: А) Зрялост</strong>
-                <p>Във фазата на зрялост продажбите достигат своя връх, разходите за производство са оптимизирани, а печалбите са максимални.</p>
-            </div>
-            <div class="student-input-section">
-                <label>Номер на ученик който отговори правилно:</label>
-                <div class="student-input-controls">
-                    <input type="text" id="studentInput13" placeholder="Номер на ученик">
-                    <button class="add-student-btn" onclick="addStudent(13)">Добави</button>
-                </div>
-                <div class="students-list" id="studentsList13"></div>
-            </div>
-        </div>
-
-        <div class="question" data-question="14" data-correct="Г">
-            <div class="question-number">Въпрос 14</div>
-            <div class="question-text">Какво е типично за фазата на РАСТЕЖ?</div>
-            <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(14, 'А')">А) Продуктът се изтегля от пазара</div>
-                <div class="option" data-value="Б" onclick="selectOption(14, 'Б')">Б) Няма конкуренция</div>
-                <div class="option" data-value="В" onclick="selectOption(14, 'В')">В) Продажбите намаляват</div>
-                <div class="option" data-value="Г" onclick="selectOption(14, 'Г')">Г) Бърз растеж на продажбите, появяват се конкуренти, печалбите се увеличават</div>
-            </div>
-            <button class="submit-btn" id="submitBtn14" onclick="submitAnswer(14)">✓ Изпрати отговор</button>
-            <div class="answer-feedback" id="feedback14"></div>
-            <button class="show-answer-btn" onclick="toggleAnswer(14)">Покажи отговора</button>
-            <div class="answer" id="answer14">
-                <strong>Правилен отговор: Г) Бърз растеж на продажбите, появяват се конкуренти, печалбите се увеличават</strong>
-                <p>Във фазата на растеж продуктът печели пазарен дял, но успехът привлича и конкуренти.</p>
-            </div>
-            <div class="student-input-section">
-                <label>Номер на ученик който отговори правилно:</label>
-                <div class="student-input-controls">
-                    <input type="text" id="studentInput14" placeholder="Номер на ученик">
-                    <button class="add-student-btn" onclick="addStudent(14)">Добави</button>
-                </div>
-                <div class="students-list" id="studentsList14"></div>
-            </div>
-        </div>
-
-        <div class="question" data-question="15" data-correct="В">
-            <div class="question-number">Въпрос 15</div>
-            <div class="question-text">Коя стратегия е подходяща за фазата на СПАД?</div>
-            <div class="options">
-                <div class="option" data-value="А" onclick="selectOption(15, 'А')">А) Масирана рекламна кампания за нови клиенти</div>
-                <div class="option" data-value="Б" onclick="selectOption(15, 'Б')">Б) Увеличаване на производствените мощности</div>
-                <div class="option" data-value="В" onclick="selectOption(15, 'В')">В) Намаляване на разходите, фокус върху лоялни клиенти или изтегляне от пазара</div>
-                <div class="option" data-value="Г" onclick="selectOption(15, 'Г')">Г) Увеличаване на цената</div>
-            </div>
-            <button class="submit-btn" id="submitBtn15" onclick="submitAnswer(15)">✓ Изпрати отговор</button>
-            <div class="answer-feedback" id="feedback15"></div>
-            <button class="show-answer-btn" onclick="toggleAnswer(15)">Покажи отговора</button>
-            <div class="answer" id="answer15">
-                <strong>Правилен отговор: В) Намаляване на разходите, фокус върху лоялни клиенти или изтегляне от пазара</strong>
-                <p>Във фазата на спад компанията трябва да реши дали да поддържа продукта за ниша клиенти, да го модифицира или да го изтегли.</p>
-            </div>
-            <div class="student-input-section">
-                <label>Номер на ученик който отговори правилно:</label>
-                <div class="student-input-controls">
-                    <input type="text" id="studentInput15" placeholder="Номер на ученик">
-                    <button class="add-student-btn" onclick="addStudent(15)">Добави</button>
-                </div>
-                <div class="students-list" id="studentsList15"></div>
-            </div>
-        </div>
 
         <div class="statistics" id="statisticsSection">
             <h2>📊 Статистика на учениците</h2>
@@ -1072,7 +940,7 @@
                 <div class="grade-description" id="gradeDescription">Въведете номер на ученик за да започнете</div>
                 <div class="grade-percentage" id="gradePercentage"></div>
                 <div class="grade-progress">
-                    <div class="grade-progress-text" id="gradeProgressText">0 / 15 въпроса</div>
+                    <div class="grade-progress-text" id="gradeProgressText">0 / 10 въпроса</div>
                     <div class="progress-bar-container">
                         <div class="progress-bar" id="progressBar" style="width: 0%">0%</div>
                     </div>
@@ -1083,7 +951,7 @@
     </div>
 
     <script>
-        const TOTAL_QUESTIONS = 15;
+        const TOTAL_QUESTIONS = 10;
         const studentAnswers = {};
         const currentMode = { value: 'individual' };
         const currentStudent = { number: null };
