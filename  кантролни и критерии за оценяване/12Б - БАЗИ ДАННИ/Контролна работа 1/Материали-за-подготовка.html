@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Материали за подготовка - База данни 12б</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+        }
+        .topic {
+            background: #ecf0f1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        code {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border-left: 4px solid #e74c3c;
+        }
+        .important {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .example {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .warning {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+        .test-example {
+            background: #e7f3ff;
+            border-left: 4px solid #0066cc;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Материали за подготовка - База данни</h1>
+        <p><strong>Клас:</strong> 12б | <strong>Предмет:</strong> База данни</p>
+        <p><strong>Контролна работа:</strong> Първи срок на учебната 2025/2026 година</p>
+        <p><strong>Общо точки:</strong> 100 (8 задачи по 12 точки и 2 задачи по 4 точки)</p>
+
+        <div class="important">
+            <h3>📋 Структура на контролната работа</h3>
+            <ul>
+                <li>Всяка задача е с попълване на празни места (fill-in-the-blank)</li>
+                <li>Всяка празна позиция носи 3 точки (освен в задачите с 4 точки общо)</li>
+                <li>Задачи 1–8 са по 12 точки, задачи 9 са по 4 точки</li>
+                <li>Оценка: Слаб (2) 0-34, Среден (3) 35-49, Добър (4) 50-64, Мн.добър (5) 65-79, Отличен (6) 80-100</li>
+            </ul>
+        </div>
+
+        <h2>1. Създаване на таблици (CREATE TABLE)</h2>
+        
+        <div class="topic">
+            <h3>1.1. Основен синтаксис</h3>
+            <pre><code>CREATE TABLE име_на_таблица (
+    колона1 ТИП_ДАННИ ОГРАНИЧЕНИЯ,
+    колона2 ТИП_ДАННИ ОГРАНИЧЕНИЯ,
+    ...
+);</code></pre>
+        </div>
+
+        <div class="topic">
+            <h3>1.2. Първичен ключ (PRIMARY KEY)</h3>
+            <ul>
+                <li><strong>Определение:</strong> Уникален идентификатор за всеки запис</li>
+                <li><strong>Свойства:</strong> Не може да е NULL, трябва да е уникален</li>
+                <li><strong>Синтаксис:</strong>
+                    <ul>
+                        <li><code>id INT PRIMARY KEY AUTO_INCREMENT</code></li>
+                        <li><code>id INT PRIMARY KEY</code></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="test-example">
+                <strong>Пример от контролната работа:</strong>
+                <pre><code>CREATE TABLE customers (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    city TEXT,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);</code></pre>
+            </div>
+        </div>
+
+        <div class="topic">
+            <h3>1.3. Ограничения (CONSTRAINTS)</h3>
+            <table>
+                <tr>
+                    <th>Ограничение</th>
+                    <th>Описание</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td><code>NOT NULL</code></td>
+                    <td>Колоната е задължителна</td>
+                    <td><code>first_name TEXT NOT NULL</code></td>
+                </tr>
+                <tr>
+                    <td><code>UNIQUE</code></td>
+                    <td>Всички стойности трябва да са различни</td>
+                    <td><code>email TEXT UNIQUE</code></td>
+                </tr>
+                <tr>
+                    <td><code>DEFAULT</code></td>
+                    <td>Стойност по подразбиране</td>
+                    <td><code>created_at TIMESTAMPTZ DEFAULT NOW()</code></td>
+                </tr>
+                <tr>
+                    <td><code>CHECK</code></td>
+                    <td>Проверка на условие</td>
+                    <td><code>CHECK (price > 0)</code></td>
+                </tr>
+                <tr>
+                    <td><code>AUTO_INCREMENT</code></td>
+                    <td>Автоматично увеличаване</td>
+                    <td><code>id INT AUTO_INCREMENT</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="topic">
+            <h3>1.4. Типове данни (важни за контролната работа)</h3>
+            <table>
+                <tr>
+                    <th>Тип</th>
+                    <th>Описание</th>
+                    <th>Пример от контролната работа</th>
+                </tr>
+                <tr>
+                    <td><code>INT</code></td>
+                    <td>Цели числа</td>
+                    <td><code>id INT PRIMARY KEY</code></td>
+                </tr>
+                <tr>
+                    <td><code>TEXT</code></td>
+                    <td>Дълъг текст</td>
+                    <td><code>first_name TEXT NOT NULL</code></td>
+                </tr>
+                <tr>
+                    <td><code>DECIMAL(10,2)</code></td>
+                    <td>Десетични числа (10 цифри, 2 след запетая)</td>
+                    <td><code>price DECIMAL(10,2) NOT NULL</code></td>
+                </tr>
+                <tr>
+                    <td><code>TIMESTAMPTZ</code></td>
+                    <td>Дата и час с часова зона</td>
+                    <td><code>created_at TIMESTAMPTZ DEFAULT NOW()</code></td>
+                </tr>
+                <tr>
+                    <td><code>BOOLEAN</code></td>
+                    <td>Булева стойност (true/false)</td>
+                    <td><code>is_active BOOLEAN DEFAULT true</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="test-example">
+            <strong>Типична задача от контролната работа:</strong>
+            <pre><code>CREATE TABLE customers (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    city TEXT,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);</code></pre>
+            <p><strong>Ключови думи за попълване:</strong> CREATE, PRIMARY, NOT, UNIQUE, NOW()</p>
+        </div>
+
+        <h2>2. Извличане на данни (SELECT)</h2>
+
+        <div class="topic">
+            <h3>2.1. Основен синтаксис</h3>
+            <pre><code>SELECT колона1, колона2, ...
+FROM име_на_таблица
+[WHERE условие]
+[ORDER BY колона [ASC|DESC]]
+[LIMIT брой];</code></pre>
+        </div>
+
+        <div class="topic">
+            <h3>2.2. Филтриране с WHERE</h3>
+            <div class="example">
+                <strong>Оператори:</strong>
+                <ul>
+                    <li><code>=</code> - равно</li>
+                    <li><code>!=</code> или <code>&lt;&gt;</code> - различно</li>
+                    <li><code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code> - сравнение</li>
+                    <li><code>AND</code> - логическо И</li>
+                    <li><code>OR</code> - логическо ИЛИ</li>
+                    <li><code>IN</code> - в списък</li>
+                    <li><code>BETWEEN</code> - между две стойности</li>
+                </ul>
+            </div>
+            <div class="test-example">
+                <strong>Пример от контролната работа:</strong>
+                <pre><code>SELECT first_name, last_name, email
+FROM customers
+WHERE city = 'Пловдив'
+ORDER BY last_name ASC;</code></pre>
+                <p><strong>Ключови думи:</strong> SELECT, FROM, WHERE, ORDER, ASC</p>
+            </div>
+        </div>
+
+        <div class="topic">
+            <h3>2.3. Сортиране с ORDER BY</h3>
+            <ul>
+                <li><code>ORDER BY колона ASC</code> - възходящ ред (най-малки първи)</li>
+                <li><code>ORDER BY колона DESC</code> - низходящ ред (най-големи първи)</li>
+                <li>ASC е по подразбиране, но е добре да се указва изрично</li>
+            </ul>
+            <div class="test-example">
+                <pre><code>SELECT product_name, price, stock_quantity
+FROM products
+WHERE price > 100 AND stock_quantity > 0
+ORDER BY price DESC
+LIMIT 5;</code></pre>
+                <p><strong>Ключови думи:</strong> FROM, WHERE, ORDER, DESC, LIMIT</p>
+            </div>
+        </div>
+
+        <div class="topic">
+            <h3>2.4. Ограничаване на резултатите (LIMIT)</h3>
+            <pre><code>SELECT * FROM products LIMIT 10;</code></pre>
+            <p>Показва само първите 10 записа.</p>
+        </div>
+
+        <div class="topic">
+            <h3>2.5. Псевдоними (Aliases) с AS</h3>
+            <p>Използваме <code>AS</code> за да дадем друго име на колона в резултата.</p>
+            <div class="test-example">
+                <strong>Пример от контролната работа:</strong>
+                <pre><code>SELECT product_name AS product, 
+       price AS цена,
+       stock_quantity AS наличност
+FROM products
+WHERE price BETWEEN 50 AND 500;</code></pre>
+                <p><strong>Ключови думи:</strong> AS, AS, AS, FROM, WHERE</p>
+            </div>
+        </div>
+
+        <h2>3. Свързване на таблици (JOIN)</h2>
+
+        <div class="important">
+            <strong>Важно:</strong> JOIN операциите са много важни за контролната работа! Трябва да знаете разликата между INNER, LEFT и RIGHT JOIN.
+        </div>
+
+        <div class="topic">
+            <h3>3.1. INNER JOIN</h3>
+            <p>Връща само записи, които имат съвпадение в двете таблици.</p>
+            <div class="test-example">
+                <strong>Пример от контролната работа:</strong>
+                <pre><code>SELECT p.product_name, p.price, c.category_name
+FROM products p
+INNER JOIN categories c ON p.category_id = c.id
+WHERE c.category_name = 'Електроника'
+ORDER BY p.price ASC;</code></pre>
+                <p><strong>Ключови думи:</strong> FROM, INNER, ON, WHERE, ORDER</p>
+            </div>
+            <div class="example">
+                <strong>Алтернативен синтаксис:</strong>
+                <pre><code>SELECT p.product_name, p.price, c.category_name
+FROM products p
+JOIN categories c ON p.category_id = c.id;</code></pre>
+                <p>JOIN без INNER е същото като INNER JOIN.</p>
+            </div>
+        </div>
+
+        <div class="topic">
+            <h3>3.2. LEFT JOIN</h3>
+            <p>Връща всички записи от лявата таблица, дори ако няма съвпадение в дясната.</p>
+            <div class="test-example">
+                <strong>Пример от контролната работа:</strong>
+                <pre><code>SELECT c.category_name, COUNT(p.id) AS product_count
+FROM categories c
+LEFT JOIN products p ON c.id = p.category_id
+GROUP BY c.category_name
+HAVING COUNT(p.id) > 0;</code></pre>
+                <p><strong>Ключови думи:</strong> FROM, LEFT, JOIN, ON, GROUP, HAVING</p>
+            </div>
+        </div>
+
+        <div class="topic">
+            <h3>3.3. RIGHT JOIN</h3>
+            <p>Връща всички записи от дясната таблица, дори ако няма съвпадение в лявата.</p>
+            <div class="test-example">
+                <strong>Пример от контролната работа:</strong>
+                <pre><code>SELECT c.category_name, COUNT(p.id) AS product_count
+FROM categories c
+RIGHT JOIN products p ON c.id = p.category_id
+GROUP BY c.category_name;</code></pre>
+                <p><strong>Ключови думи:</strong> FROM, RIGHT, JOIN, ON, GROUP</p>
+            </div>
+        </div>
+
+        <div class="topic">
+            <h3>3.4. Множествен JOIN (свързване на 3+ таблици)</h3>
+            <p>Можем да свързваме няколко таблици последователно.</p>
+            <div class="test-example">
+                <strong>Пример от контролната работа:</strong>
+                <pre><code>SELECT o.id AS order_id, p.product_name, oi.quantity, oi.unit_price
+FROM orders o
+JOIN order_items oi ON o.id = oi.order_id
+JOIN products p ON oi.product_id = p.id
+WHERE o.status = 'delivered';</code></pre>
+                <p><strong>Ключови думи:</strong> FROM, JOIN, ON, JOIN, ON</p>
+                <p><strong>Важно:</strong> Първо свързваме orders с order_items, после order_items с products.</p>
+            </div>
+        </div>
+
+        <div class="topic">
+            <h3>3.5. Псевдоними на таблици</h3>
+            <p>Използваме кратки имена за по-лесно писане:</p>
+            <ul>
+                <li><code>FROM products p</code> - p е псевдоним за products</li>
+                <li><code>FROM categories c</code> - c е псевдоним за categories</li>
+                <li><code>FROM orders o</code> - o е псевдоним за orders</li>
+            </ul>
+        </div>
+
+        <h2>4. Групиране и агрегатни функции (GROUP BY)</h2>
+
+        <div class="topic">
+            <h3>4.1. Агрегатни функции</h3>
+            <table>
+                <tr>
+                    <th>Функция</th>
+                    <th>Описание</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td><code>COUNT(колона)</code></td>
+                    <td>Брои записи</td>
+                    <td><code>COUNT(p.id) AS product_count</code></td>
+                </tr>
+                <tr>
+                    <td><code>SUM(колона)</code></td>
+                    <td>Сума на стойностите</td>
+                    <td><code>SUM(o.total_amount) AS total_orders</code></td>
+                </tr>
+                <tr>
+                    <td><code>AVG(колона)</code></td>
+                    <td>Средна стойност</td>
+                    <td><code>AVG(p.price) AS avg_price</code></td>
+                </tr>
+                <tr>
+                    <td><code>MAX(колона)</code></td>
+                    <td>Максимална стойност</td>
+                    <td><code>MAX(p.price) AS max_price</code></td>
+                </tr>
+                <tr>
+                    <td><code>MIN(колона)</code></td>
+                    <td>Минимална стойност</td>
+                    <td><code>MIN(p.price) AS min_price</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="topic">
+            <h3>4.2. GROUP BY</h3>
+            <p>Групира записи по стойностите на определена колона.</p>
+            <div class="test-example">
+                <strong>Пример от контролната работа:</strong>
+                <pre><code>SELECT c.category_name, 
+       COUNT(p.id) AS product_count,
+       AVG(p.price) AS avg_price,
+       MAX(p.price) AS max_price
+FROM categories c
+LEFT JOIN products p ON c.id = p.category_id
+GROUP BY c.category_name;</code></pre>
+                <p><strong>Ключови думи:</strong> AVG, FROM, JOIN, ON, GROUP</p>
+            </div>
+            <div class="important">
+                <strong>Правило:</strong> Всички колони в SELECT, които не са агрегатни функции, трябва да са в GROUP BY!
+            </div>
+        </div>
+
+        <div class="topic">
+            <h3>4.3. HAVING</h3>
+            <p>Филтрира групи след GROUP BY (подобно на WHERE, но за групи).</p>
+            <div class="test-example">
+                <strong>Пример от контролната работа:</strong>
+                <pre><code>SELECT c.category_name, 
+       MAX(p.price) AS max_price,
+       SUM(p.stock_quantity) AS total_stock
+FROM categories c
+LEFT JOIN products p ON c.id = p.category_id
+GROUP BY c.category_name
+HAVING COUNT(p.id) > 2;</code></pre>
+                <p><strong>Ключови думи:</strong> MAX, FROM, ON, GROUP, HAVING</p>
+            </div>
+            <div class="important">
+                <strong>Разлика WHERE vs HAVING:</strong>
+                <ul>
+                    <li><code>WHERE</code> - филтрира преди групирането</li>
+                    <li><code>HAVING</code> - филтрира след групирането</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-example">
+            <strong>Друг пример от контролната работа:</strong>
+            <pre><code>SELECT c.first_name, c.last_name, SUM(o.total_amount) AS total_orders
+FROM customers c
+JOIN orders o ON c.id = o.customer_id
+GROUP BY c.id
+ORDER BY total_orders DESC;</code></pre>
+            <p><strong>Ключови думи:</strong> SUM, FROM, JOIN, ON, GROUP</p>
+        </div>
+
+        <h2>5. Подзаявки (Subqueries)</h2>
+
+        <div class="topic">
+            <h3>5.1. Подзаявка с IN</h3>
+            <p>Използваме подзаявка в WHERE клаузата с оператора IN.</p>
+            <div class="test-example">
+                <strong>Пример от контролната работа:</strong>
+                <pre><code>SELECT product_name, price
+FROM products
+WHERE category_id IN (SELECT id FROM categories WHERE category_name = 'Електроника')
+ORDER BY price ASC;</code></pre>
+                <p><strong>Ключови думи:</strong> SELECT, FROM, WHERE, IN, ORDER</p>
+            </div>
+        </div>
+
+        <div class="topic">
+            <h3>5.2. Подзаявка за сравнение</h3>
+            <div class="test-example">
+                <strong>Пример от контролната работа:</strong>
+                <pre><code>SELECT product_name, price
+FROM products
+WHERE category_id IN (SELECT id FROM categories)
+AND price > (SELECT AVG(price) FROM products)
+ORDER BY price DESC;</code></pre>
+                <p><strong>Ключови думи:</strong> FROM, WHERE, IN, AND, ORDER</p>
+            </div>
+        </div>
+
+        <h2>6. Изтриване на данни (DELETE)</h2>
+
+        <div class="topic">
+            <h3>6.1. Основен синтаксис</h3>
+            <pre><code>DELETE FROM име_на_таблица
+WHERE условие;</code></pre>
+            <div class="warning">
+                <strong>Внимание!</strong> DELETE изтрива данни перманентно! Винаги проверявайте WHERE условието!
+            </div>
+        </div>
+
+        <div class="topic">
+            <h3>6.2. Сложни условия (AND, OR)</h3>
+            <div class="test-example">
+                <strong>Пример от контролната работа:</strong>
+                <pre><code>DELETE FROM orders
+WHERE id = 5 OR id = 10
+AND status = 'pending' AND total_amount > 1000 OR total_amount < 100;</code></pre>
+                <p><strong>Ключови думи:</strong> DELETE, WHERE, OR, AND, OR</p>
+            </div>
+            <div class="important">
+                <strong>Приоритет на операторите:</strong>
+                <ul>
+                    <li>AND има по-висок приоритет от OR</li>
+                    <li>Използвайте скоби () за яснота: <code>(id = 5 OR id = 10) AND status = 'pending'</code></li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>7. Специални функции и стойности</h2>
+
+        <div class="topic">
+            <h3>7.1. NOW() и TIMESTAMPTZ</h3>
+            <ul>
+                <li><code>NOW()</code> - връща текущата дата и час</li>
+                <li><code>TIMESTAMPTZ</code> - тип данни за дата и час с часова зона</li>
+                <li>Използва се с DEFAULT: <code>created_at TIMESTAMPTZ DEFAULT NOW()</code></li>
+            </ul>
+        </div>
+
+        <div class="topic">
+            <h3>7.2. CHECK ограничение</h3>
+            <p>Проверява условие при вмъкване/промяна на данни.</p>
+            <div class="test-example">
+                <pre><code>CREATE TABLE products (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    product_name TEXT NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    stock_quantity INT DEFAULT 0,
+    CHECK (price > 0)
+);</code></pre>
+            </div>
+        </div>
+
+        <h2>8. Често срещани грешки и как да ги избегнем</h2>
+
+        <div class="topic">
+            <ul>
+                <li><strong>Грешка:</strong> Забравяне на точка и запетая (;)
+                    <br><strong>Решение:</strong> Винаги завършвайте SQL командите с ;</li>
+                <li><strong>Грешка:</strong> Объркване на INNER JOIN, LEFT JOIN, RIGHT JOIN
+                    <br><strong>Решение:</strong> 
+                    <ul>
+                        <li>INNER JOIN - само съвпадения</li>
+                        <li>LEFT JOIN - всички от ляво, дори без съвпадение</li>
+                        <li>RIGHT JOIN - всички от дясно, дори без съвпадение</li>
+                    </ul>
+                </li>
+                <li><strong>Грешка:</strong> Използване на WHERE вместо HAVING за агрегатни функции
+                    <br><strong>Решение:</strong> WHERE преди GROUP BY, HAVING след GROUP BY</li>
+                <li><strong>Грешка:</strong> Забравяне на GROUP BY при използване на агрегатни функции
+                    <br><strong>Решение:</strong> Всички не-агрегатни колони в SELECT трябва да са в GROUP BY</li>
+                <li><strong>Грешка:</strong> Объркване на AND и OR приоритет
+                    <br><strong>Решение:</strong> Използвайте скоби () за яснота</li>
+                <li><strong>Грешка:</strong> Забравяне на ON при JOIN
+                    <br><strong>Решение:</strong> Винаги след JOIN трябва да има ON условие</li>
+            </ul>
+        </div>
+
+        <h2>9. Шаблони за типични задачи от контролната работа</h2>
+
+        <div class="test-example">
+            <h3>Шаблон 1: CREATE TABLE с ограничения</h3>
+            <pre><code>CREATE TABLE име (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    колона1 ТИП NOT NULL,
+    колона2 ТИП UNIQUE,
+    колона3 ТИП DEFAULT стойност,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);</code></pre>
+            <p><strong>Често срещани думи:</strong> CREATE, PRIMARY, NOT, UNIQUE, NOW()</p>
+        </div>
+
+        <div class="test-example">
+            <h3>Шаблон 2: SELECT с WHERE и ORDER BY</h3>
+            <pre><code>SELECT колона1, колона2
+FROM таблица
+WHERE условие
+ORDER BY колона ASC/DESC
+LIMIT брой;</code></pre>
+            <p><strong>Често срещани думи:</strong> SELECT, FROM, WHERE, ORDER, ASC/DESC, LIMIT</p>
+        </div>
+
+        <div class="test-example">
+            <h3>Шаблон 3: INNER JOIN</h3>
+            <pre><code>SELECT колони
+FROM таблица1 псевдоним1
+INNER JOIN таблица2 псевдоним2 ON псевдоним1.id = псевдоним2.foreign_id
+WHERE условие
+ORDER BY колона;</code></pre>
+            <p><strong>Често срещани думи:</strong> FROM, INNER, ON, WHERE, ORDER</p>
+        </div>
+
+        <div class="test-example">
+            <h3>Шаблон 4: LEFT/RIGHT JOIN с GROUP BY</h3>
+            <pre><code>SELECT колона, АГРЕГАТНА_ФУНКЦИЯ(колона) AS име
+FROM таблица1 псевдоним1
+LEFT/RIGHT JOIN таблица2 псевдоним2 ON условие
+GROUP BY колона
+HAVING условие;</code></pre>
+            <p><strong>Често срещани думи:</strong> FROM, LEFT/RIGHT, JOIN, ON, GROUP, HAVING</p>
+        </div>
+
+        <div class="test-example">
+            <h3>Шаблон 5: Множествен JOIN (3 таблици)</h3>
+            <pre><code>SELECT колони
+FROM таблица1 псевдоним1
+JOIN таблица2 псевдоним2 ON условие1
+JOIN таблица3 псевдоним3 ON условие2
+WHERE условие;</code></pre>
+            <p><strong>Често срещани думи:</strong> FROM, JOIN, ON, JOIN, ON</p>
+        </div>
+
+        <div class="test-example">
+            <h3>Шаблон 6: DELETE с AND/OR</h3>
+            <pre><code>DELETE FROM таблица
+WHERE условие1 OR условие2
+AND условие3 AND условие4 OR условие5;</code></pre>
+            <p><strong>Често срещани думи:</strong> DELETE, WHERE, OR, AND, OR</p>
+        </div>
+
+        <h2>10. Ключови думи - бърза справка</h2>
+
+        <div class="topic">
+            <table>
+                <tr>
+                    <th>Категория</th>
+                    <th>Ключови думи</th>
+                </tr>
+                <tr>
+                    <td>Създаване</td>
+                    <td><code>CREATE</code>, <code>TABLE</code>, <code>PRIMARY</code>, <code>KEY</code></td>
+                </tr>
+                <tr>
+                    <td>Ограничения</td>
+                    <td><code>NOT</code>, <code>NULL</code>, <code>UNIQUE</code>, <code>DEFAULT</code>, <code>CHECK</code></td>
+                </tr>
+                <tr>
+                    <td>Извличане</td>
+                    <td><code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>, <code>ORDER</code>, <code>BY</code>, <code>ASC</code>, <code>DESC</code>, <code>LIMIT</code></td>
+                </tr>
+                <tr>
+                    <td>Свързване</td>
+                    <td><code>JOIN</code>, <code>INNER</code>, <code>LEFT</code>, <code>RIGHT</code>, <code>ON</code></td>
+                </tr>
+                <tr>
+                    <td>Групиране</td>
+                    <td><code>GROUP</code>, <code>BY</code>, <code>HAVING</code></td>
+                </tr>
+                <tr>
+                    <td>Агрегатни функции</td>
+                    <td><code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, <code>MAX</code>, <code>MIN</code></td>
+                </tr>
+                <tr>
+                    <td>Логически оператори</td>
+                    <td><code>AND</code>, <code>OR</code>, <code>IN</code></td>
+                </tr>
+                <tr>
+                    <td>Псевдоними</td>
+                    <td><code>AS</code></td>
+                </tr>
+                <tr>
+                    <td>Изтриване</td>
+                    <td><code>DELETE</code></td>
+                </tr>
+                <tr>
+                    <td>Функции</td>
+                    <td><code>NOW()</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="margin-top: 40px; padding: 20px; background: #e8f4f8; border-radius: 5px;">
+            <h2 style="border: none; padding: 0; margin: 0 0 10px 0;">✅ Ключови точки за контролната работа</h2>
+            <ul style="font-size: 1.1em;">
+                <li>✅ Знаете синтаксиса на CREATE TABLE с PRIMARY KEY, NOT NULL, UNIQUE, DEFAULT</li>
+                <li>✅ Можете да извличате данни с SELECT, WHERE, ORDER BY, LIMIT</li>
+                <li>✅ Разбирате разликата между INNER JOIN, LEFT JOIN, RIGHT JOIN</li>
+                <li>✅ Знаете как да свързвате множество таблици (3+) с JOIN</li>
+                <li>✅ Можете да използвате агрегатни функции: COUNT, SUM, AVG, MAX, MIN</li>
+                <li>✅ Разбирате GROUP BY и HAVING</li>
+                <li>✅ Знаете как да използвате подзаявки с IN</li>
+                <li>✅ Можете да използвате псевдоними (AS) за колони и таблици</li>
+                <li>✅ Разбирате сложни DELETE заявки с AND и OR</li>
+                <li>✅ Знаете функциите NOW() и TIMESTAMPTZ</li>
+            </ul>
+        </div>
+
+        <div class="important" style="margin-top: 30px;">
+            <h3>💡 Съвети за контролната работа</h3>
+            <ol>
+                <li><strong>Прочетете внимателно всяка задача</strong> - разберете какво се иска</li>
+                <li><strong>Попълнете празните места логично</strong> - помислете какво липсва</li>
+                <li><strong>Проверете синтаксиса</strong> - всяка SQL команда трябва да е валидна</li>
+                <li><strong>Запомнете ключовите думи</strong> - CREATE, SELECT, FROM, WHERE, JOIN, ON, GROUP BY, HAVING</li>
+                <li><strong>Внимавайте на AND/OR</strong> - използвайте скоби за яснота</li>
+                <li><strong>Проверете отговорите си</strong> - прегледайте всяка задача преди да предадете</li>
+            </ol>
+        </div>
+
+        <p style="text-align: center; margin-top: 40px; color: #7f8c8d; font-size: 1.2em;">
+            <em>Успех на контролната работа! 🎓</em>
+        </p>
+    </div>
+</body>
+</html>

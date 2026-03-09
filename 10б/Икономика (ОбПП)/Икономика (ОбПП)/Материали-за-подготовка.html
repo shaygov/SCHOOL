@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Материали за подготовка - Интернет и електронна търговия 12а</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+        }
+        .topic {
+            background: #ecf0f1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        code {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border-left: 4px solid #e74c3c;
+        }
+        .important {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .example {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Материали за подготовка - Интернет и електронна търговия</h1>
+        <p><strong>Клас:</strong> 12а | <strong>Предмет:</strong> Интернет и електронна търговия</p>
+        <p><strong>Дата на контролната работа:</strong> _______________</p>
+
+        <h2>1. Мрежови топологии</h2>
+        
+        <div class="topic">
+            <h3>1.1. Видове топологии</h3>
+            <table>
+                <tr>
+                    <th>Топология</th>
+                    <th>Описание</th>
+                    <th>Предимства</th>
+                    <th>Недостатъци</th>
+                </tr>
+                <tr>
+                    <td><strong>Звезда (Star)</strong></td>
+                    <td>Всички устройства свързани към централен хъб/комутатор</td>
+                    <td>Лесно управление, изолиране на проблеми</td>
+                    <td>Зависимост от централното устройство</td>
+                </tr>
+                <tr>
+                    <td><strong>Шина (Bus)</strong></td>
+                    <td>Всички устройства свързани към общ кабел</td>
+                    <td>Икономична, лесна за инсталация</td>
+                    <td>Проблеми засягат цялата мрежа</td>
+                </tr>
+                <tr>
+                    <td><strong>Пръстен (Ring)</strong></td>
+                    <td>Устройства свързани в кръг, данните се предават в една посока</td>
+                    <td>Равномерно разпределение на трафика</td>
+                    <td>Проблем спира цялата мрежа</td>
+                </tr>
+                <tr>
+                    <td><strong>Мрежа (Mesh)</strong></td>
+                    <td>Всяко устройство свързано с всяко друго</td>
+                    <td>Висока надеждност, резервни пътища</td>
+                    <td>Високи разходи, сложна конфигурация</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>2. Мрежови протоколи</h2>
+        
+        <div class="topic">
+            <h3>2.1. OSI модел (7 слоя)</h3>
+            <ol>
+                <li><strong>Приложен слой (Application)</strong> - HTTP, FTP, SMTP, DNS</li>
+                <li><strong>Слой на представяне (Presentation)</strong> - Кодиране, компресия, криптиране</li>
+                <li><strong>Сесиен слой (Session)</strong> - Управление на сесии</li>
+                <li><strong>Транспортен слой (Transport)</strong> - TCP, UDP</li>
+                <li><strong>Мрежов слой (Network)</strong> - IP, маршрутизация</li>
+                <li><strong>Канален слой (Data Link)</strong> - Ethernet, MAC адреси</li>
+                <li><strong>Физически слой (Physical)</strong> - Кабели, сигнали</li>
+            </ol>
+        </div>
+
+        <div class="topic">
+            <h3>2.2. Основни протоколи</h3>
+            <table>
+                <tr>
+                    <th>Протокол</th>
+                    <th>Пълно име</th>
+                    <th>Функция</th>
+                    <th>Порт</th>
+                </tr>
+                <tr>
+                    <td><strong>HTTP</strong></td>
+                    <td>HyperText Transfer Protocol</td>
+                    <td>Предаване на уеб страници</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <td><strong>HTTPS</strong></td>
+                    <td>HTTP Secure</td>
+                    <td>Шифрован HTTP</td>
+                    <td>443</td>
+                </tr>
+                <tr>
+                    <td><strong>TCP</strong></td>
+                    <td>Transmission Control Protocol</td>
+                    <td>Надежден пренос на данни</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><strong>UDP</strong></td>
+                    <td>User Datagram Protocol</td>
+                    <td>Бърз пренос без гаранции</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><strong>FTP</strong></td>
+                    <td>File Transfer Protocol</td>
+                    <td>Трансфер на файлове</td>
+                    <td>21</td>
+                </tr>
+                <tr>
+                    <td><strong>SMTP</strong></td>
+                    <td>Simple Mail Transfer Protocol</td>
+                    <td>Изпращане на имейл</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td><strong>POP3</strong></td>
+                    <td>Post Office Protocol v3</td>
+                    <td>Изтегляне на имейл</td>
+                    <td>110</td>
+                </tr>
+                <tr>
+                    <td><strong>DNS</strong></td>
+                    <td>Domain Name System</td>
+                    <td>Превод на имена към IP адреси</td>
+                    <td>53</td>
+                </tr>
+                <tr>
+                    <td><strong>DHCP</strong></td>
+                    <td>Dynamic Host Configuration Protocol</td>
+                    <td>Автоматично раздаване на IP адреси</td>
+                    <td>67/68</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="important">
+            <h3>Разлика между TCP и UDP:</h3>
+            <ul>
+                <li><strong>TCP:</strong> Надежден, с потвърждения, подреждане на пакети, управление на потока. Използва се за: уеб браузъри, имейл, файлов трансфер.</li>
+                <li><strong>UDP:</strong> Бърз, без гаранции, без установяване на връзка. Използва се за: видео стрийминг, онлайн игри, DNS заявки.</li>
+            </ul>
+        </div>
+
+        <h2>3. Мрежови операционни системи</h2>
+        
+        <div class="topic">
+            <h3>3.1. Какво е мрежова операционна система (NOS)?</h3>
+            <p>Мрежовата операционна система е специализирана ОС, проектирана да управлява мрежови ресурси и да осигурява услуги на мрежовите клиенти.</p>
+        </div>
+
+        <div class="topic">
+            <h3>3.2. Основни функции на NOS</h3>
+            <ul>
+                <li><strong>Управление на потребители и групи</strong> - Централизирана автентикация и авторизация</li>
+                <li><strong>Управление на файлове и принтери</strong> - Споделяне на ресурси</li>
+                <li><strong>Директория услуги</strong> - Active Directory (Windows), LDAP</li>
+                <li><strong>Мрежова сигурност</strong> - Firewall, VPN, шифроване</li>
+                <li><strong>Резервно копие и възстановяване</strong> - Автоматични backup системи</li>
+                <li><strong>Мониторинг и управление</strong> - Проследяване на производителността</li>
+            </ul>
+        </div>
+
+        <div class="topic">
+            <h3>3.3. Примери за мрежови ОС</h3>
+            <ul>
+                <li><strong>Windows Server</strong> - Microsoft сървърна ОС с Active Directory</li>
+                <li><strong>Linux сървърни дистрибуции</strong> - Ubuntu Server, CentOS, Red Hat</li>
+                <li><strong>Novell NetWare</strong> - Историческа NOS (вече не се поддържа)</li>
+                <li><strong>Unix сървъри</strong> - AIX, Solaris</li>
+            </ul>
+        </div>
+
+        <h2>4. Мрежова сигурност. Компютърни вируси</h2>
+        
+        <div class="topic">
+            <h3>4.1. Видове зловреден софтуер (Malware)</h3>
+            <table>
+                <tr>
+                    <th>Тип</th>
+                    <th>Описание</th>
+                    <th>Характеристики</th>
+                </tr>
+                <tr>
+                    <td><strong>Вирус</strong></td>
+                    <td>Зловреден код, който се прикрепя към файлове</td>
+                    <td>Нуждае се от носител, се размножава</td>
+                </tr>
+                <tr>
+                    <td><strong>Червей (Worm)</strong></td>
+                    <td>Самостоятелно се разпространява по мрежата</td>
+                    <td>Не нуждае носител, бързо разпространение</td>
+                </tr>
+                <tr>
+                    <td><strong>Trojan Horse</strong></td>
+                    <td>Прикрива се като легитимен софтуер</td>
+                    <td>Не се размножава, но отваря backdoor</td>
+                </tr>
+                <tr>
+                    <td><strong>Ransomware</strong></td>
+                    <td>Криптира данни и изисква откуп</td>
+                    <td>Блокира достъп до файлове</td>
+                </tr>
+                <tr>
+                    <td><strong>Spyware</strong></td>
+                    <td>Събира информация без знанието на потребителя</td>
+                    <td>Скрито наблюдение</td>
+                </tr>
+                <tr>
+                    <td><strong>Adware</strong></td>
+                    <td>Показва нежелани реклами</td>
+                    <td>По-малко опасен, но досаден</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="topic">
+            <h3>4.2. Мерки за защита</h3>
+            <ul>
+                <li><strong>Антивирусен софтуер</strong> - Регулярни сканирания и актуализации</li>
+                <li><strong>Firewall</strong> - Филтриране на входящ и изходящ трафик</li>
+                <li><strong>Регулярни актуализации</strong> - Пачове за ОС и софтуер</li>
+                <li><strong>Силни пароли</strong> - Сложни пароли и многофакторна автентикация</li>
+                <li><strong>Резервни копия</strong> - Регулярни backup-и на важни данни</li>
+                <li><strong>Обучение на потребителите</strong> - Разпознаване на фишинг и подозрителни имейли</li>
+            </ul>
+        </div>
+
+        <div class="important">
+            <h3>Фишинг (Phishing)</h3>
+            <p>Фишинг е опит за получаване на лична информация чрез фалшиви имейли или уебсайтове, които приличат на легитимни. Винаги проверявайте:</p>
+            <ul>
+                <li>Домейна на подателя</li>
+                <li>URL адресите преди кликване</li>
+                <li>Граматиката и правописа</li>
+                <li>Не споделяйте пароли или лични данни</li>
+            </ul>
+        </div>
+
+        <h2>5. Технологии за електронен бизнес</h2>
+        
+        <div class="topic">
+            <h3>5.1. Видове електронен бизнес модели</h3>
+            <table>
+                <tr>
+                    <th>Модел</th>
+                    <th>Описание</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td><strong>B2C</strong></td>
+                    <td>Business-to-Consumer - Бизнес към потребител</td>
+                    <td>Amazon, онлайн магазини</td>
+                </tr>
+                <tr>
+                    <td><strong>B2B</strong></td>
+                    <td>Business-to-Business - Бизнес към бизнес</td>
+                    <td>Alibaba B2B, търговски портали</td>
+                </tr>
+                <tr>
+                    <td><strong>C2C</strong></td>
+                    <td>Consumer-to-Consumer - Потребител към потребител</td>
+                    <td>eBay, OLX, Facebook Marketplace</td>
+                </tr>
+                <tr>
+                    <td><strong>C2B</strong></td>
+                    <td>Consumer-to-Business - Потребител към бизнес</td>
+                    <td>Freelancer платформи, Upwork</td>
+                </tr>
+                <tr>
+                    <td><strong>B2G</strong></td>
+                    <td>Business-to-Government - Бизнес към държава</td>
+                    <td>Електронни портали за обществени поръчки</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="important">
+            <h3>5.2. Технологии за електронен бизнес</h3>
+            <p>Технологиите за електронен бизнес включват различни системи и инструменти за дигитални бизнес операции:</p>
+            <ul>
+                <li><strong>E-commerce платформи</strong> - Shopify, WooCommerce, Magento</li>
+                <li><strong>Системи за плащания</strong> - PayPal, кредитни карти, банкови трансфери</li>
+                <li><strong>CRM системи</strong> - Управление на клиенти</li>
+                <li><strong>Облачни услуги</strong> - SaaS, PaaS, IaaS</li>
+            </ul>
+        </div>
+
+        <h2>6. URL, HTTP, HTML, XML</h2>
+        
+        <div class="topic">
+            <h3>6.1. URL (Uniform Resource Locator)</h3>
+            <p>URL е адрес, който идентифицира ресурс в интернет.</p>
+            <div class="example">
+                <strong>Пример:</strong> <code>https://www.example.com/path/page.html?param=value#section</code>
+                <ul>
+                    <li><strong>https://</strong> - Протокол</li>
+                    <li><strong>www.example.com</strong> - Домейн име</li>
+                    <li><strong>/path/page.html</strong> - Път до ресурса</li>
+                    <li><strong>?param=value</strong> - Параметри</li>
+                    <li><strong>#section</strong> - Яко (anchor)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="topic">
+            <h3>6.2. HTTP (HyperText Transfer Protocol)</h3>
+            <p>Протокол за предаване на уеб страници и други ресурси в интернет.</p>
+            <ul>
+                <li><strong>HTTP</strong> - Нешифрован (порт 80)</li>
+                <li><strong>HTTPS</strong> - Шифрован с TLS/SSL (порт 443)</li>
+            </ul>
+            <div class="example">
+                <strong>HTTP методи:</strong>
+                <ul>
+                    <li><strong>GET</strong> - Извличане на ресурс</li>
+                    <li><strong>POST</strong> - Изпращане на данни</li>
+                    <li><strong>PUT</strong> - Актуализиране на ресурс</li>
+                    <li><strong>DELETE</strong> - Изтриване на ресурс</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="topic">
+            <h3>6.3. HTML (HyperText Markup Language)</h3>
+            <p>Език за маркиране, използван за създаване на уеб страници.</p>
+            <div class="example">
+                <pre>&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Заглавие&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Заглавие&lt;/h1&gt;
+    &lt;p&gt;Параграф с текст&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+            </div>
+        </div>
+
+        <div class="topic">
+            <h3>6.4. XML (eXtensible Markup Language)</h3>
+            <p>Език за маркиране, използван за структуриране и съхранение на данни.</p>
+            <div class="example">
+                <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;student&gt;
+  &lt;name&gt;Иван Иванов&lt;/name&gt;
+  &lt;grade&gt;12а&lt;/grade&gt;
+&lt;/student&gt;</pre>
+            </div>
+        </div>
+
+        <h2>7. WWW, WEB сървър, WEB клиент</h2>
+        
+        <div class="topic">
+            <h3>7.1. WWW (World Wide Web)</h3>
+            <p>WWW е система от взаимосвързани документи и ресурси, достъпни чрез интернет.</p>
+            <ul>
+                <li>Създаден от Тим Бърнърс-Лий през 1989 г.</li>
+                <li>Базиран на HTTP протокол и HTML език</li>
+                <li>Използва URL адреси за идентификация на ресурси</li>
+            </ul>
+        </div>
+
+        <div class="topic">
+            <h3>7.2. WEB сървър</h3>
+            <p>Компютърна програма или система, която доставя уеб страници на клиенти.</p>
+            <ul>
+                <li><strong>Функции:</strong> Приема HTTP заявки, обработва ги, изпраща отговори</li>
+                <li><strong>Примери за софтуер:</strong> Apache, Nginx, Microsoft IIS</li>
+                <li><strong>Статични страници:</strong> Предварително създадени HTML файлове</li>
+                <li><strong>Динамични страници:</strong> Генерирани от сървърни скриптове (PHP, Python, Node.js)</li>
+            </ul>
+        </div>
+
+        <div class="topic">
+            <h3>7.3. WEB клиент</h3>
+            <p>Приложение (браузър), което заявява и показва уеб страници.</p>
+            <ul>
+                <li><strong>Функции:</strong> Изпраща HTTP заявки, получава и рендира HTML/CSS/JavaScript</li>
+                <li><strong>Примери:</strong> Chrome, Firefox, Safari, Edge</li>
+                <li><strong>Процес:</strong> Потребител въвежда URL → Браузър изпраща заявка → Сървър отговаря → Браузър показва страницата</li>
+            </ul>
+        </div>
+
+        <h2>8. Машини за търсене</h2>
+        
+        <div class="topic">
+            <h3>8.1. Какво е машина за търсене?</h3>
+            <p>Система за търсене на информация в интернет чрез ключови думи.</p>
+        </div>
+
+        <div class="topic">
+            <h3>8.2. Как работи?</h3>
+            <ol>
+                <li><strong>Индексиране (Crawling)</strong> - Автоматично обхождане на уебсайтове</li>
+                <li><strong>Индексиране (Indexing)</strong> - Създаване на индекс от думи и страници</li>
+                <li><strong>Търсене (Searching)</strong> - Съвпадение на заявката с индекса</li>
+                <li><strong>Ранжиране (Ranking)</strong> - Подреждане на резултатите по релевантност</li>
+            </ol>
+        </div>
+
+        <div class="topic">
+            <h3>8.3. Популярни машини за търсене</h3>
+            <ul>
+                <li><strong>Google</strong> - Най-популярната в света</li>
+                <li><strong>Bing</strong> - Microsoft търсачка</li>
+                <li><strong>Yahoo</strong> - Историческа търсачка</li>
+                <li><strong>DuckDuckGo</strong> - Фокус върху поверителността</li>
+            </ul>
+        </div>
+
+        <h2>9. Метасредства за търсене</h2>
+        
+        <div class="topic">
+            <h3>9.1. Какво е метасредство за търсене?</h3>
+            <p>Система, която търси в множество машини за търсене едновременно и комбинира резултатите.</p>
+        </div>
+
+        <div class="topic">
+            <h3>9.2. Предимства</h3>
+            <ul>
+                <li>По-широк обхват на резултатите</li>
+                <li>Сравнение между различни търсачки</li>
+                <li>Единна точка за достъп</li>
+                <li>Възможност за филтриране и сортиране</li>
+            </ul>
+        </div>
+
+        <div class="topic">
+            <h3>9.3. Примери</h3>
+            <ul>
+                <li><strong>Dogpile</strong> - Комбинира резултати от Google, Yahoo, Bing</li>
+                <li><strong>Metacrawler</strong> - Един от първите мета-търсачки</li>
+                <li><strong>Search.com</strong> - Мета-търсачка с различни категории</li>
+            </ul>
+        </div>
+
+        <div class="important">
+            <h3>Разлика между машина за търсене и метасредство:</h3>
+            <ul>
+                <li><strong>Машина за търсене:</strong> Има собствен индекс, обхожда уебсайтове</li>
+                <li><strong>Метасредство:</strong> Няма собствен индекс, използва резултати от други търсачки</li>
+            </ul>
+        </div>
+
+        <h2>10. Търсене на информация в интернет</h2>
+        
+        <div class="topic">
+            <h3>10.1. Ефективни техники за търсене</h3>
+            <ul>
+                <li><strong>Използване на кавички</strong> - Търсене на точна фраза: "интернет и електронна търговия"</li>
+                <li><strong>Минус знак</strong> - Изключване на думи: интернет -социални</li>
+                <li><strong>Сайт:</strong> Търсене в конкретен сайт: site:example.com</li>
+                <li><strong>Тип файл:</strong> Търсене на конкретен тип: filetype:pdf</li>
+                <li><strong>ИЛИ (OR):</strong> Търсене на едно или друго: интернет ИЛИ мрежа</li>
+            </ul>
+        </div>
+
+        <div class="topic">
+            <h3>10.2. Оценяване на източници</h3>
+            <ul>
+                <li><strong>Авторство</strong> - Кой е авторът? Има ли авторитет?</li>
+                <li><strong>Актуалност</strong> - Кога е публикувано? Актуално ли е?</li>
+                <li><strong>Обективност</strong> - Представя ли различни гледни точки?</li>
+                <li><strong>Точност</strong> - Проверяване на факти</li>
+                <li><strong>Покритие</strong> - Достатъчно ли е задълбочено?</li>
+            </ul>
+        </div>
+
+        <div style="margin-top: 40px; padding: 20px; background: #e8f4f8; border-radius: 5px;">
+            <h2 style="border: none; padding: 0; margin: 0 0 10px 0;">✅ Ключови точки за контролната работа</h2>
+            <ul style="font-size: 1.1em;">
+                <li>Знаете различните мрежови топологии и техните характеристики</li>
+                <li>Разбирате OSI модела и основните мрежови протоколи (TCP, UDP, HTTP, DNS и др.)</li>
+                <li>Знаете функциите на мрежовите операционни системи</li>
+                <li>Разпознавате различните видове зловреден софтуер и мерките за защита</li>
+                <li>Разбирате моделите на електронен бизнес (B2C, B2B, C2C и др.)</li>
+                <li>Знаете какво са URL, HTTP, HTML, XML</li>
+                <li>Разбирате разликата между уеб сървър и уеб клиент</li>
+                <li>Знаете как работят машините за търсене и метасредствата</li>
+                <li>Можете да търсите ефективно информация в интернет</li>
+            </ul>
+        </div>
+
+        <p style="text-align: center; margin-top: 40px; color: #7f8c8d;">
+            <em>Успех на контролната работа! 🎓</em>
+        </p>
+    </div>
+</body>
+</html>

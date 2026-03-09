@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Материали за подготовка - ООП - 12б</title>
+    <style>
+        @media print {
+            @page {
+                size: A4;
+                margin: 1.5cm;
+            }
+            body {
+                background: white;
+            }
+            .no-print {
+                display: none;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+        }
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            max-width: 21cm;
+            margin: 0 auto;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        @media print {
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #000;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 20pt;
+            color: #000;
+        }
+        .header h2 {
+            margin: 10px 0;
+            font-size: 16pt;
+            color: #333;
+        }
+        .section {
+            margin-bottom: 40px;
+            page-break-inside: avoid;
+        }
+        .section-title {
+            background: #3498db;
+            color: white;
+            padding: 15px;
+            font-size: 16pt;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        @media print {
+            .section-title {
+                border-radius: 0;
+            }
+        }
+        .concept-block {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-left: 4px solid #3498db;
+            background: #fafafa;
+            page-break-inside: avoid;
+        }
+        .concept-title {
+            font-weight: bold;
+            font-size: 14pt;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .concept-description {
+            margin-bottom: 15px;
+            font-size: 11pt;
+            text-align: justify;
+        }
+        .code-example {
+            background: #f5f5f5;
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 10pt;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.5;
+            border-radius: 3px;
+        }
+        .key-points {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .key-points h4 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+        .key-points ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .key-points li {
+            margin: 8px 0;
+        }
+        .info-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 3px;
+        }
+        .info-box h3 {
+            margin-top: 0;
+            color: #856404;
+        }
+        .info-box ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #000;
+            font-size: 10pt;
+            color: #666;
+        }
+        .highlight {
+            background: #fff9c4;
+            padding: 2px 4px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>МАТЕРИАЛИ ЗА ПОДГОТОВКА</h1>
+            <h2>Контролна работа по Обектно ориентирано програмиране</h2>
+            <p><strong>Клас:</strong> 12б | <strong>Първи срок на учебната 2025/2026 година</strong></p>
+        </div>
+
+        <div class="info-box">
+            <h3>Информация за контролната работа:</h3>
+            <ul>
+                <li><strong>Брой варианти:</strong> 2</li>
+                <li><strong>Брой въпроси на вариант:</strong> 10</li>
+                <li><strong>Точки на въпрос:</strong> 10 точки (по 2 точки на всяко празно място)</li>
+                <li><strong>Общо точки:</strong> 100</li>
+                <li><strong>Формат:</strong> Попълване на празни места в C# код</li>
+                <li><strong>Време:</strong> 90 минути</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">1. КЛАСОВЕ И ОБЕКТИ</div>
+            
+            <div class="concept-block">
+                <div class="concept-title">Дефиниране на класове</div>
+                <div class="concept-description">
+                    Класът е шаблон за създаване на обекти. В C# класът се дефинира с ключовата дума <span class="highlight">class</span>, следвана от името на класа. Класът може да съдържа полета (fields), свойства (properties), методи (methods) и конструктори (constructors).
+                </div>
+                <div class="code-example">public class Student {
+    private string name;  // private поле
+    
+    public Student(string name) {  // Конструктор
+        this.name = name;
+    }
+    
+    public string Name {  // Свойство
+        get { return name; }
+        set { name = value; }
+    }
+}</div>
+            </div>
+
+            <div class="concept-block">
+                <div class="concept-title">Модификатори за достъп</div>
+                <div class="concept-description">
+                    Модификаторите за достъп определят видимостта на членовете на класа:
+                </div>
+                <div class="key-points">
+                    <h4>Основни модификатори:</h4>
+                    <ul>
+                        <li><strong>public</strong> - достъпен навсякъде (извън класа, в наследниците)</li>
+                        <li><strong>private</strong> - достъпен само в рамките на същия клас</li>
+                        <li><strong>protected</strong> - достъпен в класа и в наследниците</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="concept-block">
+                <div class="concept-title">Конструктори</div>
+                <div class="concept-description">
+                    Конструкторът е специален метод, който се извиква при създаване на обект. Името му съвпада с името на класа и няма тип на връщане. Използва се за инициализация на полетата на обекта.
+                </div>
+                <div class="code-example">public class Person {
+    private string name;
+    
+    public Person(string name) {  // Конструктор
+        this.name = name;
+    }
+}</div>
+            </div>
+
+            <div class="concept-block">
+                <div class="concept-title">Свойства (Properties)</div>
+                <div class="concept-description">
+                    Свойствата предоставят контролиран достъп до private полета. Те имат <span class="highlight">get</span> и/или <span class="highlight">set</span> аксесори. В <span class="highlight">set</span> аксесора, стойността се достъпва чрез ключовата дума <span class="highlight">value</span>.
+                </div>
+                <div class="code-example">public string Name {
+    get { return name; }      // Четене на стойността
+    set { name = value; }     // Задаване на стойността
+}</div>
+            </div>
+        </div>
+
+        <div class="section page-break">
+            <div class="section-title">2. НАСЛЕДЯВАНЕ</div>
+            
+            <div class="concept-block">
+                <div class="concept-title">Основна концепция</div>
+                <div class="concept-description">
+                    Наследяването позволява на един клас да наследи членовете на друг клас. Производният клас (наследник) получава достъп до <span class="highlight">public</span> и <span class="highlight">protected</span> членовете на базовия клас.
+                </div>
+                <div class="code-example">public class Vehicle {  // Базов клас
+    protected string brand;  // protected - достъпен в наследниците
+    
+    public Vehicle(string brand) {
+        this.brand = brand;
+    }
+}
+
+class Car : Vehicle {  // Производен клас
+    public Car(string brand) : base(brand) {  // Извикване на конструктора на базовия клас
+    }
+}</div>
+            </div>
+
+            <div class="concept-block">
+                <div class="concept-title">virtual и override</div>
+                <div class="concept-description">
+                    Ключовата дума <span class="highlight">virtual</span> се използва в базовия клас, за да позволи презаписване на метод в производния клас. Ключовата дума <span class="highlight">override</span> се използва в производния клас за презаписване на virtual метода.
+                </div>
+                <div class="code-example">public class Animal {
+    public virtual void MakeSound() {  // virtual метод
+        Console.WriteLine("Животно издава звук");
+    }
+}
+
+class Dog : Animal {
+    public override void MakeSound() {  // override метод
+        Console.WriteLine("Кучето лае");
+    }
+}</div>
+            </div>
+
+            <div class="concept-block">
+                <div class="concept-title">base ключова дума</div>
+                <div class="concept-description">
+                    Ключовата дума <span class="highlight">base</span> се използва за достъп до членовете на базовия клас. Най-често се използва за извикване на конструктора на базовия клас: <span class="highlight">base(параметри)</span>.
+                </div>
+            </div>
+        </div>
+
+        <div class="section page-break">
+            <div class="section-title">3. АБСТРАКТНИ КЛАСОВЕ</div>
+            
+            <div class="concept-block">
+                <div class="concept-title">Дефиниране на абстрактен клас</div>
+                <div class="concept-description">
+                    Абстрактният клас не може да бъде инстанциран директно. Съдържа поне един абстрактен метод (метод без имплементация). Производните класове трябва да имплементират всички абстрактни методи.
+                </div>
+                <div class="code-example">public abstract class Animal {
+    protected string name;
+    
+    public Animal(string name) {
+        this.name = name;
+    }
+    
+    public abstract void MakeSound();  // Абстрактен метод без имплементация
+}
+
+class Dog : Animal {
+    public Dog(string name) : base(name) {
+    }
+    
+    public override void MakeSound() {  // Имплементация на абстрактния метод
+        Console.WriteLine($"{name} лае");
+    }
+}</div>
+            </div>
+        </div>
+
+        <div class="section page-break">
+            <div class="section-title">4. ИНТЕРФЕЙСИ</div>
+            
+            <div class="concept-block">
+                <div class="concept-title">Дефиниране на интерфейс</div>
+                <div class="concept-description">
+                    Интерфейсът дефинира договор за поведение. Класът може да имплементира множество интерфейси. Всички методи в интерфейса са публични и абстрактни по подразбиране.
+                </div>
+                <div class="code-example">interface IShape {
+    double CalculateArea();
+    double CalculatePerimeter();
+}
+
+class Circle : IShape {
+    private double radius;
+    
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+    
+    public double CalculateArea() {
+        return Math.PI * radius * radius;
+    }
+    
+    public double CalculatePerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}</div>
+            </div>
+        </div>
+
+        <div class="section page-break">
+            <div class="section-title">5. СТАТИЧНИ ЧЛЕНОВЕ</div>
+            
+            <div class="concept-block">
+                <div class="concept-title">Статични полета и методи</div>
+                <div class="concept-description">
+                    Статичните членове принадлежат на класа, а не на конкретен обект. Те се споделят между всички инстанции на класа. Статичните методи се извикват чрез името на класа, а не чрез обект.
+                </div>
+                <div class="code-example">class Counter {
+    private static int count = 0;  // Статично поле
+    
+    public static void Increment() {  // Статичен метод
+        count++;
+    }
+    
+    public static int GetCount() {
+        return count;
+    }
+}
+
+// Използване:
+Counter.Increment();  // Извикване на статичен метод
+int total = Counter.GetCount();</div>
+            </div>
+        </div>
+
+        <div class="section page-break">
+            <div class="section-title">6. GENERICS</div>
+            
+            <div class="concept-block">
+                <div class="concept-title">Generic класове</div>
+                <div class="concept-description">
+                    Generics позволяват създаването на класове и методи, които работят с различни типове данни. Типът се задава при създаване на обекта. Обикновено се използва буквата <span class="highlight">T</span> за тип параметър.
+                </div>
+                <div class="code-example">class Box&lt;T&gt; {
+    private T item;
+    
+    public Box(T item) {
+        this.item = item;
+    }
+    
+    public T GetItem() {
+        return item;
+    }
+}
+
+// Използване:
+Box&lt;string&gt; stringBox = new Box&lt;string&gt;("Hello");
+Box&lt;int&gt; intBox = new Box&lt;int&gt;(42);</div>
+            </div>
+        </div>
+
+        <div class="section page-break">
+            <div class="section-title">7. LINQ (Language Integrated Query)</div>
+            
+            <div class="concept-block">
+                <div class="concept-title">Основни LINQ методи</div>
+                <div class="key-points">
+                    <h4>Често използвани LINQ методи:</h4>
+                    <ul>
+                        <li><strong>Where</strong> - филтрира елементи по условие</li>
+                        <li><strong>OrderBy</strong> - сортира във възходящ ред</li>
+                        <li><strong>OrderByDescending</strong> - сортира в низходящ ред</li>
+                        <li><strong>Take</strong> - взима първите N елемента</li>
+                        <li><strong>ToList</strong> - конвертира в List</li>
+                        <li><strong>AsEnumerable</strong> - конвертира в IEnumerable</li>
+                    </ul>
+                </div>
+                <div class="code-example">List&lt;Student&gt; students = GetStudents();
+var result = students
+    .Where(s =&gt; s.Grade &gt; 4.50)        // Филтриране
+    .OrderByDescending(s =&gt; s.Grade)     // Сортиране
+    .Take(5);                             // Взимане на първите 5
+
+foreach (var student in result) {
+    Console.WriteLine($"{student.Name}: {student.Grade}");
+}</div>
+            </div>
+        </div>
+
+        <div class="section page-break">
+            <div class="section-title">8. КОЛЕКЦИИ</div>
+            
+            <div class="concept-block">
+                <div class="concept-title">List&lt;T&gt;</div>
+                <div class="concept-description">
+                    List&lt;T&gt; е динамичен масив, който може да расте и намалява. Основни методи:
+                </div>
+                <div class="key-points">
+                    <ul>
+                        <li><strong>Add(item)</strong> - добавя елемент в края на списъка</li>
+                        <li><strong>Count</strong> - свойство, което връща броя елементи</li>
+                        <li><strong>new List&lt;T&gt;()</strong> - създаване на нов списък</li>
+                    </ul>
+                </div>
+                <div class="code-example">List&lt;int&gt; numbers = new List&lt;int&gt;();
+numbers.Add(10);
+numbers.Add(20);
+int count = numbers.Count;</div>
+            </div>
+
+            <div class="concept-block">
+                <div class="concept-title">foreach цикъл</div>
+                <div class="concept-description">
+                    <span class="highlight">foreach</span> цикълът се използва за итерация през колекции. Синтаксис: <span class="highlight">foreach (тип променлива in колекция)</span>
+                </div>
+                <div class="code-example">foreach (var item in collection) {
+    Console.WriteLine(item);
+}</div>
+            </div>
+        </div>
+
+        <div class="section page-break">
+            <div class="section-title">9. ОБРАБОТКА НА ИЗКЛЮЧЕНИЯ</div>
+            
+            <div class="concept-block">
+                <div class="concept-title">try-catch-finally</div>
+                <div class="concept-description">
+                    Блокът <span class="highlight">try</span> съдържа код, който може да хвърли изключение. Блокът <span class="highlight">catch</span> прихваща и обработва изключенията. Блокът <span class="highlight">finally</span> винаги се изпълнява, независимо дали е възникнало изключение.
+                </div>
+                <div class="code-example">try {
+    int a = 10;
+    int b = 0;
+    int result = a / b;  // Може да хвърли DivideByZeroException
+} catch (DivideByZeroException ex) {
+    Console.WriteLine($"Грешка: {ex.Message}");
+} finally {
+    Console.WriteLine("Операцията завърши");  // Винаги се изпълнява
+}</div>
+            </div>
+
+            <div class="concept-block">
+                <div class="concept-title">int.Parse()</div>
+                <div class="concept-description">
+                    Методът <span class="highlight">int.Parse()</span> конвертира низ в число. Ако низът не може да бъде конвертиран, хвърля <span class="highlight">FormatException</span>.
+                </div>
+                <div class="code-example">try {
+    string input = "123";
+    int number = int.Parse(input);  // Конвертира "123" в 123
+} catch (FormatException ex) {
+    Console.WriteLine($"Грешка при конвертиране: {ex.Message}");
+}</div>
+            </div>
+        </div>
+
+        <div class="section page-break">
+            <div class="section-title">10. ОПЕРАТОРИ И СИНТАКСИС</div>
+            
+            <div class="concept-block">
+                <div class="concept-title">Аритметични оператори</div>
+                <div class="key-points">
+                    <ul>
+                        <li><strong>+</strong> - събиране</li>
+                        <li><strong>-</strong> - изваждане</li>
+                        <li><strong>*</strong> - умножение</li>
+                        <li><strong>/</strong> - деление</li>
+                        <li><strong>++</strong> - инкремент (увеличаване с 1)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="concept-block">
+                <div class="concept-title">new ключова дума</div>
+                <div class="concept-description">
+                    Ключовата дума <span class="highlight">new</span> се използва за създаване на нов обект от даден клас. Синтаксис: <span class="highlight">new ИмеНаКлас(параметри)</span>
+                </div>
+                <div class="code-example">Calculator calc = new Calculator();  // Създаване на нов обект</div>
+            </div>
+        </div>
+
+        <div class="section page-break">
+            <div class="section-title">11. ПОЛЕЗНИ СЪВЕТИ ЗА КОНТРОЛНАТА РАБОТА</div>
+            
+            <div class="concept-block">
+                <div class="concept-title">Как да се подготвите:</div>
+                <div class="key-points">
+                    <ul>
+                        <li>Прегледайте всички ООП концепции: класове, наследяване, абстрактни класове, интерфейси</li>
+                        <li>Упражнете се с модификаторите за достъп: public, private, protected</li>
+                        <li>Запомнете разликата между virtual и override</li>
+                        <li>Научете синтаксиса на конструкторите и използването на base</li>
+                        <li>Упражнете се с LINQ методите: Where, OrderBy, OrderByDescending, Take</li>
+                        <li>Прегледайте работата със статични членове</li>
+                        <li>Упражнете се с generics и синтаксиса &lt;T&gt;</li>
+                        <li>Прегледайте обработката на изключения: try-catch-finally</li>
+                        <li>Упражнете се с колекции: List, foreach цикъл</li>
+                        <li>Внимавайте на синтаксиса: всяка скоба, точка и запетая са важни!</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="concept-block">
+                <div class="concept-title">По време на контролната работа:</div>
+                <div class="key-points">
+                    <ul>
+                        <li>Прочетете внимателно всеки въпрос и обяснението</li>
+                        <li>Погледнете целия код преди да започнете да попълвате</li>
+                        <li>Помнете, че всеки въпрос има точно 5 празни места</li>
+                        <li>Проверете дали отговорите ви са логически свързани с контекста</li>
+                        <li>Внимавайте на главни и малки букви в отговорите</li>
+                        <li>Проверете синтаксиса на кода след попълване</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>ПРОФЕСИОНАЛНА ГИМНАЗИЯ „НИКОЛА ЙОНКОВ ВАПЦАРОВ"</strong></p>
+            <p>гр. Белица 2780, Обл. Благоевград, ул. "Димо Хаджидимов" 17</p>
+            <p>Тел: 0983605220 | e-mail: info-105002@edu.mon.bg</p>
+        </div>
+    </div>
+</body>
+</html>

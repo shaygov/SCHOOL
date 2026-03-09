@@ -1,0 +1,321 @@
+{
+  "school": {
+    "ministry": "МИНИСТЕРСТВО НА ОБРАЗОВАНИЕТО И НАУКАТА",
+    "name": "ПРОФЕСИОНАЛНА ГИМНАЗИЯ „НИКОЛА ЙОНКОВ ВАПЦАРОВ\"",
+    "contact": "гр. Белица 2780, Обл. Благоевград, ул. \"Димо Хаджидимов\" 17, Тел: 0983605220 e-mail: info-105002@edu.mon.bg",
+    "logo": "logo.png"
+  },
+  "test": {
+    "subject": "Обектно ориентирано програмиране",
+    "class": "12б",
+    "term": "Първи срок на учебната 2025/2026 година",
+    "approval": {
+      "approvedBy": "Утвърдил:",
+      "name": "Фанка Къшева",
+      "title": "/директор/"
+    },
+      "points": {
+      "perBlank": 3,
+      "perQuestion": 12,
+      "total": 100
+    },
+    "gradingScale": [
+      { "from": 0, "to": 35, "grade": "Слаб (2)" },
+      { "from": 36, "to": 55, "grade": "Среден (3)" },
+      { "from": 56, "to": 75, "grade": "Добър (4)" },
+      { "from": 76, "to": 89, "grade": "Мн.добър (5)" },
+      { "from": 90, "to": 100, "grade": "Отличен (6)" }
+    ]
+  },
+  "rubric": {
+    "version": "1.1",
+    "lastUpdated": "2026-02-21",
+    "author": "Фанка Къшева",
+    "approvedBy": "Фанка Къшева",
+    "scope": "Контролно по ООП — варианти 1–2 (12. клас)",
+    "title": "Критерий за оценяване — Обектно ориентирано програмиране (контролно)",
+    "gradingSummaryTitle": "Обща точкова система и скала",
+    "gradingScaleLabel": "Скала за оценки",
+    "pointsBreakdownTitle": "Разпределение на точките по типове задачи",
+    "criteriaTitle": "Критерии за оценяване",
+    "criticalQuestionsTitle": "Ключови критерии",
+    "criticalQuestions": [
+      "Коректна употреба на C# синтаксис и ключови думи (class, interface, abstract, virtual, override, base).",
+      "Правилно дефиниране и използване на модификатори за достъп (public, private, protected).",
+      "Демонстриране на ООП принципи: наследяване, полиморфизъм, интерфейси и абстрактни класове.",
+      "Коректна работа с колекции и масиви (извличане, филтриране, сортиране, преобразуване).",
+      "Обработка на изключения и безопасност при операции (try/catch, Parse, DivideByZero).",
+      "Коректно дефиниране на свойства, конструктори и статични членове.",
+      "Ясност на кода: подходящи имена, четливи формати и кратки, коректни коментари."
+    ],
+    "partialCreditRules": [
+      {
+        "appliesTo": "Попълване/кодови задачи",
+        "rules": [
+          "Пълен брой точки — синтаксис и логика напълно коректни и работещ код.",
+          "Частични точки — работеща частична логика или коректен синтаксис с непълна логика.",
+          "Минимални точки — частични отговори, които демонстрират частично разбиране.",
+          "0 точки — липса на съществено разбиране или явни грешки, които правят решението неработещо."
+        ]
+      },
+      {
+        "appliesTo": "Отворени/описателни въпроси",
+        "rules": [
+          "Пълен брой точки — ясно и точно обяснение с релевантни примери.",
+          "Среден брой точки — основните идеи са правилни, но липсват детайли или примери.",
+          "Малък брой точки — непълни или частично неверни твърдения."
+        ]
+      }
+    ],
+    "scoreMatrix": [
+      {
+        "question": 1,
+        "totalPoints": 12,
+        "breakdown": {
+          "syntax": 4,
+          "logic": 5,
+          "readability": 3
+        },
+        "sampleAnswer": "public class Student { private string name; public Student(string name) { this.name = name; } public string Name { get => name; set => name = value; } }"
+      },
+      {
+        "question": 2,
+        "totalPoints": 12,
+        "breakdown": {
+          "syntax": 3,
+          "logic": 6,
+          "collectionUsage": 3
+        },
+        "sampleAnswer": "List<Student> filtered = new List<Student>(); foreach (Student s in students) { if (s.Grade > 4.50) filtered.Add(s); } filtered.Sort((a,b)=>b.Grade.CompareTo(a.Grade));"
+      },
+      {
+        "question": 3,
+        "totalPoints": 12,
+        "breakdown": {
+          "syntax": 4,
+          "inheritance": 5,
+          "clarity": 3
+        },
+        "sampleAnswer": "public class Vehicle { protected string brand; public Vehicle(string brand) { this.brand = brand; } public virtual void Start() { Console.WriteLine($\"{brand} стартира\"); } } class Car : Vehicle { public Car(string brand) : base(brand) {} }"
+      },
+      {
+        "question": 4,
+        "totalPoints": 12,
+        "breakdown": {
+          "syntax": 3,
+          "collectionUsage": 6,
+          "readability": 3
+        },
+        "sampleAnswer": "List<int> list = numbers.AsEnumerable().ToList(); list.Add(4);"
+      },
+      {
+        "question": 5,
+        "totalPoints": 12,
+        "breakdown": {
+          "syntax": 4,
+          "interfaces": 5,
+          "clarity": 3
+        },
+        "sampleAnswer": "interface IShape { double CalculateArea(); double CalculatePerimeter(); } class Circle : IShape { private double radius; public Circle(double radius) { this.radius = radius; } public double CalculateArea() => Math.PI * radius * radius; public double CalculatePerimeter() => 2 * Math.PI * radius; }"
+      },
+      {
+        "question": 6,
+        "totalPoints": 12,
+        "breakdown": {
+          "syntax": 4,
+          "abstraction": 5,
+          "clarity": 3
+        },
+        "sampleAnswer": "public abstract class Animal { protected string name; public Animal(string name) { this.name = name; } public abstract void MakeSound(); } class Dog : Animal { public Dog(string name) : base(name) {} public override void MakeSound() { Console.WriteLine(\"Бау\"); } }"
+      },
+      {
+        "question": 7,
+        "totalPoints": 12,
+        "breakdown": {
+          "syntax": 3,
+          "staticBehavior": 6,
+          "readability": 3
+        },
+        "sampleAnswer": "class Counter { private static int count = 0; public static void Increment() { count++; } public static int GetCount() { return count; } }"
+      },
+      {
+        "question": 8,
+        "totalPoints": 12,
+        "breakdown": {
+          "syntax": 4,
+          "logic": 5,
+          "presentation": 3
+        },
+        "sampleAnswer": "class Calculator { public int Add(int a, int b) { return a + b; } } Calculator calc = new Calculator();"
+      },
+      {
+        "question": 9,
+        "totalPoints": 4,
+        "breakdown": {
+          "syntax": 1,
+          "logic": 2,
+          "errorHandling": 1
+        },
+        "sampleAnswer": "try { int a=10; int b=0; int result = a / b; Console.WriteLine(result); } catch (DivideByZeroException ex) { Console.WriteLine($\"Грешка: {ex.Message}\"); }"
+      }
+    ],
+    "sampleAnswers": {
+      "1": "public class Student { private string name; public Student(string name) { this.name = name; } public string Name { get => name; set => name = value; } }",
+      "2": "List<Student> filtered = new List<Student>(); foreach (Student s in students) { if (s.Grade > 4.50) filtered.Add(s); } filtered.Sort((a,b)=>b.Grade.CompareTo(a.Grade));",
+      "3": "public class Vehicle { protected string brand; public Vehicle(string brand) { this.brand = brand; } public virtual void Start() { Console.WriteLine($\"{brand} стартира\"); } }",
+      "4": "List<int> list = numbers.AsEnumerable().ToList(); list.Add(4);",
+      "5": "interface IShape { double CalculateArea(); double CalculatePerimeter(); }",
+      "6": "public abstract class Animal { protected string name; public Animal(string name) { this.name = name; } public abstract void MakeSound(); }",
+      "7": "class Counter { private static int count = 0; public static void Increment() { count++; } public static int GetCount() { return count; } }",
+      "8": "class Calculator { public int Add(int a, int b) { return a + b; } }",
+      "9": "try { int a=10; int b=0; int result = a / b; Console.WriteLine(result); } catch (DivideByZeroException ex) { Console.WriteLine($\"Грешка: {ex.Message}\"); }"
+    },
+    "generalGuidelines": [
+      "Попълващи задачи — оценка по синтаксис, логика, използване на подходящи конструкции и четливост.",
+      "Задачи с колекции/алгоритми — акцент върху коректност на алгоритъма и ефективност на използваните методи.",
+      "Въпроси за наследяване/интерфейси/абстрактни класове — оценка по правилна употреба на наследяване и полиморфизъм.",
+      "Въпроси за изключения — оценка по коректна обработка на грешки и защита от неправилни входни данни."
+    ],
+    "documentFormat": {
+      "printLayout": "A4",
+      "font": "Times New Roman, 12pt",
+      "sectionsOrder": [
+        "Title",
+        "Metadata",
+        "Grading summary",
+        "Points breakdown",
+        "Criteria",
+        "Sample answers",
+        "Policies",
+        "Signatures"
+      ],
+      "signatureFields": [
+        "Author",
+        "Approved by"
+      ]
+    }
+  },
+  "variants": [
+    {
+      "number": 1,
+      "questions": [
+        {
+          "number": 1,
+          "points": 12,
+          "question": "Попълнете липсващите части в C# класа Student. Класът трябва да има модификатор за достъп на класа, поле за име с ограничен достъп, конструктор с параметър и свойство с get и set аксесори за достъп до името:\n\n____________ class Student {\n    ____________ string name;\n    \n    ____________ Student(string name) {\n        this.name = name;\n    }\n    \n    ____________ string Name {\n        get { return name; }\n        set { name = value; }\n    }\n}",
+          "answers": ["public", "private", "public", "public"]
+        },
+        {
+          "number": 2,
+          "points": 12,
+          "question": "Попълнете липсващите части в C# програма за извличане на студенти с оценка над 4.50. Програмата трябва да създаде нов списък, да използва цикъл за итерация през всички студенти, да филтрира тези с оценка над 4.50 и да ги добави в списъка. След това списъкът се сортира по оценка в низходящ ред и се извличат първите 5 студента:\n\nList<Student> students = GetStudents();\nList<Student> filtered = ____________ List<Student>();\n\n____________ (Student s ____________ students) {\n    if (s.Grade > 4.50) {\n        filtered.____________(s);\n    }\n}\n\nfiltered.Sort((a, b) => b.Grade.CompareTo(a.Grade));\nList<Student> result = filtered.GetRange(0, Math.Min(5, filtered.Count));",
+          "answers": ["new", "foreach", "in", "Add"]
+        },
+        {
+          "number": 3,
+          "points": 12,
+          "question": "Попълнете липсващите части в C# класа за наследяване. Класът Vehicle трябва да има модификатор за достъп, поле за марка достъпно в наследниците, метод Start който може да се презапише, а класът Car трябва да наследява Vehicle и да извика конструктора на базовия клас:\n\n____________ class Vehicle {\n    ____________ string brand;\n    \n    public Vehicle(string brand) {\n        this.brand = brand;\n    }\n    \n    public ____________ void Start() {\n        Console.WriteLine($\"{brand} стартира\");\n    }\n}\n\nclass Car : Vehicle {\n    public Car(string brand) : ____________(brand) {\n    }\n}",
+          "answers": ["public", "protected", "virtual", "base"]
+        },
+        {
+          "number": 4,
+          "points": 12,
+          "question": "Попълнете липсващите части в C# програма за работа с масиви и колекции. Програмата трябва да декларира променлива от тип списък от цели числа, да конвертира масива в колекция и след това в списък, и накрая да добави нов елемент:\n\nint[] numbers = { 1, 2, 3 };\n____________ list = numbers.____________().____________();\nlist.____________(4);",
+          "answers": ["List<int>", "AsEnumerable", "ToList", "Add"]
+        },
+        {
+          "number": 5,
+          "points": 12,
+          "question": "Попълнете липсващите части в C# програма за работа с интерфейс. Дефинирайте интерфейс IShape, укажете типа на връщане на метода CalculateArea, имплементирайте интерфейса в класа Circle и дефинирайте поле за радиус с ограничен достъп:\n\n____________ IShape {\n    ____________ double CalculateArea();\n    double CalculatePerimeter();\n}\n\nclass Circle : ____________ {\n    ____________ double radius;\n    \n    public Circle(double radius) {\n        this.radius = radius;\n    }\n}",
+          "answers": ["interface", "double", "IShape", "private"]
+        },
+        {
+          "number": 6,
+          "points": 12,
+          "question": "Попълнете липсващите части в C# програма за работа с абстрактен клас. Класът Animal трябва да има модификатор за достъп, поле за име достъпно в наследниците и абстрактен метод MakeSound. Класът Dog трябва да наследява Animal и да извика конструктора на базовия клас:\n\n____________ abstract class Animal {\n    ____________ string name;\n    \n    public Animal(string name) {\n        this.name = name;\n    }\n    \n    public ____________ void MakeSound();\n}\n\nclass Dog : Animal {\n    public Dog(string name) : ____________(name) {\n    }\n}",
+          "answers": ["public", "protected", "abstract", "base"]
+        },
+        {
+          "number": 7,
+          "points": 12,
+          "question": "Попълнете липсващите части в C# програма за работа със статични членове. Класът Counter трябва да има статично поле за броене с ограничен достъп, статичен метод Increment, който увеличава брояча, и статичен метод GetCount за връщане на стойността:\n\nclass Counter {\n    ____________ static int count = 0;\n    \n    ____________ static void Increment() {\n        count____________;\n    }\n    \n    public ____________ int GetCount() {\n        return count;\n    }\n}",
+          "answers": ["private", "public", "++", "static"]
+        },
+        {
+          "number": 8,
+          "points": 12,
+          "question": "Попълнете липсващите части в C# програма за работа с обекти и методи. Класът Calculator трябва да има метод с тип на връщане, име на метод, който приема два параметъра и връща тяхната сума. В Main метода трябва да се създаде обект:\n\nclass Calculator {\n    public ____________ int ____________(int a, int b) {\n        return a ____________ b;\n    }\n}\n\nclass Program {\n    static void Main() {\n        Calculator calc = ____________ Calculator();\n    }\n}",
+          "answers": ["int", "Add", "+", "new"]
+        },
+        {
+          "number": 9,
+          "points": 4,
+          "question": "Попълнете липсващите части в C# програма за обработка на изключения. Програмата трябва да използва блок за опит за деление, оператор за деление, да изведе резултата и да прихване DivideByZeroException:\n\n____________ {\n    int a = 10;\n    int b = 0;\n    int result = a ____________ b;\n    Console.WriteLine(____________);\n} ____________ (DivideByZeroException ex) {\n    Console.WriteLine($\"Грешка: {ex.Message}\");\n}",
+          "answers": ["try", "/", "result", "catch"]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "questions": [
+        {
+          "number": 1,
+          "points": 12,
+          "question": "Попълнете липсващите части в C# класа Book. Класът трябва да има модификатор за достъп на класа, полета за заглавие и автор с ограничен достъп, и конструктор с два параметъра:\n\n____________ class Book {\n    ____________ string title;\n    ____________ string author;\n    \n    ____________ Book(string title, string author) {\n        this.title = title;\n        this.author = author;\n    }\n}",
+          "answers": ["public", "private", "private", "public"]
+        },
+        {
+          "number": 2,
+          "points": 12,
+          "question": "Попълнете липсващите части в C# програма за филтриране и сортиране. Програмата трябва да създаде нов списък, да използва цикъл за итерация през всички книги, да филтрира тези с цена под 50 лева и да ги добави в списъка. След това списъкът се сортира по цена във възходящ ред и се извличат първите 3 книги:\n\nList<Book> books = GetBooks();\nList<Book> filtered = ____________ List<Book>();\n\n____________ (Book b ____________ books) {\n    if (b.Price < 50) {\n        filtered.____________(b);\n    }\n}\n\nfiltered.Sort((a, b) => a.Price.CompareTo(b.Price));\nList<Book> result = filtered.GetRange(0, Math.Min(3, filtered.Count));",
+          "answers": ["new", "foreach", "in", "Add"]
+        
+        }
+        ,
+        {
+          "number": 3,
+          "points": 12,
+          "question": "Попълнете липсващите части в C# програма за наследяване. Класът Shape трябва да има модификатор за достъп, поле за име достъпно в наследниците и метод Draw който може да се презапише. Класът Rectangle трябва да наследява Shape и да извика конструктора на базовия клас:\n\n____________ class Shape {\n    ____________ string name;\n    \n    public Shape(string name) {\n        this.name = name;\n    }\n    \n    public ____________ void Draw() {\n        Console.WriteLine($\"Рисуване на {name}\");\n    }\n}\n\nclass Rectangle : Shape {\n    public Rectangle(string name) : ____________(name) {\n    }\n}",
+          "answers": ["public", "protected", "virtual", "base"]
+        },
+        {
+          "number": 4,
+          "points": 12,
+          "question": "Попълнете липсващите части в C# програма за работа с масиви и колекции. Програмата трябва да декларира променлива от тип списък от цели числа, да конвертира масива в колекция и след това в списък, и накрая да добави нов елемент:\n\nint[] numbers = { 1, 2, 3 };\n____________ list = numbers.____________().____________();\nlist.____________(4);",
+          "answers": ["List<int>", "AsEnumerable", "ToList", "Add"]
+        },
+        {
+          "number": 5,
+          "points": 12,
+          "question": "Попълнете липсващите части в C# програма за работа с интерфейс. Дефинирайте интерфейс IArea, укажете типа на връщане на метода GetArea, имплементирайте интерфейса в класа Rectangle и дефинирайте поле за ширина с ограничен достъп:\n\n____________ IArea {\n    ____________ double GetArea();\n}\n\nclass Rectangle : ____________ {\n    ____________ double width;\n    private double height;\n    \n    public Rectangle(double width, double height) {\n        this.width = width;\n        this.height = height;\n    }\n}",
+          "answers": ["interface", "double", "IArea", "private"]
+        },
+        {
+          "number": 6,
+          "points": 12,
+          "question": "Попълнете липсващите части в C# програма за работа с абстрактен клас. Класът Animal трябва да има модификатор за достъп, поле за име достъпно в наследниците и абстрактен метод MakeSound. Класът Cat трябва да наследява Animal и да извика конструктора на базовия клас:\n\n____________ abstract class Animal {\n    ____________ string name;\n    \n    public Animal(string name) {\n        this.name = name;\n    }\n    \n    public ____________ void MakeSound();\n}\n\nclass Cat : Animal {\n    public Cat(string name) : ____________(name) {\n    }\n}",
+          "answers": ["public", "protected", "abstract", "base"]
+        },
+        {
+          "number": 7,
+          "points": 12,
+          "question": "Попълнете липсващите части в C# програма за работа със статични членове. Класът MathHelper трябва да има статичен метод с тип на връщане, който изчислява факториел рекурсивно. При базов случай (n <= 1) трябва да върне базова стойност, а при рекурсивното извикване да извади 1 от n:\n\nclass MathHelper {\n    ____________ static ____________ Factorial(int n) {\n        if (n <= 1) return ____________;\n        return n * Factorial(n ____________ 1);\n    }\n}",
+          "answers": ["public", "int", "1", "-"]
+        },
+        {
+          "number": 8,
+          "points": 12,
+          "question": "Попълнете липсващите части в C# програма за работа с обекти и свойства. Класът Person трябва да има поле за име с ограничен достъп, свойство Name с аксесор за четене и аксесор за запис, който използва ключовата дума за присвояване на стойност. В Main метода се създава обект:\n\nclass Person {\n    ____________ string name;\n    \n    public string Name {\n        ____________ { return name; }\n        ____________ { name = ____________; }\n    }\n}\n\nclass Program {\n    static void Main() {\n        Person person = new Person();\n    }\n}",
+          "answers": ["private", "get", "set", "value"]
+        },
+        {
+          "number": 9,
+          "points": 4,
+          "question": "Попълнете липсващите части в C# програма за обработка на изключения. Програмата трябва да използва блок за опит за конвертиране на низ в число, да изведе резултата и да прихване FormatException:\n\n____________ {\n    string input = \"abc\";\n    int number = int.____________(input);\n    Console.WriteLine(____________);\n} ____________ (FormatException ex) {\n    Console.WriteLine($\"Грешка при конвертиране: {ex.Message}\");\n}",
+          "answers": ["try", "Parse", "number", "catch"]
+        }
+      ]
+    }
+  ]
+}
+

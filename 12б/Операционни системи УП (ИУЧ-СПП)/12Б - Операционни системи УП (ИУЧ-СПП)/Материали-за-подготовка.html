@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок - Операционни системи 12б</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+        }
+        .topic {
+            background: #ecf0f1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        code {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border-left: 4px solid #e74c3c;
+        }
+        .important {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .example {
+            background: #e7f3ff;
+            border-left: 4px solid #0066cc;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Урок - Операционни системи</h1>
+        <p><strong>Клас:</strong> 12б | <strong>Предмет:</strong> Операционни системи УП (ИУЧ - СПП)</p>
+        <h2>1. Виртуални машини и инсталиране на операционни системи</h2>
+
+        <div class="topic">
+            <h3>1.1. Какво е виртуална машина</h3>
+            <p><strong>Виртуална машина (VM)</strong> е софтуерна среда, която емулира (имитира) физически компютър.</p>
+            <ul>
+                <li>Позволява инсталиране на операционна система „вътре“ в друга ОС.</li>
+                <li>Работи чрез хипервайзор (VirtualBox, VMware, Hyper‑V и др.).</li>
+                <li>Гост-ОС (guest) не знае, че не работи директно върху хардуера.</li>
+            </ul>
+            <p>Виртуалната машина е <strong>софтуерна среда, която емулира физически компютър</strong> и позволява изпълнение на операционни системи в изолирана среда.</p>
+        </div>
+
+        <div class="topic">
+            <h3>1.2. Защо инсталираме ОС на виртуална машина</h3>
+            <ul>
+                <li>Можем да <strong>тестваме различни операционни системи</strong> без да променяме основната.</li>
+                <li>По-безопасно е – експерименти, вируси, грешни настройки не чупят реалната ОС.</li>
+                <li>Лесно връщане към предишно състояние чрез <strong>snapshot</strong>.</li>
+            </ul>
+            <p>Основното предимство на виртуалните машини е, че <strong>може да се тестват различни операционни системи без промяна на основната</strong>, което прави експериментирането безопасно и обратимо.</p>
+        </div>
+
+        <h2>2. Основни конзолни команди (Linux / Windows / PowerShell)</h2>
+
+        <div class="topic">
+            <h3>2.1. Команди за потребител и помощ</h3>
+            <table>
+                <tr>
+                    <th>Действие</th>
+                    <th>Команда</th>
+                    <th>Описание</th>
+                </tr>
+                <tr>
+                    <td>Кой е текущият потребител</td>
+                    <td><code>whoami</code></td>
+                    <td>Показва името на текущо влезлия потребител</td>
+                </tr>
+                <tr>
+                    <td>Помощ / документация за команди</td>
+                    <td><code>help</code> (Windows), <code>man команда</code> (Linux)</td>
+                    <td>Показва помощна информация и документация за команди</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="topic">
+            <h3>2.2. Работа с файлове и директории</h3>
+            <table>
+                <tr>
+                    <th>Действие</th>
+                    <th>Windows</th>
+                    <th>Linux / Unix</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td>Списък с файлове/директории</td>
+                    <td><code>dir</code></td>
+                    <td><code>ls</code></td>
+                    <td><code>ls -la</code> (подробен списък)</td>
+                </tr>
+                <tr>
+                    <td>Навигиране между директории</td>
+                    <td><code>cd</code></td>
+                    <td><code>cd</code></td>
+                    <td><code>cd Documents</code></td>
+                </tr>
+                <tr>
+                    <td>Създаване на директория</td>
+                    <td><code>mkdir</code></td>
+                    <td><code>mkdir</code></td>
+                    <td><code>mkdir projekti</code></td>
+                </tr>
+                <tr>
+                    <td>Копиране на файл</td>
+                    <td><code>copy source dest</code></td>
+                    <td><code>cp source dest</code></td>
+                    <td><code>cp file.txt backup.txt</code></td>
+                </tr>
+                <tr>
+                    <td>Преместване/преименуване</td>
+                    <td><code>move source dest</code></td>
+                    <td><code>mv source dest</code></td>
+                    <td><code>mv old.txt new.txt</code></td>
+                </tr>
+                <tr>
+                    <td>Изтриване на файл</td>
+                    <td><code>del file</code></td>
+                    <td><code>rm file</code></td>
+                    <td><code>rm file.txt</code></td>
+                </tr>
+                <tr>
+                    <td>Показване съдържание на текстов файл</td>
+                    <td>PowerShell: <code>Get-Content file.txt</code></td>
+                    <td><code>cat file.txt</code></td>
+                    <td><code>cat config.txt</code></td>
+                </tr>
+                <tr>
+                    <td>Символна/твърда връзка (link)</td>
+                    <td><code>mklink</code> (cmd), <code>New-Item -ItemType SymbolicLink</code> (PowerShell)</td>
+                    <td><code>ln</code>, <code>ln -s</code></td>
+                    <td><code>ln -s /path/to/file link</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>3. Наблюдение на процеси и използване на паметта</h2>
+
+        <div class="topic">
+            <h3>3.1. Инструменти за процеси</h3>
+            <ul>
+                <li><strong>Linux / Unix:</strong>
+                    <ul>
+                        <li><code>ps</code> – списък на процесите (моментна снимка).</li>
+                        <li><code>top</code> / <code>htop</code> – динамичен списък с процеси, използване на CPU и RAM.</li>
+                    </ul>
+                </li>
+                <li><strong>Windows:</strong>
+                    <ul>
+                        <li><strong>Task Manager (Диспечер на задачите)</strong> – процеси, CPU, памет, диск, мрежа.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>Тези инструменти са основни за мониторинг и управление на системните ресурси и процеси.</p>
+        </div>
+
+        <div class="topic">
+            <h3>3.2. Памет и системна статистика</h3>
+            <ul>
+                <li><code>free</code> – показва обща, заета и свободна памет.</li>
+                <li><code>vmstat</code> – статистика за памет, процеси, I/O, swap и др.</li>
+                <li><code>/proc/meminfo</code> – файл с подробна информация за паметта; преглежда се с <code>cat /proc/meminfo</code>.</li>
+            </ul>
+            <div class="important">
+                <strong>Резюме на инструментите за мониторинг:</strong>
+                <ul>
+                    <li><strong>ps / top:</strong> показват списък с процеси, PID, използване на CPU и RAM</li>
+                    <li><strong>Task Manager:</strong> графично показва процеси и ресурси в Windows</li>
+                    <li><strong>free / vmstat / /proc/meminfo:</strong> дават подробна информация за използването на паметта</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>4. Потребители, групи и права за достъп</h2>
+
+        <div class="topic">
+            <h3>4.1. Обикновен потребител vs. администратор</h3>
+            <ul>
+                <li><strong>Обикновен потребител</strong> – има ограничени права; работи основно в своята домашна директория.</li>
+                <li><strong>Администратор</strong> – root (Linux) или Administrator (Windows); пълен контрол над системата.</li>
+                <li>Администраторска сметка се използва за:
+                    <ul>
+                        <li>инсталиране/премахване на софтуер;</li>
+                        <li>създаване/изтриване на потребители и групи;</li>
+                        <li>промяна на системни настройки.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>Разбирането на разликата между обикновен потребител и администратор е критично за безопасността и правилното управление на системата.</p>
+        </div>
+
+        <div class="topic">
+            <h3>4.2. Права за достъп до файлове и директории</h3>
+            <ul>
+                <li>Права: <strong>read (r)</strong>, <strong>write (w)</strong>, <strong>execute (x)</strong>.</li>
+                <li>Контролът на достъпа определя кой може да чете, променя или изпълнява даден файл.</li>
+                <li>Неправилни права могат да доведат до:
+                    <ul>
+                        <li>изтичане на чувствителна информация;</li>
+                        <li>изтриване/повреда на важни файлове от обикновен потребител;</li>
+                        <li>невъзможност дадена програма да се стартира.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p><strong>Защо правилните права са важни:</strong> Те защитават системата от неоторизиран достъп, предотвратяват случайно изтриване на важни файлове и осигуряват, че само оторизирани потребители могат да изпълняват критични операции.</p>
+        </div>
+
+        <div class="topic">
+            <h3>4.3. Команди за управление на права: chmod и chown</h3>
+            <p><strong>chmod</strong> – променя правата за достъп до файлове и директории в Linux.</p>
+            <ul>
+                <li>Правата се задават за три групи: <strong>собственик (owner)</strong>, <strong>група (group)</strong> и <strong>други (others)</strong>.</li>
+                <li>Всяка група може да има права за четене (r), писане (w) и изпълнение (x).</li>
+                <li>Правата могат да се задават с числа (октална система) или символи.</li>
+            </ul>
+            <div class="important">
+                <strong>Примери за chmod:</strong>
+                <pre><code>chmod 755 file.txt    # собственик: rwx, група: r-x, други: r-x
+chmod 644 file.txt    # собственик: rw-, група: r--, други: r--
+chmod +x script.sh    # добавя право за изпълнение за всички
+chmod u+w file.txt    # добавя право за писане за собственика</code></pre>
+                <p><strong>Октални числа:</strong> 4=read, 2=write, 1=execute. Сумата дава правата (напр. 7=4+2+1=rwx).</p>
+            </div>
+            <p><strong>chown</strong> – променя собственика и/или групата на файл.</p>
+            <div class="important">
+                <strong>Примери за chown:</strong>
+                <pre><code>chown user:group file.txt    # променя собственика и групата
+chown user file.txt           # променя само собственика
+chown :group file.txt         # променя само групата</code></pre>
+            </div>
+            <p>Командите <code>chmod</code> и <code>chown</code> са основни за управлението на правата за достъп в Linux системи. Разбирането на различните права (read, write, execute) и как да ги задаваме е важно за правилното управление на файловата система.</p>
+        </div>
+
+        <h2>5. Shell скриптове и автоматизация</h2>
+
+        <div class="topic">
+            <h3>5.1. Какво е shell скрипт</h3>
+            <ul>
+                <li>Файл с поредица от команди, които се изпълняват автоматично от shell‑а.</li>
+                <li>Пример: bash скрипт в Linux или PowerShell скрипт в Windows.</li>
+            </ul>
+            <div class="important">
+                <strong>Пример (bash):</strong>
+                <pre><code>#!/bin/bash
+echo "Hello"
+pwd
+ls</code></pre>
+            </div>
+            <p><strong>Основни стъпки за създаване и изпълнение на shell скрипт:</strong></p>
+            <ol>
+                <li>Създавате файл, напр. <code>script.sh</code>.</li>
+                <li>Добавяте команди вътре.</li>
+                <li>Правите файла изпълним: <code>chmod +x script.sh</code>.</li>
+                <li>Стартирате: <code>./script.sh</code>.</li>
+            </ol>
+        </div>
+
+        <h2>6. Пакетни мениджъри и инсталиране на софтуер</h2>
+
+        <div class="topic">
+            <h3>6.1. Основна идея</h3>
+            <p><strong>Пакетен мениджър</strong> е инструмент, който автоматично изтегля, инсталира, обновява и премахва софтуер.</p>
+            <table>
+                <tr>
+                    <th>ОС</th>
+                    <th>Пакетен мениджър</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td>Debian / Ubuntu</td>
+                    <td><code>apt</code></td>
+                    <td><code>sudo apt install firefox</code></td>
+                </tr>
+                <tr>
+                    <td>Fedora / Red Hat</td>
+                    <td><code>yum</code> / <code>dnf</code></td>
+                    <td><code>sudo yum install httpd</code></td>
+                </tr>
+                <tr>
+                    <td>Windows 10/11</td>
+                    <td><code>winget</code></td>
+                    <td><code>winget install Notepad++</code></td>
+                </tr>
+            </table>
+            <p><strong>Структура на команда за инсталиране:</strong></p>
+            <ul>
+                <li><code>sudo apt install firefox</code> – <code>sudo</code> изпълнява с администраторски права, <code>apt</code> е пакетният мениджър, <code>install</code> е действието, <code>firefox</code> е името на програмата</li>
+                <li><code>winget install Notepad++</code> – <code>winget</code> е пакетният мениджър за Windows, <code>install</code> е действието, <code>Notepad++</code> е името на програмата</li>
+            </ul>
+            <p>Пакетният мениджър автоматично изтегля нужните файлове и зависимости от хранилището, което прави инсталирането на софтуер много по-лесно от ръчното изтегляне и инсталиране.</p>
+        </div>
+
+        <h2>7. Практически примери и упражнения</h2>
+
+        <div class="topic">
+            <h3>7.1. Наблюдение на процеси и памет</h3>
+            <p><strong>Какво е процес?</strong> Процесът е изпълняваща се програма в операционната система. Всеки процес има уникален идентификатор (PID) и използва системни ресурси като CPU и памет.</p>
+            
+            <p><strong>Защо е важно да наблюдаваме процесите?</strong> Наблюдението на процесите ни позволява да:</p>
+            <ul>
+                <li>Идентифицираме програми, които използват твърде много ресурси</li>
+                <li>Затворим зависнали или проблемни процеси</li>
+                <li>Оптимизираме производителността на системата</li>
+                <li>Откриваме потенциални проблеми със сигурността</li>
+            </ul>
+
+            <p><strong>Инструменти за наблюдение:</strong></p>
+            <ul>
+                <li><code>ps</code> и <code>top</code> показват списък с процеси, техните PID, потребител, използване на CPU и RAM</li>
+                <li>Task Manager в Windows дава графично представяне на процеси, натоварване на процесора, памет и други ресурси</li>
+                <li><code>free</code>, <code>vmstat</code> и <code>/proc/meminfo</code> предоставят подробна информация за използването на паметта – обща/свободна памет, swap, кеш и др.</li>
+            </ul>
+        </div>
+
+        <div class="topic">
+            <h3>7.2. Работа с файлове и директории</h3>
+            <p>Операционните системи позволяват работа с файлове и директории чрез конзолни команди. Това е по-ефективно и мощен начин за управление на файловата система в сравнение с графичния интерфейс.</p>
+            
+            <p><strong>Основни команди:</strong></p>
+            <ul>
+                <li><code>cd</code> – променя текущата директория (напр. <code>cd Documents</code>)</li>
+                <li><code>ls</code> (Linux) / <code>dir</code> (Windows) – показва списък с файлове и директории</li>
+                <li><code>mkdir</code> – създава нова директория (напр. <code>mkdir projekti</code>)</li>
+                <li><code>cp</code> (Linux) / <code>copy</code> (Windows) – копира файлове (напр. <code>cp file.txt backup.txt</code>)</li>
+                <li><code>mv</code> (Linux) / <code>move</code> (Windows) – премества или преименува файлове</li>
+                <li><code>rm</code> (Linux) / <code>del</code> (Windows) – изтрива файлове</li>
+            </ul>
+            
+            <p>Тези команди са еднакво важни в Linux и Windows (cmd/PowerShell) и формират основата на работата с файловата система чрез командния ред.</p>
+        </div>
+
+        <div class="topic">
+            <h3>7.3. Потребители, групи и права за достъп</h3>
+            <p><strong>Обикновен потребител vs. администратор:</strong></p>
+            <ul>
+                <li><strong>Обикновен потребител</strong> има ограничени права и работи основно в своята домашна директория</li>
+                <li><strong>Администратор</strong> (root в Linux или Administrator в Windows) има пълен контрол над системата</li>
+            </ul>
+
+            <p><strong>Защо създаваме групи?</strong> Групите улесняват управлението на правата за достъп. Вместо да задаваме права за всеки потребител поотделно, можем да създадем група и да зададем права за цялата група наведнъж.</p>
+
+            <p><strong>Права за достъп:</strong> Правата (read/write/execute) се свързват с потребители и групи. Например, в обща папка на фирма/клас всички потребители могат да имат достъп за четене, но само администраторът може да изтрива или редактира файлове.</p>
+
+            <p><strong>Рискове от неправилни права:</strong> Неправилно зададени права могат да доведат до изтичане на чувствителна информация, изтриване на важни файлове от неоторизирани потребители, или до невъзможност важна програма да се стартира.</p>
+        </div>
+
+        <div class="topic">
+            <h3>7.4. Управление на права с chmod и chown</h3>
+            <p>Командата <code>chmod</code> променя правата за достъп до файлове и директории в Linux. Правата се задават за три групи:</p>
+            <ul>
+                <li><strong>Собственик (owner)</strong> – потребителят, който притежава файла</li>
+                <li><strong>Група (group)</strong> – потребителите, които са част от групата на файла</li>
+                <li><strong>Други (others)</strong> – всички останали потребители</li>
+            </ul>
+
+            <p><strong>Видове права:</strong></p>
+            <ul>
+                <li><strong>read (r)</strong> – право за четене на файл или списък с файлове в директория</li>
+                <li><strong>write (w)</strong> – право за промяна/изтриване на файл или създаване на файлове в директория</li>
+                <li><strong>execute (x)</strong> – право за изпълнение на файл (скрипт/програма) или влизане в директория</li>
+            </ul>
+
+            <p><strong>Примери за chmod:</strong></p>
+            <ul>
+                <li><code>chmod 755 script.sh</code> – собственикът има всички права (rwx), групата и другите имат четене и изпълнение (r-x)</li>
+                <li><code>chmod 644 file.txt</code> – собственикът може да чете и пише (rw-), останалите могат само да четат (r--)</li>
+            </ul>
+
+            <p>Командата <code>chown</code> променя собственика и/или групата на файл:</p>
+            <ul>
+                <li><code>chown user:group file.txt</code> – променя и собственика, и групата</li>
+                <li><code>chown user file.txt</code> – променя само собственика</li>
+            </ul>
+        </div>
+
+        <div class="topic">
+            <h3>7.5. Създаване и изпълнение на shell скрипт</h3>
+            <p><strong>Стъпки за създаване на shell скрипт:</strong></p>
+            <ol>
+                <li>Създавате файл с разширение <code>.sh</code> (напр. <code>script.sh</code>)</li>
+                <li>Добавяте команди вътре (първият ред обикновено е <code>#!/bin/bash</code> за bash скриптове)</li>
+                <li>Задавате права за изпълнение: <code>chmod +x script.sh</code></li>
+                <li>Стартирате скрипта: <code>./script.sh</code></li>
+            </ol>
+
+            <p><strong>Защо скриптовете са полезни?</strong> Те автоматизират повтарящи се задачи, което спестява време и намалява вероятността от грешки. Скриптовете могат да се използват за резервни копия, системна поддръжка, обработка на данни и много други задачи.</p>
+        </div>
+
+        <div class="topic">
+            <h3>7.6. Роли на потребители и инсталиране на софтуер</h3>
+            <p><strong>Обикновен потребител:</strong> Има ограничени права и работи основно в своята домашна директория. Не може да инсталира системен софтуер или да променя критични системни настройки.</p>
+
+            <p><strong>Администратор:</strong> Има пълен контрол над системата. Може да:</p>
+            <ul>
+                <li>Инсталира и деинсталира програми</li>
+                <li>Променя системни настройки (час, мрежа, драйвери)</li>
+                <li>Създава и изтрива потребители и групи</li>
+                <li>Променя правата за достъп до системни файлове</li>
+            </ul>
+
+            <p><strong>Защо не е добре да работим постоянно като администратор?</strong> Работата като администратор увеличава риска от случайни грешки, които могат да повредят системата, и прави компютъра по-уязвим към вируси и злонамерен софтуер.</p>
+
+            <p><strong>Инсталиране на софтуер с пакетен мениджър:</strong></p>
+            <p>Примерна команда: <code>sudo apt install firefox</code></p>
+            <ul>
+                <li><code>sudo</code> – изпълнява командата с администраторски права (Linux)</li>
+                <li><code>apt</code> – името на пакетния мениджър (за Debian/Ubuntu)</li>
+                <li><code>install</code> – действието (инсталиране)</li>
+                <li><code>firefox</code> – името на програмата за инсталиране</li>
+            </ul>
+            <p>Пакетният мениджър автоматично изтегля нужните файлове и зависимости от хранилището, което прави процесът много по-лесен от ръчното инсталиране.</p>
+        </div>
+
+        <div class="important" style="margin-top: 40px;">
+            <h3>Резюме на урока</h3>
+            <p>В този урок научихме за:</p>
+            <ul>
+                <li>Виртуални машини и тяхното използване</li>
+                <li>Основни конзолни команди за работа с файлове и директории</li>
+                <li>Наблюдение на процеси и използване на паметта</li>
+                <li>Управление на потребители, групи и права за достъп</li>
+                <li>Създаване и изпълнение на shell скриптове</li>
+                <li>Използване на пакетни мениджъри за инсталиране на софтуер</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

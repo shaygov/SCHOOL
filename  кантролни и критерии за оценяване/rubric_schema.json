@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.org/schemas/rubric_schema.json",
+  "title": "Rubric Schema",
+  "type": "object",
+  "required": [
+    "version",
+    "lastUpdated",
+    "author",
+    "approvedBy",
+    "scope",
+    "title",
+    "criticalQuestions",
+    "partialCreditRules",
+    "scoreMatrix",
+    "sampleAnswers",
+    "documentFormat"
+  ],
+  "properties": {
+    "version": { "type": "string" },
+    "lastUpdated": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "author": { "type": "string" },
+    "approvedBy": { "type": "string" },
+    "scope": { "type": "string" },
+    "title": { "type": "string" },
+    "gradingSummaryTitle": { "type": "string" },
+    "gradingScaleLabel": { "type": "string" },
+    "pointsBreakdownTitle": { "type": "string" },
+    "criteriaTitle": { "type": "string" },
+    "criticalQuestionsTitle": { "type": "string" },
+    "criticalQuestions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "partialCreditRules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["appliesTo", "rules"],
+        "properties": {
+          "appliesTo": { "type": "string" },
+          "rules": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "examples": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "scoreMatrix": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["question", "totalPoints", "breakdown"],
+        "properties": {
+          "question": { "type": ["integer", "string"] },
+          "totalPoints": { "type": "number" },
+          "breakdown": {
+            "type": "object",
+            "additionalProperties": { "type": "number" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "sampleAnswers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "brief": { "type": "string" },
+          "scoringNotes": { "type": "string" },
+          "points": { "type": "number" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "accessibilityNotes": { "type": "string" },
+    "generalGuidelines": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "text"],
+        "properties": {
+          "title": { "type": "string" },
+          "text": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "documentFormat": {
+      "type": "object",
+      "required": ["printLayout", "font", "sectionsOrder", "signatureFields"],
+      "properties": {
+        "printLayout": { "type": "string" },
+        "font": { "type": "string" },
+        "sectionsOrder": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "signatureFields": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

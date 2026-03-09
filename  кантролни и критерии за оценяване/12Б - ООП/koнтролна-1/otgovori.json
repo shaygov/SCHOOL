@@ -1,0 +1,129 @@
+{
+  "test": {
+    "subject": "Обектно ориентирано програмиране",
+    "class": "12б",
+    "totalPoints": 100,
+    "pointsPerQuestion": 12,
+    "pointsPerBlank": 3
+  },
+  "variants": [
+    {
+      "number": 1,
+      "questions": [
+        {
+          "number": 1,
+          "points": 12,
+          "answers": ["public", "private", "public", "public"],
+          "answerString": "1. public, 2. private, 3. public, 4. public"
+        },
+        {
+          "number": 2,
+          "points": 12,
+          "answers": ["new", "foreach", "in", "Add"],
+          "answerString": "1. new, 2. foreach, 3. in, 4. Add"
+        },
+        {
+          "number": 3,
+          "points": 12,
+          "answers": ["public", "protected", "virtual", "base"],
+          "answerString": "1. public, 2. protected, 3. virtual, 4. base"
+        },
+        {
+          "number": 4,
+          "points": 12,
+          "answers": ["List<int>", "AsEnumerable", "ToList", "Add"],
+          "answerString": "1. List<int>, 2. AsEnumerable, 3. ToList, 4. Add"
+        },
+        {
+          "number": 5,
+          "points": 12,
+          "answers": ["interface", "double", "IShape", "private"],
+          "answerString": "1. interface, 2. double, 3. IShape, 4. private"
+        },
+        {
+          "number": 6,
+          "points": 12,
+          "answers": ["public", "protected", "abstract", "base"],
+          "answerString": "1. public, 2. protected, 3. abstract, 4. base"
+        },
+        {
+          "number": 7,
+          "points": 12,
+          "answers": ["private", "public", "++", "static"],
+          "answerString": "1. private, 2. public, 3. ++, 4. static"
+        },
+        {
+          "number": 8,
+          "points": 12,
+          "answers": ["int", "Add", "+", "new"],
+          "answerString": "1. int, 2. Add, 3. +, 4. new"
+        },
+        {
+          "number": 9,
+          "points": 4,
+          "answers": ["try", "/", "result", "catch"],
+          "answerString": "1. try, 2. /, 3. result, 4. catch"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "questions": [
+        {
+          "number": 1,
+          "points": 12,
+          "answers": ["public", "private", "private", "public"],
+          "answerString": "1. public, 2. private, 3. private, 4. public"
+        },
+        {
+          "number": 2,
+          "points": 12,
+          "answers": ["new", "foreach", "in", "Add"],
+          "answerString": "1. new, 2. foreach, 3. in, 4. Add"
+        },
+        {
+          "number": 3,
+          "points": 12,
+          "answers": ["public", "protected", "virtual", "base"],
+          "answerString": "1. public, 2. protected, 3. virtual, 4. base"
+        },
+        {
+          "number": 4,
+          "points": 12,
+          "answers": ["List<int>", "AsEnumerable", "ToList", "Add"],
+          "answerString": "1. List<int>, 2. AsEnumerable, 3. ToList, 4. Add"
+        },
+        {
+          "number": 5,
+          "points": 12,
+          "answers": ["interface", "double", "IArea", "private"],
+          "answerString": "1. interface, 2. double, 3. IArea, 4. private"
+        },
+        {
+          "number": 6,
+          "points": 12,
+          "answers": ["public", "protected", "abstract", "base"],
+          "answerString": "1. public, 2. protected, 3. abstract, 4. base"
+        },
+        {
+          "number": 7,
+          "points": 12,
+          "answers": ["public", "int", "1", "-"],
+          "answerString": "1. public, 2. int, 3. 1, 4. -"
+        },
+        {
+          "number": 8,
+          "points": 12,
+          "answers": ["private", "get", "set", "value"],
+          "answerString": "1. private, 2. get, 3. set, 4. value"
+        },
+        {
+          "number": 9,
+          "points": 4,
+          "answers": ["try", "Parse", "number", "catch"],
+          "answerString": "1. try, 2. Parse, 3. number, 4. catch"
+        }
+      ]
+    }
+  ]
+}

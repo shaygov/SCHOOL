@@ -1,0 +1,153 @@
+{
+  "test": {
+    "subject": "База данни",
+    "class": "11б",
+    "totalPoints": 100,
+    "pointsPerQuestion": 10,
+    "pointsPerBlank": 2
+  },
+  "variants": [
+    {
+      "number": 1,
+      "questions": [
+        {
+          "number": 1,
+          "points": 10,
+          "answers": ["CREATE", "PRIMARY", "NOT", "UNIQUE", "NOW()"],
+          "answerString": "1. CREATE, 2. PRIMARY, 3. NOT, 4. UNIQUE, 5. NOW()"
+        },
+        {
+          "number": 2,
+          "points": 10,
+          "answers": ["SELECT", "FROM", "WHERE", "ORDER", "ASC"],
+          "answerString": "1. SELECT, 2. FROM, 3. WHERE, 4. ORDER, 5. ASC"
+        },
+        {
+          "number": 3,
+          "points": 10,
+          "answers": ["CREATE", "PRIMARY", "NOT", "NOT", "0"],
+          "answerString": "1. CREATE, 2. PRIMARY, 3. NOT, 4. NOT, 5. 0"
+        },
+        {
+          "number": 4,
+          "points": 10,
+          "answers": ["FROM", "WHERE", "ORDER", "DESC", "LIMIT"],
+          "answerString": "1. FROM, 2. WHERE, 3. ORDER, 4. DESC, 5. LIMIT"
+        },
+        {
+          "number": 5,
+          "points": 10,
+          "answers": ["FROM", "INNER", "ON", "WHERE", "ORDER"],
+          "answerString": "1. FROM, 2. INNER, 3. ON, 4. WHERE, 5. ORDER"
+        },
+        {
+          "number": 6,
+          "points": 10,
+          "answers": ["FROM", "JOIN", "ON", "WHERE", "ORDER"],
+          "answerString": "1. FROM, 2. JOIN, 3. ON, 4. WHERE, 5. ORDER"
+        },
+        {
+          "number": 7,
+          "points": 10,
+          "answers": ["AVG", "FROM", "JOIN", "ON", "GROUP"],
+          "answerString": "1. AVG, 2. FROM, 3. JOIN, 4. ON, 5. GROUP"
+        },
+        {
+          "number": 8,
+          "points": 10,
+          "answers": ["FROM", "JOIN", "ON", "JOIN", "ON"],
+          "answerString": "1. FROM, 2. JOIN, 3. ON, 4. JOIN, 5. ON"
+        },
+        {
+          "number": 9,
+          "points": 10,
+          "answers": ["DELETE", "WHERE", "OR", "AND", "OR"],
+          "answerString": "1. DELETE, 2. WHERE, 3. OR, 4. AND, 5. OR"
+        },
+        {
+          "number": 10,
+          "points": 10,
+          "answers": ["FROM", "RIGHT", "JOIN", "ON", "GROUP"],
+          "answerString": "1. FROM, 2. RIGHT, 3. JOIN, 4. ON, 5. GROUP"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "questions": [
+        {
+          "number": 1,
+          "points": 10,
+          "answers": ["CREATE", "PRIMARY", "NOT", "true", "NOW()"],
+          "answerString": "1. CREATE, 2. PRIMARY, 3. NOT, 4. true, 5. NOW()"
+        },
+        {
+          "number": 2,
+          "points": 10,
+          "answers": ["SELECT", "FROM", "WHERE", "IN", "ORDER"],
+          "answerString": "1. SELECT, 2. FROM, 3. WHERE, 4. IN, 5. ORDER"
+        },
+        {
+          "number": 3,
+          "points": 10,
+          "answers": ["FROM", "WHERE", "ORDER", "ASC", "LIMIT"],
+          "answerString": "1. FROM, 2. WHERE, 3. ORDER, 4. ASC, 5. LIMIT"
+        },
+        {
+          "number": 4,
+          "points": 10,
+          "answers": ["FROM", "JOIN", "ON", "WHERE", "ORDER"],
+          "answerString": "1. FROM, 2. JOIN, 3. ON, 4. WHERE, 5. ORDER"
+        },
+        {
+          "number": 5,
+          "points": 10,
+          "answers": ["FROM", "LEFT", "JOIN", "GROUP", "HAVING"],
+          "answerString": "1. FROM, 2. LEFT, 3. JOIN, 4. GROUP, 5. HAVING"
+        },
+        {
+          "number": 6,
+          "points": 10,
+          "answers": ["SUM", "FROM", "JOIN", "ON", "GROUP"],
+          "answerString": "1. SUM, 2. FROM, 3. JOIN, 4. ON, 5. GROUP"
+        },
+        {
+          "number": 7,
+          "points": 10,
+          "answers": ["MAX", "FROM", "ON", "GROUP", "HAVING"],
+          "answerString": "1. MAX, 2. FROM, 3. ON, 4. GROUP, 5. HAVING"
+        },
+        {
+          "number": 8,
+          "points": 10,
+          "answers": ["AS", "AS", "AS", "FROM", "WHERE"],
+          "answerString": "1. AS, 2. AS, 3. AS, 4. FROM, 5. WHERE"
+        },
+        {
+          "number": 9,
+          "points": 10,
+          "answers": ["DELETE", "WHERE", "OR", "AND", "OR"],
+          "answerString": "1. DELETE, 2. WHERE, 3. OR, 4. AND, 5. OR"
+        },
+        {
+          "number": 10,
+          "points": 10,
+          "answers": ["FROM", "WHERE", "IN", "AND", "ORDER"],
+          "answerString": "1. FROM, 2. WHERE, 3. IN, 4. AND, 5. ORDER"
+        }
+      ]
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+

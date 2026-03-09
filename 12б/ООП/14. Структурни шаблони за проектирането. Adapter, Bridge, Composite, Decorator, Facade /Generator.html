@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Урок: Структурни шаблони за проектирането (C#)</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;line-height:1.6;margin:24px;max-width:900px}
+    pre{background:#f5f5f5;padding:12px;overflow:auto}
+    h1,h2{color:#222}
+    .pattern{margin-bottom:18px}
+    a.file{color:#0a66c2;text-decoration:none}
+  </style>
+</head>
+<body>
+  <h1>Структурни шаблони за проектирането (Adapter, Bridge, Composite, Decorator, Facade)</h1>
+  <p>Език: C# — кратък урок и практични примери за разглеждане и изпълнение.</p>
+
+  <h2>Цели</h2>
+  <ul>
+    <li>Разберете как разделят структурните шаблони проблеми при композиция на обекти.</li>
+    <li>Виждате примерни имплементации и как да ги използвате в .NET конзолно приложение.</li>
+  </ul>
+
+  <h2>Кратки описания</h2>
+  <div class="pattern">
+    <h3>Adapter</h3>
+    <p>Адаптация между два несъвместими интерфейса — позволява да използваме съществуващ клас с нов интерфейс.</p>
+    <p>Пример: <a class="file" href="AdapterExample.cs">AdapterExample.cs</a></p>
+  </div>
+
+  <div class="pattern">
+    <h3>Bridge</h3>
+    <p>Разделя абстракцията от реализацията, така че двете да могат да се променят независимо.</p>
+    <p>Пример: <a class="file" href="BridgeExample.cs">BridgeExample.cs</a></p>
+  </div>
+
+  <div class="pattern">
+    <h3>Composite</h3>
+    <p>Композиция на обекти във формата на дървовидна структура — третираме отделни обекти и композиции по един и същ начин.</p>
+    <p>Пример: <a class="file" href="CompositeExample.cs">CompositeExample.cs</a></p>
+  </div>
+
+  <div class="pattern">
+    <h3>Decorator</h3>
+    <p>Динамично добавяне на отговорности към обект, без да променяме неговия код.</p>
+    <p>Пример: <a class="file" href="DecoratorExample.cs">DecoratorExample.cs</a></p>
+  </div>
+
+  <div class="pattern">
+    <h3>Facade</h3>
+    <p>Опрощава интерфейса към сложна подсистема, предоставяйки лесен за използване фасаден клас.</p>
+    <p>Пример: <a class="file" href="FacadeExample.cs">FacadeExample.cs</a></p>
+  </div>
+
+  <h2>Примери за разглеждане и изпълнение</h2>
+  <p>Всички примерни файлове се намират в тази папка. Има и файл <a class="file" href="Program.cs">Program.cs</a>, който извиква демонстрации за всички шаблони.</p>
+
+  <h2>Как да стартирате (бързо)</h2>
+  <ol>
+    <li>Създайте нов проект или използвайте съществуващ: <pre>dotnet new console -n StructuralPatternsDemo</pre></li>
+    <li>Копирайте тук файловете (Program.cs и Example файловете) в проекта и изпълнете: <pre>dotnet run</pre></li>
+  </ol>
+
+  <hr />
+  <p>Автор: Учебен материал — Структурни шаблони. Файлове за разглеждане: <a class="file" href="AdapterExample.cs">AdapterExample.cs</a>, <a class="file" href="BridgeExample.cs">BridgeExample.cs</a>, <a class="file" href="CompositeExample.cs">CompositeExample.cs</a>, <a class="file" href="DecoratorExample.cs">DecoratorExample.cs</a>, <a class="file" href="FacadeExample.cs">FacadeExample.cs</a>, <a class="file" href="Program.cs">Program.cs</a>.</p>
+</body>
+</html>

@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Материали за подготовка - Операционни системи (ИУЧ - СПП) 12б</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+        }
+        .topic {
+            background: #ecf0f1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        code {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border-left: 4px solid #e74c3c;
+        }
+        .important {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .example {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+        .terminal {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Материали за подготовка - Операционни системи (ИУЧ - СПП)</h1>
+        <p><strong>Клас:</strong> 12б | <strong>Предмет:</strong> Операционни системи (ИУЧ - СПП)</p>
+        <p><strong>Дата на контролната работа:</strong> _______________</p>
+
+        <h2>1. Конзолни команди. Работа с файлове и директории</h2>
+        
+        <div class="topic">
+            <h3>1.1. Навигиране във файловата система</h3>
+            <table>
+                <tr>
+                    <th>Команда</th>
+                    <th>Описание</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td><code>pwd</code></td>
+                    <td>Показва текущата директория (print working directory)</td>
+                    <td><code>$ pwd<br>/home/student</code></td>
+                </tr>
+                <tr>
+                    <td><code>cd [директория]</code></td>
+                    <td>Променя текущата директория</td>
+                    <td><code>$ cd documents<br>$ cd ~<br>$ cd ..</code></td>
+                </tr>
+                <tr>
+                    <td><code>cd ~</code></td>
+                    <td>Отиване в домашната директория</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><code>cd ..</code></td>
+                    <td>Отиване една директория нагоре</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><code>cd -</code></td>
+                    <td>Връщане в предишната директория</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><code>ls</code></td>
+                    <td>Показва файловете в директория</td>
+                    <td><code>$ ls</code></td>
+                </tr>
+                <tr>
+                    <td><code>ls -la</code></td>
+                    <td>Показва всички файлове с подробности</td>
+                    <td><code>$ ls -la</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="topic">
+            <h3>1.2. Създаване на файлове и директории</h3>
+            <table>
+                <tr>
+                    <th>Команда</th>
+                    <th>Описание</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td><code>mkdir [име]</code></td>
+                    <td>Създава нова директория</td>
+                    <td><code>$ mkdir документи</code></td>
+                </tr>
+                <tr>
+                    <td><code>mkdir -p [път]</code></td>
+                    <td>Създава директории рекурсивно</td>
+                    <td><code>$ mkdir -p dir1/dir2/dir3</code></td>
+                </tr>
+                <tr>
+                    <td><code>touch [файл]</code></td>
+                    <td>Създава празен файл</td>
+                    <td><code>$ touch file.txt</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="topic">
+            <h3>1.3. Копиране, преместване и преименуване</h3>
+            <table>
+                <tr>
+                    <th>Команда</th>
+                    <th>Описание</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td><code>cp [източник] [цел]</code></td>
+                    <td>Копира файл или директория</td>
+                    <td><code>$ cp file.txt backup/</code></td>
+                </tr>
+                <tr>
+                    <td><code>cp -r [директория] [цел]</code></td>
+                    <td>Копира директория рекурсивно</td>
+                    <td><code>$ cp -r source/ dest/</code></td>
+                </tr>
+                <tr>
+                    <td><code>mv [източник] [цел]</code></td>
+                    <td>Премества или преименува файл/директория</td>
+                    <td><code>$ mv old.txt new.txt</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="topic">
+            <h3>1.4. Изтриване</h3>
+            <table>
+                <tr>
+                    <th>Команда</th>
+                    <th>Описание</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td><code>rm [файл]</code></td>
+                    <td>Изтрива файл</td>
+                    <td><code>$ rm temp.txt</code></td>
+                </tr>
+                <tr>
+                    <td><code>rm -r [директория]</code></td>
+                    <td>Изтрива директория рекурсивно</td>
+                    <td><code>$ rm -r old_dir</code></td>
+                </tr>
+                <tr>
+                    <td><code>rm -i [файл]</code></td>
+                    <td>Изтрива с потвърждение</td>
+                    <td><code>$ rm -i file.txt</code></td>
+                </tr>
+            </table>
+            <div class="important">
+                <strong>Внимание!</strong> Командата <code>rm</code> изтрива файловете безвъзвратно! Винаги проверявайте преди изтриване.
+            </div>
+        </div>
+
+        <div class="topic">
+            <h3>1.5. Преглед на файлове</h3>
+            <table>
+                <tr>
+                    <th>Команда</th>
+                    <th>Описание</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td><code>cat [файл]</code></td>
+                    <td>Показва целия файл</td>
+                    <td><code>$ cat readme.txt</code></td>
+                </tr>
+                <tr>
+                    <td><code>head -n [брой] [файл]</code></td>
+                    <td>Показва първите N реда</td>
+                    <td><code>$ head -10 file.txt</code></td>
+                </tr>
+                <tr>
+                    <td><code>tail -n [брой] [файл]</code></td>
+                    <td>Показва последните N реда</td>
+                    <td><code>$ tail -5 log.txt</code></td>
+                </tr>
+                <tr>
+                    <td><code>less [файл]</code></td>
+                    <td>Показва файл страница по страница</td>
+                    <td><code>$ less document.txt</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="topic">
+            <h3>1.6. Търсене</h3>
+            <div class="example">
+                <strong>Команда find:</strong>
+                <pre><code>$ find . -name "*.txt"          # Намира всички .txt файлове
+$ find . -type f               # Намира само файлове
+$ find . -type d               # Намира само директории
+$ find . -size +1M             # Намира файлове по-големи от 1MB</code></pre>
+            </div>
+            <div class="example">
+                <strong>Команда grep:</strong>
+                <pre><code>$ grep "текст" file.txt         # Търси дума в файл
+$ grep -r "текст" .           # Търси в всички файлове рекурсивно
+$ grep -i "текст" file.txt    # Търси без значение на регистъра</code></pre>
+            </div>
+        </div>
+
+        <h2>2. Пакетни системи и мениджъри. Инсталиране на пакети/софтуер</h2>
+
+        <div class="topic">
+            <h3>2.1. Какво е пакетен мениджър?</h3>
+            <p>Пакетният мениджър е програма, която:</p>
+            <ul>
+                <li>Автоматизира инсталирането на софтуер</li>
+                <li>Управлява зависимости между програми</li>
+                <li>Позволява лесно обновяване и премахване на софтуер</li>
+                <li>Гарантира сигурност чрез проверени източници</li>
+            </ul>
+        </div>
+
+        <div class="topic">
+            <h3>2.2. Пакетни мениджъри в различни дистрибуции</h3>
+            <table>
+                <tr>
+                    <th>Дистрибуция</th>
+                    <th>Пакетен мениджър</th>
+                    <th>Формат на пакети</th>
+                </tr>
+                <tr>
+                    <td>Debian / Ubuntu</td>
+                    <td>apt, dpkg</td>
+                    <td>.deb</td>
+                </tr>
+                <tr>
+                    <td>Red Hat / CentOS</td>
+                    <td>yum, rpm</td>
+                    <td>.rpm</td>
+                </tr>
+                <tr>
+                    <td>Arch Linux</td>
+                    <td>pacman</td>
+                    <td>.pkg.tar.xz</td>
+                </tr>
+                <tr>
+                    <td>Slackware</td>
+                    <td>pkgtool</td>
+                    <td>.tgz</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="topic">
+            <h3>2.3. Основни команди с apt (Debian/Ubuntu)</h3>
+            <table>
+                <tr>
+                    <th>Команда</th>
+                    <th>Описание</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td><code>apt update</code></td>
+                    <td>Обновява списъка с налични пакети</td>
+                    <td><code>$ sudo apt update</code></td>
+                </tr>
+                <tr>
+                    <td><code>apt install [пакет]</code></td>
+                    <td>Инсталира пакет</td>
+                    <td><code>$ sudo apt install vim</code></td>
+                </tr>
+                <tr>
+                    <td><code>apt remove [пакет]</code></td>
+                    <td>Премахва пакет</td>
+                    <td><code>$ sudo apt remove nano</code></td>
+                </tr>
+                <tr>
+                    <td><code>apt search [ключова дума]</code></td>
+                    <td>Търси пакети</td>
+                    <td><code>$ apt search editor</code></td>
+                </tr>
+                <tr>
+                    <td><code>apt list --installed</code></td>
+                    <td>Показва инсталираните пакети</td>
+                    <td><code>$ apt list --installed</code></td>
+                </tr>
+                <tr>
+                    <td><code>apt upgrade</code></td>
+                    <td>Обновява всички инсталирани пакети</td>
+                    <td><code>$ sudo apt upgrade</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="topic">
+            <h3>2.4. Основни команди с yum/rpm (Red Hat/CentOS)</h3>
+            <table>
+                <tr>
+                    <th>Команда</th>
+                    <th>Описание</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td><code>yum install [пакет]</code></td>
+                    <td>Инсталира пакет</td>
+                    <td><code>$ sudo yum install vim</code></td>
+                </tr>
+                <tr>
+                    <td><code>yum remove [пакет]</code></td>
+                    <td>Премахва пакет</td>
+                    <td><code>$ sudo yum remove nano</code></td>
+                </tr>
+                <tr>
+                    <td><code>yum search [ключова дума]</code></td>
+                    <td>Търси пакети</td>
+                    <td><code>$ yum search editor</code></td>
+                </tr>
+                <tr>
+                    <td><code>rpm -i [файл.rpm]</code></td>
+                    <td>Инсталира .rpm файл директно</td>
+                    <td><code>$ sudo rpm -i package.rpm</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>3. Процеси. Пакетна обработка, многозадачност, времеделене</h2>
+
+        <div class="topic">
+            <h3>3.1. Какво е процес?</h3>
+            <p><strong>Процес</strong> е програма в изпълнение. Всяка изпълняваща се програма е процес.</p>
+            <ul>
+                <li>Процесът има свой уникален идентификатор (PID - Process ID)</li>
+                <li>Всеки процес има собственик (потребител)</li>
+                <li>Процесът заема памет и процесорно време</li>
+            </ul>
+        </div>
+
+        <div class="topic">
+            <h3>3.2. Основни състояния на процесите</h3>
+            <table>
+                <tr>
+                    <th>Състояние</th>
+                    <th>Описание</th>
+                </tr>
+                <tr>
+                    <td><strong>New (Нов)</strong></td>
+                    <td>Процесът е създаден, но още не е започнал изпълнение</td>
+                </tr>
+                <tr>
+                    <td><strong>Running (Изпълняващ се)</strong></td>
+                    <td>Процесът се изпълнява в момента</td>
+                </tr>
+                <tr>
+                    <td><strong>Waiting/Blocked (Чакащ)</strong></td>
+                    <td>Процесът чака ресурс (вход/изход, памет и др.)</td>
+                </tr>
+                <tr>
+                    <td><strong>Ready (Готов)</strong></td>
+                    <td>Процесът е готов за изпълнение, но чака процесор</td>
+                </tr>
+                <tr>
+                    <td><strong>Terminated (Завършен)</strong></td>
+                    <td>Процесът е завършил изпълнението си</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="topic">
+            <h3>3.3. Команди за работа с процеси</h3>
+            <table>
+                <tr>
+                    <th>Команда</th>
+                    <th>Описание</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td><code>ps</code></td>
+                    <td>Показва процесите в текущата сесия</td>
+                    <td><code>$ ps</code></td>
+                </tr>
+                <tr>
+                    <td><code>ps aux</code></td>
+                    <td>Показва всички процеси с подробности</td>
+                    <td><code>$ ps aux</code></td>
+                </tr>
+                <tr>
+                    <td><code>top</code></td>
+                    <td>Показва процеси в реално време (интерактивно)</td>
+                    <td><code>$ top</code></td>
+                </tr>
+                <tr>
+                    <td><code>kill [PID]</code></td>
+                    <td>Изпраща сигнал за спиране на процес</td>
+                    <td><code>$ kill 1234</code></td>
+                </tr>
+                <tr>
+                    <td><code>kill -9 [PID]</code></td>
+                    <td>Принудително спиране на процес</td>
+                    <td><code>$ kill -9 1234</code></td>
+                </tr>
+                <tr>
+                    <td><code>killall [име]</code></td>
+                    <td>Спира всички процеси с дадено име</td>
+                    <td><code>$ killall firefox</code></td>
+                </tr>
+                <tr>
+                    <td><code>jobs</code></td>
+                    <td>Показва задачите в текущата сесия</td>
+                    <td><code>$ jobs</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="topic">
+            <h3>3.4. Пакетна обработка, многозадачност, времеделене</h3>
+            <ul>
+                <li><strong>Пакетна обработка:</strong> Изпълнение на задачи без потребителска намеса</li>
+                <li><strong>Многозадачност:</strong> Едновременно изпълнение на няколко задачи</li>
+                <li><strong>Времеделене (Time-sharing):</strong> Разделяне на процесорното време между процесите</li>
+            </ul>
+        </div>
+
+        <h2>4. Потребители и групи. Права за достъп до файлове и директории</h2>
+
+        <div class="topic">
+            <h3>4.1. Права за достъп (Permissions)</h3>
+            <p>Всеки файл и директория в Linux има права за достъп:</p>
+            <ul>
+                <li><strong>r (read)</strong> - право за четене</li>
+                <li><strong>w (write)</strong> - право за писане</li>
+                <li><strong>x (execute)</strong> - право за изпълнение</li>
+            </ul>
+            <p>Правата се дават на три групи:</p>
+            <ul>
+                <li><strong>u (user/owner)</strong> - собственик на файла</li>
+                <li><strong>g (group)</strong> - групата на собственика</li>
+                <li><strong>o (others)</strong> - всички останали</li>
+            </ul>
+        </div>
+
+        <div class="topic">
+            <h3>4.2. Представяне на правата</h3>
+            <div class="example">
+                <strong>Пример:</strong> <code>rwxr-xr--</code>
+                <ul>
+                    <li><code>rwx</code> - собственикът има права за четене, писане и изпълнение</li>
+                    <li><code>r-x</code> - групата има права за четене и изпълнение</li>
+                    <li><code>r--</code> - останалите имат само право за четене</li>
+                </ul>
+            </div>
+            <p>Правата могат да се представят и с числа (октална система):</p>
+            <ul>
+                <li><code>r</code> = 4</li>
+                <li><code>w</code> = 2</li>
+                <li><code>x</code> = 1</li>
+            </ul>
+            <div class="example">
+                <strong>Примери:</strong>
+                <ul>
+                    <li><code>755</code> = <code>rwxr-xr-x</code> (7=4+2+1, 5=4+1, 5=4+1)</li>
+                    <li><code>644</code> = <code>rw-r--r--</code> (6=4+2, 4=4, 4=4)</li>
+                    <li><code>777</code> = <code>rwxrwxrwx</code> (всички права за всички)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="topic">
+            <h3>4.3. Команди за работа с права</h3>
+            <table>
+                <tr>
+                    <th>Команда</th>
+                    <th>Описание</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td><code>chmod [права] [файл]</code></td>
+                    <td>Променя правата на достъп</td>
+                    <td><code>$ chmod 755 script.sh<br>$ chmod u+x file.txt</code></td>
+                </tr>
+                <tr>
+                    <td><code>chown [собственик] [файл]</code></td>
+                    <td>Променя собственика на файл</td>
+                    <td><code>$ sudo chown user file.txt</code></td>
+                </tr>
+                <tr>
+                    <td><code>chgrp [група] [файл]</code></td>
+                    <td>Променя групата на файл</td>
+                    <td><code>$ sudo chgrp students file.txt</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="topic">
+            <h3>4.4. Потребители и групи</h3>
+            <table>
+                <tr>
+                    <th>Команда</th>
+                    <th>Описание</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td><code>whoami</code></td>
+                    <td>Показва текущия потребител</td>
+                    <td><code>$ whoami</code></td>
+                </tr>
+                <tr>
+                    <td><code>id</code></td>
+                    <td>Показва ID на потребителя и групите</td>
+                    <td><code>$ id</code></td>
+                </tr>
+                <tr>
+                    <td><code>groups</code></td>
+                    <td>Показва групите на текущия потребител</td>
+                    <td><code>$ groups</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>5. Услуги. Стартиране и спиране на услуги</h2>
+
+        <div class="topic">
+            <h3>5.1. Какво е услуга (Service)?</h3>
+            <p><strong>Услуга</strong> е програма, която работи на заден фон и изпълнява системни функции. Примери:</p>
+            <ul>
+                <li>Уеб сървър (Apache, Nginx)</li>
+                <li>База данни (MySQL, PostgreSQL)</li>
+                <li>Мрежови услуги</li>
+                <li>Системни услуги (вход, мрежа и др.)</li>
+            </ul>
+        </div>
+
+        <div class="topic">
+            <h3>5.2. Управление на услуги (systemd)</h3>
+            <table>
+                <tr>
+                    <th>Команда</th>
+                    <th>Описание</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td><code>systemctl start [услуга]</code></td>
+                    <td>Стартира услуга</td>
+                    <td><code>$ sudo systemctl start apache2</code></td>
+                </tr>
+                <tr>
+                    <td><code>systemctl stop [услуга]</code></td>
+                    <td>Спира услуга</td>
+                    <td><code>$ sudo systemctl stop apache2</code></td>
+                </tr>
+                <tr>
+                    <td><code>systemctl restart [услуга]</code></td>
+                    <td>Рестартира услуга</td>
+                    <td><code>$ sudo systemctl restart apache2</code></td>
+                </tr>
+                <tr>
+                    <td><code>systemctl status [услуга]</code></td>
+                    <td>Показва състоянието на услуга</td>
+                    <td><code>$ systemctl status apache2</code></td>
+                </tr>
+                <tr>
+                    <td><code>systemctl enable [услуга]</code></td>
+                    <td>Разрешава автоматично стартиране</td>
+                    <td><code>$ sudo systemctl enable apache2</code></td>
+                </tr>
+                <tr>
+                    <td><code>systemctl disable [услуга]</code></td>
+                    <td>Забранява автоматично стартиране</td>
+                    <td><code>$ sudo systemctl disable apache2</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="topic">
+            <h3>5.3. Стари команди (service)</h3>
+            <div class="example">
+                <pre><code>$ sudo service apache2 start      # Стартира услуга
+$ sudo service apache2 stop       # Спира услуга
+$ sudo service apache2 restart    # Рестартира услуга
+$ sudo service apache2 status     # Показва състоянието</code></pre>
+            </div>
+        </div>
+
+        <h2>6. Файлови системи. Физическа и логическа организация</h2>
+
+        <div class="topic">
+            <h3>6.1. Какво е файлова система?</h3>
+            <p><strong>Файловата система</strong> определя как се съхраняват и организират файловете на диска.</p>
+            <ul>
+                <li><strong>Физическа организация:</strong> Как данните са записани физически на диска</li>
+                <li><strong>Логическа организация:</strong> Как потребителят вижда файловете (директории, файлове)</li>
+            </ul>
+        </div>
+
+        <div class="topic">
+            <h3>6.2. Примери за файлови системи</h3>
+            <table>
+                <tr>
+                    <th>Файлова система</th>
+                    <th>Операционна система</th>
+                    <th>Описание</th>
+                </tr>
+                <tr>
+                    <td><strong>ext4</strong></td>
+                    <td>Linux</td>
+                    <td>Най-разпространената файлова система в Linux</td>
+                </tr>
+                <tr>
+                    <td><strong>NTFS</strong></td>
+                    <td>Windows</td>
+                    <td>Новата файлова система на Windows</td>
+                </tr>
+                <tr>
+                    <td><strong>FAT32</strong></td>
+                    <td>Windows, универсална</td>
+                    <td>Стара файлова система, съвместима с много устройства</td>
+                </tr>
+                <tr>
+                    <td><strong>ReiserFS</strong></td>
+                    <td>Linux</td>
+                    <td>Бърза файлова система за Linux</td>
+                </tr>
+                <tr>
+                    <td><strong>HFS+</strong></td>
+                    <td>macOS</td>
+                    <td>Файлова система на Apple Mac</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="topic">
+            <h3>6.3. Команди за работа с файлови системи</h3>
+            <table>
+                <tr>
+                    <th>Команда</th>
+                    <th>Описание</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td><code>df -h</code></td>
+                    <td>Показва използваното пространство на диска</td>
+                    <td><code>$ df -h</code></td>
+                </tr>
+                <tr>
+                    <td><code>du -h [директория]</code></td>
+                    <td>Показва размера на директория</td>
+                    <td><code>$ du -h documents/</code></td>
+                </tr>
+                <tr>
+                    <td><code>mount</code></td>
+                    <td>Показва монтираните файлови системи</td>
+                    <td><code>$ mount</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>7. Създаване и изпълнение на прости shell скриптове</h2>
+
+        <div class="topic">
+            <h3>7.1. Какво е shell скрипт?</h3>
+            <p><strong>Shell скрипт</strong> е файл, съдържащ поредица от команди, които се изпълняват последователно. Скриптовете автоматизират задачи.</p>
+        </div>
+
+        <div class="topic">
+            <h3>7.2. Създаване на shell скрипт</h3>
+            <div class="example">
+                <strong>Стъпка 1:</strong> Създайте файл със скрипт
+                <pre><code>$ nano hello.sh</code></pre>
+                
+                <strong>Стъпка 2:</strong> Добавете съдържание:
+                <pre><code>#!/bin/bash
+# Това е коментар
+echo "Здравей, свят!"
+echo "Днес е $(date)"</code></pre>
+                
+                <strong>Стъпка 3:</strong> Направете файла изпълним:
+                <pre><code>$ chmod +x hello.sh</code></pre>
+                
+                <strong>Стъпка 4:</strong> Изпълнете скрипта:
+                <pre><code>$ ./hello.sh</code></pre>
+            </div>
+        </div>
+
+        <div class="topic">
+            <h3>7.3. Основни елементи на shell скрипт</h3>
+            <ul>
+                <li><strong>Shebang:</strong> <code>#!/bin/bash</code> - определя интерпретатора</li>
+                <li><strong>Коментари:</strong> <code># Това е коментар</code></li>
+                <li><strong>Променливи:</strong> <code>NAME="Иван"</code></li>
+                <li><strong>Изход:</strong> <code>echo "Текст"</code></li>
+                <li><strong>Вход:</strong> <code>read VARIABLE</code></li>
+            </ul>
+        </div>
+
+        <div class="topic">
+            <h3>7.4. Примери за прости скриптове</h3>
+            <div class="example">
+                <strong>Пример 1: Здравей</strong>
+                <pre><code>#!/bin/bash
+echo "Как се казваш?"
+read name
+echo "Здравей, $name!"</code></pre>
+            </div>
+            
+            <div class="example">
+                <strong>Пример 2: Създаване на директория</strong>
+                <pre><code>#!/bin/bash
+echo "Въведете име на директория:"
+read dirname
+mkdir $dirname
+echo "Директорията $dirname е създадена!"</code></pre>
+            </div>
+            
+            <div class="example">
+                <strong>Пример 3: Проверка на файл</strong>
+                <pre><code>#!/bin/bash
+echo "Въведете име на файл:"
+read filename
+
+if [ -f "$filename" ]; then
+    echo "Файлът $filename съществува!"
+    echo "Размер: $(du -h $filename | cut -f1)"
+else
+    echo "Файлът $filename не съществува!"
+fi</code></pre>
+            </div>
+        </div>
+
+        <div class="topic">
+            <h3>7.5. Условия и цикли</h3>
+            <div class="example">
+                <strong>Условие if:</strong>
+                <pre><code>if [ условие ]; then
+    команди
+else
+    команди
+fi</code></pre>
+            </div>
+            
+            <div class="example">
+                <strong>Цикъл for:</strong>
+                <pre><code>for i in 1 2 3 4 5; do
+    echo "Номер: $i"
+done</code></pre>
+            </div>
+            
+            <div class="example">
+                <strong>Цикъл while:</strong>
+                <pre><code>counter=1
+while [ $counter -le 5 ]; do
+    echo "Стойност: $counter"
+    counter=$((counter + 1))
+done</code></pre>
+            </div>
+        </div>
+
+        <h2>8. Полезни команди и съвети</h2>
+
+        <div class="topic">
+            <h3>8.1. Комбиниране на команди</h3>
+            <table>
+                <tr>
+                    <th>Символ</th>
+                    <th>Описание</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td><code>|</code></td>
+                    <td>Pipe - пренасочва изхода към друга команда</td>
+                    <td><code>$ ls -la | grep txt</code></td>
+                </tr>
+                <tr>
+                    <td><code>></code></td>
+                    <td>Пренасочва изхода във файл (заменя)</td>
+                    <td><code>$ ls > files.txt</code></td>
+                </tr>
+                <tr>
+                    <td><code>>></code></td>
+                    <td>Добавя изхода към файл</td>
+                    <td><code>$ echo "ново" >> file.txt</code></td>
+                </tr>
+                <tr>
+                    <td><code>&</code></td>
+                    <td>Изпълнява команда на заден фон</td>
+                    <td><code>$ firefox &</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="topic">
+            <h3>8.2. Wildcards (маски)</h3>
+            <ul>
+                <li><code>*</code> - замества нула или повече символа (<code>*.txt</code> - всички .txt файлове)</li>
+                <li><code>?</code> - замества точно един символ (<code>file?.txt</code> - file1.txt, file2.txt и др.)</li>
+                <li><code>[abc]</code> - замества един от символите a, b или c</li>
+                <li><code>[0-9]</code> - замества една цифра от 0 до 9</li>
+            </ul>
+        </div>
+
+        <div class="important">
+            <h3>⚠️ Важно за безопасност!</h3>
+            <ul>
+                <li>Винаги проверявайте командите преди изпълнение</li>
+                <li>Избягвайте <code>rm -rf</code> без внимателна проверка</li>
+                <li>Използвайте <code>sudo</code> само когато е необходимо</li>
+                <li>Правите резервни копия на важни данни</li>
+            </ul>
+        </div>
+
+        <h2>9. Упражнения за подготовка</h2>
+
+        <div class="topic">
+            <h3>Упражнение 1: Навигация и файлове</h3>
+            <p>Изпълнете следните команди:</p>
+            <ol>
+                <li>Покажете текущата директория</li>
+                <li>Създайте директория "упражнения"</li>
+                <li>Влезте в директорията</li>
+                <li>Създайте файл "test.txt"</li>
+                <li>Копирайте файла като "backup.txt"</li>
+                <li>Покажете всички файлове с подробности</li>
+            </ol>
+        </div>
+
+        <div class="topic">
+            <h3>Упражнение 2: Права на достъп</h3>
+            <p>Практикувайте с права:</p>
+            <ol>
+                <li>Създайте файл "script.sh"</li>
+                <li>Променете правата му на 755</li>
+                <li>Проверете правата с <code>ls -l</code></li>
+                <li>Обяснете какво означават правата</li>
+            </ol>
+        </div>
+
+        <div class="topic">
+            <h3>Упражнение 3: Shell скрипт</h3>
+            <p>Създайте скрипт, който:</p>
+            <ol>
+                <li>Пита за име на потребител</li>
+                <li>Пита за име на директория</li>
+                <li>Създава директорията</li>
+                <li>Създава файл "readme.txt" в директорията</li>
+                <li>Пише поздравителен текст в файла</li>
+            </ol>
+        </div>
+
+        <div style="margin-top: 40px; padding: 20px; background: #e8f4f8; border-radius: 5px;">
+            <h2 style="border: none; padding: 0; margin: 0 0 10px 0;">✅ Ключови точки за контролната работа</h2>
+            <ul style="font-size: 1.1em;">
+                <li>Знаете основните команди за навигация: <code>pwd</code>, <code>cd</code>, <code>ls</code></li>
+                <li>Можете да създавате и управлявате файлове и директории: <code>mkdir</code>, <code>touch</code>, <code>cp</code>, <code>mv</code>, <code>rm</code></li>
+                <li>Разбирате пакетните мениджъри: <code>apt</code>, <code>yum</code>, <code>rpm</code>, <code>dpkg</code></li>
+                <li>Знаете какво е процес и основните му състояния</li>
+                <li>Можете да работите с процеси: <code>ps</code>, <code>top</code>, <code>kill</code></li>
+                <li>Разбирате правата за достъп: <code>rwx</code>, <code>chmod</code>, <code>chown</code></li>
+                <li>Знаете как да управлявате услуги: <code>systemctl</code></li>
+                <li>Разбирате различните файлови системи: ext4, NTFS, FAT32</li>
+                <li>Можете да създавате и изпълнявате прости shell скриптове</li>
+            </ul>
+        </div>
+
+        <p style="text-align: center; margin-top: 40px; color: #7f8c8d;">
+            <em>Успех на контролната работа! 🎓</em>
+        </p>
+    </div>
+</body>
+</html>
