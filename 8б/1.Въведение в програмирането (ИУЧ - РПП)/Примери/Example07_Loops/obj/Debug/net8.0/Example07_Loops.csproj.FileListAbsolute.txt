@@ -1,0 +1,15 @@
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example07_Loops/bin/Debug/net8.0/Example07_Loops
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example07_Loops/bin/Debug/net8.0/Example07_Loops.deps.json
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example07_Loops/bin/Debug/net8.0/Example07_Loops.runtimeconfig.json
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example07_Loops/bin/Debug/net8.0/Example07_Loops.dll
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example07_Loops/bin/Debug/net8.0/Example07_Loops.pdb
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example07_Loops/obj/Debug/net8.0/Example07_Loops.GeneratedMSBuildEditorConfig.editorconfig
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example07_Loops/obj/Debug/net8.0/Example07_Loops.AssemblyInfoInputs.cache
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example07_Loops/obj/Debug/net8.0/Example07_Loops.AssemblyInfo.cs
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example07_Loops/obj/Debug/net8.0/Example07_Loops.csproj.CoreCompileInputs.cache
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example07_Loops/obj/Debug/net8.0/Example07_Loops.sourcelink.json
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example07_Loops/obj/Debug/net8.0/Example07_Loops.dll
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example07_Loops/obj/Debug/net8.0/refint/Example07_Loops.dll
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example07_Loops/obj/Debug/net8.0/Example07_Loops.pdb
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example07_Loops/obj/Debug/net8.0/Example07_Loops.genruntimeconfig.cache
+/home/ahmed/Desktop/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example07_Loops/obj/Debug/net8.0/ref/Example07_Loops.dll
