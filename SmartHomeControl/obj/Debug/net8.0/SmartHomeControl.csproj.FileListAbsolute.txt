@@ -1,0 +1,15 @@
+/home/ahmed/Desktop/SCHOOL/SmartHomeControl/obj/Debug/net8.0/SmartHomeControl.GeneratedMSBuildEditorConfig.editorconfig
+/home/ahmed/Desktop/SCHOOL/SmartHomeControl/obj/Debug/net8.0/SmartHomeControl.AssemblyInfoInputs.cache
+/home/ahmed/Desktop/SCHOOL/SmartHomeControl/obj/Debug/net8.0/SmartHomeControl.AssemblyInfo.cs
+/home/ahmed/Desktop/SCHOOL/SmartHomeControl/obj/Debug/net8.0/SmartHomeControl.csproj.CoreCompileInputs.cache
+/home/ahmed/Desktop/SCHOOL/SmartHomeControl/obj/Debug/net8.0/SmartHomeControl.sourcelink.json
+/home/ahmed/Desktop/SCHOOL/SmartHomeControl/bin/Debug/net8.0/SmartHomeControl
+/home/ahmed/Desktop/SCHOOL/SmartHomeControl/bin/Debug/net8.0/SmartHomeControl.deps.json
+/home/ahmed/Desktop/SCHOOL/SmartHomeControl/bin/Debug/net8.0/SmartHomeControl.runtimeconfig.json
+/home/ahmed/Desktop/SCHOOL/SmartHomeControl/bin/Debug/net8.0/SmartHomeControl.dll
+/home/ahmed/Desktop/SCHOOL/SmartHomeControl/bin/Debug/net8.0/SmartHomeControl.pdb
+/home/ahmed/Desktop/SCHOOL/SmartHomeControl/obj/Debug/net8.0/SmartHomeControl.dll
+/home/ahmed/Desktop/SCHOOL/SmartHomeControl/obj/Debug/net8.0/refint/SmartHomeControl.dll
+/home/ahmed/Desktop/SCHOOL/SmartHomeControl/obj/Debug/net8.0/SmartHomeControl.pdb
+/home/ahmed/Desktop/SCHOOL/SmartHomeControl/obj/Debug/net8.0/SmartHomeControl.genruntimeconfig.cache
+/home/ahmed/Desktop/SCHOOL/SmartHomeControl/obj/Debug/net8.0/ref/SmartHomeControl.dll
