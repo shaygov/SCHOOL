@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Формули за произведение на тригонометрични функции</title>
+
+<style>
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+  padding: 20px;
+  color: #2c3e50;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  color: #1a237e;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 24px;
+  font-size: 1.05rem;
+  color: #455a64;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.formula {
+  background: #eef2ff;
+  padding: 12px;
+  border-left: 5px solid #3f51b5;
+  font-family: monospace;
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+.example {
+  background: #e8f5e9;
+  padding: 12px;
+  border-left: 5px solid #43a047;
+  margin: 10px 0;
+}
+
+.proof {
+  background: #fff8e1;
+  padding: 12px;
+  border-left: 5px solid #ffb300;
+  margin: 10px 0;
+}
+
+.task {
+  background: #e3f2fd;
+  padding: 12px;
+  border-left: 5px solid #1e88e5;
+  margin: 10px 0;
+}
+
+.supplement {
+  background: #f3e5f5;
+  border-left-color: #8e24aa;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.highlight {
+  background: #f8f9ff;
+  border: 1px solid #d9defa;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.hint {
+  margin-top: 10px;
+  color: #546e7a;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+}
+
+.legend span::before {
+  content: "";
+  width: 14px;
+  height: 4px;
+  border-radius: 2px;
+  background: currentColor;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 12px 0;
+}
+
+.controls label {
+  background: #f5f7fb;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+.graph-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.graph-actions button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  background: #1a237e;
+  color: white;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.graph-actions button.secondary {
+  background: #5c6bc0;
+}
+
+.graph-note {
+  background: #f8fafc;
+  border: 1px solid #d7e3f2;
+  border-radius: 10px;
+  padding: 14px;
+  margin-top: 12px;
+}
+
+canvas {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+  max-width: 100%;
+}
+
+.slider {
+  width: 100%;
+}
+
+ul {
+  padding-left: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📘 Формули за произведение на тригонометрични функции</h1>
+<p class="subtitle">
+Този урок е посветен основно на формулите, с които произведение на тригонометрични функции
+се преобразува в сума или разлика. Обясненията за <strong>sin</strong> и <strong>cos</strong> са запазени в края като допълнение.
+</p>
+
+<div class="card">
+<h2>🎯 1. Каква е идеята на урока?</h2>
+<p>
+Когато имаме произведение като <strong>sinα·sinβ</strong> или <strong>sinx·cosx</strong>,
+често е по-удобно да го преобразуваме в израз със сбор или разлика. Това помага при:
+</p>
+<ul>
+<li>опростяване на изрази;</li>
+<li>решаване на уравнения;</li>
+<li>доказване на тъждества;</li>
+<li>разбиране на графики и периодичност.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>📐 2. Основни формули за произведение</h2>
+
+<div class="formula">sinα · sinβ = 1/2 [cos(α − β) − cos(α + β)]</div>
+<div class="formula">cosα · cosβ = 1/2 [cos(α − β) + cos(α + β)]</div>
+<div class="formula">sinα · cosβ = 1/2 [sin(α + β) + sin(α − β)]</div>
+<div class="formula">cosα · sinβ = 1/2 [sin(α + β) − sin(α − β)]</div>
+
+<div class="grid-2">
+  <div class="highlight">
+    <h3>Как да ги разпознаваме?</h3>
+    <ul>
+      <li><strong>еднакви функции</strong> → получаваме <strong>cos</strong>;</li>
+      <li><strong>различни функции</strong> → получаваме <strong>sin</strong>;</li>
+      <li>при <strong>sin·sin</strong> има <strong>минус</strong> между двата cos;</li>
+      <li>при <strong>cos·cos</strong> има <strong>плюс</strong> между двата cos.</li>
+    </ul>
+  </div>
+
+  <div class="highlight">
+    <h3>Полезен ориентир</h3>
+    <p>
+      Формулите винаги съдържат <strong>α + β</strong> и <strong>α − β</strong>.
+      Тоест произведението се заменя с комбинация от сума и разлика на ъглите.
+    </p>
+    <p class="hint">
+      Най-често в задачи се използва специалният случай <strong>sinx·cosx = 1/2 sin(2x)</strong>.
+    </p>
+  </div>
+</div>
+</div>
+
+<div class="card">
+<h2>📖 3. Идея за доказателство</h2>
+
+<div class="proof">
+cos(α + β) = cosα cosβ − sinα sinβ<br>
+cos(α − β) = cosα cosβ + sinα sinβ<br><br>
+
+Изваждаме двете равенства:<br>
+cos(α − β) − cos(α + β) = (cosα cosβ + sinα sinβ) − (cosα cosβ − sinα sinβ)
+= cosα cosβ + sinα sinβ − cosα cosβ + sinα sinβ
+= 2 sinα sinβ<br><br>
+
+Следователно:<br>
+⇒ sinα sinβ = 1/2 [cos(α − β) − cos(α + β)]
+</div>
+
+<p>
+По същия начин, чрез формулите за <strong>sin(α ± β)</strong> и <strong>cos(α ± β)</strong>,
+се получават и останалите три формули.
+</p>
+</div>
+
+<div class="card">
+<h2>✏️ 4. Примери</h2>
+
+<div class="example">
+<strong>Пример 1:</strong><br>
+sin(30°)·sin(60°) = 1/2 [cos(30°) − cos(90°)] = 1/2 [√3/2 − 0] = √3/4
+<br><br>
+Тук използваме формулата за <strong>sinα·sinβ</strong>, като поставяме
+<strong>α = 30°</strong> и <strong>β = 60°</strong>. Тогава:
+<strong>α − β = -30°</strong> и понеже <strong>cos(-30°) = cos(30°)</strong>,
+получаваме <strong>cos(30°)</strong>, а <strong>α + β = 90°</strong>, затова се появява <strong>cos(90°)</strong>.
+</div>
+
+<div class="example">
+<strong>Пример 2:</strong><br>
+cos(45°)·cos(45°) = 1/2 [cos(0°) + cos(90°)] = 1/2 [1 + 0] = 1/2
+</div>
+
+<div class="example">
+<strong>Пример 3:</strong><br>
+sin(x)·cos(x) = 1/2 [sin(x + x) + sin(x − x)] = 1/2 [sin(2x) + 0] = 1/2 sin(2x)
+</div>
+</div>
+
+<div class="card">
+<h2>📊 5. Графики, които помагат да се видят формулите</h2>
+
+<p>
+Когато включиш две равни функции, техните графики съвпадат. Двете страни на тъждеството дават една и съща крива.
+</p>
+
+<div class="graph-actions">
+  <button type="button" onclick="setPreset('identity1')">Покажи sinx·cosx = 1/2 sin(2x)</button>
+  <button type="button" class="secondary" onclick="setPreset('identity2')">Покажи sin²x = 1/2(1 - cos2x)</button>
+  <button type="button" class="secondary" onclick="setPreset('identity3')">Покажи cos²x = 1/2(1 + cos2x)</button>
+  <button type="button" class="secondary" onclick="setPreset('base')">Покажи sin(x) и cos(x)</button>
+</div>
+
+<div class="controls">
+  <label><input type="checkbox" id="showSin"> sin(x)</label>
+  <label><input type="checkbox" id="showCos"> cos(x)</label>
+  <label><input type="checkbox" id="showProduct" checked> sin(x)·cos(x)</label>
+  <label><input type="checkbox" id="showDouble" checked> 1/2 sin(2x)</label>
+  <label><input type="checkbox" id="showSinSq"> sin²(x)</label>
+  <label><input type="checkbox" id="showSinSqEq"> 1/2(1 - cos(2x))</label>
+  <label><input type="checkbox" id="showCosSq"> cos²(x)</label>
+  <label><input type="checkbox" id="showCosSqEq"> 1/2(1 + cos(2x))</label>
+</div>
+
+<div class="legend">
+  <span style="color:#e53935;">sin(x)</span>
+  <span style="color:#1e88e5;">cos(x)</span>
+  <span style="color:#2e7d32;">sin(x)·cos(x)</span>
+  <span style="color:#8e24aa;">1/2 sin(2x)</span>
+  <span style="color:#fb8c00;">sin²(x)</span>
+  <span style="color:#6d4c41;">1/2(1 - cos(2x))</span>
+  <span style="color:#00897b;">cos²(x)</span>
+  <span style="color:#3949ab;">1/2(1 + cos(2x))</span>
+</div>
+
+<canvas id="graph" width="900" height="420"></canvas>
+
+<div class="graph-note">
+  <strong id="graphTitle">Сравнение:</strong>
+  <p id="graphText">
+    Зелената и лилавата графика трябва да съвпаднат напълно. Това показва, че
+    <strong>sin(x)·cos(x) = 1/2 sin(2x)</strong>.
+  </p>
+</div>
+</div>
+
+<div class="card">
+<h2>🧠 6. Специални случаи, които често се използват</h2>
+
+<div class="formula">sin(x)·cos(x) = 1/2 sin(2x)</div>
+<div class="formula">sin²(x) = 1/2 [1 − cos(2x)]</div>
+<div class="formula">cos²(x) = 1/2 [1 + cos(2x)]</div>
+
+<p>
+Тези формули се получават, когато в основните формули заместим <strong>α = β = x</strong>.
+</p>
+</div>
+
+<div class="card">
+<h2>📝 7. Кратки задачи за упражнение</h2>
+
+<div class="task">1. Преобразувай: sin(20°)·cos(20°)</div>
+<div class="task">2. Преобразувай: cos(a)·cos(b)</div>
+<div class="task">3. Докажи: sin²(x) + cos²(x) = 1, като използваш формулите за произведение.</div>
+</div>
+
+<div class="card supplement">
+<h2>📍 8. Допълнение: какво са sin и cos?</h2>
+
+<p>
+Всяка точка върху единичната окръжност има координати:
+</p>
+
+<div class="formula">( cosθ , sinθ )</div>
+
+<ul>
+<li>cos(θ) = x-координата</li>
+<li>sin(θ) = y-координата</li>
+</ul>
+
+<p>
+Това означава, че <strong>sin</strong> и <strong>cos</strong> идват от координатите на точка върху окръжност.
+</p>
+
+<div class="formula">
+-1 ≤ sin(x) ≤ 1<br>
+-1 ≤ cos(x) ≤ 1
+</div>
+</div>
+
+<div class="card supplement">
+<h2>🟢 9. Допълнение: единична окръжност</h2>
+
+<input type="range" min="0" max="360" value="0" class="slider" id="angleSlider">
+
+<p>Ъгъл: <span id="angleValue">0</span>°</p>
+<p>sin = <span id="sinValue">0.00</span></p>
+<p>cos = <span id="cosValue">1.00</span></p>
+
+<canvas id="circle" width="400" height="400"></canvas>
+
+<p>
+🔵 cos = хоризонтално (x)<br>
+🔴 sin = вертикално (y)
+</p>
+</div>
+
+</div>
+
+<script>
+const slider = document.getElementById("angleSlider");
+const angleValue = document.getElementById("angleValue");
+const sinValue = document.getElementById("sinValue");
+const cosValue = document.getElementById("cosValue");
+const circleCanvas = document.getElementById("circle");
+const cctx = circleCanvas.getContext("2d");
+
+function drawCircle(angleDeg) {
+  const w = circleCanvas.width;
+  const h = circleCanvas.height;
+  const r = 120;
+  const cx = w / 2;
+  const cy = h / 2;
+  const angle = angleDeg * Math.PI / 180;
+  const x = Math.cos(angle);
+  const y = Math.sin(angle);
+  const px = cx + x * r;
+  const py = cy - y * r;
+
+  cctx.clearRect(0, 0, w, h);
+
+  cctx.beginPath();
+  cctx.arc(cx, cy, r, 0, Math.PI * 2);
+  cctx.strokeStyle = "#424242";
+  cctx.lineWidth = 2;
+  cctx.stroke();
+
+  cctx.beginPath();
+  cctx.moveTo(0, cy);
+  cctx.lineTo(w, cy);
+  cctx.moveTo(cx, 0);
+  cctx.lineTo(cx, h);
+  cctx.strokeStyle = "#b0bec5";
+  cctx.lineWidth = 1;
+  cctx.stroke();
+
+  cctx.beginPath();
+  cctx.moveTo(cx, cy);
+  cctx.lineTo(px, py);
+  cctx.strokeStyle = "#212121";
+  cctx.lineWidth = 2;
+  cctx.stroke();
+
+  cctx.beginPath();
+  cctx.moveTo(cx, cy);
+  cctx.lineTo(px, cy);
+  cctx.strokeStyle = "#1e88e5";
+  cctx.stroke();
+
+  cctx.beginPath();
+  cctx.moveTo(px, cy);
+  cctx.lineTo(px, py);
+  cctx.strokeStyle = "#e53935";
+  cctx.stroke();
+
+  cctx.beginPath();
+  cctx.arc(px, py, 5, 0, Math.PI * 2);
+  cctx.fillStyle = "#212121";
+  cctx.fill();
+
+  cctx.fillStyle = "#455a64";
+  cctx.font = "16px Segoe UI";
+  cctx.fillText("x", w - 18, cy - 8);
+  cctx.fillText("y", cx + 8, 18);
+
+  angleValue.textContent = angleDeg;
+  sinValue.textContent = y.toFixed(2);
+  cosValue.textContent = x.toFixed(2);
+}
+
+slider.addEventListener("input", (e) => {
+  drawCircle(Number(e.target.value));
+});
+
+drawCircle(0);
+
+const graphCanvas = document.getElementById("graph");
+const ctx = graphCanvas.getContext("2d");
+const graphTitle = document.getElementById("graphTitle");
+const graphText = document.getElementById("graphText");
+
+const checkboxes = {
+  showSin: document.getElementById("showSin"),
+  showCos: document.getElementById("showCos"),
+  showProduct: document.getElementById("showProduct"),
+  showDouble: document.getElementById("showDouble"),
+  showSinSq: document.getElementById("showSinSq"),
+  showSinSqEq: document.getElementById("showSinSqEq"),
+  showCosSq: document.getElementById("showCosSq"),
+  showCosSqEq: document.getElementById("showCosSqEq")
+};
+
+const series = [
+  { id: "showSin", color: "#e53935", fn: (x) => Math.sin(x) },
+  { id: "showCos", color: "#1e88e5", fn: (x) => Math.cos(x) },
+  { id: "showProduct", color: "#2e7d32", fn: (x) => Math.sin(x) * Math.cos(x) },
+  { id: "showDouble", color: "#8e24aa", fn: (x) => 0.5 * Math.sin(2 * x) },
+  { id: "showSinSq", color: "#fb8c00", fn: (x) => Math.sin(x) * Math.sin(x) },
+  { id: "showSinSqEq", color: "#6d4c41", fn: (x) => 0.5 * (1 - Math.cos(2 * x)) },
+  { id: "showCosSq", color: "#00897b", fn: (x) => Math.cos(x) * Math.cos(x) },
+  { id: "showCosSqEq", color: "#3949ab", fn: (x) => 0.5 * (1 + Math.cos(2 * x)) }
+];
+
+const xMin = -2 * Math.PI;
+const xMax = 2 * Math.PI;
+const yMin = -1.2;
+const yMax = 1.2;
+
+function mapX(x) {
+  return ((x - xMin) / (xMax - xMin)) * graphCanvas.width;
+}
+
+function mapY(y) {
+  return graphCanvas.height - ((y - yMin) / (yMax - yMin)) * graphCanvas.height;
+}
+
+function drawGrid() {
+  ctx.clearRect(0, 0, graphCanvas.width, graphCanvas.height);
+  ctx.lineWidth = 1;
+  ctx.font = "14px Segoe UI";
+
+  const verticalMarks = [
+    { value: -2 * Math.PI, label: "-2π" },
+    { value: -Math.PI, label: "-π" },
+    { value: 0, label: "0" },
+    { value: Math.PI, label: "π" },
+    { value: 2 * Math.PI, label: "2π" }
+  ];
+
+  verticalMarks.forEach((mark) => {
+    const px = mapX(mark.value);
+    ctx.beginPath();
+    ctx.moveTo(px, 0);
+    ctx.lineTo(px, graphCanvas.height);
+    ctx.strokeStyle = mark.value === 0 ? "#90a4ae" : "#e0e0e0";
+    ctx.stroke();
+    ctx.fillStyle = "#546e7a";
+    ctx.fillText(mark.label, Math.max(4, px - 12), graphCanvas.height - 10);
+  });
+
+  [-1, -0.5, 0, 0.5, 1].forEach((value) => {
+    const py = mapY(value);
+    ctx.beginPath();
+    ctx.moveTo(0, py);
+    ctx.lineTo(graphCanvas.width, py);
+    ctx.strokeStyle = value === 0 ? "#90a4ae" : "#eceff1";
+    ctx.stroke();
+    ctx.fillStyle = "#546e7a";
+    ctx.fillText(String(value), 8, py - 6);
+  });
+}
+
+function plot(fn, color) {
+  ctx.beginPath();
+
+  for (let px = 0; px <= graphCanvas.width; px++) {
+    const x = xMin + (px / graphCanvas.width) * (xMax - xMin);
+    const y = fn(x);
+    const py = mapY(y);
+
+    if (px === 0) {
+      ctx.moveTo(px, py);
+    } else {
+      ctx.lineTo(px, py);
+    }
+  }
+
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
+}
+
+function updateGraphMessage() {
+  if (checkboxes.showProduct.checked && checkboxes.showDouble.checked) {
+    graphTitle.textContent = "Сравнение: sin(x)·cos(x) и 1/2 sin(2x)";
+    graphText.innerHTML = "Зелената и лилавата графика съвпадат. Това показва, че <strong>sin(x)·cos(x) = 1/2 sin(2x)</strong>.";
+    return;
+  }
+
+  if (checkboxes.showSinSq.checked && checkboxes.showSinSqEq.checked) {
+    graphTitle.textContent = "Сравнение: sin²(x) и 1/2(1 - cos(2x))";
+    graphText.innerHTML = "Оранжевата и кафявата графика съвпадат. Така се вижда, че <strong>sin²(x) = 1/2(1 - cos(2x))</strong>.";
+    return;
+  }
+
+  if (checkboxes.showCosSq.checked && checkboxes.showCosSqEq.checked) {
+    graphTitle.textContent = "Сравнение: cos²(x) и 1/2(1 + cos(2x))";
+    graphText.innerHTML = "Тюркоазената и тъмносинята графика съвпадат. Така се вижда, че <strong>cos²(x) = 1/2(1 + cos(2x))</strong>.";
+    return;
+  }
+
+  if (checkboxes.showSin.checked && checkboxes.showCos.checked) {
+    graphTitle.textContent = "Сравнение: основни функции";
+    graphText.innerHTML = "Червената и синята графика помагат да се видят основните форми на <strong>sin(x)</strong> и <strong>cos(x)</strong>, върху които стъпват формулите за произведение.";
+    return;
+  }
+
+  graphTitle.textContent = "Сравнение:";
+  graphText.innerHTML = "Избери две функции, за да провериш дали графиките им съвпадат.";
+}
+
+function drawGraph() {
+  drawGrid();
+  series.forEach((item) => {
+    if (checkboxes[item.id].checked) {
+      plot(item.fn, item.color);
+    }
+  });
+  updateGraphMessage();
+}
+
+function setPreset(name) {
+  Object.values(checkboxes).forEach((checkbox) => {
+    checkbox.checked = false;
+  });
+
+  if (name === "identity1") {
+    checkboxes.showProduct.checked = true;
+    checkboxes.showDouble.checked = true;
+  } else if (name === "identity2") {
+    checkboxes.showSinSq.checked = true;
+    checkboxes.showSinSqEq.checked = true;
+  } else if (name === "identity3") {
+    checkboxes.showCosSq.checked = true;
+    checkboxes.showCosSqEq.checked = true;
+  } else if (name === "base") {
+    checkboxes.showSin.checked = true;
+    checkboxes.showCos.checked = true;
+  }
+
+  drawGraph();
+}
+
+Object.values(checkboxes).forEach((checkbox) => {
+  checkbox.addEventListener("change", drawGraph);
+});
+
+drawGraph();
+</script>
+
+</body>
+</html>

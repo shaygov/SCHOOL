@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Супер Марио - Мини игра</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="panel">
+      <div class="hud">
+        <div class="hud-item">Монети: <span id="coins">0</span></div>
+        <div class="hud-item">Точки: <span id="score">0</span></div>
+        <div class="hud-item">Животи: <span id="lives">3</span></div>
+      </div>
+
+      <div class="game-frame">
+        <canvas id="game" width="960" height="540" aria-label="Супер Марио игра"></canvas>
+
+        <div class="overlay" id="overlay">
+          <div class="overlay-card">
+            <h1>Супер Марио</h1>
+            <p>Мини платформа игра само с HTML, CSS и JavaScript.</p>
+            <p>Движение: <strong>A/D</strong> или <strong>стрелки</strong>, скок: <strong>W</strong>, <strong>нагоре</strong> или <strong>Space</strong>.</p>
+            <p>Събирай монети, прескачай дупките, стъпвай върху враговете и стигни до флага.</p>
+            <div class="actions">
+              <button id="startButton">Старт</button>
+              <button id="restartButton" class="secondary">Нова игра</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

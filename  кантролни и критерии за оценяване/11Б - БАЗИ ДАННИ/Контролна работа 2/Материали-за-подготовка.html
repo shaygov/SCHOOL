@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Материали за подготовка - База данни 11б</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #555;
+            margin-top: 16px;
+        }
+        .topic {
+            background: #ecf0f1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        code {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border-left: 4px solid #e74c3c;
+            margin: 12px 0;
+        }
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 26px;
+        }
+        li {
+            margin: 6px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        .explain {
+            margin-top: 10px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Материали за подготовка — База данни</h1>
+        <p><strong>Клас:</strong> 11б | <strong>Предмет:</strong> База данни</p>
+        <p><strong>Учебен срок:</strong> първи срок, 2025/2026</p>
+       
+        <h2>1. Извличане на данни: SELECT, FROM, WHERE</h2>
+        <div class="topic">
+            <h3>Какво да повторите</h3>
+            <ul>
+                <li>Роля на <code>SELECT</code> (кои колони влизат в резултата) и <code>FROM</code> (от коя таблица).</li>
+                <li><code>WHERE</code> ограничава редовете; сравнения с <code>=</code>, <code>&gt;</code>, <code>&gt;=</code> и др.</li>
+                <li>Текстови литерали в единични кавички; числата — без кавички.</li>
+                <li><code>SELECT *</code> означава „всички колони на таблицата“ за този ред от резултата (удобно, когато изрично се иска целият запис преди ограничаването по <code>WHERE</code>).</li>
+            </ul>
+            <h3>Пример (конкретни колони)</h3>
+            <pre><code>SELECT code, title
+FROM books
+WHERE year_published >= 2020;</code></pre>
+            <p class="explain"><strong>Обяснение:</strong> Заявката връща само избраните колони и само редовете, които удовлетворяват условието. Редът е фиксиран: първо <code>SELECT</code>, после <code>FROM</code>, после <code>WHERE</code> (ако има филтър).</p>
+            <h3>Пример (всички колони)</h3>
+            <pre><code>SELECT *
+FROM loans
+WHERE member_id = 42;</code></pre>
+            <p class="explain"><strong>Обяснение:</strong> <code>*</code> разгръща до всички полета по дефиницията на таблицата при изпълнение; при по-големи таблици в практика често се избират само нужните колони за по-бързо и по-ясно представяне на данните.</p>
+        </div>
+
+        <h2>2. Външен ключ и каскади (FOREIGN KEY … REFERENCES …)</h2>
+        <div class="topic">
+            <h3>Какво да повторите</h3>
+            <ul>
+                <li>Външният ключ държи колоната да сочи към валиден ред в родителската таблица.</li>
+                <li><code>REFERENCES родител(колона_ключ)</code> указва към какво се връзва FK колоната.</li>
+                <li><code>ON DELETE</code> / <code>ON UPDATE</code> с <code>CASCADE</code> (или други действия) задават поведението при промяна в родителя.</li>
+                <li>Име на ограничение с <code>CONSTRAINT име</code> е по избор — помага за по-ясни дефиниции.</li>
+            </ul>
+            <h3>Пример</h3>
+            <pre><code>CONSTRAINT fk_loan_book
+    FOREIGN KEY (book_id)
+        REFERENCES books(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE</code></pre>
+            <p class="explain"><strong>Обяснение:</strong> <code>FOREIGN KEY</code> и <code>REFERENCES</code> са задължителната двойка за деклариране на връзката. <code>CASCADE</code> каска промените според настройките на СУБД; важно е да различавате кое се отнася до изтриване и кое — до обновяване.</p>
+        </div>
+
+        <h2>3. Псевдоними на колони с AS</h2>
+        <div class="topic">
+            <h3>Какво да повторите</h3>
+            <ul>
+                <li>С <code>AS</code> дадено име в резултата не променя реалната колона в таблицата.</li>
+                <li>Може да имате смес: част от колоните с <code>AS</code>, част без.</li>
+                <li><code>WHERE</code> се пише след изброяването на колоните и <code>FROM</code>, обикновено с истинското име на колоната в таблицата.</li>
+            </ul>
+            <h3>Пример</h3>
+            <pre><code>SELECT last_name AS фамилия,
+       salary AS заплата_евро
+FROM staff
+WHERE department_id = 2;</code></pre>
+            <p class="explain"><strong>Обяснение:</strong> <code>SELECT</code> строи „екранния“ резултат; алтернативните имена улесняват четенето. Условието по <code>department_id</code> филтрира редовете преди да се покажат.</p>
+        </div>
+
+        <h2>4. Подредба на резултат: ORDER BY</h2>
+        <div class="topic">
+            <h3>Какво да повторите</h3>
+            <ul>
+                <li><code>ORDER BY колона ASC</code> — възходящ ред (подразбира се, ако не пишете <code>ASC</code>).</li>
+                <li><code>ORDER BY колона DESC</code> — низходящ ред.</li>
+                <li>Може да комбинирате избор на колони (<code>SELECT</code>) без <code>WHERE</code>, ако няма филтър по редове.</li>
+            </ul>
+            <h3>Пример</h3>
+            <pre><code>SELECT ticket_no, opened_at
+FROM support_tickets
+ORDER BY opened_at DESC;</code></pre>
+            <p class="explain"><strong>Обяснение:</strong> <code>ORDER BY</code> не премахва редове; само определя подредбата на тези, които вече са избрани от <code>WHERE</code> (или всички, ако няма <code>WHERE</code>).</p>
+        </div>
+
+        <h2>5. Филтриране по редове: едно или две условия</h2>
+        <div class="topic">
+            <h3>Какво да повторите</h3>
+            <ul>
+                <li>Сравнение с число или дата под формата на низ в кавички.</li>
+                <li>Свързване на две условия с <code>AND</code> — трябва да са изпълнени едновременно.</li>
+            </ul>
+            <h3>Пример</h3>
+            <pre><code>SELECT id, hall_name
+FROM cinemas
+WHERE city = 'София' AND screens &gt;= 3;</code></pre>
+            <p class="explain"><strong>Обяснение:</strong> Със <code>AND</code> и двете части на условието трябва да са верни за един и същ ред, за да попадне в резултата. Ако в по-сложни заявки смесвате <code>AND</code> и <code>OR</code>, използвайте скоби, за да няма двусмислие.</p>
+        </div>
+
+        <h2>6. Липсващи стойности и шаблон (IS NULL, LIKE)</h2>
+        <div class="topic">
+            <h3>Какво да повторите</h3>
+            <ul>
+                <li>Проверка „няма стойност“ се пише <code>колона IS NULL</code> (не <code>= NULL</code>).</li>
+                <li><code>LIKE 'текст%'</code> — имена или низове, които <strong>започват</strong> с дадения префикс; <code>%</code> е „всеки край на низа“ според SQL.</li>
+                <li>Комбинирайте изискванията с <code>AND</code>, когато трябва да са верни заедно.</li>
+            </ul>
+            <h3>Пример</h3>
+            <pre><code>SELECT asset_tag, note
+FROM equipment
+WHERE disposed_at IS NULL
+  AND note LIKE 'Експеримент%';</code></pre>
+            <p class="explain"><strong>Обяснение:</strong> <code>IS NULL</code> е специализиран синтаксис за NULL. Двата реда на условието с <code>AND</code> ограничават множеството записи конюнктивно.</p>
+        </div>
+
+        <h2>7. Съединяване на таблици: INNER JOIN … ON …</h2>
+        <div class="topic">
+            <h3>Какво да повторите</h3>
+            <ul>
+                <li>Вътрешно съединение връща само редове с намерени съвпадения и в двете таблици.</li>
+                <li><code>ON</code> задава условието за съчетаване (обичайно FK = PK на родителя).</li>
+                <li>Псевдоними с <code>AS</code> за таблица (<code>t AS x</code>) съкращават текст в <code>SELECT</code> и <code>ON</code>.</li>
+            </ul>
+            <h3>Пример</h3>
+            <pre><code>SELECT p.title, u.login
+FROM posts AS p
+INNER JOIN users AS u ON p.author_user_id = u.id
+WHERE p.published = true;</code></pre>
+            <p class="explain"><strong>Обяснение:</strong> Свързващите колони в двете таблици трябва да съответстват по тип и смисъл. В учебни задачи често се дописва само фрагмент от синтаксиса за съединението — важно е да помните къде стои <code>INNER JOIN</code>, къде <code>ON</code> и че условието за съчетаване обикновено използва <code>=</code> между ключовите колони.</p>
+        </div>
+
+        <h2>8. INSERT: съответствие колона ↔ стойност</h2>
+        <div class="topic">
+            <h3>Какво да повторите</h3>
+            <ul>
+                <li>След <code>INSERT INTO име (col1, col2, …)</code> реда в <code>VALUES (…)</code> са <strong>в същия ред като имената на колоните</strong>.</li>
+                <li>Промяната само на подредба в списъка с колони изисква съща подредба в <code>VALUES</code>; не смесвайте с „логическата“ последователност в текста над заявката.</li>
+                <li>Първичен ключ с авто номер може да липсва в списъка с колони — тогава се генерира от системата.</li>
+            </ul>
+            <h3>Пример</h3>
+            <pre><code>INSERT INTO members (joined_on, role, username)
+VALUES ('2026-03-01', 'reader', 'n.petrova');</code></pre>
+            <p class="explain"><strong>Обяснение:</strong> Първата стойност отива в <code>joined_on</code>, втората в <code>role</code>, третата в <code>username</code>. Ако разместите имената след <code>INTO</code>, трябва да преместите и стойностите в същия ред.</p>
+        </div>
+
+        <h2>9. Първичен и външен ключ върху схема</h2>
+        <div class="topic">
+            <h3>Какво да повторите</h3>
+            <ul>
+                <li><strong>PK (първичен ключ):</strong> уникален идентификатор на ред в дадена таблица (обикновено едно поле).</li>
+                <li><strong>FK (външен ключ):</strong> колона, чиито стойности сочат към PK в друга таблица.</li>
+                <li>Верига „един към много“ (1 : N) често се рисува като стрелки от родител към всички „деца“, свързани чрез FK.</li>
+                <li>На хартия отбелязвате символично PK и FK до колоните, после връзките.</li>
+            </ul>
+            <h3>Схема (учебна, абстрактна)</h3>
+            <p>На контролната ще има конкретни имена таблици и колони. Логическият модел се тълкува така:</p>
+            <table>
+                <tr><th>Таблица „родител“</th><th>Таблица „дете“</th><th>Смисъл</th></tr>
+                <tr><td>PK: напр. <code>department_id</code></td><td>FK: <code>department_id</code></td><td>Един департамент — много служители</td></tr>
+                <tr><td>PK: напр. <code>order_id</code></td><td>FK: <code>order_id</code> при редове поръчка</td><td>Една поръчка — много редове позиции</td></tr>
+            </table>
+            <p class="explain"><strong>Обяснение:</strong> Първо откривате ключовете в самата таблица (PK), после колони със същото смисъл навън към друг PK (FK). Стрелките следват посоката на FK към родителя.</p>
+        </div>
+        <p style="text-align: center; margin-top: 32px; color: #7f8c8d;"><em>Приятно учене!</em></p>
+    </div>
+</body>
+</html>

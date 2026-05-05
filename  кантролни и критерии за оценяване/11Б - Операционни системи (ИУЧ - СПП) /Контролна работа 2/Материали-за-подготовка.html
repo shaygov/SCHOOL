@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Подготовка — теория и примери | ОС, 11 б | КР 2</title>
+  <style>
+    :root { --ink: #1a1a1a; --muted: #444; --line: #ccc; --box: #f7f7f7; --tip: #f0f7ff; }
+    body {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 12pt;
+      line-height: 1.5;
+      color: var(--ink);
+      max-width: 21cm;
+      margin: 0 auto;
+      padding: 12mm 14mm 18mm;
+      background: #fff;
+    }
+    h1 { font-size: 16pt; margin: 0 0 8px; border-bottom: 2px solid #000; padding-bottom: 6px; }
+    h2 { font-size: 13pt; margin: 22px 0 10px; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+    h3 { font-size: 12pt; margin: 16px 0 8px; }
+    h4 { font-size: 11.5pt; margin: 12px 0 6px; font-weight: bold; }
+    p { margin: 8px 0; }
+    ul, ol { margin: 6px 0 12px 22px; padding: 0; }
+    li { margin: 5px 0; }
+    .meta { color: var(--muted); font-size: 11pt; margin-bottom: 14px; }
+    .note {
+      background: var(--box);
+      border-left: 4px solid #333;
+      padding: 10px 14px;
+      margin: 14px 0;
+      font-size: 11pt;
+    }
+    .tip {
+      background: var(--tip);
+      border: 1px solid #bcd;
+      padding: 10px 14px;
+      margin: 12px 0;
+      font-size: 11pt;
+      border-radius: 2px;
+    }
+    .example {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      margin: 12px 0;
+      font-size: 11pt;
+    }
+    .example strong { color: #0a2540; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 14px;
+      font-size: 11pt;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 7px 9px;
+      vertical-align: top;
+    }
+    th { background: #eee; text-align: left; }
+    code {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 10.5pt;
+      background: #f0f0f0;
+      padding: 1px 4px;
+    }
+    pre.cmd {
+      background: #f5f5f5;
+      border: 1px solid var(--line);
+      padding: 12px 14px;
+      overflow-x: auto;
+      font-size: 10pt;
+      line-height: 1.4;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: Consolas, "Courier New", monospace;
+    }
+    .page-break { page-break-before: always; }
+    .check { list-style: none; margin-left: 0; padding-left: 0; }
+    .check li { padding-left: 1.2em; text-indent: -1.2em; margin: 5px 0; }
+    .check li::before { content: "☐ "; }
+    #toc { background: #fafafa; border: 1px solid var(--line); padding: 12px 16px; margin: 16px 0; font-size: 11pt; }
+    #toc ol { margin: 8px 0 0 18px; }
+    @media print {
+      @page {
+        size: A4;
+        margin: 14mm 16mm 16mm 16mm;
+      }
+      html, body {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+        font-size: 11pt;
+        background: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .page-break {
+        page-break-before: always;
+        break-before: page;
+      }
+      h1 { border-bottom-color: #000; page-break-after: avoid; break-after: avoid-page; }
+      h2 {
+        page-break-after: avoid;
+        break-after: avoid-page;
+        page-break-inside: avoid;
+      }
+      h3, h4 { page-break-after: avoid; }
+      table, thead { page-break-inside: avoid; }
+      tr { page-break-inside: avoid; page-break-after: auto; }
+      .note, .tip, .example, #toc {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      pre.cmd {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        font-size: 9.5pt;
+        border: 1px solid #999;
+      }
+      a { color: #000 !important; text-decoration: none; word-wrap: break-word; }
+      a[href^="http"]:after,
+      a[href^="/"]:after { content: ""; }
+      nav#toc a { text-decoration: none; border: none; }
+      .no-print { display: none !important; }
+    }
+    .no-print { font-size: 11pt; margin-bottom: 16px; }
+    dfn { font-style: normal; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <p class="no-print"><a href="template.html">Към бланка за печат (template.html)</a><br>
+  <small><strong>Експорт към PDF (A4):</strong> в браузър използвайте „Печат“ → „Запиши като PDF“. Включете <strong>фоново оформление / Background graphics</strong>, ако желаете видими светли фонове и рамки. При нужда коригирайте мащаба под 100&nbsp;%, за да не се режe текстът към краищата на страницата.</small></p>
+
+  <h1>Материали за подготовка — теория и примери</h1>
+  <p class="meta">
+    <strong>Предмет:</strong> Операционни системи (ИУЧ – СПП) · <strong>Клас:</strong> 11 б<br>
+    <strong>Контролна работа 2</strong> — теми: процеси и планиране; контекст и комуникация между процеси; виртуална памет;
+    потребители, групи и права; SSH, FTP/SCP; DNS и DHCP; управление на услуги и планиране на задачи (cron).
+  </p>
+
+  <div class="note">
+    <strong>Как да ползвате файла:</strong> четете последователно; отбелязвайте термините от <a href="#glosar">глосара</a>;
+    прегледайте примерите в конзолата на учебна виртуална машина (Linux), където е възможно. Съдържанието е <strong>само теория, обобщения и примери</strong> за подготовка — без примерен тест, без въпроси с избор на отговор и без ключ с верни букви.
+  </div>
+
+  <nav id="toc" aria-label="Съдържание">
+    <strong>Съдържание</strong>
+    <ol>
+      <li><a href="#s1">Процеси: пакетна обработка, многозадачност, времеделене</a></li>
+      <li><a href="#s2">Състояния на процес; създаване и унищожаване</a></li>
+      <li><a href="#s3">Превключване на контекста</a></li>
+      <li><a href="#s4">Сътрудничество и комуникация между процеси (IPC)</a></li>
+      <li><a href="#s5">Виртуална памет</a></li>
+      <li><a href="#s6">Потребители, групи и права към файл</a></li>
+      <li><a href="#s7">SSH и ключове</a></li>
+      <li><a href="#s8">FTP и SCP (и кратко за SFTP)</a></li>
+      <li><a href="#s9">DNS и DHCP като мрежови услуги</a></li>
+      <li><a href="#s10">Управление на услуги: systemd и systemctl</a></li>
+      <li><a href="#s11">Планиране на задачи: cron</a></li>
+      <li><a href="#s12">Насоки за самоподготовка</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="s1">1. Процеси: пакетна обработка, многозадачност, времеделене</h2>
+
+  <p><dfn>Процес</dfn> е програма в изпълнение: има собствен контекст (код, данни, отворени ресурси, идентификатор PID) и се управлява от ОС чрез планировчик.</p>
+
+  <h3>1.1. Пакетна обработка (batch)</h3>
+  <p>Задачите се подават като <strong>поредица/пакет</strong>; системата ги изпълнява с <strong>минимална или никаква интерактивна намеса</strong> между стъпките на оператора по време на обработката. Подходящо за масови изчисления, отчети, ноцени задачи.</p>
+  <div class="example">
+    <strong>Пример (идеен):</strong> пакет от десет скрипта за обработка на оценки се пуска веднъж; операторът не отговаря на въпроси между всеки скрипт — работата върви до края на пакета.
+  </div>
+
+  <h3>1.2. Многозадачност (multitasking)</h3>
+  <p>Няколко програми изглеждат активни „едновременно“, защото ОС <strong>бързо редува</strong> кой процес ползва процесора (кванти време). На едно ядро в даден момент обикновено се изпълнява един поток от инструкции; усещането за паралелизъм идва от скоростта на превключване.</p>
+
+  <h3>1.3. Времеделене (time-sharing)</h3>
+  <p>Специален случай на многозадачност, ориентиран към <strong>много интерактивни потребители</strong>: процесорното време се дели на <strong>кратки интервали</strong>, за да остане системата отзивчива (терминали, сесии, графичен работен плот).</p>
+
+  <table>
+    <caption style="caption-side:top;text-align:left;font-weight:bold;padding-bottom:6px">Сравнение (обобщение)</caption>
+    <tr><th>Идея</th><th>Акцент</th><th>Типичен потребител</th></tr>
+    <tr><td>Пакетна обработка</td><td>Поредица задачи без постоянна интеракция</td><td>Оператор/система</td></tr>
+    <tr><td>Многозадачност</td><td>Няколко процеса споделят CPU чрез планиране</td><td>Един или много</td></tr>
+    <tr><td>Времеделене</td><td>Кратки квантове за интерактивност</td><td>Много потребители</td></tr>
+  </table>
+
+  <h2 id="s2">2. Състояния на процес; създаване и унищожаване</h2>
+
+  <h3>2.1. Типични състояния (учебен модел)</h3>
+  <ul>
+    <li><strong>Нов (new)</strong> — създаден е дескрипторът, но още не е готов за изпълнение или чака ресурс.</li>
+    <li><strong>Готов (ready)</strong> — може да се изпълнява, чака ред от планировчика.</li>
+    <li><strong>Изпълняващ се (running)</strong> — инструкциите му се изпълняват на процесор в момента.</li>
+    <li><strong>Чакащ (waiting/blocked)</strong> — чака събитие: вход/изход, семафор, съобщение и т.н.</li>
+    <li><strong>Приключил (terminated)</strong> — приключил е; ресурсите се освобождават от ОС.</li>
+  </ul>
+
+  <h3>2.2. Създаване и унищожаване</h3>
+  <p><strong>Създаване:</strong> родителски процес (напр. shell) иска от ядрото да създаде дъщерен процес — заделя се структура (PCB), адресно пространство или споделяне на код, наследяват се част от средата (отворени файлове, променливи на средата).</p>
+  <p><strong>Унищожаване:</strong> при изход програмата предава код на завършване; ядрото освобождава PID, памет, дескриптори на файлове; родителят може да прочете статуса (в Unix чрез <code>wait</code>).</p>
+  <div class="example">
+    <strong>Пример (Linux):</strong> от обвивката команда като <code>ls</code> стартира <strong>нов процес</strong>; след извеждане на списъка той завършва и shell-ът продължава.
+  </div>
+
+  <h2 id="s3">3. Превключване на контекста</h2>
+  <p><dfn>Превключване на контекста</dfn> е запазване на „снимка“ на текущия процес (регистри, указател към инструкция, информация за стека, таблици за страници частично и т.н.) и зареждане на запазена снимка на друг процес, за да продължи той. Така планировчикът може да редува процесите често.</p>
+  <div class="tip">
+    Връзка с многозадачност: без превключване на контекста е невъзможно да се редуват процесите прозрачно за потребителя в едно ядро.
+  </div>
+
+  <h2 id="s4">4. Сътрудничество и комуникация между процеси (IPC)</h2>
+  <p>IPC (inter-process communication) позволява на процесите да обменят данни и да се синхронизират.</p>
+  <table>
+    <tr><th>Механизъм</th><th>Кратко</th><th>Примерна употреба</th></tr>
+    <tr><td>Тръба (pipe)</td><td>Еднопосочен поток байтове между свързани процеси</td><td><code>ls | grep txt</code></td></tr>
+    <tr><td>Именувана тръба (FIFO)</td><td>Тръба с име във файловата система</td><td>клиент/сървър на една машина</td></tr>
+    <tr><td>Съобщения (message queue)</td><td>Опашка от съобщения с тип/приоритет</td><td>координация на услуги</td></tr>
+    <tr><td>Споделена памет</td><td>Общ сегмент — много бърз обмен</td><td>ниска латентност; изисква синхронизация</td></tr>
+    <tr><td>Сокет</td><td>Крайна точка за мрежа или локално (Unix domain)</td><td>клиент–сървър по TCP/UDP</td></tr>
+    <tr><td>Сигнал</td><td>Кратко уведомление (<code>SIGTERM</code>, <code>SIGINT</code>…)</td><td>спиране, прекъсване, презареждане</td></tr>
+  </table>
+  <div class="example">
+    <strong>Пример с тръба:</strong>
+    <pre class="cmd">grep "ERROR" /var/log/syslog | wc -l</pre>
+    Първият процес филтрира редове; вторият брои редовете — данните минават през тръба без междинен файл.
+  </div>
+  <p><strong>Риск:</strong> при споделен ресурс (файл, памет) без заключване могат да възникнат <strong>състезателни събития</strong> — два процеса четат/пишат едновременно и резултатът става непредсказуем.</p>
+
+  <h2 id="s5">5. Виртуална памет</h2>
+  <p>Всяка програма вижда <strong>логическо (виртуално) адресно пространство</strong>, по-голямо от наличната RAM. ОС картографира виртуални адреси към <strong>рамкове</strong> в физическа RAM или към блокове на <strong>вторично устройство</strong> (swap/страницен файл), използвайки <strong>страници</strong> и <strong>таблици на страници</strong>.</p>
+  <ul>
+    <li><strong>Страница навътре / навън</strong>: при нужда се зареждат нужните страници в RAM („lazy“ подход).</li>
+    <li><strong>Page fault</strong>: достъп до страница, която още не е в RAM — ядрото я зарежда или обработва грешка.</li>
+    <li>Ползи: изолация между процеси, повече логическа памет от физическа, общи библиотеки между процеси.</li>
+  </ul>
+  <div class="example">
+    <strong>Аналогия:</strong> много книги на рафта ви (диск); на бюрото имате само няколко разтворени (RAM). Превключвате страниците, които реално четете — останалото остава „на рафта“, докато не потрябва.
+  </div>
+
+  <h2 id="s6">6. Потребители, групи и права към файл</h2>
+  <p>В Unix-подобните системи всеки файл има <strong>собственик (user)</strong> и <strong>група (group)</strong>. Правата се описват с <strong>триада</strong> за собственик, група и останали (others): <strong>r</strong>ead, <strong>w</strong>rite, e<strong>x</strong>ecute.</p>
+  <div class="example">
+    <strong>Пример:</strong> изход от <code>ls -l</code>
+    <pre class="cmd">-rwxr-x--- 1 ana students 4096 мар 05 10:01 skript.sh</pre>
+    Собственикът <code>ana</code> може да чете, пише и изпълнява; членовете на група <code>students</code> — само да четат и изпълняват; останалите — без права.
+  </div>
+  <p><strong>Символно:</strong> <code>chmod u+x file</code> добавя право за изпълнение за собственик.</p>
+  <p><strong>Числено:</strong> <code>chmod 750 skript.sh</code> означава <code>rwx</code>(7) за собственик, <code>r-x</code>(5) за група, <code>---</code>(0) за други.</p>
+  <pre class="cmd">sudo useradd -m nov_potrebitel
+sudo groupadd razrabotchici
+sudo usermod -aG razrabotchici nov_potrebitel</pre>
+  <p class="tip">Командите за потребители/групи изискват администраторски права; на учебна машина използвайте с повишено внимание.</p>
+
+  <h2 id="s7">7. SSH и ключове</h2>
+  <p><dfn>SSH</dfn> (Secure Shell) осигурява криптиран отдалечен достъп (обикновено до shell). Вместо парола в открит вид често се използва <strong>асиметрична двойка ключове</strong>: частен ключ остава при клиента (защитен с права!), публичният ключ се записва на сървъра (напр. в <code>~/.ssh/authorized_keys</code>).</p>
+  <pre class="cmd">ssh-keygen -t ed25519 -C "uchenik@uchilishte"
+ssh-copy-id uchenik@192.168.1.50
+ssh uchenik@192.168.1.50</pre>
+  <div class="tip">
+    Частният ключ никога не се качва в чат или публично хранилище. При компрометиране — генерирайте нова двойка и заменете публичния ключ на сървъра.
+  </div>
+
+  <h2 id="s8">8. FTP и SCP (и SFTP)</h2>
+  <table>
+    <tr><th>Услуга</th><th>Основна идея</th><th>Бележки</th></tr>
+    <tr><td>FTP</td><td>Класически файлов трансфер клиент-сървър</td><td>Често нешифриран канал (<code>FTP</code>); има FTPS/FTP над TLS</td></tr>
+    <tr><td>SCP</td><td>Копиране на файлове през SSH</td><td>Използва SSH за шифриране и удостоверяване</td></tr>
+    <tr><td>SFTP</td><td>Файлови операции като подсистема на SSH</td><td>Интерактивни сесии, резюме, списъци</td></tr>
+  </table>
+  <pre class="cmd">scp /tmp/izpit.txt uchenik@host:/home/uchenik/dokumenti/
+scp uchenik@host:/etc/hostname ./hostname.remote</pre>
+
+  <h2 id="s9">9. DNS и DHCP</h2>
+  <ul>
+    <li><strong>DNS</strong> — система имена към номера (хост име → IPv4/IPv6). Примери записи: A, AAAA, MX, CNAME.</li>
+    <li><strong>DHCP</strong> — автоматично раздаване на мрежова конфигурация: IP адрес, маска, шлюз по подразбиране, DNS сървъри, време на наем.</li>
+  </ul>
+  <div class="example">
+    <strong>Пример:</strong> на лаптоп в клас Wi-Fi достъпът често идва чрез DHCP — получавате адрес без ръчно въвеждане на IP. Когато пишете <code>pvg.bg</code> в браузър, приложението пита DNS кой числов адрес да използва.
+  </div>
+  <pre class="cmd">resolvectl query example.com      # systemd-resolved при някои дистрибуции
+ip addr show                       # локални адреси
+cat /etc/resolv.conf              # наблюдавайте DNS конфигурация (може да е управлявана автоматично)</pre>
+
+  <h2 id="s10">10. Управление на услуги: systemd и systemctl</h2>
+  <p>В модерните Linux дистрибуции услуги (демони) често се управляват с <strong>systemd</strong>. <code>systemctl</code> стартира, спира, проверява състояние и настройва автоматично стартиране.</p>
+  <pre class="cmd">sudo systemctl status ssh
+sudo systemctl start apache2
+sudo systemctl stop apache2
+sudo systemctl restart nginx
+sudo systemctl enable cups      # включва при зареждане
+sudo systemctl disable cups     # без автоматичен старт при boot</pre>
+  <div class="tip">
+    Имената на услугите са различни по дистрибуции (<code>ssh</code> vs <code>sshd</code>, <code>apache2</code> vs <code>httpd</code>).
+  </div>
+
+  <div class="page-break"></div>
+
+  <h2 id="s11">11. Планиране на задачи: cron</h2>
+  <p><dfn>cron</dfn> изпълнява команди по разписание. Потребителският crontab използва пет полета за време (минута, час, ден от месеца, месец, ден от седмицата), следвани от командата.</p>
+  <table>
+    <tr><th>Поле</th><th>Позволени стойности</th></tr>
+    <tr><td>Минута</td><td>0–59</td></tr>
+    <tr><td>Час</td><td>0–23</td></tr>
+    <tr><td>Ден от месеца</td><td>1–31</td></tr>
+    <tr><td>Месец</td><td>1–12</td></tr>
+    <tr><td>Ден от седмицата</td><td>0–7 (0 и 7 = неделя при много конфигурации)</td></tr>
+  </table>
+  <pre class="cmd">crontab -e   # редактирайте личното разписание
+# всеки ден в 06:30
+30 6 * * * /home/uchenik/backup.sh
+# на всеки 15 минути
+*/15 * * * * date &gt;&gt; /home/uchenik/cron-heartbeat.log</pre>
+  <div class="example">
+    <strong>Пример:</strong> системен часовник за синхронизация може да ползва задача на root; за учебни цели често е достатъчно да разберете <em>къде</em> се задава командата и как се изразява интервалът.
+  </div>
+
+  <h2 id="s12">12. Насоки за самоподготовка</h2>
+  <p>По-долу са насоки за повторение и въпроси към самите себе си — <strong>не</strong> са текст на изпит и <strong>няма</strong> варианти с избор на отговор или ключ с букви.</p>
+  <ul class="check">
+    <li>Обяснете с думи как се различават многозадачността, пакетната обработка и времеделението.</li>
+    <li>Перефразирайте състоянията „готов“, „изпълняващ се“, „чакащ“ за пример процес браузър и дисково четене.</li>
+    <li>Опишете превключването на контекста без да копирате дефиниция дословно.</li>
+    <li>Дадете два начина, по които два процеса да разменят данни, и един проблем при липса на синхронизация.</li>
+    <li>Защо виртуалната памет позволява програми с голям адресен модел да работят при ограничена RAM?</li>
+    <li>Интерпретирайте <code>-rw-r-----</code>: кой какво може?</li>
+    <li>В какво помощта на ключовата двойка за SSH намалява риска от изпращане на парола по мрежата?</li>
+    <li>В две изречения: DNS срещу DHCP.</li>
+    <li>Какъв смисъл имат <code>systemctl enable</code> и <code>systemctl start</code> — къде се различават?</li>
+    <li>Напишете crontab ред всеки понеделник в 08:00 изпълнява скрипт <code>/opt/sedmichno.sh</code>.</li>
+  </ul>
+  <div class="page-break"></div>
+</body>
+</html>
