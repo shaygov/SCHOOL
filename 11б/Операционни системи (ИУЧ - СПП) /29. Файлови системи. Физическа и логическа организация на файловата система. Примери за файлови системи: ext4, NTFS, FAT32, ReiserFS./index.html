@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Файлови системи. Физическа и логическа организация — 11б, Операционни системи</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.65;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #fd7e14;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .subtitle { text-align: center; color: #666; margin-bottom: 30px; }
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #fd7e14;
+            padding-left: 15px;
+            margin-top: 35px;
+        }
+        h3 { color: #2c3e50; margin-top: 22px; }
+        ul { margin: 12px 0; }
+        li { margin: 6px 0; }
+        code {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            margin: 15px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        pre code { background: none; padding: 0; }
+        .concept {
+            background-color: #e3f2fd;
+            padding: 15px 18px;
+            border-left: 4px solid #2196f3;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .example {
+            background-color: #e8f5e8;
+            padding: 15px 18px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 12px 18px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .remember {
+            background-color: #fff8e1;
+            padding: 15px 18px;
+            border-left: 4px solid #ff9800;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .analogy {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            padding: 18px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #ffcc80;
+        }
+        .analogy h3 { margin-top: 0; color: #e65100; }
+        .linux {
+            background-color: #f3e5f5;
+            padding: 15px 18px;
+            border-left: 4px solid #9c27b0;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .windows {
+            background-color: #e3f2fd;
+            padding: 15px 18px;
+            border-left: 4px solid #0078d4;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .compare-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+        @media (max-width: 700px) {
+            .compare-box { grid-template-columns: 1fr; }
+        }
+        .compare-card {
+            border-radius: 8px;
+            padding: 16px;
+            border: 2px solid;
+        }
+        .compare-card.physical {
+            background: #fce4ec;
+            border-color: #e91e63;
+        }
+        .compare-card.logical {
+            background: #e8f5e9;
+            border-color: #4caf50;
+        }
+        .compare-card h4 { margin: 0 0 10px 0; font-size: 1.05em; }
+        .compare-card.physical h4 { color: #c2185b; }
+        .compare-card.logical h4 { color: #2e7d32; }
+        .illustration {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 18px 0;
+            text-align: center;
+        }
+        .illustration figcaption {
+            margin-top: 10px;
+            font-size: 0.92em;
+            color: #555;
+            font-style: italic;
+            text-align: left;
+        }
+        .illustration svg { max-width: 100%; height: auto; }
+        .diagram {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+        .format-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .format-card {
+            background-color: #f8f9fa;
+            padding: 16px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+        }
+        .format-card h4 {
+            color: #fd7e14;
+            margin: 0 0 4px 0;
+            font-size: 1.15em;
+        }
+        .format-card .badge {
+            display: inline-block;
+            font-size: 0.75em;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            font-family: sans-serif;
+        }
+        .badge-linux { background: #f3e5f5; color: #7b1fa2; }
+        .badge-windows { background: #e3f2fd; color: #1565c0; }
+        .badge-universal { background: #e8f5e9; color: #2e7d32; }
+        .real-life {
+            background: #fff;
+            border: 1px dashed #aaa;
+            border-radius: 6px;
+            padding: 10px 12px;
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+        .real-life strong { color: #555; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th { background-color: #fd7e14; color: white; }
+        tr:nth-child(even) { background-color: #f8f9fa; }
+        .step-list {
+            counter-reset: step;
+            list-style: none;
+            padding-left: 0;
+        }
+        .step-list li {
+            counter-increment: step;
+            margin: 12px 0;
+            padding-left: 42px;
+            position: relative;
+        }
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #fd7e14;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            font-family: sans-serif;
+            font-size: 14px;
+        }
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Файлови системи. Физическа и логическа организация</h1>
+        <p class="subtitle">11б клас · Операционни системи (ИУЧ – СПП)</p>
+
+        <!-- АНАЛОГИЯ -->
+        <div class="analogy">
+            <h3>📚 Представи си библиотека</h3>
+            <p>Файловата система е като <strong>организацията на библиотека</strong>:</p>
+            <ul>
+                <li><strong>Физическа организация</strong> = книгите са подредени на рафтове по номера (<em>къде точно стои всяка книга в склада</em>)</li>
+                <li><strong>Логическа организация</strong> = каталогът с раздели „История“, „Математика“, „Романи“ (<em>как ти намираш книгата по име и папка</em>)</li>
+            </ul>
+            <p>Компютърът работи по същия начин: дискът пази данните в блокове (физически), а ти виждаш папки и файлове (логически).</p>
+        </div>
+
+        <h2>1. Какво е файлова система?</h2>
+        <div class="concept">
+            <p><strong>Файловата система</strong> е „правилата“, по които операционната система записва и намира файлове на диск, USB флашка или SSD.</p>
+            <p>Без файлова система дискът е просто голяма купчина от нули и единици — без имена, без папки, без ред.</p>
+        </div>
+
+        <figure class="illustration">
+            <svg viewBox="0 0 520 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="От сурови данни към файлове">
+                <rect x="10" y="40" width="130" height="80" rx="8" fill="#ffcdd2" stroke="#e53935" stroke-width="2"/>
+                <text x="75" y="72" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#333">Суров диск</text>
+                <text x="75" y="92" text-anchor="middle" font-size="11" font-family="monospace" fill="#666">01001101...</text>
+                <text x="165" y="85" font-size="28" fill="#fd7e14">→</text>
+                <rect x="195" y="40" width="130" height="80" rx="8" fill="#fff3e0" stroke="#fd7e14" stroke-width="2"/>
+                <text x="260" y="72" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#333">Файлова</text>
+                <text x="260" y="92" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#333">система</text>
+                <text x="350" y="85" font-size="28" fill="#fd7e14">→</text>
+                <rect x="380" y="25" width="130" height="110" rx="8" fill="#e8f5e9" stroke="#43a047" stroke-width="2"/>
+                <text x="445" y="55" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#333">📁 Документи</text>
+                <text x="445" y="78" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#333">📁 Снимки</text>
+                <text x="445" y="101" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#333">📄 report.txt</text>
+                <text x="445" y="124" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#333">🎬 film.mp4</text>
+            </svg>
+            <figcaption>Фиг. 1 — Файловата система превръща безструктурните данни на диска в папки и файлове, които потребителят разбира.</figcaption>
+        </figure>
+
+        <div class="example">
+            <strong>Пример от ежедневието:</strong> Когато вкарваш USB флашка в компютъра и виждаш папка „DCIM“ със снимки — това е работата на файловата система (обикновено FAT32 или exFAT).
+        </div>
+
+        <h2>2. Физическа организация — как данните стоят на диска</h2>
+        <div class="highlight">
+            <p><strong>Физическата организация</strong> = как информацията е <em>реално записана</em> на диска. Ти не я виждаш — виждаш само резултата (файловете).</p>
+        </div>
+
+        <h3>2.1. От малко към голямо</h3>
+        <figure class="illustration">
+            <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Сектор, блок, файл">
+                <text x="260" y="22" text-anchor="middle" font-size="14" font-weight="bold" font-family="sans-serif" fill="#333">Стъпка по стъпка: от сектор до файл</text>
+                <!-- сектори -->
+                <rect x="30" y="40" width="40" height="40" fill="#bbdefb" stroke="#1976d2"/>
+                <rect x="72" y="40" width="40" height="40" fill="#bbdefb" stroke="#1976d2"/>
+                <rect x="114" y="40" width="40" height="40" fill="#bbdefb" stroke="#1976d2"/>
+                <rect x="156" y="40" width="40" height="40" fill="#bbdefb" stroke="#1976d2"/>
+                <text x="113" y="100" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#555">4 сектора = 1 блок (4 KB)</text>
+                <!-- блокове -->
+                <rect x="240" y="35" width="70" height="50" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+                <text x="275" y="65" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#333">Блок 1</text>
+                <rect x="320" y="35" width="70" height="50" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+                <text x="355" y="65" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#333">Блок 2</text>
+                <rect x="400" y="35" width="70" height="50" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+                <text x="435" y="65" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#333">Блок 3</text>
+                <text x="355" y="100" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#555">Един файл може да заема много блокове</text>
+                <!-- файл -->
+                <rect x="180" y="120" width="160" height="55" rx="6" fill="#fff9c4" stroke="#f9a825" stroke-width="2"/>
+                <text x="260" y="145" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#333">📄 domashno.docx</text>
+                <text x="260" y="165" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#666">записан в блокове 1, 2 и 3</text>
+            </svg>
+            <figcaption>Фиг. 2 — Секторът е най-малката единица; блокът е група сектори; файлът заема един или повече блока.</figcaption>
+        </figure>
+
+        <ul>
+            <li><strong>Сектор</strong> — най-малка единица (512 B или 4 KB). Като една малка клетка в тетрадка.</li>
+            <li><strong>Блок (кластер)</strong> — група сектори (обикновено 4 KB). Файловата система работи с блокове, не с отделни сектори.</li>
+            <li><strong>Суперблок</strong> — „паспортът“ на диска: какъв тип ФС, колко място има, колко е свободно.</li>
+            <li><strong>Индексна област</strong> — „регистър“ с информация за всеки файл (къде е, колко е голям).</li>
+            <li><strong>Област за данни</strong> — самите съдържания на файловете.</li>
+        </ul>
+
+        <figure class="illustration">
+            <svg viewBox="0 0 520 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Структура на диска">
+                <rect x="10" y="30" width="80" height="70" fill="#ffcc80" stroke="#ef6c00" stroke-width="2"/>
+                <text x="50" y="58" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#333">Супер</text>
+                <text x="50" y="72" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#333">блок</text>
+                <rect x="95" y="30" width="100" height="70" fill="#90caf9" stroke="#1565c0" stroke-width="2"/>
+                <text x="145" y="58" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#333">Индексна</text>
+                <text x="145" y="72" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#333">област</text>
+                <rect x="200" y="30" width="310" height="70" fill="#a5d6a7" stroke="#2e7d32" stroke-width="2"/>
+                <text x="355" y="58" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#333">Област за данни</text>
+                <rect x="215" y="68" width="45" height="25" fill="#fff" stroke="#666"/>
+                <rect x="265" y="68" width="45" height="25" fill="#fff" stroke="#666"/>
+                <rect x="315" y="68" width="45" height="25" fill="#fff" stroke="#666"/>
+                <rect x="365" y="68" width="45" height="25" fill="#fff" stroke="#666"/>
+                <rect x="415" y="68" width="45" height="25" fill="#fff" stroke="#666"/>
+                <rect x="465" y="68" width="35" height="25" fill="#fff" stroke="#666"/>
+                <text x="260" y="22" text-anchor="middle" font-size="13" font-weight="bold" font-family="sans-serif" fill="#333">Един дял от диска</text>
+            </svg>
+            <figcaption>Фиг. 3 — Дискът се дели на специални зони: метаданни (ляво) и реални данни (дясно).</figcaption>
+        </figure>
+
+        <h3>2.2. Фрагментация — пример</h3>
+        <div class="example">
+            <p><strong>Ситуация:</strong> Записваш файл <code>igra.zip</code> (12 MB). После изтриваш други файлове. Когато записваш нов файл, свободните места може да не са едно до друго.</p>
+        </div>
+
+        <figure class="illustration">
+            <svg viewBox="0 0 520 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Фрагментация">
+                <text x="260" y="20" text-anchor="middle" font-size="13" font-weight="bold" font-family="sans-serif" fill="#333">Файлът igra.zip е „разпилян“ на 3 места</text>
+                <rect x="20" y="40" width="55" height="40" fill="#ef9a9a" stroke="#c62828"/><text x="47" y="65" text-anchor="middle" font-size="9" fill="#333">част 1</text>
+                <rect x="80" y="40" width="55" height="40" fill="#e0e0e0" stroke="#999"/><text x="107" y="65" text-anchor="middle" font-size="9" fill="#666">друг</text>
+                <rect x="140" y="40" width="55" height="40" fill="#ef9a9a" stroke="#c62828"/><text x="167" y="65" text-anchor="middle" font-size="9" fill="#333">част 2</text>
+                <rect x="200" y="40" width="55" height="40" fill="#e0e0e0" stroke="#999"/>
+                <rect x="260" y="40" width="55" height="40" fill="#ef9a9a" stroke="#c62828"/><text x="287" y="65" text-anchor="middle" font-size="9" fill="#333">част 3</text>
+                <rect x="320" y="40" width="55" height="40" fill="#e0e0e0" stroke="#999"/>
+                <rect x="380" y="40" width="55" height="40" fill="#e0e0e0" stroke="#999"/>
+                <rect x="440" y="40" width="55" height="40" fill="#e0e0e0" stroke="#999"/>
+                <text x="260" y="105" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#c62828">→ Компютърът трябва да „скача“ между блокове — по-бавно четене</text>
+                <text x="260" y="130" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#2e7d32">Дефрагментацията подрежда частите отново една до друга (често в Windows/NTFS)</text>
+            </svg>
+            <figcaption>Фиг. 4 — При фрагментация един файл не е на едно място, а на няколко разпръснати блока.</figcaption>
+        </figure>
+
+        <h2>3. Логическа организация — как ти виждаш файловете</h2>
+        <div class="highlight">
+            <p><strong>Логическата организация</strong> = папки, подпапки и имена на файлове. Това е „дървото“, което виждаш в Explorer или файловия мениджър.</p>
+        </div>
+
+        <div class="compare-box">
+            <div class="compare-card physical">
+                <h4>🔧 Физическа (скрита)</h4>
+                <ul>
+                    <li>Блок № 4821, 4822, 9105...</li>
+                    <li>Сектори и байтове</li>
+                    <li>Индексни таблици (inode, MFT)</li>
+                    <li>Грижи се: <strong>ОС + драйвери</strong></li>
+                </ul>
+            </div>
+            <div class="compare-card logical">
+                <h4>👁 Логическа (видима)</h4>
+                <ul>
+                    <li><code>C:\Users\Ivan\Documents\test.pdf</code></li>
+                    <li>Папки и файлове с имена</li>
+                    <li>Дата, размер, права</li>
+                    <li>Грижи се: <strong>файловата система</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <figure class="illustration">
+            <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Дърво на директории">
+                <circle cx="240" cy="30" r="22" fill="#fd7e14" stroke="#e65100" stroke-width="2"/>
+                <text x="240" y="35" text-anchor="middle" font-size="12" font-weight="bold" fill="white" font-family="sans-serif">/</text>
+                <line x1="240" y1="52" x2="120" y2="85" stroke="#888" stroke-width="2"/>
+                <line x1="240" y1="52" x2="240" y2="85" stroke="#888" stroke-width="2"/>
+                <line x1="240" y1="52" x2="360" y2="85" stroke="#888" stroke-width="2"/>
+                <rect x="80" y="85" width="80" height="28" rx="4" fill="#e3f2fd" stroke="#1976d2"/>
+                <text x="120" y="104" text-anchor="middle" font-size="11" font-family="sans-serif">home</text>
+                <rect x="200" y="85" width="80" height="28" rx="4" fill="#e3f2fd" stroke="#1976d2"/>
+                <text x="240" y="104" text-anchor="middle" font-size="11" font-family="sans-serif">etc</text>
+                <rect x="320" y="85" width="80" height="28" rx="4" fill="#e3f2fd" stroke="#1976d2"/>
+                <text x="360" y="104" text-anchor="middle" font-size="11" font-family="sans-serif">var</text>
+                <line x1="120" y1="113" x2="80" y2="145" stroke="#888" stroke-width="2"/>
+                <line x1="120" y1="113" x2="160" y2="145" stroke="#888" stroke-width="2"/>
+                <rect x="40" y="145" width="80" height="28" rx="4" fill="#fff9c4" stroke="#f9a825"/>
+                <text x="80" y="164" text-anchor="middle" font-size="11" font-family="sans-serif">student</text>
+                <rect x="130" y="145" width="90" height="28" rx="4" fill="#c8e6c9" stroke="#388e3c"/>
+                <text x="175" y="164" text-anchor="middle" font-size="11" font-family="sans-serif">report.txt</text>
+                <line x1="80" y1="173" x2="60" y2="195" stroke="#888" stroke-width="2"/>
+                <line x1="80" y1="173" x2="110" y2="195" stroke="#888" stroke-width="2"/>
+                <rect x="20" y="195" width="80" height="22" rx="3" fill="#e8f5e9" stroke="#43a047"/>
+                <text x="60" y="210" text-anchor="middle" font-size="10" font-family="sans-serif">documents</text>
+                <rect x="105" y="195" width="70" height="22" rx="3" fill="#e8f5e9" stroke="#43a047"/>
+                <text x="140" y="210" text-anchor="middle" font-size="10" font-family="sans-serif">pictures</text>
+            </svg>
+            <figcaption>Фиг. 5 — Логическата структура е дърво: корен (/) → папки → подпапки → файлове.</figcaption>
+        </figure>
+
+        <div class="example">
+            <strong>Пример с пътища:</strong> Ако си в папката <code>/home/student</code>:
+            <ul>
+                <li><strong>Абсолютен път:</strong> <code>/home/student/documents/report.txt</code> (от корена)</li>
+                <li><strong>Относителен път:</strong> <code>documents/report.txt</code> (от текущата папка)</li>
+            </ul>
+            В Windows: <code>C:\Users\Ivan\Desktop\homework.docx</code> — същата идея, но с <code>C:\</code> вместо <code>/</code>.
+        </div>
+
+        <h3>3.1. Мост между логическо и физическо — индексът</h3>
+        <p>Когато отвориш файл, ОС не търси по име из целия диск. Тя проверява <strong>индексна таблица</strong> — „регистър“, който казва: „файл <em>report.txt</em> → блокове 15, 16, 88“.</p>
+
+        <figure class="illustration">
+            <svg viewBox="0 0 520 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Индексна таблица">
+                <rect x="20" y="30" width="140" height="100" rx="6" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="90" y="52" text-anchor="middle" font-size="12" font-weight="bold" font-family="sans-serif">Индекс (inode/MFT)</text>
+                <text x="30" y="72" font-size="10" font-family="monospace">report.txt → бл. 15,16</text>
+                <text x="30" y="88" font-size="10" font-family="monospace">photo.jpg  → бл. 42</text>
+                <text x="30" y="104" font-size="10" font-family="monospace">game.zip   → бл. 7,9,22</text>
+                <text x="200" y="85" font-size="32" fill="#fd7e14">⇄</text>
+                <rect x="260" y="30" width="240" height="100" rx="6" fill="#f5f5f5" stroke="#666" stroke-width="2"/>
+                <text x="380" y="52" text-anchor="middle" font-size="12" font-weight="bold" font-family="sans-serif">Блокове на диска</text>
+                <rect x="275" y="62" width="30" height="25" fill="#a5d6a7" stroke="#333"/><text x="290" y="79" text-anchor="middle" font-size="8">15</text>
+                <rect x="310" y="62" width="30" height="25" fill="#a5d6a7" stroke="#333"/><text x="325" y="79" text-anchor="middle" font-size="8">16</text>
+                <rect x="345" y="62" width="30" height="25" fill="#e0e0e0" stroke="#333"/>
+                <rect x="380" y="62" width="30" height="25" fill="#ef9a9a" stroke="#333"/><text x="395" y="79" text-anchor="middle" font-size="8">42</text>
+                <rect x="415" y="62" width="30" height="25" fill="#e0e0e0" stroke="#333"/>
+                <rect x="450" y="62" width="30" height="25" fill="#e0e0e0" stroke="#333"/>
+                <rect x="275" y="95" width="30" height="25" fill="#ef9a9a" stroke="#333"/><text x="290" y="112" text-anchor="middle" font-size="8">7</text>
+                <rect x="310" y="95" width="30" height="25" fill="#e0e0e0" stroke="#333"/>
+                <rect x="345" y="95" width="30" height="25" fill="#ef9a9a" stroke="#333"/><text x="360" y="112" text-anchor="middle" font-size="8">9</text>
+                <rect x="380" y="95" width="30" height="25" fill="#e0e0e0" stroke="#333"/>
+                <rect x="415" y="95" width="30" height="25" fill="#e0e0e0" stroke="#333"/>
+                <rect x="450" y="95" width="30" height="25" fill="#ef9a9a" stroke="#333"/><text x="465" y="112" text-anchor="middle" font-size="8">22</text>
+                <text x="380" y="145" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#666">Цветните блокове съдържат данни от файлове</text>
+            </svg>
+            <figcaption>Фиг. 6 — Индексът свързва името на файла (логически) с номерата на блоковете (физически).</figcaption>
+        </figure>
+
+        <table>
+            <tr><th>Файлова система</th><th>Индексът се нарича</th><th>Кратко</th></tr>
+            <tr><td><strong>ext4</strong></td><td>inode</td><td>Номер + метаданни за всеки файл в Linux</td></tr>
+            <tr><td><strong>NTFS</strong></td><td>MFT (Master File Table)</td><td>Голяма таблица със запис за всеки файл в Windows</td></tr>
+            <tr><td><strong>FAT32</strong></td><td>FAT (File Allocation Table)</td><td>Таблица „кой блок след кой“ — по-проста</td></tr>
+        </table>
+
+        <h2>4. Четири файлови системи — с примери от живота</h2>
+
+        <div class="format-comparison">
+            <div class="format-card">
+                <h4>ext4</h4>
+                <span class="badge badge-linux">Linux</span>
+                <ul>
+                    <li>Стандартна ФС за Ubuntu, Debian и др.</li>
+                    <li>Журналиране — по-безопасна при срив</li>
+                    <li>Големи файлове (до 16 TB)</li>
+                </ul>
+                <div class="real-life">
+                    <strong>📌 Пример:</strong> Дискът на лаптоп с Ubuntu е форматиран с ext4. Папката <code>/home</code> с документите ти е на ext4.
+                </div>
+            </div>
+
+            <div class="format-card">
+                <h4>NTFS</h4>
+                <span class="badge badge-windows">Windows</span>
+                <ul>
+                    <li>Задължителна за диск <code>C:</code> в Windows</li>
+                    <li>Права за достъп (кой какво може)</li>
+                    <li>Журналиране + големи файлове</li>
+                </ul>
+                <div class="real-life">
+                    <strong>📌 Пример:</strong> Когато инсталираш Windows, дискът се форматира с NTFS. Филм от 8 GB може да се запише на <code>D:</code> (NTFS), но <strong>не</strong> на FAT32 флашка.
+                </div>
+            </div>
+
+            <div class="format-card">
+                <h4>FAT32</h4>
+                <span class="badge badge-universal">Универсална</span>
+                <ul>
+                    <li>Работи навсякъде — Windows, Linux, TV, кола, фотоапарат</li>
+                    <li>Много проста</li>
+                    <li><strong>Лимит: 4 GB на файл!</strong></li>
+                </ul>
+                <div class="real-life">
+                    <strong>📌 Пример:</strong> USB флашка за прехвърляне между различни компютъри. Ако филмът е 4.5 GB — <em>няма</em> да се запише; трябва NTFS или exFAT.
+                </div>
+            </div>
+        </div>
+
+        <figure class="illustration">
+            <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Кой какво използва">
+                <text x="260" y="22" text-anchor="middle" font-size="14" font-weight="bold" font-family="sans-serif">Кой носител — коя файлова система?</text>
+                <rect x="20" y="40" width="110" height="55" rx="6" fill="#e3f2fd" stroke="#1565c0"/>
+                <text x="75" y="62" text-anchor="middle" font-size="11" font-family="sans-serif">💻 Windows PC</text>
+                <text x="75" y="82" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565c0">NTFS</text>
+                <rect x="145" y="40" width="110" height="55" rx="6" fill="#f3e5f5" stroke="#7b1fa2"/>
+                <text x="200" y="62" text-anchor="middle" font-size="11" font-family="sans-serif">🐧 Linux PC</text>
+                <text x="200" y="82" text-anchor="middle" font-size="12" font-weight="bold" fill="#7b1fa2">ext4</text>
+                <rect x="270" y="40" width="110" height="55" rx="6" fill="#e8f5e9" stroke="#2e7d32"/>
+                <text x="325" y="62" text-anchor="middle" font-size="11" font-family="sans-serif">🔌 USB флашка</text>
+                <text x="325" y="82" text-anchor="middle" font-size="12" font-weight="bold" fill="#2e7d32">FAT32</text>
+                <rect x="395" y="40" width="110" height="55" rx="6" fill="#fff3e0" stroke="#ef6c00"/>
+                <text x="450" y="62" text-anchor="middle" font-size="11" font-family="sans-serif">📧 Много</text>
+                <text x="450" y="78" text-anchor="middle" font-size="11" font-family="sans-serif">дребни файлове</text>
+                <rect x="60" y="150" width="400" height="40" rx="6" fill="#fff9c4" stroke="#f9a825"/>
+                <text x="260" y="175" text-anchor="middle" font-size="12" font-family="sans-serif">⚠️ FAT32: файл &gt; 4 GB → грешка при копиране!</text>
+            </svg>
+            <figcaption>Фиг. 7 — Бърз преглед: коя файлова система къде се среща най-често.</figcaption>
+        </figure>
+
+        <h2>5. Сравнителна таблица</h2>
+        <table>
+            <tr>
+                <th>Файлова система</th>
+                <th>Макс. файл</th>
+                <th>Журналиране</th>
+                <th>Права</th>
+                <th>Къде я срещаш</th>
+            </tr>
+            <tr>
+                <td><strong>ext4</strong></td>
+                <td>16 TB</td>
+                <td>✅ Да</td>
+                <td>✅ Да</td>
+                <td>Linux компютри</td>
+            </tr>
+            <tr>
+                <td><strong>NTFS</strong></td>
+                <td>16 EB</td>
+                <td>✅ Да</td>
+                <td>✅ Да</td>
+                <td>Windows — диск C:</td>
+            </tr>
+            <tr>
+                <td><strong>FAT32</strong></td>
+                <td>4 GB ⚠️</td>
+                <td>❌ Не</td>
+                <td>❌ Не</td>
+                <td>USB, SD карти, TV</td>
+            </tr>
+        </table>
+
+        <h2>6. Журналиране — какво е и защо е важно</h2>
+        <div class="concept">
+            <p><strong>Журналиране</strong> = ОС първо записва в „дневник“ какво ще направи, после изпълнява. Ако компютърът се изключи посредата, при следващо включване системата чете дневника и поправя незавършеното.</p>
+        </div>
+
+        <figure class="illustration">
+            <svg viewBox="0 0 520 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Журналиране">
+                <text x="260" y="20" text-anchor="middle" font-size="13" font-weight="bold" font-family="sans-serif">Без журнал vs. С журнал</text>
+                <rect x="20" y="35" width="220" height="80" rx="6" fill="#ffebee" stroke="#c62828"/>
+                <text x="130" y="58" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#c62828">❌ FAT32 — без журнал</text>
+                <text x="130" y="78" text-anchor="middle" font-size="10" font-family="sans-serif">Изключване по време на запис</text>
+                <text x="130" y="95" text-anchor="middle" font-size="10" font-family="sans-serif">→ риск от повредени файлове</text>
+                <rect x="280" y="35" width="220" height="80" rx="6" fill="#e8f5e9" stroke="#2e7d32"/>
+                <text x="390" y="58" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#2e7d32">✅ ext4 / NTFS — с журнал</text>
+                <text x="390" y="78" text-anchor="middle" font-size="10" font-family="sans-serif">Записва план → изпълнява → OK</text>
+                <text x="390" y="95" text-anchor="middle" font-size="10" font-family="sans-serif">→ възстановяване при срив</text>
+            </svg>
+            <figcaption>Фиг. 8 — Журналираните файлови системи (ext4, NTFS) са по-устойчиви при внезапно изключване.</figcaption>
+        </figure>
+
+        <div class="example">
+            <strong>Пример:</strong> Копираш голям файл на USB (FAT32) и изваждаш флашката без „Безопасно изваждане“. Файлът може да се повреди. На NTFS/ext4 рискът е по-малък благодарение на журнала.
+        </div>
+
+        <h2>7. Монтиране — „закачане“ на диска</h2>
+        <p>Дискът има файлова система, но трябва да се <strong>монтира</strong> (mount), за да стане достъпен като папка.</p>
+
+        <ol class="step-list">
+            <li><strong>Linux:</strong> USB се появява като <code>/dev/sdb1</code>. Командата <code>sudo mount /dev/sdb1 /mnt/usb</code> го „закачи“ към папката <code>/mnt/usb</code>.</li>
+            <li><strong>Windows:</strong> Автоматично — виждаш <code>E:</code> или <code>F:</code> без да правиш нищо.</li>
+            <li><strong>Размонтиране:</strong> Linux: <code>umount /mnt/usb</code> · Windows: „Безопасно изваждане на хардуер“.</li>
+        </ol>
+
+        <h2>8. Практика — команди и какво виждаш</h2>
+        <div class="linux">
+            <p><strong>Linux — примерен изход:</strong></p>
+            <pre><code>$ df -h
+Файлова система  Размер  Използвано  Свободно  Монтирана на
+/dev/sda1         234G     45G        178G      /
+/dev/sdb1          16G      8G          8G       /media/usb
+
+$ lsblk
+NAME   SIZE TYPE MOUNTPOINT
+sda    240G disk
+└─sda1 234G part /
+sdb     16G disk
+└─sdb1  16G part /media/usb</code></pre>
+            <p>Тук <code>/dev/sda1</code> е ext4 (системният диск), а <code>/dev/sdb1</code> е USB с FAT32.</p>
+        </div>
+
+        <div class="windows">
+            <p><strong>Windows — как да видиш типа:</strong></p>
+            <ul>
+                <li>Десен бутон върху диск → <em>Свойства</em> → виж „Файлова система: NTFS“</li>
+                <li>Или: <kbd>Win + R</kbd> → <code>diskmgmt.msc</code> → колона „Файлова система“</li>
+            </ul>
+        </div>
+
+        <h2>9. Как да избереш файлова система?</h2>
+        <div class="remember">
+            <table>
+                <tr><th>Ако искаш...</th><th>Избери</th></tr>
+                <tr><td>Диск за Linux</td><td><strong>ext4</strong></td></tr>
+                <tr><td>Windows системен дял</td><td><strong>NTFS</strong></td></tr>
+                <tr><td>USB за всички устройства, файлове &lt; 4 GB</td><td><strong>FAT32</strong></td></tr>
+                <tr><td>USB с големи файлове (филми)</td><td><strong>NTFS</strong> или exFAT (не е в програмата, но полезно)</td></tr>
+            </table>
+        </div>
+
+        <h2>10. Запомни накратко</h2>
+        <div class="remember">
+            <ul>
+                <li>📦 <strong>Физическа</strong> = блокове на диска (скрито) · <strong>Логическа</strong> = папки и файлове (видимо)</li>
+                <li>🔗 <strong>Индексът</strong> (inode / MFT / FAT) свързва името на файла с блоковете</li>
+                <li>📝 <strong>Журналиране</strong> = защита при изключване (ext4, NTFS,  FAT32 — не)</li>
+                <li>⚠️ <strong>FAT32</strong> — максимум 4 GB на файл, но работи навсякъде</li>
+                <li>💻 <strong>NTFS</strong> = Windows · <strong>ext4</strong> = Linux · <strong>ReiserFS</strong> = Linux, малки файлове</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

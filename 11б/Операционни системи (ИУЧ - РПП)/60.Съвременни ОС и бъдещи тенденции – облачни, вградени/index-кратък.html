@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Съвременни ОС и бъдещи тенденции — 11б, Операционни системи</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.65;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #6f42c1;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .subtitle { text-align: center; color: #666; margin-bottom: 30px; }
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #6f42c1;
+            padding-left: 15px;
+            margin-top: 35px;
+        }
+        h3 { color: #2c3e50; margin-top: 22px; }
+        ul { margin: 12px 0; }
+        li { margin: 6px 0; }
+        .concept {
+            background-color: #e3f2fd;
+            padding: 15px 18px;
+            border-left: 4px solid #2196f3;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .example {
+            background-color: #e8f5e8;
+            padding: 15px 18px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 12px 18px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .remember {
+            background-color: #fff8e1;
+            padding: 15px 18px;
+            border-left: 4px solid #ff9800;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .hook {
+            background: linear-gradient(135deg, #4527a0 0%, #7e57c2 100%);
+            color: white;
+            padding: 22px 24px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .hook p { margin: 8px 0; font-size: 1.05em; }
+        .hook .big { font-size: 1.35em; font-weight: bold; }
+        .analogy {
+            background: linear-gradient(135deg, #ede7f6 0%, #d1c4e9 100%);
+            padding: 18px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #b39ddb;
+        }
+        .analogy h3 { margin-top: 0; color: #4527a0; }
+        .cloud {
+            background-color: #e3f2fd;
+            padding: 15px 18px;
+            border-left: 4px solid #03a9f4;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .embedded {
+            background-color: #fff3e0;
+            padding: 15px 18px;
+            border-left: 4px solid #ff9800;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .future {
+            background-color: #f3e5f5;
+            padding: 15px 18px;
+            border-left: 4px solid #9c27b0;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .compare-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+            margin: 20px 0;
+        }
+        .compare-card {
+            border-radius: 8px;
+            padding: 16px;
+            border: 2px solid;
+            transition: transform 0.15s;
+        }
+        .compare-card:hover { transform: translateY(-2px); }
+        .compare-card.desktop { background: #e8eaf6; border-color: #3f51b5; }
+        .compare-card.cloud-card { background: #e1f5fe; border-color: #0288d1; }
+        .compare-card.embedded-card { background: #fff8e1; border-color: #ffa000; }
+        .compare-card h4 { margin: 0 0 8px 0; font-size: 1.05em; }
+        .compare-card.desktop h4 { color: #283593; }
+        .compare-card.cloud-card h4 { color: #01579b; }
+        .compare-card.embedded-card h4 { color: #e65100; }
+        .compare-card .tag {
+            font-size: 0.75em;
+            font-family: sans-serif;
+            opacity: 0.8;
+        }
+        .illustration {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 18px 0;
+            text-align: center;
+        }
+        .illustration figcaption {
+            margin-top: 10px;
+            font-size: 0.92em;
+            color: #555;
+            font-style: italic;
+            text-align: left;
+        }
+        .illustration svg { max-width: 100%; height: auto; }
+        .guess-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .guess-card {
+            background: #f8f9fa;
+            border: 2px dashed #bbb;
+            border-radius: 8px;
+            padding: 14px;
+            cursor: default;
+        }
+        .guess-card .device { font-size: 1.6em; margin-bottom: 6px; }
+        .guess-card .answer {
+            margin-top: 10px;
+            padding: 8px 10px;
+            background: #e8f5e9;
+            border-radius: 6px;
+            font-size: 0.92em;
+            border-left: 3px solid #43a047;
+        }
+        .trend-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .trend-item {
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            border-radius: 8px;
+            padding: 14px;
+            text-align: center;
+            border: 1px solid #ce93d8;
+        }
+        .trend-item .icon { font-size: 1.8em; margin-bottom: 6px; }
+        .trend-item strong { display: block; color: #6a1b9a; margin-bottom: 4px; }
+        .trend-item span { font-size: 0.88em; color: #555; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th { background-color: #6f42c1; color: white; }
+        tr:nth-child(even) { background-color: #f8f9fa; }
+        .scenario {
+            background: #fff;
+            border: 2px solid #6f42c1;
+            border-radius: 10px;
+            padding: 16px 18px;
+            margin: 18px 0;
+        }
+        .scenario h4 { margin: 0 0 8px 0; color: #6f42c1; }
+        .scenario .question { font-style: italic; color: #444; }
+        .scenario .solution {
+            margin-top: 10px;
+            padding: 10px 12px;
+            background: #f3e5f5;
+            border-radius: 6px;
+            font-size: 0.95em;
+        }
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Съвременни ОС и бъдещи тенденции</h1>
+        <p class="subtitle">Облачни и вградени операционни системи · 11б клас · Операционни системи (ИУЧ – РПП)</p>
+
+        <div class="hook">
+            <p class="big">🌍 ОС-ът вече не е само на бюрото</p>
+            <p>Докато спиш, в дома ти работят <strong>десетки</strong> операционни системи — в рутера, часовника, хладилника, колата.</p>
+            <p>Два различни „свята“: <strong>облачните</strong> (всичко в интернет) и <strong>вградените</strong> (една задача, минимална памет).</p>
+        </div>
+
+        <div class="analogy">
+            <ul>
+                <li><strong>Десктоп ОС</strong> — голяма къща: Windows, Linux, macOS. Всичко е при теб.</li>
+                <li><strong>Облачна ОС</strong> — малък офис: Chrome OS. Работиш тук, файловете — в „склад“ онлайн.</li>
+                <li><strong>Вградена ОС</strong> — една стая: рутер, сензор, пейсмейкър. Само една работа, никога Word.</li>
+            </ul>
+        </div>
+
+        <h2>1. Облачни ОС — компютърът е прозорец към интернет</h2>
+        <div class="cloud">
+            <p><strong>Облачна ОС</strong> разчита на интернет. Приложенията и данните често са на отдалечен сървър — устройството е само „прозорец“.</p>
+        </div>
+
+        <div class="compare-box">
+            <div class="compare-card desktop">
+                <h4>🖥 Класически компютър</h4>
+                <span class="tag">Windows 11</span>
+                <ul>
+                    <li>Програмите са локално</li>
+                    <li>Работи без интернет</li>
+                    <li>Много RAM и диск</li>
+                </ul>
+            </div>
+            <div class="compare-card cloud-card">
+                <h4>☁️ Облачен клиент</h4>
+                <span class="tag">Chrome OS</span>
+                <ul>
+                    <li>Браузър + уеб приложения</li>
+                    <li>Данни в Drive, OneDrive...</li>
+                    <li>Нужен стабилен интернет</li>
+                </ul>
+            </div>
+        </div>
+
+        <figure class="illustration">
+            <svg viewBox="0 0 480 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Облачна ОС">
+                <rect x="20" y="35" width="110" height="75" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="75" y="62" text-anchor="middle" font-size="11" font-family="sans-serif">Chromebook</text>
+                <text x="75" y="80" text-anchor="middle" font-size="10" font-family="sans-serif">(тънък клиент)</text>
+                <line x1="135" y1="72" x2="175" y2="72" stroke="#0288d1" stroke-width="2" stroke-dasharray="5,3"/>
+                <text x="155" y="64" text-anchor="middle" font-size="9" fill="#0288d1">Wi-Fi</text>
+                <ellipse cx="240" cy="68" rx="50" ry="32" fill="#b3e5fc" stroke="#0288d1" stroke-width="2"/>
+                <text x="240" y="65" text-anchor="middle" font-size="11" font-family="sans-serif">☁️ Облак</text>
+                <text x="240" y="80" text-anchor="middle" font-size="9" font-family="sans-serif">Google / Azure</text>
+                <line x1="295" y1="72" x2="335" y2="72" stroke="#0288d1" stroke-width="2" stroke-dasharray="5,3"/>
+                <rect x="340" y="35" width="120" height="75" rx="8" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
+                <text x="400" y="62" text-anchor="middle" font-size="10" font-family="sans-serif">Gmail, Docs,</text>
+                <text x="400" y="78" text-anchor="middle" font-size="10" font-family="sans-serif">Drive, Meet</text>
+                <text x="240" y="130" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#555">При счупване на лаптопа? Данните остават в облака.</text>
+            </svg>
+            <figcaption>Облачната ОС — устройството е вход, услугите са в интернет.</figcaption>
+        </figure>
+
+        <div class="example">
+            <strong>От училище:</strong> Chromebook + Google Docs. Пишеш домашно в браузъра — записва се в Drive. Без инсталация, без тежък диск. Лаптопът е евтин, защото не пази всичко локално.
+        </div>
+
+        <div class="highlight">
+            <strong>Зад кулисите:</strong> В дата центровете един физически сървър пуска <strong>много виртуални ОС</strong> (VMware, KVM). Така работят AWS, Google Cloud и Azure — хиляди „компютри“ на една машина.
+        </div>
+
+        <table>
+            <tr><th>Облачна ОС ✅</th><th>Облачна ОС ❌</th></tr>
+            <tr><td>Евтини устройства, лесна поддръжка</td><td>Нужен постоянен интернет</td></tr>
+            <tr><td>Данните са резервирани в облака</td><td>Зависимост от Google/Microsoft</td></tr>
+            <tr><td>Достъп от всяко устройство</td><td>Няма тежки програми (Photoshop, игри)</td></tr>
+        </table>
+
+        <h2>2. Вградени ОС — малки, бързи, незаменими</h2>
+        <div class="embedded">
+            <p><strong>Вградена ОС (Embedded OS)</strong> живее в устройство с малко RAM и <em>една конкретна задача</em>. Не инсталираш приложения — тя прави само това, за което е създадена.</p>
+        </div>
+
+        <figure class="illustration">
+            <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Вградени устройства">
+                <text x="240" y="20" text-anchor="middle" font-size="13" font-weight="bold" font-family="sans-serif">Къде скриват вградена ОС?</text>
+                <circle cx="70" cy="70" r="30" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="70" y="75" text-anchor="middle" font-size="16">⌚</text>
+                <circle cx="160" cy="70" r="30" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="160" y="75" text-anchor="middle" font-size="16">📡</text>
+                <circle cx="250" cy="70" r="30" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="250" y="75" text-anchor="middle" font-size="16">🚗</text>
+                <circle cx="340" cy="70" r="30" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="340" y="75" text-anchor="middle" font-size="16">💡</text>
+                <circle cx="410" cy="70" r="30" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="410" y="75" text-anchor="middle" font-size="16">🏠</text>
+                <rect x="50" y="110" width="380" height="40" rx="8" fill="#fff8e1" stroke="#ffa000" stroke-width="2"/>
+                <text x="240" y="128" text-anchor="middle" font-size="11" font-family="sans-serif">32 KB – 512 MB RAM · реално време · работи години без рестарт</text>
+                <text x="240" y="143" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#555">(срещу 8–16 GB на обикновен лаптоп)</text>
+            </svg>
+            <figcaption>Вградената ОС е невидима, но управлява устройствата около теб.</figcaption>
+        </figure>
+
+        <ul>
+            <li><strong>Реално време</strong> — спирачките в колата реагират за милисекунди, не чакат облака</li>
+            <li><strong>Минимален размер</strong> — FreeRTOS може да е под 1 MB</li>
+            <li><strong>IoT</strong> — умни устройства (крушки, термостати, камери), свързани към мрежата и облака</li>
+        </ul>
+
+        <div class="example">
+            <strong>Умна крушка Philips Hue:</strong> малък чип с вградена ОС. Не пуска YouTube — само включва светлината и говори с Wi-Fi хъба. Затова е стотици пъти по-малка от Windows.
+        </div>
+
+        <table>
+            <tr><th>ОС</th><th>Къде</th><th>Защо я ползваме</th></tr>
+            <tr><td><strong>FreeRTOS</strong></td><td>сензори</td><td>Безплатна, реално време, отворен код</td></tr>
+            <tr><td><strong>Embedded Linux</strong></td><td>рутери</td><td>Олекотен Linux за по-мощни устройства</td></tr>
+            <tr><td><strong>VxWorks</strong></td><td>Космос, авиация</td><td>Критични системи — марсоходът на NASA</td></tr>
+        </table>
+
+        <h2>3. 🎯 Разпознай типа ОС</h2>
+        <p>За всяко устройство — какъв тип ОС е най-подходящ?</p>
+        <div class="guess-grid">
+            <div class="guess-card">
+                <div class="device">📚 Училищен Chromebook</div>
+                <div class="answer">☁️ <strong>Облачна</strong> — Docs, Classroom, всичко в браузъра</div>
+            </div>
+            <div class="guess-card">
+                <div class="device">🌡 Термостат умен дом</div>
+                <div class="answer">🔧 <strong>Вградена</strong> — мери температура, изпраща данни</div>
+            </div>
+            <div class="guess-card">
+                <div class="device">🎮 Геймърски PC</div>
+                <div class="answer">🖥 <strong>Десктоп</strong> — тежки игри, много RAM локално</div>
+            </div>
+            <div class="guess-card">
+                <div class="device">🚗 Автопилот в Tesla</div>
+                <div class="answer">🔧 <strong>Вградена RTOS</strong> + AI на място (edge)</div>
+            </div>
+        </div>
+
+        <h2>4. Сравнение накратко</h2>
+        <table>
+            <tr>
+                <th>Критерий</th>
+                <th>Десктоп</th>
+                <th>Облачна</th>
+                <th>Вградена</th>
+            </tr>
+            <tr>
+                <td><strong>RAM</strong></td>
+                <td>4–32 GB</td>
+                <td>2–8 GB</td>
+                <td>32 KB – 512 MB</td>
+            </tr>
+            <tr>
+                <td><strong>Интернет</strong></td>
+                <td>Желателен</td>
+                <td>Задължителен</td>
+                <td>Зависи (IoT — да)</td>
+            </tr>
+            <tr>
+                <td><strong>Примери</strong></td>
+                <td>Windows, Ubuntu</td>
+                <td>Chrome OS</td>
+                <td>FreeRTOS, VxWorks</td>
+            </tr>
+        </table>
+
+        <h2>5. Бъдещето — какво идва?</h2>
+        <div class="future">
+            <p>ОС-ите се сливат с AI, облака и милиарди IoT устройства. Ето 4 тенденции, които си заслужава да знаеш:</p>
+        </div>
+
+        <div class="trend-list">
+            <div class="trend-item">
+                <div class="icon">🤖</div>
+                <strong>AI в ОС</strong>
+                <span>Copilot, Siri — интелигентни асистенти, вградени в системата</span>
+            </div>
+            <div class="trend-item">
+                <div class="icon">⚡</div>
+                <strong>Edge computing</strong>
+                <span>Обработка на място — колата не чака облака в САЩ, за да спре</span>
+            </div>
+            <div class="trend-item">
+                <div class="icon">📦</div>
+                <strong>Контейнери</strong>
+                <span>Docker, Kubernetes — леки „кутии“ с приложения на един сървър</span>
+            </div>
+            <div class="trend-item">
+                <div class="icon">🌐</div>
+                <strong>IoT навсякъде</strong>
+                <span>До 2030 г. — милиарди вградени устройства в домове и градове</span>
+            </div>
+        </div>
+
+        <div class="scenario">
+            <h4>💡 Мисли като инженер</h4>
+            <p class="question">Автономна кола вижда пешеходец на пътя. Защо не изпраща снимката до облака в друг континент и не чака отговор?</p>
+            <div class="solution">
+                <strong>Отговор:</strong> Закъснението е фатално. Вградена ОС + <strong>edge AI</strong> обработват камерата локално за милисекунди. Облакът е за статистика и обновления — не за спешни решения.
+            </div>
+        </div>
+
+        <h2>6. Запомни!</h2>
+        <div class="remember">
+            <ul>
+                <li>☁️ <strong>Облачна ОС</strong> = тънък клиент, данни в интернет (Chrome OS)</li>
+                <li>🔧 <strong>Вградена ОС</strong> = малка, една задача, в устройства (рутер, IoT, кола)</li>
+                <li>⚡ <strong>Edge</strong> = обработка на място, не само в облака</li>
+                <li>Десктоп = всичко локално · Облак = интернет · Вградена = минимална RAM, максимална надеждност</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
