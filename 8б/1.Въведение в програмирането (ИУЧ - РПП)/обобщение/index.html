@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 5 — Подпрограми, параметри, връщана стойност · 8б</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.65;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #17a2b8;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .subtitle { text-align: center; color: #666; margin-bottom: 30px; }
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #17a2b8;
+            padding-left: 15px;
+            margin-top: 35px;
+        }
+        h3 { color: #2c3e50; margin-top: 22px; }
+        ul, ol { margin: 12px 0; }
+        li { margin: 6px 0; }
+        code {
+            background-color: #f4f4f4;
+            color: #c7254e;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.92em;
+        }
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 14px 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 12px 0;
+            font-size: 0.88em;
+            line-height: 1.45;
+        }
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        .concept {
+            background-color: #e3f2fd;
+            padding: 15px 18px;
+            border-left: 4px solid #2196f3;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .example {
+            background-color: #e8f5e8;
+            padding: 15px 18px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 12px 18px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .remember {
+            background-color: #fff8e1;
+            padding: 15px 18px;
+            border-left: 4px solid #ff9800;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .hook {
+            background: linear-gradient(135deg, #006064 0%, #17a2b8 100%);
+            color: white;
+            padding: 22px 24px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .hook p { margin: 8px 0; font-size: 1.05em; }
+        .hook .big { font-size: 1.35em; font-weight: bold; }
+        .analogy {
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+            padding: 18px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #80deea;
+        }
+        .analogy h3 { margin-top: 0; color: #006064; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th { background-color: #17a2b8; color: white; }
+        tr:nth-child(even) { background-color: #f8f9fa; }
+        .syntax-box {
+            background: #fafafa;
+            border: 2px solid #17a2b8;
+            border-radius: 8px;
+            padding: 16px 18px;
+            margin: 18px 0;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            font-size: 1.05em;
+        }
+        .compare-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+            margin: 20px 0;
+        }
+        .compare-card {
+            border-radius: 8px;
+            padding: 16px;
+            border: 2px solid;
+        }
+        .compare-card.for-card { background: #e8f5e9; border-color: #43a047; }
+        .compare-card.while-card { background: #fff3e0; border-color: #fb8c00; }
+        .compare-card h4 { margin: 0 0 8px 0; }
+        .compare-card.for-card h4 { color: #2e7d32; }
+        .compare-card.while-card h4 { color: #e65100; }
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Раздел 5 — Подпрограми (функции / методи)</h1>
+        <p class="subtitle">Параметри, връщана стойност, цикли <code>for</code> и <code>while</code> · 8б клас · Въведение в програмирането (ИУЧ – РПП)</p>
+
+        <div class="hook">
+            <p class="big">🔧 Кодът, който можеш да извикаш отново</p>
+            <p>Вместо да копираш един и същ код на много места, го описваш <strong>веднъж</strong> в подпрограма (метод) и го използваш колкото пъти искаш.</p>
+        </div>
+
+        <div class="analogy">
+            <h3>Аналогия от ежедневието</h3>
+            <ul>
+                <li><strong>Рецепта</strong> — методът е рецептата; <code>Main</code> казва „направи борщ“.</li>
+                <li><strong>Съставки</strong> — параметрите (колко картофи, колко месо).</li>
+                <li><strong>Готовото ястие</strong> — връщаната стойност (<code>return</code>).</li>
+                <li><strong>Цикъл</strong> — повтаряш една и съща стъпка N пъти (напр. разбъркване 10 пъти).</li>
+            </ul>
+        </div>
+
+        <!-- ========== ЧАСТ 1: ОСНОВНИ ПОНЯТИЯ ========== -->
+        <h2>1. Какво е подпрограма (метод)?</h2>
+        <div class="concept">
+            <p><strong>Подпрограма</strong> (в C# се нарича <strong>метод</strong>) е именуван блок от код, който изпълнява конкретна задача. Може да се извика многократно от различни места в програмата.</p>
+            <p>В C# методите се дефинират вътре в клас. Методът <code>Main</code> е началната точка — от него започва изпълнението.</p>
+        </div>
+
+        <h3>Структура на метод</h3>
+        <div class="syntax-box">
+            [модификатор] [тип_на_връщане] ИмеНаМетода([параметри]) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;// тяло на метода<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;return стойност; // ако типът не е void<br>
+            }
+        </div>
+
+        <table>
+            <tr>
+                <th>Част</th>
+                <th>Пример</th>
+                <th>Обяснение</th>
+            </tr>
+            <tr>
+                <td>Тип на връщане</td>
+                <td><code>int</code>, <code>void</code></td>
+                <td>Какъв резултат връща методът. <code>void</code> = без резултат.</td>
+            </tr>
+            <tr>
+                <td>Име</td>
+                <td><code>Sum</code>, <code>PrintTable</code></td>
+                <td>Описателно име с главна буква (PascalCase).</td>
+            </tr>
+            <tr>
+                <td>Параметри</td>
+                <td><code>int a, int b</code></td>
+                <td>Данни, които методът получава при извикване.</td>
+            </tr>
+            <tr>
+                <td>Тяло</td>
+                <td><code>{ ... }</code></td>
+                <td>Командите, които се изпълняват.</td>
+            </tr>
+        </table>
+
+        <h3>Метод без връщане на стойност — <code>void</code></h3>
+        <div class="example">
+            <p>Методът <strong>извършва действие</strong>, но не връща резултат:</p>
+            <pre><code>using System;
+
+class Program {
+    static void Main() {
+        SayHello();           // извикване на метода
+        SayHelloTo("Иван");   // с параметър
+    }
+
+    static void SayHello() {
+        Console.WriteLine("Здравей!");
+    }
+
+    static void SayHelloTo(string name) {
+        Console.WriteLine($"Здравей, {name}!");
+    }
+}</code></pre>
+            <p><strong>Изход:</strong></p>
+            <pre><code>Здравей!
+Здравей, Иван!</code></pre>
+        </div>
+
+        <h3>Метод с връщане на стойност</h3>
+        <div class="example">
+            <p>Методът <strong>изчислява</strong> нещо и го <strong>връща</strong> с <code>return</code>:</p>
+            <pre><code>using System;
+
+class Program {
+    static void Main() {
+        int result = Add(3, 5);
+        Console.WriteLine($"3 + 5 = {result}");
+
+        double area = RectangleArea(4, 6);
+        Console.WriteLine($"Площ: {area}");
+    }
+
+    static int Add(int a, int b) {
+        return a + b;
+    }
+
+    static double RectangleArea(double width, double height) {
+        return width * height;
+    }
+}</code></pre>
+            <p><strong>Изход:</strong></p>
+            <pre><code>3 + 5 = 8
+Площ: 24</code></pre>
+        </div>
+
+        <div class="remember">
+            <strong>Запомни:</strong>
+            <ul>
+                <li><strong>Формални параметри</strong> — имената в дефиницията на метода (<code>int a, int b</code>).</li>
+                <li><strong>Актуални параметри (аргументи)</strong> — стойностите при извикване (<code>Add(3, 5)</code>).</li>
+                <li>След <code>return</code> методът приключва — кодът под него не се изпълнява.</li>
+                <li>Типът след <code>return</code> трябва да съвпада с типа на метода.</li>
+            </ul>
+        </div>
+
+        <!-- ========== ЧАСТ 2: ПАРАМЕТРИ И RETURN — ПРИМЕРИ ========== -->
+        <h2>2. Параметри и връщана стойност — примери</h2>
+
+        <h3>Пример 1: Проверка дали число е четно</h3>
+        <div class="example">
+            <pre><code>static bool IsEven(int number) {
+    return number % 2 == 0;
+}
+
+static void Main() {
+    Console.WriteLine(IsEven(4));   // True
+    Console.WriteLine(IsEven(7));   // False
+}</code></pre>
+        </div>
+
+        <h3>Пример 2: По-голямото от две числа</h3>
+        <div class="example">
+            <pre><code>static int Max(int a, int b) {
+    if (a > b) {
+        return a;
+    }
+    return b;
+}
+
+static void Main() {
+    Console.WriteLine(Max(10, 25));  // 25
+}</code></pre>
+        </div>
+
+        <h3>Пример 3: Метод с няколко параметъра и изчисление</h3>
+        <div class="example">
+            <pre><code>static double Average(int a, int b, int c) {
+    return (a + b + c) / 3.0;
+}
+
+static void Main() {
+    double avg = Average(6, 8, 10);
+    Console.WriteLine($"Средно: {avg}");  // 8
+}</code></pre>
+        </div>
+
+        <div class="highlight">
+            <strong>Извикване на метод — стъпки:</strong>
+            <ol>
+                <li>Програмата влиза в <code>Main</code>.</li>
+                <li>При <code>Max(10, 25)</code> стойностите 10 и 25 се подават на параметрите <code>a</code> и <code>b</code>.</li>
+                <li>Изпълнява се тялото на метода.</li>
+                <li><code>return</code> връща резултата обратно в <code>Main</code>, където може да се запише в променлива или изведе.</li>
+            </ol>
+        </div>
+
+        <!-- ========== ЧАСТ 3: FOR ЦИКЪЛ ========== -->
+        <h2>3. Цикъл <code>for</code></h2>
+        <div class="concept">
+            <p>Цикълът <code>for</code> се използва, когато <strong>знаем колко пъти</strong> искаме да повторим код.</p>
+        </div>
+
+        <div class="syntax-box">
+            for (инициализация; условие; стъпка) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;// тяло — повтаря се<br>
+            }
+        </div>
+
+        <div class="compare-box">
+            <div class="compare-card for-card">
+                <h4>✅ Подходящ за</h4>
+                <ul>
+                    <li>Броене от 1 до N</li>
+                    <li>Обхождане на масив (по-късно)</li>
+                    <li>Таблица на умножение</li>
+                </ul>
+            </div>
+            <div class="compare-card while-card">
+                <h4>⚠️ Честа грешка</h4>
+                <ul>
+                    <li><code>i &lt; 5</code> → 0,1,2,3,4</li>
+                    <li><code>i &lt;= 5</code> → 0,1,2,3,4,5</li>
+                    <li>Внимавай с границата!</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Пример: Числа от 1 до 5</h3>
+        <div class="example">
+            <pre><code>static void Main() {
+    for (int i = 1; i <= 5; i++) {
+        Console.WriteLine(i);
+    }
+}</code></pre>
+            <p><strong>Изход:</strong> 1, 2, 3, 4, 5 (всяко на нов ред)</p>
+        </div>
+
+        <h3>Пример: Сумиране от 1 до N с метод</h3>
+        <div class="example">
+            <pre><code>using System;
+
+class Program {
+    static void Main() {
+        int n = 10;
+        int sum = SumFrom1To(n);
+        Console.WriteLine($"Сумата от 1 до {n} е {sum}");
+    }
+
+    static int SumFrom1To(int n) {
+        int sum = 0;
+        for (int i = 1; i <= n; i++) {
+            sum = sum + i;
+        }
+        return sum;
+    }
+}</code></pre>
+            <p><strong>Изход:</strong> <code>Сумата от 1 до 10 е 55</code></p>
+        </div>
+
+        <h3>Пример: Метод, който извежда таблица на умножение</h3>
+        <div class="example">
+            <pre><code>static void PrintMultiplicationTable(int number) {
+    for (int i = 1; i <= 10; i++) {
+        Console.WriteLine($"{number} x {i} = {number * i}");
+    }
+}
+
+static void Main() {
+    PrintMultiplicationTable(7);
+}</code></pre>
+        </div>
+
+        <!-- ========== ЧАСТ 4: WHILE ЦИКЪЛ ========== -->
+        <h2>4. Цикъл <code>while</code></h2>
+        <div class="concept">
+            <p>Цикълът <code>while</code> повтаря код, <strong>докато условието е вярно</strong>. Броят повторения може да не е известен предварително.</p>
+        </div>
+
+        <div class="syntax-box">
+            while (условие) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;// тяло<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;// променяме нещо, за да не е безкраен цикъл!<br>
+            }
+        </div>
+
+        <div class="compare-box">
+            <div class="compare-card for-card">
+                <h4>🔄 for</h4>
+                <p>Броят повторения е ясен още при писане на кода.</p>
+            </div>
+            <div class="compare-card while-card">
+                <h4>🔄 while</h4>
+                <p>Повтаря се, докато условието е true. Ако е false в началото — тялото <strong>не се изпълнява изобщо</strong>.</p>
+            </div>
+        </div>
+
+        <h3>Пример: Четни и нечетни числа от 1 до 10</h3>
+        <div class="example">
+            <pre><code>static void PrintEvenOdd(int number) {
+    if (number % 2 == 0) {
+        Console.WriteLine($"{number} е ЧЕТНО");
+    } else {
+        Console.WriteLine($"{number} е НЕЧЕТНО");
+    }
+}
+
+static void Main() {
+    int number = 1;
+    while (number <= 10) {
+        PrintEvenOdd(number);
+        number++;   // увеличаваме брояча
+    }
+}</code></pre>
+        </div>
+
+        <h3>Пример: Метод за броене на цифрите в число</h3>
+        <div class="example">
+            <pre><code>static int CountDigits(int n) {
+    if (n == 0) return 1;
+
+    int count = 0;
+    while (n > 0) {
+        count++;
+        n = n / 10;
+    }
+    return count;
+}
+
+static void Main() {
+    Console.WriteLine(CountDigits(12345));  // 5
+    Console.WriteLine(CountDigits(0));    // 1
+}</code></pre>
+        </div>
+
+        <h3>Пример: Сумиране на въведени числа (до 0)</h3>
+        <div class="example">
+            <pre><code>static int ReadAndSum() {
+    int sum = 0;
+    int input;
+
+    Console.Write("Въведете число (0 за край): ");
+    input = int.Parse(Console.ReadLine());
+
+    while (input != 0) {
+        sum = sum + input;
+        Console.Write("Въведете число (0 за край): ");
+        input = int.Parse(Console.ReadLine());
+    }
+    return sum;
+}
+
+static void Main() {
+    int total = ReadAndSum();
+    Console.WriteLine($"Обща сума: {total}");
+}</code></pre>
+        </div>
+
+        <!-- ========== ЧАСТ 5: КОМБИНИРАНЕ ========== -->
+        <h2>5. Комбиниране: методи + цикли</h2>
+
+        <h3>Пример: Факториел с <code>for</code></h3>
+        <div class="example">
+            <pre><code>static long Factorial(int n) {
+    long result = 1;
+    for (int i = 1; i <= n; i++) {
+        result = result * i;
+    }
+    return result;
+}
+
+static void Main() {
+    Console.WriteLine($"5! = {Factorial(5)}");   // 120
+    Console.WriteLine($"6! = {Factorial(6)}");   // 720
+}</code></pre>
+        </div>
+
+        <h3>Пример: Проверка за просто число с <code>while</code></h3>
+        <div class="example">
+            <pre><code>static bool IsPrime(int n) {
+    if (n &lt; 2) return false;
+
+    int divisor = 2;
+    while (divisor * divisor &lt;= n) {
+        if (n % divisor == 0) {
+            return false;
+        }
+        divisor++;
+    }
+    return true;
+}
+
+static void Main() {
+    for (int i = 2; i <= 20; i++) {
+        if (IsPrime(i)) {
+            Console.Write($"{i} ");
+        }
+    }
+    // Изход: 2 3 5 7 11 13 17 19
+}</code></pre>
+        </div>
+
+        <h3>Пример: Пълен програмен шаблон</h3>
+        <div class="example">
+            <pre><code>using System;
+
+class Program {
+    static void Main() {
+        PrintHeader();
+        ShowMenu();
+    }
+
+    static void PrintHeader() {
+        Console.WriteLine("=== Калкулатор на сума ===");
+    }
+
+    static void ShowMenu() {
+        Console.Write("До кое число да сумираме? ");
+        int n = int.Parse(Console.ReadLine());
+        int sum = CalculateSum(n);
+        PrintResult(n, sum);
+    }
+
+    static int CalculateSum(int n) {
+        int sum = 0;
+        for (int i = 1; i <= n; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+
+    static void PrintResult(int n, int sum) {
+        Console.WriteLine($"1 + 2 + ... + {n} = {sum}");
+    }
+}</code></pre>
+        </div>
+
+        <!-- ========== ТАБЛИЦА ЗА СРАВНЕНИЕ ========== -->
+        <h2>6. Обобщение</h2>
+        <table>
+            <tr>
+                <th>Понятие</th>
+                <th>Ключова дума / синтаксис</th>
+                <th>Кога се ползва</th>
+            </tr>
+            <tr>
+                <td>Метод без резултат</td>
+                <td><code>static void Име()</code></td>
+                <td>Извеждане, форматиране, меню</td>
+            </tr>
+            <tr>
+                <td>Метод с резултат</td>
+                <td><code>static int Име()</code> + <code>return</code></td>
+                <td>Изчисления, проверки</td>
+            </tr>
+            <tr>
+                <td>Параметри</td>
+                <td><code>(int a, int b)</code></td>
+                <td>Подаване на данни към метода</td>
+            </tr>
+            <tr>
+                <td>Цикъл for</td>
+                <td><code>for (int i = 0; i &lt; n; i++)</code></td>
+                <td>Известен брой повторения</td>
+            </tr>
+            <tr>
+                <td>Цикъл while</td>
+                <td><code>while (условие)</code></td>
+                <td>Повтаряне докато условието е вярно</td>
+            </tr>
+        </table>
+
+        <div class="remember">
+            <strong>Често срещани грешки:</strong>
+            <ul>
+                <li>Забравен <code>return</code> в метод, който не е <code>void</code>.</li>
+                <li>Безкраен <code>while</code> — липсва промяна на променливата в условието.</li>
+                <li>Объркани граници в <code>for</code>: <code>&lt;</code> срещу <code>&lt;=</code>.</li>
+                <li>Извикване на метод без скоби: <code>SayHello</code> ❌ → <code>SayHello()</code> ✅</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

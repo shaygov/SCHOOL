@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Монтиране (mounting), дялове (partitions), MBR, форматиране (formatting) — 11б</title>
+    <style>
+        body {
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
+            line-height: 1.65;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #6f42c1;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .subtitle { text-align: center; color: #666; margin-bottom: 30px; }
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #6f42c1;
+            padding-left: 15px;
+            margin-top: 35px;
+        }
+        h3 { color: #2c3e50; margin-top: 22px; }
+        ul, ol { margin: 12px 0; }
+        li { margin: 6px 0; }
+        code {
+            background-color: #f4f4f4;
+            color: #c7254e;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.92em;
+        }
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 14px 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 12px 0;
+            font-size: 0.88em;
+            line-height: 1.45;
+        }
+        pre code { background: none; color: inherit; padding: 0; }
+        .concept {
+            background-color: #e3f2fd;
+            padding: 15px 18px;
+            border-left: 4px solid #2196f3;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .example {
+            background-color: #e8f5e8;
+            padding: 15px 18px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 12px 18px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .remember {
+            background-color: #fff8e1;
+            padding: 15px 18px;
+            border-left: 4px solid #ff9800;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .analogy {
+            background: linear-gradient(135deg, #ede7f6 0%, #d1c4e9 100%);
+            padding: 18px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #b39ddb;
+        }
+        .analogy h3 { margin-top: 0; color: #4527a0; }
+        .linux {
+            background-color: #f3e5f5;
+            padding: 15px 18px;
+            border-left: 4px solid #9c27b0;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .windows {
+            background-color: #e3f2fd;
+            padding: 15px 18px;
+            border-left: 4px solid #0078d4;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .compare-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+        @media (max-width: 700px) {
+            .compare-box { grid-template-columns: 1fr; }
+        }
+        .compare-card {
+            border-radius: 8px;
+            padding: 16px;
+            border: 2px solid;
+        }
+        .compare-card.win-card { background: #e3f2fd; border-color: #0078d4; }
+        .compare-card.linux-card { background: #f3e5f5; border-color: #9c27b0; }
+        .compare-card h4 { margin: 0 0 10px 0; font-size: 1.05em; }
+        .compare-card.win-card h4 { color: #0078d4; }
+        .compare-card.linux-card h4 { color: #7b1fa2; }
+        .illustration {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 18px 0;
+            text-align: center;
+        }
+        .illustration figcaption {
+            margin-top: 10px;
+            font-size: 0.92em;
+            color: #555;
+            font-style: italic;
+            text-align: left;
+        }
+        .illustration svg { max-width: 100%; height: auto; }
+        .diagram {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th { background-color: #6f42c1; color: white; }
+        tr:nth-child(even) { background-color: #f8f9fa; }
+        .step-list {
+            counter-reset: step;
+            list-style: none;
+            padding-left: 0;
+        }
+        .step-list li {
+            counter-increment: step;
+            margin: 12px 0;
+            padding-left: 42px;
+            position: relative;
+        }
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #6f42c1;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            font-family: sans-serif;
+            font-size: 14px;
+        }
+        .warning {
+            background-color: #ffebee;
+            padding: 12px 18px;
+            border-left: 4px solid #e53935;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Монтиране на файлова система (mount), дялове (partitions), MBR, форматиране (formatting)</h1>
+        <p class="subtitle">11б клас · Операционни системи (ИУЧ – СПП) · Урок 32</p>
+
+        <div class="analogy">
+            <h3>🏢 Аналогия: етажна сграда</h3>
+            <p>Хард дискът е като <strong>сграда</strong>:</p>
+            <ul>
+                <li><strong>Разделяне на дялове (partitioning)</strong> = строиш отделни етажи (C:, D:, /home)</li>
+                <li><strong>MBR (Master Boot Record) / GPT (GUID Partition Table)</strong> = таблото на входа — казва къде е всеки етаж и откъде започва асансьорът (boot)</li>
+                <li><strong>Форматиране (formatting)</strong> = обзавеждаш етажа по правила (NTFS, ext4, FAT32)</li>
+                <li><strong>Монтиране (mounting)</strong> = отваряш вратата — етажът става достъпен за хора (файлове)</li>
+            </ul>
+        </div>
+
+        <!-- 1. ДЯЛОВЕ -->
+        <h2>1. Разделяне на дялове (partitioning)</h2>
+        <div class="concept">
+            <p><strong>Дял (partition)</strong> е логическа част от физическия диск (disk). Един диск може да има няколко дяла — всеки с отделна <strong>файлова система (file system)</strong>.</p>
+            <p>Защо? За да отделиш Windows от данни, да сложиш Linux до Windows, или да резервираш място за възстановяване.</p>
+        </div>
+
+        <figure class="illustration">
+            <svg viewBox="0 0 520 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Дялове на диск">
+                <rect x="10" y="35" width="500" height="50" rx="6" fill="#eceff1" stroke="#607d8b" stroke-width="2"/>
+                <text x="260" y="25" text-anchor="middle" font-size="13" font-weight="bold" font-family="sans-serif">Физически диск 500 GB</text>
+                <rect x="15" y="40" width="180" height="40" rx="4" fill="#bbdefb" stroke="#1565c0" stroke-width="2"/>
+                <text x="105" y="58" text-anchor="middle" font-size="11" font-family="sans-serif">Дял 1 — C: (Windows)</text>
+                <text x="105" y="72" text-anchor="middle" font-size="10" font-family="sans-serif">NTFS · 200 GB</text>
+                <rect x="200" y="40" width="200" height="40" rx="4" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+                <text x="300" y="58" text-anchor="middle" font-size="11" font-family="sans-serif">Дял 2 — D: (Данни)</text>
+                <text x="300" y="72" text-anchor="middle" font-size="10" font-family="sans-serif">NTFS · 280 GB</text>
+                <rect x="405" y="40" width="95" height="40" rx="4" fill="#fff9c4" stroke="#f9a825" stroke-width="2"/>
+                <text x="452" y="58" text-anchor="middle" font-size="10" font-family="sans-serif">Recovery</text>
+                <text x="452" y="72" text-anchor="middle" font-size="9" font-family="sans-serif">20 GB</text>
+            </svg>
+            <figcaption>Фиг. 1 — Един физически диск, разделен на три логически дяла.</figcaption>
+        </figure>
+
+        <table>
+            <tr><th>Тип дял (partition type)</th><th>Какво е</th><th>Пример</th></tr>
+            <tr>
+                <td><strong>Основен дял (primary partition)</strong></td>
+                <td>Нормален дял, от който може да се стартира ОС</td>
+                <td><code>C:</code>, Linux <code>/</code></td>
+            </tr>
+            <tr>
+                <td><strong>Разширен дял (extended partition)</strong></td>
+                <td>„Контейнер“ за логически дялове (logical partitions) — само при MBR</td>
+                <td>Рядко се ползва днес</td>
+            </tr>
+            <tr>
+                <td><strong>EFI / системен дял (EFI System Partition)</strong></td>
+                <td>Малък дял за зареждане (boot) при UEFI</td>
+                <td>~100–500 MB, FAT32</td>
+            </tr>
+        </table>
+
+        <div class="windows">
+            <p><strong>Windows — как да видиш дяловете:</strong></p>
+            <ul>
+                <li><kbd>Win + R</kbd> → <code>diskmgmt.msc</code> → „Управление на дискове“</li>
+                <li>Виждаш цветни ленти: синьо = основен дял, зелено = логически</li>
+                <li>Десен бутон върху неразпределено пространство → <em>Нов прост том</em> (създаваш дял)</li>
+            </ul>
+        </div>
+
+        <div class="linux">
+            <p><strong>Ubuntu — преглед на дялове:</strong></p>
+            <pre><code>$ lsblk
+NAME   SIZE TYPE MOUNTPOINT
+sda    500G disk
+├─sda1  200G part /          ← основен дял (система)
+├─sda2  280G part /home      ← отделен дял за данни
+└─sda3   20G part            ← swap (размяна)
+
+$ sudo fdisk -l /dev/sda    ← подробна таблица на дяловете</code></pre>
+        </div>
+
+        <!-- 2. MBR -->
+        <h2>2. MBR конфигурация (Master Boot Record)</h2>
+        <div class="concept">
+            <p><strong>MBR (Master Boot Record — главен запис за зареждане)</strong> е първите <strong>512 байта</strong> на диска. Съдържа:</p>
+            <ul>
+                <li><strong>Зареждащ натоварвач (boot loader)</strong> — малка програма, която стартира ОС</li>
+                <li><strong>Таблица на дялове (partition table)</strong> — до <strong>4 основни дяла (primary partitions)</strong></li>
+                <li><strong>Магическо число (signature)</strong> <code>0x55AA</code> — маркер, че дискът е <em>bootable</em> (зареждаем)</li>
+            </ul>
+        </div>
+
+        <figure class="illustration">
+            <svg viewBox="0 0 520 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Структура на MBR">
+                <rect x="20" y="30" width="480" height="90" rx="6" fill="#f5f5f5" stroke="#666" stroke-width="2"/>
+                <text x="260" y="22" text-anchor="middle" font-size="13" font-weight="bold" font-family="sans-serif">Първи сектор на диска (512 байта) — MBR</text>
+                <rect x="30" y="45" width="200" height="60" rx="4" fill="#ffcdd2" stroke="#c62828"/>
+                <text x="130" y="70" text-anchor="middle" font-size="11" font-family="sans-serif">Boot loader</text>
+                <text x="130" y="88" text-anchor="middle" font-size="9" font-family="sans-serif">(зареждащ натоварвач)</text>
+                <rect x="240" y="45" width="200" height="60" rx="4" fill="#bbdefb" stroke="#1565c0"/>
+                <text x="340" y="70" text-anchor="middle" font-size="11" font-family="sans-serif">Partition table</text>
+                <text x="340" y="88" text-anchor="middle" font-size="9" font-family="sans-serif">(таблица на дялове)</text>
+                <rect x="450" y="45" width="40" height="60" rx="4" fill="#fff9c4" stroke="#f9a825"/>
+                <text x="470" y="78" text-anchor="middle" font-size="9" font-family="sans-serif">55AA</text>
+                <text x="260" y="140" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#555">При включване BIOS/UEFI чете MBR → стартира boot loader → зарежда Windows/Linux</text>
+            </svg>
+            <figcaption>Фиг. 2 — MBR намира се винаги в началото на диска и съдържа информация за дяловете.</figcaption>
+        </figure>
+
+        <div class="highlight">
+            <p><strong>MBR (Master Boot Record) vs GPT (GUID Partition Table)</strong> — кратко:</p>
+            <ul>
+                <li><strong>MBR (Master Boot Record)</strong> — по-стар стандарт; макс. 4 основни дяла; дискове до 2 TB</li>
+                <li><strong>GPT (GUID Partition Table)</strong> — модерен (UEFI); неограничен брой дялове; дискове над 2 TB</li>
+                <li>Новите компютри с Windows 10/11 обикновено ползват <strong>GPT</strong>, но <strong>MBR</strong> все още се среща на по-стари машини</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <strong>Пример:</strong> Лаптоп с Windows 11 и диск 1 TB → почти сигурно е <strong>GPT</strong>. Стар компютър с Windows 7 и диск 500 GB → вероятно <strong>MBR</strong>. В „Управление на дискове“ при GPT първият дял е „EFI System Partition“.
+        </div>
+
+        <!-- 3. ФОРМАТИРАНЕ -->
+        <h2>3. Форматиране (formatting)</h2>
+        <div class="concept">
+            <p><strong>Форматирането (formatting)</strong> създава <strong>файлова система (file system)</strong> върху дял. Без форматиране дялът е просто „неразпределено пространство (unallocated space)“ — няма папки, няма файлове.</p>
+            <p><strong>Важно:</strong> Създаването на дял (partitioning) и форматирането (formatting) са <em>различни</em> стъпки!</p>
+        </div>
+
+        <div class="diagram">
+Създаване на дял (partitioning)  →  Форматиране (formatting)  →  Монтиране (mounting)
+(разделяш диска)                    (слагаш NTFS/ext4)            (отваряш за ползване)
+
+[████████|░░░░░░]         [████████|░░░░░░]         C:  и  D:  готови
+ дял 1     празно            NTFS    (празен)          за копиране на файлове
+        </div>
+
+        <table>
+            <tr><th>Файлова система (file system)</th><th>Къде</th><th>За какво</th></tr>
+            <tr><td><strong>NTFS</strong></td><td>Windows</td><td>Системен дял C:, големи файлове, права</td></tr>
+            <tr><td><strong>FAT32 / exFAT</strong></td><td>USB, SD</td><td>Универсална съвместимост</td></tr>
+            <tr><td><strong>ext4</strong></td><td>Linux/Ubuntu</td><td>Стандарт за Linux дялове</td></tr>
+        </table>
+
+        <div class="windows">
+            <p><strong>Windows — форматиране на USB флашка:</strong></p>
+            <ol class="step-list">
+                <li>Вкарваш USB → File Explorer → десен бутон върху устройството</li>
+                <li><em>Форматиране…</em> → избираш <strong>NTFS</strong> (големи файлове) или <strong>FAT32</strong> (съвместимост)</li>
+                <li><em>Старт</em> → всички данни на флашката се <strong>изтриват</strong>!</li>
+            </ol>
+        </div>
+
+        <div class="linux">
+            <p><strong>Ubuntu — форматиране на дял (пример):</strong></p>
+            <pre><code># Форматиране на /dev/sdb1 с ext4
+$ sudo mkfs.ext4 /dev/sdb1
+
+# Форматиране на USB с FAT32
+$ sudo mkfs.vfat -F 32 /dev/sdc1</code></pre>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ Внимание:</strong> Форматирането <strong>изтрива всички данни</strong> на дяла! Винаги проверявай дали си избрал правилното устройство (<code>/dev/sdb1</code>, не <code>/dev/sda1</code>).
+        </div>
+
+        <!-- 4. МОНТИРАНЕ -->
+        <h2>4. Монтиране на файлова система (mounting)</h2>
+        <div class="concept">
+            <p><strong>Монтирането (mounting)</strong> „закачва“ форматиран дял към <strong>дървото на файловете (file tree)</strong>, за да можеш да четеш и записваш файлове.</p>
+            <p>Без монтиране ОС вижда устройството, но не можеш да работиш с файлове в него.</p>
+        </div>
+
+        <div class="compare-box">
+            <div class="compare-card win-card">
+                <h4>🪟 Windows</h4>
+                <ul>
+                    <li>Автоматично монтиране (auto mount) → буква на диск (drive letter): <code>C:</code>, <code>D:</code>, <code>E:</code></li>
+                    <li>USB флашка → обикновено <code>E:</code> или <code>F:</code></li>
+                    <li>Размонтиране (unmount): <em>Безопасно изваждане на хардуер (Safely Remove Hardware)</em></li>
+                </ul>
+            </div>
+            <div class="compare-card linux-card">
+                <h4>🐧 Ubuntu / Linux</h4>
+                <ul>
+                    <li>Дялът е устройство: <code>/dev/sda1</code>, <code>/dev/sdb1</code></li>
+                    <li>Монтира се в <strong>точка на монтиране (mount point)</strong>: <code>/</code>, <code>/home</code>, <code>/media/usb</code></li>
+                    <li>Размонтиране (unmount): <code>umount</code> или „Safely Remove“</li>
+                </ul>
+            </div>
+        </div>
+
+        <figure class="illustration">
+            <svg viewBox="0 0 520 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Монтиране">
+                <rect x="20" y="40" width="120" height="50" rx="6" fill="#e0e0e0" stroke="#666"/>
+                <text x="80" y="62" text-anchor="middle" font-size="11" font-family="sans-serif">/dev/sdb1</text>
+                <text x="80" y="78" text-anchor="middle" font-size="10" font-family="sans-serif">(USB дял)</text>
+                <text x="170" y="70" font-size="24" fill="#6f42c1">→ mount →</text>
+                <rect x="220" y="40" width="130" height="50" rx="6" fill="#c8e6c9" stroke="#388e3c"/>
+                <text x="285" y="62" text-anchor="middle" font-size="11" font-family="sans-serif">/media/usb</text>
+                <text x="285" y="78" text-anchor="middle" font-size="10" font-family="sans-serif">(папка)</text>
+                <text x="400" y="70" font-size="24" fill="#6f42c1">=</text>
+                <rect x="430" y="40" width="70" height="50" rx="6" fill="#bbdefb" stroke="#1565c0"/>
+                <text x="465" y="70" text-anchor="middle" font-size="14" font-weight="bold" font-family="sans-serif">E:</text>
+                <text x="260" y="115" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#555">Същото устройство — различен начин на достъп в двете ОС</text>
+            </svg>
+            <figcaption>Фиг. 3 — Монтирането свързва физическото устройство с път, по който потребителят работи с файлове.</figcaption>
+        </figure>
+
+        <div class="linux">
+            <p><strong>Ubuntu — ръчно монтиране и преглед:</strong></p>
+            <pre><code># Кои файлови системи са монтирани и колко място имат
+$ df -h
+Файлова система  Размер  Използвано  Свободно  Монтирана на
+/dev/sda2         234G     45G        178G      /
+/dev/sdb1          16G      8G          8G       /media/ahmed/USB
+
+# Ръчно монтиране (ако не е автоматично)
+$ sudo mkdir -p /mnt/usb
+$ sudo mount /dev/sdb1 /mnt/usb
+
+# Размонтиране (преди да извадиш USB!)
+$ sudo umount /mnt/usb</code></pre>
+        </div>
+
+        <div class="windows">
+            <p><strong>Windows — преглед на монтираните дялове:</strong></p>
+            <ul>
+                <li>File Explorer → „Този компютър“ → виждаш <code>C:</code>, <code>D:</code>, USB</li>
+                <li><kbd>Win + R</kbd> → <code>diskmgmt.msc</code> → колона „Състояние“ показва дали дялът е Healthy</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <strong>Пример от живота:</strong> Вкарваш USB в Windows — веднага виждаш <code>E:\</code>. Копираш файл, после кликваш „Безопасно изваждане“. В Ubuntu същата флашка се появява в <code>/media/потребител/ИМЕ</code>. Ако я извадиш без <code>umount</code>, файлът може да се повреди.
+        </div>
+
+        <!-- 5. РАБОТА С ФАЙЛОВЕ -->
+        <h2>5. Работа с файлове (working with files)</h2>
+        <p>След монтиране (mounting) работиш с <strong>файлове (files)</strong> и <strong>папки/директории (folders / directories)</strong> — през графичен интерфейс (GUI) или команди.</p>
+
+        <h3>5.1. Графично (Windows)</h3>
+        <div class="windows">
+            <table>
+                <tr><th>Действие</th><th>Как</th></tr>
+                <tr><td>Създаване на папка (create folder)</td><td>Десен бутон → <em>Нова папка (New folder)</em></td></tr>
+                <tr><td>Копиране (copy)</td><td><kbd>Ctrl + C</kbd> → <kbd>Ctrl + V</kbd> (paste)</td></tr>
+                <tr><td>Преместване (move)</td><td><kbd>Ctrl + X</kbd> → <kbd>Ctrl + V</kbd></td></tr>
+                <tr><td>Преименуване (rename)</td><td><kbd>F2</kbd></td></tr>
+                <tr><td>Изтриване (delete)</td><td><kbd>Delete</kbd> (в Кошчето / Recycle Bin) · <kbd>Shift + Delete</kbd> (безвъзвратно)</td></tr>
+                <tr><td>Търсене (search)</td><td>Търсене в Explorer или <code>C:\Users\...</code></td></tr>
+            </table>
+        </div>
+
+        <h3>5.2. Команди (Ubuntu)</h3>
+        <div class="linux">
+            <pre><code># Навигация
+$ pwd                          # къде съм
+$ ls -la                       # списък файлове (с детайли)
+$ cd /home/student/Documents   # влизане в папка
+
+# Създаване и копиране
+$ mkdir projekt                # нова папка
+$ touch domashno.txt           # празен файл
+$ cp domashno.txt backup/      # копиране
+$ mv stari.txt novi.txt        # преименуване / местене
+$ rm domashno.txt              # изтриване
+
+# Преглед на съдържание
+$ cat domashno.txt             # показва текста
+$ less golям_файл.log          # преглед на голям файл (q за изход)</code></pre>
+        </div>
+
+        <h3>5.3. Пътища — Windows vs Linux</h3>
+        <table>
+            <tr><th>Понятие</th><th>Windows</th><th>Ubuntu</th></tr>
+            <tr>
+                <td>Корен (root)</td>
+                <td><code>C:\</code></td>
+                <td><code>/</code></td>
+            </tr>
+            <tr>
+                <td>Домашна папка (home directory)</td>
+                <td><code>C:\Users\Иван\</code></td>
+                <td><code>/home/ivan/</code></td>
+            </tr>
+            <tr>
+                <td>Разделител (path separator)</td>
+                <td>Обратна наклонена <code>\</code> (backslash)</td>
+                <td>Наклонена <code>/</code> (slash)</td>
+            </tr>
+            <tr>
+                <td>Примерен път (path)</td>
+                <td><code>D:\School\test.docx</code></td>
+                <td><code>/home/ivan/School/test.docx</code></td>
+            </tr>
+        </table>
+
+        <div class="example">
+            <strong>Мини-сценарий:</strong> Ученик записва презентация.
+            <ul>
+                <li><strong>Windows:</strong> Записва в <code>C:\Users\Petar\Documents\prezentacia.pptx</code></li>
+                <li>Копира на USB (<code>E:\prezentacia.pptx</code>) → „Безопасно изваждане“</li>
+                <li><strong>Ubuntu (учител):</strong> USB е на <code>/media/ahmed/USB/prezentacia.pptx</code> → <code>cp</code> в <code>/home/ahmed/School/</code></li>
+            </ul>
+        </div>
+
+        <!-- 6. ЦЯЛОСТЕН ПРОЦЕС -->
+        <h2>6. Цялостен процес: от нов диск до файлове</h2>
+        <ol class="step-list">
+            <li><strong>Физически диск (physical disk)</strong> — поставяш HDD/SSD/USB в компютъра</li>
+            <li><strong>Разделяне на дялове (partitioning)</strong> — Disk Management / <code>fdisk</code>, <code>gparted</code></li>
+            <li><strong>MBR / GPT</strong> — <strong>таблицата на дялове (partition table)</strong> се записва в началото на диска</li>
+            <li><strong>Форматиране (formatting)</strong> — всеки дял получава файлова система (NTFS, ext4, FAT32)</li>
+            <li><strong>Монтиране (mounting)</strong> — дялът става достъпен (<code>C:</code> или <code>/home</code>)</li>
+            <li><strong>Работа с файлове (working with files)</strong> — създаваш, копираш, изтриваш</li>
+        </ol>
+
+        <figure class="illustration">
+            <svg viewBox="0 0 520 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Процес">
+                <rect x="5" y="25" width="75" height="35" rx="4" fill="#e0e0e0" stroke="#666"/><text x="42" y="47" text-anchor="middle" font-size="9" font-family="sans-serif">Диск</text>
+                <text x="88" y="47" font-size="16" fill="#6f42c1">→</text>
+                <rect x="95" y="25" width="75" height="35" rx="4" fill="#bbdefb" stroke="#1565c0"/><text x="132" y="47" text-anchor="middle" font-size="9" font-family="sans-serif">Дялове</text>
+                <text x="178" y="47" font-size="16" fill="#6f42c1">→</text>
+                <rect x="185" y="25" width="75" height="35" rx="4" fill="#fff9c4" stroke="#f9a825"/><text x="222" y="47" text-anchor="middle" font-size="9" font-family="sans-serif">MBR/GPT</text>
+                <text x="268" y="47" font-size="16" fill="#6f42c1">→</text>
+                <rect x="275" y="25" width="75" height="35" rx="4" fill="#c8e6c9" stroke="#388e3c"/><text x="312" y="47" text-anchor="middle" font-size="9" font-family="sans-serif">Format</text>
+                <text x="358" y="47" font-size="16" fill="#6f42c1">→</text>
+                <rect x="365" y="25" width="75" height="35" rx="4" fill="#e1bee7" stroke="#8e24aa"/><text x="402" y="47" text-anchor="middle" font-size="9" font-family="sans-serif">Mount</text>
+                <text x="448" y="47" font-size="16" fill="#6f42c1">→</text>
+                <rect x="455" y="25" width="60" height="35" rx="4" fill="#ffcdd2" stroke="#c62828"/><text x="485" y="47" text-anchor="middle" font-size="9" font-family="sans-serif">Файлове</text>
+            </svg>
+            <figcaption>Фиг. 4 — Редът на операциите при подготовка на нов носител.</figcaption>
+        </figure>
+
+        <!-- 7. ЗАПОМНИ -->
+        <h2>7. Запомни накратко</h2>
+        <div class="remember">
+            <ul>
+                <li>📀 <strong>Дял (partition)</strong> = логическа част от диска · <strong>форматиране (formatting)</strong> = слагаш файлова система · <strong>монтиране (mounting)</strong> = отваряш за ползване</li>
+                <li>📋 <strong>MBR (Master Boot Record)</strong> = 512 байта в началото; boot loader + partition table с 4 дяла · <strong>GPT (GUID Partition Table)</strong> = модерен вариант за големи дискове</li>
+                <li>🪟 Windows: <code>C:</code>, <code>D:</code> · автоматично монтиране (auto mount) · <code>diskmgmt.msc</code></li>
+                <li>🐧 Ubuntu: <code>/dev/sda1</code> → <code>/</code> или <code>/media/...</code> · <code>df -h</code>, <code>mount</code>, <code>umount</code></li>
+                <li>⚠️ Форматирането (formatting) <strong>изтрива данни</strong> · преди изваждане на USB — размонтиране (unmount)!</li>
+            </ul>
+        </div>
+
+        <div class="highlight">
+            <p><strong>Връзка с предишен урок:</strong> <strong>Файловата система (file system)</strong> — NTFS, ext4, FAT32 — определя <em>как</em> се пазят файловете. <strong>Дялът (partition)</strong>, <strong>MBR/GPT</strong> и <strong>монтирането (mounting)</strong> определят <em>къде</em> и <em>кога</em> тази система е достъпна за потребителя.</p>
+        </div>
+    </div>
+</body>
+</html>

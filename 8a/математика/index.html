@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Квадратен корен. Свойства</title>
+
+<style>
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+  padding: 20px;
+  color: #2c3e50;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  color: #1a237e;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 24px;
+  font-size: 1.05rem;
+  color: #455a64;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.formula {
+  background: #eef2ff;
+  padding: 12px;
+  border-left: 5px solid #3f51b5;
+  font-family: monospace;
+  margin: 10px 0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.example {
+  background: #e8f5e9;
+  padding: 12px;
+  border-left: 5px solid #43a047;
+  margin: 10px 0;
+  line-height: 1.7;
+}
+
+.proof {
+  background: #fff8e1;
+  padding: 12px;
+  border-left: 5px solid #ffb300;
+  margin: 10px 0;
+  line-height: 1.7;
+}
+
+.task {
+  background: #e3f2fd;
+  padding: 12px;
+  border-left: 5px solid #1e88e5;
+  margin: 10px 0;
+}
+
+.solution {
+  background: #fce4ec;
+  padding: 12px;
+  border-left: 5px solid #e91e63;
+  margin: 10px 0;
+  line-height: 1.7;
+}
+
+.warning {
+  background: #ffebee;
+  padding: 14px;
+  border-left: 5px solid #c62828;
+  margin: 14px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.highlight {
+  background: #f8f9ff;
+  border: 1px solid #d9defa;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.hint {
+  margin-top: 10px;
+  color: #546e7a;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+table.props {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 0.98rem;
+}
+
+table.props th,
+table.props td {
+  border: 1px solid #d7e3f2;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+table.props th {
+  background: #eef2ff;
+  color: #1a237e;
+}
+
+table.props td:last-child {
+  font-family: monospace;
+}
+
+.subtask {
+  margin: 6px 0 6px 16px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📘 Квадратен корен. Свойства</h1>
+<p class="subtitle">
+Обобщение на темата „Квадратен корен“ — определения, основни свойства и решени задачи от учебника.
+</p>
+
+<div class="card">
+<h2>🎯 1. Запомнете!</h2>
+
+<div class="grid-2">
+  <div class="highlight">
+    <h3>Рационални и ирационални числа</h3>
+    <p><strong>Рационални числа</strong> — множеството от цели числа и дроби. Всяко рационално число може да се представи като крайна или безкрайна периодична десетична дроб.</p>
+    <p><strong>Ирационално число</strong> — безкрайна непериодична десетична дроб. Множеството от рационални и ирационални числа образува <strong>реалните числа</strong>.</p>
+  </div>
+
+  <div class="highlight">
+    <h3>Квадратен корен</h3>
+    <p>Квадратният корен от неотрицателно число <strong>a ≥ 0</strong> е <strong>единственото неотрицателно число</strong>, чиято втора степен е равна на <strong>a</strong>.</p>
+    <div class="formula">√a съществува ⇔ a ≥ 0<br>√a = x ⇔ x² = a,  a ≥ 0,  x ≥ 0</div>
+  </div>
+</div>
+
+<p>
+Корените от числа, които не са точни квадрати — √2, √3, √5, √6, √7, √8, √10, … — са <strong>ирационални числа</strong>.
+</p>
+
+<div class="example">
+<strong>Приближение на √7 = 2,6457513…</strong><br>
+• до 0,1: √7 ≈ 2,6<br>
+• до 0,01: √7 ≈ 2,65<br>
+• до 0,001: √7 ≈ 2,646
+</div>
+</div>
+
+<div class="card">
+<h2>📐 2. Основни свойства</h2>
+
+<table class="props">
+  <thead>
+    <tr>
+      <th>Свойство</th>
+      <th>Формула</th>
+      <th>Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Квадратен корен от степен</td>
+      <td>√(a²ⁿ) = aⁿ &nbsp;(a ≥ 0)</td>
+      <td>√(5²) = 5 &nbsp;|&nbsp; √(7⁴) = 7²</td>
+    </tr>
+    <tr>
+      <td>Степенуване на корен</td>
+      <td>(√a)² = a &nbsp;(a ≥ 0)</td>
+      <td>(√5)² = 5</td>
+    </tr>
+    <tr>
+      <td>Корен от произведение</td>
+      <td>√(a·b) = √a · √b</td>
+      <td>√(5·7) = √5 · √7</td>
+    </tr>
+    <tr>
+      <td>Произведение от корени</td>
+      <td>√a · √b = √(a·b)</td>
+      <td>√5 · √7 = √(5·7)</td>
+    </tr>
+    <tr>
+      <td>Корен от частно</td>
+      <td>√(a/b) = √a / √b &nbsp;(b &gt; 0)</td>
+      <td>√(5/7) = √5 / √7</td>
+    </tr>
+    <tr>
+      <td>Частно от корени</td>
+      <td>√a / √b = √(a/b)</td>
+      <td>√5 / √7 = √(5/7)</td>
+    </tr>
+    <tr>
+      <td>Изнасяне на множител</td>
+      <td>√(a²·b) = a√b</td>
+      <td>√27 = √(9·3) = 3√3</td>
+    </tr>
+    <tr>
+      <td>Внасяне на множител</td>
+      <td>a√b = √(a²·b)</td>
+      <td>3√3 = √(9·3) = √27</td>
+    </tr>
+    <tr>
+      <td>Сравняване</td>
+      <td>a &gt; b ⇒ √a &gt; √b</td>
+      <td>√10 &gt; √7, защото 10 &gt; 7</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="warning">
+<strong>⚠️ Важно!</strong> Няма правило за коренуване на <strong>сбор</strong> и <strong>разлика</strong>:<br>
+√(a + b) ≠ √a + √b &nbsp;&nbsp; и &nbsp;&nbsp; √(a − b) ≠ √a − √b
+</div>
+</div>
+
+<div class="card">
+<h2>✏️ 3. Решени задачи</h2>
+
+<h3>Задача 1 — Допустими стойности на x</h3>
+<p>Намерете допустимите стойности на <strong>x</strong> в корените:</p>
+
+<div class="task">
+<div class="subtask">а) √(x − 2)</div>
+<div class="subtask">б) √(x − 7)</div>
+<div class="subtask">в) √(5 − x)</div>
+<div class="subtask">г) √(10 − x)</div>
+</div>
+
+<div class="solution">
+<strong>Решение:</strong><br>
+<div class="subtask">а) x − 2 ≥ 0, x ≥ 2 ⇒ <strong>DCₓ: x ∈ [2; +∞)</strong></div>
+<div class="subtask">б) x − 7 ≥ 0, x ≥ 7 ⇒ <strong>DCₓ: x ∈ [7; +∞)</strong></div>
+<div class="subtask">в) 5 − x ≥ 0, x ≤ 5 ⇒ <strong>DCₓ: x ∈ (−∞; 5]</strong></div>
+<div class="subtask">г) 10 − x ≥ 0, x ≤ 10 ⇒ <strong>DCₓ: x ∈ (−∞; 10]</strong></div>
+</div>
+
+<h3>Задача 2 — Разлагане на множители (разлика от квадрати)</h3>
+<p>Разложете на множители:</p>
+
+<div class="task">
+<div class="subtask">а) x² − 2</div>
+<div class="subtask">б) 9x² − 5</div>
+<div class="subtask">в) 3x² − 4</div>
+<div class="subtask">г) 5x² − 7</div>
+</div>
+
+<div class="solution">
+<strong>Решение:</strong> използваме a² − b² = (a − b)(a + b)<br><br>
+<div class="subtask">а) x² − 2 = x² − (√2)² = <strong>(x − √2)(x + √2)</strong></div>
+<div class="subtask">б) 9x² − 5 = (3x)² − (√5)² = <strong>(3x − √5)(3x + √5)</strong></div>
+<div class="subtask">в) 3x² − 4 = (√3·x)² − 2² = <strong>(√3·x − 2)(√3·x + 2)</strong></div>
+<div class="subtask">г) 5x² − 7 = (√5·x)² − (√7)² = <strong>(√5·x − √7)(√5·x + √7)</strong></div>
+</div>
+
+<h3>Задача 3 — Разлагане на множители (общ корен)</h3>
+<p>Разложете на множители:</p>
+
+<div class="task">
+<div class="subtask">а) √15 − √6</div>
+<div class="subtask">б) √33 + √21</div>
+<div class="subtask">в) 2√21 − √42</div>
+</div>
+
+<div class="solution">
+<strong>Решение:</strong><br><br>
+<div class="subtask">
+а) √15 − √6 = √(5·3) − √(2·3) = √5·√3 − √2·√3 = <strong>√3(√5 − √2)</strong>
+</div>
+<div class="subtask">
+б) √33 + √21 = √(3·11) + √(3·7) = √3·√11 + √3·√7 = <strong>√3(√11 + √7)</strong>
+</div>
+<div class="subtask">
+в) 2√21 − √42 = 2√21 − √(2·21) = 2√21 − √2·√21 = √21(2 − √2)<br>
+= √21((√2)² − √2) = √21·√2(√2 − 1) = <strong>√42(√2 − 1)</strong>
+</div>
+</div>
+
+<h3>Задача 4 — Съкращаване на дроби</h3>
+<p>Съкратете дробите:</p>
+
+<div class="task">
+<div class="subtask">а) (√75 + √20) / √5</div>
+<div class="subtask">б) (√21 + √12 − √24) / √3</div>
+</div>
+
+<div class="solution">
+<strong>Решение:</strong><br><br>
+<div class="subtask">
+а) (√75 + √20) / √5 = (√(5·15) + √(5·4)) / √5 = (√5(√15 + √4)) / √5 = <strong>√15 + 2</strong>
+</div>
+<div class="subtask">
+б) (√21 + √12 − √24) / √3 = (√(3·7) + √(3·4) − √(3·8)) / √3<br>
+= (√3(√7 + √4 − √8)) / √3 = √7 + 2 − √8 = √7 + 2 − 2√2 = <strong>√7 + 2 − 2√2</strong>
+</div>
+</div>
+
+<h3>Задача 5 — Равенства с √a²</h3>
+<p>При какви стойности на <strong>a</strong> са изпълнени равенствата:</p>
+
+<div class="task">
+<div class="subtask">а) √(a²) = a</div>
+<div class="subtask">б) √(a²) = −a</div>
+</div>
+
+<div class="solution">
+<strong>Решение:</strong><br><br>
+<div class="subtask">
+а) √(a²) = |a|. Равенството √(a²) = a е изпълнено, когато <strong>a ≥ 0</strong>.
+</div>
+<div class="subtask">
+б) √(a²) = −a е изпълнено, когато −a ≥ 0, т.е. <strong>a ≤ 0</strong>.
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>📝 4. Задачи за упражнение</h2>
+
+<div class="task">1. Намери DCₓ за: √(2x + 6)</div>
+<div class="task">2. Разложи: 4x² − 3</div>
+<div class="task">3. Разложи: √50 − √18</div>
+<div class="task">4. Съкрати: (√48 + √27) / √3</div>
+<div class="task">5. За кои a е верно: √(a²) = 3 − a?</div>
+
+<p class="hint">Подсказка за задача 5: сравни |a| = 3 − a и провери условието 3 − a ≥ 0.</p>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+/home/ahmed/Documents/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example10_Template/bin/Debug/net8.0/Example10_Template
+/home/ahmed/Documents/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example10_Template/bin/Debug/net8.0/Example10_Template.deps.json
+/home/ahmed/Documents/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example10_Template/bin/Debug/net8.0/Example10_Template.runtimeconfig.json
+/home/ahmed/Documents/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example10_Template/bin/Debug/net8.0/Example10_Template.dll
+/home/ahmed/Documents/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example10_Template/bin/Debug/net8.0/Example10_Template.pdb
+/home/ahmed/Documents/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example10_Template/obj/Debug/net8.0/Example10_Template.GeneratedMSBuildEditorConfig.editorconfig
+/home/ahmed/Documents/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example10_Template/obj/Debug/net8.0/Example10_Template.AssemblyInfoInputs.cache
+/home/ahmed/Documents/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example10_Template/obj/Debug/net8.0/Example10_Template.AssemblyInfo.cs
+/home/ahmed/Documents/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example10_Template/obj/Debug/net8.0/Example10_Template.csproj.CoreCompileInputs.cache
+/home/ahmed/Documents/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example10_Template/obj/Debug/net8.0/Example10_Template.sourcelink.json
+/home/ahmed/Documents/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example10_Template/obj/Debug/net8.0/Example10_Template.dll
+/home/ahmed/Documents/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example10_Template/obj/Debug/net8.0/refint/Example10_Template.dll
+/home/ahmed/Documents/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example10_Template/obj/Debug/net8.0/Example10_Template.pdb
+/home/ahmed/Documents/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example10_Template/obj/Debug/net8.0/Example10_Template.genruntimeconfig.cache
+/home/ahmed/Documents/SCHOOL/8б/1.Въведение в програмирането (ИУЧ - РПП)/Примери/Example10_Template/obj/Debug/net8.0/ref/Example10_Template.dll
